@@ -47,7 +47,7 @@ class StudentsHeaderDrawer extends StatelessWidget {
             ),
           ),
           Text(
-            "Lepton DuJo",
+            "Lepton VidyaVeechi",
             style: GoogleFonts.montserrat(
                 color: Colors.black,
                 fontSize: 25.h,

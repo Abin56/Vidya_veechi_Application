@@ -19,6 +19,7 @@ class DujoLoginScren extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
+         
           const LoginScreenDesign(),
           Expanded(
             child: Column(
@@ -34,13 +35,13 @@ class DujoLoginScren extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GoogleMonstserratWidgets(
-                  text: 'COSTECH',
+                  text: 'LEPTON',
                   fontsize: 25,
                   color: const Color.fromARGB(255, 230, 18, 3),
                   fontWeight: FontWeight.bold,
                 ),
                 GoogleMonstserratWidgets(
-                  text: ' DuJo',
+                  text: ' VidyaVeechi',
                   fontsize: 25,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

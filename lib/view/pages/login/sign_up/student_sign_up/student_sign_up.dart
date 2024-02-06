@@ -55,7 +55,7 @@ class StudentSignInPageScreen extends StatelessWidget {
                           width: 100.w,
                           imagePath: 'assets/images/leptonlogo.png'),
                       GoogleMonstserratWidgets(
-                        text: 'Lepton Dujo',
+                        text: 'Lepton VidyaVeechi',
                         fontsize: 20,
                         fontWeight: FontWeight.w500,
                       ),

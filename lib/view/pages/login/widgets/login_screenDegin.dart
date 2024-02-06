@@ -15,13 +15,13 @@ class LoginScreenDesign extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: 250,
-          width: 250,
+          height: 150,
+          width: 150,
           decoration: const BoxDecoration(
-            
+          //  color: cblue,
             image: DecorationImage(
-              
-              image: AssetImage('assets/images/cost.png'),
+              // Image.asset(""),
+              image: AssetImage('assets/images/logo5.png'),
             ),
           ),
         ),

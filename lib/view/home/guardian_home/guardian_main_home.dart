@@ -51,10 +51,13 @@ class _GuardianMainHomeScreenState extends State<GuardianMainHomeScreen> {
       onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
         appBar: AppBar(
-          title: ContainerImage(
-              height: 28.h,
-              width: 90.w,
-              imagePath: 'assets/images/dujoo-removebg.png'),
+          foregroundColor: cWhite,
+          title:  SizedBox(
+        // color: cred,
+        height: 80.h,
+              width: 115.w,
+            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
+       ),
           backgroundColor: adminePrimayColor,
         ),
         body: pages[_page],

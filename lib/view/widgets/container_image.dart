@@ -23,7 +23,7 @@ class ContainerImage extends StatelessWidget {
       height: height,
       width: width,
       decoration:
-          BoxDecoration(image: DecorationImage(image: AssetImage(imagePath),fit: BoxFit.fill)),
+          BoxDecoration(image: DecorationImage(image: AssetImage(imagePath),fit: BoxFit.fill,)),
     );
   }
 }

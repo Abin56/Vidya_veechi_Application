@@ -34,7 +34,7 @@ class SearchSchoolScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GoogleMonstserratWidgets(
-                    text: "Search  School".tr,
+                    text: "Search Tution Center".tr,
                     fontsize: 23,
                   ),
                   const Icon(
@@ -68,13 +68,13 @@ class SearchSchoolScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GoogleMonstserratWidgets(
-                    text: 'COSTECH',
+                    text: 'LEPTON',
                     fontsize: 20,
                     color: const Color.fromARGB(255, 230, 18, 3),
                     fontWeight: FontWeight.bold,
                   ),
                   GoogleMonstserratWidgets(
-                    text: ' DuJo',
+                    text: ' VidyaVeechi',
                     fontsize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

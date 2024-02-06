@@ -27,10 +27,17 @@ class UsersLoginScreen extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: ContainerImage(
-            height: ScreenUtil().setHeight(28),
-            width: ScreenUtil().setWidth(90),
-            imagePath: 'assets/images/dujoo-removebg.png'),
+        foregroundColor: cWhite,
+        title: SizedBox(
+        // color: cred,
+        height: ScreenUtil().setHeight(80) ,
+              width: ScreenUtil().setWidth(115) ,
+            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
+       ),
+        // ContainerImage(
+        //     height: ScreenUtil().setHeight(28),
+        //     width: ScreenUtil().setWidth(90),
+        //     imagePath: 'assets/images/vidyaveechi.png'),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(

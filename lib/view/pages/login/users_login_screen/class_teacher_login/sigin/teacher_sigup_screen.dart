@@ -33,11 +33,15 @@ class TeachersSignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-        title: ContainerImage(
-            height: 28.h,
-            width: 90.w,
-            imagePath: 'assets/images/dujoo-removebg.png'),
+    return Scaffold(
+      appBar: AppBar(
+        foregroundColor: cWhite,
+        title: SizedBox(
+        // color: cred,
+        height: 80.h,
+              width: 115.w,
+            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
+       ),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
