@@ -1,9 +1,9 @@
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/home/drawer/student_drawer.dart';
-import 'package:dujo_kerala_application/view/home/student_home/student_home.dart';
 import 'package:dujo_kerala_application/view/home/student_home/student_new_homepage.dart';
 import 'package:dujo_kerala_application/view/pages/live_classes/students_room/list_room.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -14,7 +14,6 @@ import '../../../main.dart';
 import '../../pages/chat_gpt/screens/chat_screen.dart';
 import '../../pages/recorded_videos/select_subjects.dart';
 import '../../pages/splash_screen/splash_screen.dart';
-import '../../widgets/container_image.dart';
 
 class StudentsMainHomeScreen extends StatefulWidget {
   // var schoolID;
@@ -63,6 +62,7 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
          onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
         appBar: AppBar(
+          flexibleSpace: const AppBarColorWidget(),
           foregroundColor: cWhite,
             title: SizedBox(
         // color: cred,
@@ -70,7 +70,8 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
               width: 115.w,
             child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
        ),
-            backgroundColor: adminePrimayColor),
+          //  backgroundColor: adminePrimayColor
+            ),
         body: pages[_page],
         bottomNavigationBar: Container(
           height: 71,
@@ -83,8 +84,15 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
               begin: Alignment.topLeft,
               end: Alignment.bottomCenter,
               colors: [
-                Color.fromARGB(255, 6, 71, 157),
-                Color.fromARGB(255, 5, 85, 222)
+                       // Color.fromARGB(255, 222, 29, 151),
+                       // Color.fromARGB(255, 39, 48, 211)
+                       Color.fromARGB(255, 15, 73, 208),
+                         Color.fromARGB(255, 6, 152, 225),
+                        //  Color.fromARGB(255, 92, 168, 240),
+
+
+                // Color.fromARGB(255, 6, 71, 157),
+                // Color.fromARGB(255, 5, 85, 222)
               ],
             ),
           ),

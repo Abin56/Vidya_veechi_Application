@@ -3,9 +3,9 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/home/student_home/subjects/subjectchapter.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:dujo_kerala_application/view/widgets/container_image.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
-import 'package:dujo_kerala_application/widgets/Iconbackbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,17 +21,19 @@ class StudentSubjectHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: cWhite,
+         foregroundColor: cWhite,
+          flexibleSpace: const AppBarColorWidget(),
+       // backgroundColor: cWhite,
         title: Row(
           children: [
-            IconButtonBackWidget(color: cblack),
+          //  IconButtonBackWidget(color: cblack),
             SizedBox(
               width: 90.h,
             ),
             GooglePoppinsWidgets(
               text: "Subjects".tr,
               fontsize: 20.h,
-              color: cblack,
+              color: cWhite,
             )
           ],
         ),

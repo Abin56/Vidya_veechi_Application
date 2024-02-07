@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/constant.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,9 @@ class ViewHomeWorks extends StatelessWidget {
             GooglePoppinsWidgets(text: "HomeWorks".tr, fontsize: 20.h)
           ],
         ),
-        backgroundColor: adminePrimayColor,
+          flexibleSpace: const AppBarColorWidget(),
+           foregroundColor: cWhite,
+       // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
         child: Column(

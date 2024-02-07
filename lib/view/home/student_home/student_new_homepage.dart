@@ -55,7 +55,7 @@ class NewStdHomePage extends StatelessWidget {
 
     const StudentChatScreen(), // Chats
 
-      const StudentSubjectHome(), //Subjects
+      const StudentSubjectHome(), //Subjects/////////<--
 
       
       const UserExmNotifications(), //Exam
@@ -64,6 +64,7 @@ class NewStdHomePage extends StatelessWidget {
           classId: UserCredentialsController.classId!,
           studentID:
               UserCredentialsController.studentModel!.docid), ////// exam result
+              
       NoticePage(), //Notice
       const EventList(), //Events
       
@@ -89,17 +90,19 @@ class NewStdHomePage extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 222, 29, 151),
-                        Color.fromARGB(255, 39, 48, 211)
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color.fromARGB(255, 139, 195, 248),
+                       Color.fromARGB(255, 6, 152, 225),
+                       // Color.fromARGB(255, 222, 29, 151),
+                       // Color.fromARGB(255, 39, 48, 211)
+                       Color.fromARGB(255, 15, 73, 208),
                       ],
                       end: Alignment.topLeft,
                       begin: Alignment.bottomRight,
                     ),
-                    color: cgraident.withOpacity(0.5),
-                    borderRadius: const BorderRadius.only(
+                  //  color: cgraident.withOpacity(0.5),
+                    borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30)),
                   ),
@@ -175,13 +178,13 @@ class NewStdHomePage extends StatelessWidget {
                               width: 120,
                               decoration:  BoxDecoration(
                                 boxShadow:const [BoxShadow(
-                                color:  Colors.deepPurple,
+                                color:   Color.fromARGB(248, 41, 73, 231),
                                  blurRadius: 20.0,
                                 ),] ,
-                                color: Colors.deepPurple.withOpacity(0.5),
+                                color:  const Color.fromARGB(248, 3, 201, 231).withOpacity(0.5),
                                 borderRadius: const BorderRadius.all(Radius.circular(10))),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.only(left: 22),
                                   child: Center(
                                     child: GoogleSalsaWidgets(
                                       text: "Performance Analysis", fontsize: 14,fontWeight: FontWeight.w500,color: cWhite,)),

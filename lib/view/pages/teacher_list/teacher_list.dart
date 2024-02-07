@@ -1,4 +1,5 @@
 import 'package:dujo_kerala_application/utils/utils.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,7 @@ import '../../constant/sizes/sizes.dart';
 import '../../widgets/fonts/google_poppins.dart';
 
 class TeacherSubjectWiseList extends StatelessWidget {
-  String navValue;
+  final String navValue;
   TeacherSubjectWiseList({required this.navValue, super.key});
   final TeacherListController teacherListController =
       Get.put(TeacherListController());
@@ -18,10 +19,12 @@ class TeacherSubjectWiseList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         foregroundColor: cWhite,
         title: Text(
           "Teachers".tr,
         ),
-        backgroundColor: adminePrimayColor,
+          flexibleSpace: const AppBarColorWidget(),
+      //  backgroundColor: adminePrimayColor,
       ),
       body: FutureBuilder(
           future: teacherListController.getAllSubjects(),

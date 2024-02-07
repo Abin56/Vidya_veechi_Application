@@ -1,3 +1,4 @@
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,8 +21,10 @@ class AllClassTestMonthlyPage extends StatelessWidget {
     });
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
-          title:  Text("All Test".tr),
+          foregroundColor: cWhite,
+            flexibleSpace: const AppBarColorWidget(),
+         // backgroundColor: adminePrimayColor,
+          title:  Text("All Monthly Test".tr),
         ),
         body: Obx(
           () => allClassListShowController.isLoading.value

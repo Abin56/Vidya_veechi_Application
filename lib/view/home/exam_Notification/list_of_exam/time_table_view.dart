@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/model/exam_list_model/add_ex_timeTable.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,11 +13,11 @@ import '../../../constant/sizes/sizes.dart';
 import '../../../widgets/fonts/google_poppins.dart';
 
 class TeacherExamTimeTableViewScreen extends StatelessWidget {
-  String collectionName;
-  String date;
-  String examID;
-  String examName;
-  TeacherExamTimeTableViewScreen(
+ final String collectionName;
+ final String date;
+ final String examID;
+ final String examName;
+  const TeacherExamTimeTableViewScreen(
       {required this.collectionName,
       required this.date,
       required this.examID,
@@ -25,7 +26,13 @@ class TeacherExamTimeTableViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title:  Text("Exam Time Table".tr),backgroundColor: adminePrimayColor,),
+    return Scaffold(
+      appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+        title:  Text("Exam Time Table".tr),
+        //backgroundColor: adminePrimayColor,
+        ),
       body: SafeArea(
         child: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -102,9 +109,9 @@ class TeacherExamTimeTableViewScreen extends StatelessWidget {
                                             builder: (BuildContext context) {
                                               return AlertDialog(
                                                 title: const Text('Alert'),
-                                                content: SingleChildScrollView(
+                                                content: const SingleChildScrollView(
                                                   child: ListBody(
-                                                    children: const <Widget>[
+                                                    children: <Widget>[
                                                       Text(
                                                           'Do you want to remove this timetable ?')
                                                     ],

@@ -2,15 +2,14 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 var schoolLevelExamistValue;
 
 class GetSchoolLevelExamDropDownButton extends StatefulWidget {
-  String examType;
-  GetSchoolLevelExamDropDownButton({Key? key, required this.examType})
+  final String examType;
+  const GetSchoolLevelExamDropDownButton({Key? key, required this.examType})
       : super(key: key);
 
   @override
@@ -41,7 +40,7 @@ class _GetSchoolLevelExamDropDownButtonState
               hint: schoolLevelExamistValue == null
                   ? Text(
                       "Select Exam".tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0), fontSize: 18),
                     )
                   : Text(schoolLevelExamistValue!["examName"]),

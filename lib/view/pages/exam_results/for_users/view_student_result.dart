@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ViewExamResultsScreen extends StatelessWidget {
-  String classID;
-  String examLevel;
-  String studentId;
-  String examdocid;
+ final String classID;
+ final String examLevel;
+ final String studentId;
+ final String examdocid;
 
-  ViewExamResultsScreen(
+  const ViewExamResultsScreen(
       {required this.classID,
       required this.examLevel,
       required this.studentId,
@@ -20,11 +21,13 @@ class ViewExamResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int columnCount = 3;
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
+    // int columnCount = 3;
+    // double w = MediaQuery.of(context).size.width;
+    // double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
         title: Text('View Results'.tr),
         backgroundColor: adminePrimayColor,
       ),

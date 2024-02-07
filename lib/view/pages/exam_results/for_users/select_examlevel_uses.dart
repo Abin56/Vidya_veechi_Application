@@ -1,5 +1,6 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/exam_results/for_users/select_exam_users.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,15 +9,18 @@ import 'package:get/get.dart';
 import '../../../constant/sizes/sizes.dart';
 
 class UsersSelectExamLevelScreen extends StatelessWidget {
-  String classId;
-  String studentID;
-  UsersSelectExamLevelScreen(
+ final String classId;
+  final String studentID;
+  const UsersSelectExamLevelScreen(
       {super.key, required this.classId, required this.studentID});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Exam Results".tr),backgroundColor: adminePrimayColor,),
+      appBar: AppBar(title: Text("Exam Results".tr),
+     // backgroundColor: adminePrimayColor,
+      foregroundColor: cWhite,
+        flexibleSpace: const AppBarColorWidget(),),
       body: SafeArea(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
