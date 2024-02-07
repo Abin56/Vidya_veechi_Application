@@ -1,6 +1,9 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/home/mobile_view_home.dart/our_features/our_features.dart';
 import 'package:dujo_kerala_application/view/pages/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MobileHomePage extends StatelessWidget {
@@ -138,20 +141,30 @@ class MobileHomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20, left: 300),
-          child: SizedBox(
-            height:  30 ,
-            width: 100 ,
-            child: InkWell(
-              onTap: () => const SplashScreen(),
-              child: Text(
-                'LOGIN',
-                style: GoogleFonts.poppins(
-                    fontSize:  13 ,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+          padding: const EdgeInsets.all(8.0),
+          child: Row(mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                 onTap: () {
+                  Get.to(  () => const SplashScreen(),);
+                 },
+                child: Container(
+                  decoration: const BoxDecoration( color: cWhite,borderRadius: BorderRadius.all(Radius.circular(10))),
+                 
+                  height:  30 ,
+                  width: 100 ,
+                  child: Center(
+                    child: Text(
+                      'LOGIN',
+                      style: GoogleFonts.poppins(
+                          fontSize:  13 ,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.purple),
+                    ),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
         Padding(
@@ -288,7 +301,8 @@ class MobileHomePage extends StatelessWidget {
           ),
         )
       ],
-    ),)
+    ),),
+    const DujoWebFeatures()
           
           ],
         ),
