@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
-import 'package:dujo_kerala_application/view/pages/progress_Report/view_report/all_students.dart';
 import 'package:dujo_kerala_application/view/pages/progress_Report/view_report/for_teachers/select_student.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectExamsForProgressreport extends StatelessWidget {
-  String schooilID;
-  String batchId;
-  String classID;
-  SelectExamsForProgressreport(
+ final String schooilID;
+ final String batchId;
+ final String classID;
+  const SelectExamsForProgressreport(
       {required this.batchId,
       required this.classID,
       required this.schooilID,
@@ -24,7 +24,10 @@ class SelectExamsForProgressreport extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Select Exam".tr),backgroundColor: adminePrimayColor,
+        title:  Text("Select Exam".tr),
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+        //backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(

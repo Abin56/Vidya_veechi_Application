@@ -32,20 +32,24 @@ final  void Function()? onTap;
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                //Image.asset("assets/images/attendance.png",width: 60,height: 40,),
                 GradientIcon(
                   icon: icon,
                   gradient: const LinearGradient(
                       //colors: [Colors.cyan,Colors.grey],
                 //  colors: [Colors.black,Colors.indigo],
                    // colors: [Colors.brown,Colors.orange],
-                   colors: [Colors.red, Colors.blue],
+                   colors: [
+                     Color.fromARGB(248, 130, 226, 240),
+                     Color.fromARGB(255, 6, 71, 157),
+                                   
+                                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   size: 30,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                Center(
                   child: GoogleSalsaWidgets(
                     text: text,
                     fontsize: 12,

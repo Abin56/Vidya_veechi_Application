@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/chat/student_section/search/search_teachers.dart';
 import 'package:dujo_kerala_application/view/pages/chat/student_section/teachers_message/teacher_messages.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -23,7 +24,9 @@ class StudentChatScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
+           foregroundColor: cWhite,
+            flexibleSpace: const AppBarColorWidget(),
+         // backgroundColor: adminePrimayColor,
           title:  Text('Dujo Chat'.tr),
           bottom: TabBar(
             tabs: [
@@ -32,7 +35,7 @@ class StudentChatScreen extends StatelessWidget {
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(right: 0),
-                      child: Icon(Icons.group),
+                      child: Icon(Icons.group,color: cWhite,),
                     ),
                     //////////////////////////////////////////////////////////////////////////////////////////////////
                     Row(
@@ -92,9 +95,9 @@ class StudentChatScreen extends StatelessWidget {
               // const Tab(icon: Icon(Icons.groups_2), text: 'Parents'),
                Tab(
                   icon: const Icon(
-                    Icons.class_,
+                    Icons.class_,color: cWhite,
                   ),
-                  text: 'Group'.tr),
+                  text: 'Group'.tr,),
             ],
           ),
         ),

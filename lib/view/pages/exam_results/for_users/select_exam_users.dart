@@ -2,17 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/exam_results/for_users/view_student_result.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UsersSelectExamWiseScreen extends StatelessWidget {
-  String classID;
-  String examLevel;
-  String studentId;
+ final String classID;
+ final String examLevel;
+ final String studentId;
 
-  UsersSelectExamWiseScreen(
+  const UsersSelectExamWiseScreen(
       {required this.classID,
       required this.examLevel,
       required this.studentId,
@@ -26,7 +27,9 @@ class UsersSelectExamWiseScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Exam'.tr),
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+        //backgroundColor: adminePrimayColor,
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance

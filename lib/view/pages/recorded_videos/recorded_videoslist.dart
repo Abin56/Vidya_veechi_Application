@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
-import 'package:dujo_kerala_application/view/pages/recorded_videos/play_video.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
@@ -11,12 +11,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../colors/colors.dart';
 
 class RecordedVideosListScreen extends StatelessWidget {
-  String schoolId;
-  String classID;
-  String batchId;
-  String subjectId;
-  String subrecID;
-  RecordedVideosListScreen(
+ final String schoolId;
+ final String classID;
+ final String batchId;
+ final String subjectId;
+ final String subrecID;
+  const RecordedVideosListScreen(
       {required this.schoolId,
       required this.batchId,
       required this.classID,
@@ -32,8 +32,10 @@ class RecordedVideosListScreen extends StatelessWidget {
     log(classID);
     return Scaffold(
       appBar: AppBar(
+         flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
         title: Text('Select video'.tr),
-        backgroundColor: adminePrimayColor,
+       // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(

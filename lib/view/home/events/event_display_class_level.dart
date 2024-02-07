@@ -26,8 +26,10 @@ class EventDisplayClassLevel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
-          title: Text("Events".tr),
+           flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+          //backgroundColor: adminePrimayColor,
+          title:  Text("Events".tr),
         ),
         body: SizedBox(
           height: double.infinity, // set the height to fill available space

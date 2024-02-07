@@ -21,7 +21,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_lemon.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_salsa.dart';
 import 'package:dujo_kerala_application/view/widgets/icon/icon_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gui_shape/geo/geo_common.dart';
 import 'package:gui_shape/gui/gui_shape_border.dart';
@@ -32,9 +32,11 @@ import '../../pages/chat/student_section/student_chat_screen.dart';
 class NewStdHomePage extends StatelessWidget {
   const NewStdHomePage({super.key});
 
+ 
+
   @override
   Widget build(BuildContext context) {
-    log(
+     log(
       UserCredentialsController.studentModel!.docid,
     );
     final screenNavigationOfStd = [
@@ -43,24 +45,29 @@ class NewStdHomePage extends StatelessWidget {
           batchId: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!), //Attendence
 
-      const ViewHomeWorks(), // Home Works
+     const ViewHomeWorks(), // Home Works
 
       const SS(), //Time table
 
-      TeacherSubjectWiseList(navValue: 'student'), //Teachers
+      
 
-      const StudentChatScreen(), // Chats
+    TeacherSubjectWiseList(navValue: 'student'), //Teachers
 
-      const StudentSubjectHome(), //Subjects
+    const StudentChatScreen(), // Chats
 
+      const StudentSubjectHome(), //Subjects/////////<--
+
+      
       const UserExmNotifications(), //Exam
 
       UsersSelectExamLevelScreen(
           classId: UserCredentialsController.classId!,
           studentID:
               UserCredentialsController.studentModel!.docid), ////// exam result
+              
       NoticePage(), //Notice
       const EventList(), //Events
+      
 
       SchoolLevelMeetingPage(), //Meetings
       BusRouteListPage(),
@@ -83,17 +90,19 @@ class NewStdHomePage extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 222, 29, 151),
-                        Color.fromARGB(255, 39, 48, 211)
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color.fromARGB(255, 139, 195, 248),
+                       Color.fromARGB(255, 6, 152, 225),
+                       // Color.fromARGB(255, 222, 29, 151),
+                       // Color.fromARGB(255, 39, 48, 211)
+                       Color.fromARGB(255, 15, 73, 208),
                       ],
                       end: Alignment.topLeft,
                       begin: Alignment.bottomRight,
                     ),
-                    color: cgraident.withOpacity(0.5),
-                    borderRadius: const BorderRadius.only(
+                  //  color: cgraident.withOpacity(0.5),
+                    borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30)),
                   ),
@@ -102,7 +111,7 @@ class NewStdHomePage extends StatelessWidget {
                   height: screenSize.width * 0.4,
                   // padding: EdgeInsets.all(15.h),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 20),
+                    padding: const EdgeInsets.only(top: 20,left: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +125,7 @@ class NewStdHomePage extends StatelessWidget {
                               text: UserCredentialsController
                                   .studentModel!.studentName,
                               fontsize: 23.sp,
-                              //  fontWeight: FontWeight.bold,
+                            //  fontWeight: FontWeight.bold,
                               color: cWhite,
                             ),
                             FutureBuilder(
@@ -161,30 +170,25 @@ class NewStdHomePage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onTap: (() {}),
+                            onTap: (() {
+                              
+                            }),
                             child: Container(
                               height: 35,
                               width: 120,
-                              decoration: BoxDecoration(
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.deepPurple,
-                                      blurRadius: 20.0,
-                                    ),
-                                  ],
-                                  color: Colors.deepPurple.withOpacity(0.5),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10))),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Center(
+                              decoration:  BoxDecoration(
+                                boxShadow:const [BoxShadow(
+                                color:   Color.fromARGB(248, 41, 73, 231),
+                                 blurRadius: 20.0,
+                                ),] ,
+                                color:  const Color.fromARGB(248, 3, 201, 231).withOpacity(0.5),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 22),
+                                  child: Center(
                                     child: GoogleSalsaWidgets(
-                                  text: "Performance Analysis",
-                                  fontsize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: cWhite,
-                                )),
-                              ),
+                                      text: "Performance Analysis", fontsize: 14,fontWeight: FontWeight.w500,color: cWhite,)),
+                                ),
                             ),
                           ),
                         )
@@ -243,12 +247,10 @@ class NewStdHomePage extends StatelessWidget {
                         text: ' Attendance',
                         onTap: () {
                           print("object");
-                          Get.to(() => screenNavigationOfStd[0]);
+                           Get.to(() => screenNavigationOfStd[0]);
                         }),
                     ContainerWidget(
-                        icon: Icons.home_work,
-                        text: 'Homework',
-                        onTap: () {
+                        icon: Icons.home_work, text: 'Homework', onTap: () {
                           Get.to(() => screenNavigationOfStd[1]);
                         }),
                     ContainerWidget(
@@ -263,15 +265,11 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.person_2,
-                        text: 'Teachers',
-                        onTap: () {
+                        icon: Icons.person_2, text: 'Teachers', onTap: () {
                           Get.to(() => screenNavigationOfStd[3]);
                         }),
                     ContainerWidget(
-                        icon: Icons.chat_rounded,
-                        text: 'Chats',
-                        onTap: () {
+                        icon: Icons.chat_rounded, text: 'Chats', onTap: () {
                           Get.to(() => screenNavigationOfStd[4]);
                         }),
                     ContainerWidget(
@@ -286,22 +284,20 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.list_alt,
-                        text: 'Exams',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfStd[6]);
+                        icon: Icons.list_alt, text: 'Exams', onTap: () {
+                           Get.to(() => screenNavigationOfStd[6]);
                         }),
                     ContainerWidget(
                         icon: Icons.add_chart,
                         text: 'Exam Results',
                         onTap: () {
-                          Get.to(() => screenNavigationOfStd[7]);
+                           Get.to(() => screenNavigationOfStd[7]);
                         }),
                     ContainerWidget(
                         icon: Icons.notification_add,
                         text: 'Notices',
                         onTap: () {
-                          Get.to(() => screenNavigationOfStd[8]);
+                           Get.to(() => screenNavigationOfStd[8]);
                         }),
                   ],
                 ),
@@ -309,22 +305,18 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.event,
-                        text: 'Events',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfStd[9]);
+                        icon: Icons.event, text: 'Events', onTap: () {
+                           Get.to(() => screenNavigationOfStd[9]);
                         }),
                     ContainerWidget(
                         icon: Icons.meeting_room,
                         text: 'Meetings',
                         onTap: () {
-                          Get.to(() => screenNavigationOfStd[10]);
+                           Get.to(() => screenNavigationOfStd[10]);
                         }),
                     ContainerWidget(
-                        icon: Icons.bus_alert,
-                        text: 'Bus Route',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfStd[11]);
+                        icon: Icons.bus_alert, text: 'Bus Route', onTap: () {
+                           Get.to(() => screenNavigationOfStd[11]);
                         }),
                   ],
                 ),
@@ -332,16 +324,14 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.class_,
-                        text: 'Class Test',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfStd[12]);
+                        icon: Icons.class_, text: 'Class Test', onTap: () {
+                           Get.to(() => screenNavigationOfStd[12]);
                         }),
                     ContainerWidget(
                         icon: Icons.view_list,
                         text: 'Monthly Class Test',
                         onTap: () {
-                          Get.to(() => screenNavigationOfStd[13]);
+                           Get.to(() => screenNavigationOfStd[13]);
                         }),
                     ContainerWidget(
                         icon: Icons.library_books,
@@ -364,6 +354,9 @@ class NewStdHomePage extends StatelessWidget {
     );
   }
 }
+
+
+
 
 class CurvedPentagon extends StatelessWidget {
   const CurvedPentagon({super.key});

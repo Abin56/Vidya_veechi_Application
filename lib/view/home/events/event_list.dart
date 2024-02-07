@@ -1,4 +1,5 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -15,6 +16,7 @@ class EventList extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+           foregroundColor: cWhite,
           title: Row(
             children: [
               // IconButtonBackWidget(),
@@ -24,7 +26,8 @@ class EventList extends StatelessWidget {
               Text("Events".tr),
             ],
           ),
-          backgroundColor: adminePrimayColor,
+            flexibleSpace: const AppBarColorWidget(),
+         // backgroundColor: adminePrimayColor,
           bottom: TabBar(tabs: [
             Tab(
               text: 'Class Level'.tr,

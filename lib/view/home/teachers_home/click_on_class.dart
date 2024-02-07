@@ -5,6 +5,7 @@ import 'package:dujo_kerala_application/controllers/userCredentials/user_credent
 import 'package:dujo_kerala_application/view/home/bus_route_page/all_bus_list.dart';
 import 'package:dujo_kerala_application/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
 import 'package:dujo_kerala_application/view/pages/Notice/Tabs/school_level_tab.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -29,9 +30,9 @@ import 'class_test/class_test_page.dart';
 import 'monthly_class_test/class_test_monthly_page.dart';
 
 class ClickOnClasss extends StatelessWidget {
-  String classID;
-  String className;
-  ClickOnClasss({required this.classID, required this.className, super.key});
+ final String classID;
+ final String className;
+  const ClickOnClasss({required this.classID, required this.className, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,9 @@ class ClickOnClasss extends StatelessWidget {
 
       Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
+           flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+          //backgroundColor: adminePrimayColor,
           title: Text("Notices".tr),
         ),
         body: SchoolLevelNoticePage(),

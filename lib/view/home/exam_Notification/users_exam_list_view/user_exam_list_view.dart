@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/model/exam_list_model/add_ex_timeTable.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
@@ -26,9 +27,9 @@ class UsersExamTimeTableViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exam Time Table'.tr),
-        backgroundColor: adminePrimayColor,
-      ),
+        title: Text('Exam Time Table'.tr),//backgroundColor: adminePrimayColor,
+         flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,),
       body: SafeArea(
         child: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -115,7 +116,8 @@ class UsersExamTimeTableViewScreen extends StatelessWidget {
                                         subtitle: Padding(
                                           padding: EdgeInsets.only(top: 10.h),
                                           child: GooglePoppinsWidgets(
-                                              text: 'Duration : ${data.hours}',
+                                              text:
+                                                  'Duration : ${data.hours}',
                                               fontsize: 14.h),
                                         ),
                                         trailing: Column(
@@ -136,7 +138,8 @@ class UsersExamTimeTableViewScreen extends StatelessWidget {
                                                   text:
                                                       '${data.startingtime} to ${data.endingtime}',
                                                   fontsize: 15.h,
-                                                  fontWeight: FontWeight.w300),
+                                                  fontWeight:
+                                                      FontWeight.w300),
                                             ),
                                           ],
                                         ),

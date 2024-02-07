@@ -1,6 +1,7 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/home/exam_Notification/users_exam_list_view/public.dart';
 import 'package:dujo_kerala_application/view/home/exam_Notification/users_exam_list_view/state.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +14,9 @@ class UserExmNotifications extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(title: Text("Exams".tr),
-          backgroundColor: adminePrimayColor,
+         foregroundColor: cWhite,
+          flexibleSpace: const AppBarColorWidget(),
+        //  backgroundColor: adminePrimayColor,
           bottom:   TabBar(tabs: [
             Tab(
               text: 'School Level'.tr,

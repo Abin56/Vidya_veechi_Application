@@ -1,6 +1,7 @@
 import 'package:dujo_kerala_application/model/notice_model/class_level_notice_model.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -16,7 +17,9 @@ class NoticeClassDisplayPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
+           flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+         // backgroundColor: adminePrimayColor,
           title: Text("Notices".tr),
         ),
         body: SizedBox(

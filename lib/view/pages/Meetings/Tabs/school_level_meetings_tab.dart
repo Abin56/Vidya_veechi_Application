@@ -1,8 +1,9 @@
 import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/Meetings/meetings_school_display.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/student_controller/student_meeting_controller.dart';
@@ -30,11 +31,12 @@ class SchoolLevelMeetingPage extends StatelessWidget {
     return Obx(
       () => studentMeetingController.isLoading.value
           ? circularProgressIndicatotWidget
-          : Scaffold(
-              backgroundColor: Colors.blue[50],
+          : Scaffold(backgroundColor: Colors.blue[50],
               appBar: AppBar(
-                backgroundColor: adminePrimayColor,
-                title: Text("Meetings".tr),
+                  flexibleSpace: const AppBarColorWidget(),
+                   foregroundColor: cWhite,
+                //backgroundColor: adminePrimayColor,
+                title:  Text("Meetings".tr),
               ),
               body: Column(
                 children: [
@@ -51,16 +53,11 @@ class SchoolLevelMeetingPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10, right: 10, left: 10),
+                                    padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
                                     child: Card(
-                                      child: ListTile(
-                                          shape: BeveledRectangleBorder(
-                                              side: BorderSide(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.2))),
-                                          leading: const Icon(
-                                              Icons.message_outlined),
+                                      child: ListTile(shape: BeveledRectangleBorder(side: BorderSide(color: Colors.grey.withOpacity(0.2))),
+                                          leading:
+                                              const Icon(Icons.message_outlined),
                                           trailing: InkWell(
                                             onTap: () {
                                               Navigator.push(
@@ -70,8 +67,7 @@ class SchoolLevelMeetingPage extends StatelessWidget {
                                                       MeetingDisplaySchoolLevel(
                                                     meetingModel:
                                                         studentMeetingController
-                                                                .meetingLists[
-                                                            index],
+                                                            .meetingLists[index],
                                                   ),
                                                 ),
                                               );
@@ -86,8 +82,7 @@ class SchoolLevelMeetingPage extends StatelessWidget {
                                             padding: EdgeInsets.only(top: 10.h),
                                             child: GooglePoppinsWidgets(
                                                 text: studentMeetingController
-                                                    .meetingLists[index]
-                                                    .heading,
+                                                    .meetingLists[index].heading,
                                                 fontsize: 19.h),
                                           ),
                                           subtitle: Column(
@@ -95,16 +90,14 @@ class SchoolLevelMeetingPage extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding:
-                                                    EdgeInsets.only(top: 10.h),
+                                                padding: EdgeInsets.only(top: 10.h),
                                                 child: GooglePoppinsWidgets(
                                                     text:
                                                         "Date : ${studentMeetingController.meetingLists[index].date}",
                                                     fontsize: 14.h),
                                               ),
                                               Padding(
-                                                padding:
-                                                    EdgeInsets.only(top: 10.h),
+                                                padding: EdgeInsets.only(top: 10.h),
                                                 child: GooglePoppinsWidgets(
                                                     text:
                                                         "Time : ${studentMeetingController.meetingLists[index].time}",
@@ -114,14 +107,10 @@ class SchoolLevelMeetingPage extends StatelessWidget {
                                           )),
                                     ),
                                   ),
+                              
                                 ],
                               );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return kHeight10;
-                            },
-                          ),
+                            }, separatorBuilder: (BuildContext context, int index) { return kHeight10; },),
                   ),
                 ],
               ),
