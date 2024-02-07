@@ -95,7 +95,7 @@ class SearchSchoolScreen extends StatelessWidget {
                   }
                 },
                 child: LottieBuilder.network(
-                    'https://assets2.lottiefiles.com/packages/lf20_itvvjtah.json'),
+                    'https://assets2.lottiefiles.com/packages/lf20_itvvjtah.json',),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,

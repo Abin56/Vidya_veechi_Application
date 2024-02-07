@@ -2,6 +2,7 @@ import 'package:dujo_kerala_application/controllers/userCredentials/user_credent
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/home/drawer/student_drawer.dart';
 import 'package:dujo_kerala_application/view/home/student_home/student_home.dart';
+import 'package:dujo_kerala_application/view/home/student_home/student_new_homepage.dart';
 import 'package:dujo_kerala_application/view/pages/live_classes/students_room/list_room.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,7 +50,7 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
   Widget build(BuildContext context) {
         checkingSchoolActivate(context);
     List<Widget> pages = [
-      const StudentHomeScreen(),
+      const NewStdHomePage(),///////////////////////////////////////////
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
