@@ -1,4 +1,6 @@
-
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_salsa.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_icon/gradient_icon.dart';
@@ -6,9 +8,9 @@ import 'package:gradient_icon/gradient_icon.dart';
 class ContainerWidget extends StatelessWidget {
   final String text;
   final IconData icon;
-final  void Function()? onTap;
+  final void Function()? onTap;
 
- const  ContainerWidget({
+  const ContainerWidget({
     required this.text,
     required this.icon,
     required this.onTap,
@@ -18,47 +20,32 @@ final  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap:onTap,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 2, top: 10),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.cyan),
-                color: Colors.lightBlue.withOpacity(0.0),
-                borderRadius: BorderRadius.circular(10)),
-            width: 100,//110
-            height: 80,//90
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                //Image.asset("assets/images/attendance.png",width: 60,height: 40,),
-                GradientIcon(
-                  icon: icon,
-                  gradient: const LinearGradient(
-                      //colors: [Colors.cyan,Colors.grey],
-                //  colors: [Colors.black,Colors.indigo],
-                   // colors: [Colors.brown,Colors.orange],
-                   colors: [
-                     Color.fromARGB(248, 130, 226, 240),
-                     Color.fromARGB(255, 6, 71, 157),
-                                   
-                                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  size: 30,
+      onTap: onTap,
+      child: SizedBox(
+        width: 100.w, //110
+        height: 100.h,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 80.h,
+              width: 80.w,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border:
+                      Border.all(color: adminePrimayColor.withOpacity(0.5))),
+              child: Center(
+                child: Image.asset(
+                  'assets/flaticons/icons8-attendance-100.png',
+                  fit: BoxFit.contain,
+                  scale: 2,
                 ),
-                Center(
-                  child: GoogleSalsaWidgets(
-                    text: text,
-                    fontsize: 12,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-        ));
+            GooglePoppinsWidgets(text: 'Attendence', fontsize: 10)
+          ],
+        ),
+      ),
+    );
   }
 }
