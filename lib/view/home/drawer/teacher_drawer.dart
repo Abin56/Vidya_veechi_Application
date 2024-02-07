@@ -8,7 +8,7 @@ import 'package:dujo_kerala_application/view/home/teachers_home/teacher_classes_
 import 'package:dujo_kerala_application/view/pages/Homework/homework.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -82,11 +82,10 @@ class TeacherHeaderDrawer extends StatelessWidget {
               ? TextButton.icon(
                   onPressed: () async {
                     await backtoSwitchClass().then((value) {
-                      UserCredentialsController.classId=value;
-                    log('Value Printing ::::: $value');
-                          Get.offAll(const ClassTeacherMainHomeScreen());
-                    }
-                    );
+                      UserCredentialsController.classId = value;
+                      log('Value Printing ::::: $value');
+                      Get.offAll(const ClassTeacherMainHomeScreen());
+                    });
                   },
                   icon: const Icon(Icons.edit_note_rounded),
                   label: Text(
@@ -236,7 +235,7 @@ Widget MyDrawerList(context) {
           color: Colors.grey.withOpacity(0.2),
           height: 200,
           width: double.infinity,
-          child: Stack(children: [
+          child: const Stack(children: [
             Positioned(
               left: 20,
               top: 15,
@@ -244,7 +243,7 @@ Widget MyDrawerList(context) {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Text(
                         "Developed by",
                         style: TextStyle(
@@ -260,7 +259,7 @@ Widget MyDrawerList(context) {
                 left: 30,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
                       backgroundImage: NetworkImage(
@@ -284,7 +283,7 @@ Widget MyDrawerList(context) {
               child: Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         Icons.adb_outlined,
                         color: Colors.green,
@@ -296,7 +295,7 @@ Widget MyDrawerList(context) {
                       ),
                     ],
                   ),
-                  const Text(
+                  Text(
                     "    1.0.0",
                     style: TextStyle(color: Colors.black, fontSize: 11.5),
                   ),

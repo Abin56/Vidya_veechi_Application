@@ -6,7 +6,7 @@ import 'package:dujo_kerala_application/view/home/events/event_display_school_le
 import 'package:dujo_kerala_application/view/pages/chat/group_chats/group_chat.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -40,9 +40,9 @@ class TeacherGroupChatController extends GetxController {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Alert'),
-                content: SingleChildScrollView(
+                content: const SingleChildScrollView(
                   child: ListBody(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text('Do you want Delete this message ?')
                     ],
                   ),
@@ -301,7 +301,6 @@ class TeacherGroupChatController extends GetxController {
   Future<void> addAllStudents(
     String groupID,
   ) async {
-
     isLoading.value = true;
     final firabase = await FirebaseFirestore.instance
         .collection("SchoolListCollection")
@@ -331,12 +330,12 @@ class TeacherGroupChatController extends GetxController {
           .doc(studentDetails.docid)
           .set(studentDetails.toMap());
     }
-         userIndexBecomeZero(groupID,'Students',teacherParameter: 'studentName');
+    userIndexBecomeZero(groupID, 'Students', teacherParameter: 'studentName');
     isLoading.value = false;
   }
 
   customAddStudentInGroup(groupID) {
-    userIndexBecomeZero(groupID,'Students',teacherParameter: 'studentName');
+    userIndexBecomeZero(groupID, 'Students', teacherParameter: 'studentName');
     RxMap<String, bool?> addStudentList = <String, bool?>{}.obs;
 
     List<AddStudentModel> featchingStudentlList = [];
@@ -437,10 +436,10 @@ class TeacherGroupChatController extends GetxController {
                                 IconButton(
                                     onPressed: () async {
                                       await removeStudentToGroup(
-                                        studentDetails.docid!,
-                                        groupID,
-                                        context
-                                      ).then((value) {
+                                              studentDetails.docid!,
+                                              groupID,
+                                              context)
+                                          .then((value) {
                                         showToast(msg: "Removed");
                                         addStudentList[
                                             studentsSnaps.data?.docs[index]
@@ -487,10 +486,7 @@ class TeacherGroupChatController extends GetxController {
   }
 
   Future<void> removeStudentToGroup(
-    String studentDocID,
-    String groupID,
-    BuildContext context
-  ) async {
+      String studentDocID, String groupID, BuildContext context) async {
     await FirebaseFirestore.instance
         .collection("SchoolListCollection")
         .doc(UserCredentialsController.schoolId)
@@ -504,7 +500,8 @@ class TeacherGroupChatController extends GetxController {
         .doc(groupID)
         .collection('Participants')
         .doc(studentDocID)
-        .delete().then((value) => Navigator.pop(context));
+        .delete()
+        .then((value) => Navigator.pop(context));
   }
 
   addParticipants(String groupID) async {
@@ -689,7 +686,7 @@ createChatGroups(BuildContext context, String chatValue) async {
                                 .then((value) async {
                               Navigator.pop(context);
                               Navigator.pop(context);
-                           
+
                               return showToast(
                                   msg: 'Group Created Successfully');
                             });
@@ -701,9 +698,9 @@ createChatGroups(BuildContext context, String chatValue) async {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: const Text('Alert'),
-                                content: SingleChildScrollView(
+                                content: const SingleChildScrollView(
                                   child: ListBody(
-                                    children: const <Widget>[
+                                    children: <Widget>[
                                       Text('Sorry you not a class teacher')
                                     ],
                                   ),

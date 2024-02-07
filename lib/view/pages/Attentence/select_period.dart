@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/controllers/attendence_controller/attend
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -72,7 +72,7 @@ class SelectPeriodWiseScreen extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 right: 25.w, top: 10.h, bottom: 10.h),
                             child: Container(
-                              width: 100,
+                                width: 100,
                                 decoration: BoxDecoration(
                                     border: Border.all(),
                                     borderRadius: BorderRadius.circular(20)),
@@ -83,24 +83,23 @@ class SelectPeriodWiseScreen extends StatelessWidget {
                                       Text(
                                         'Turn ',
                                         style: TextStyle(
-                                            fontSize: 16.w,
-                                            fontWeight: FontWeight.w700,
-                                            ),
+                                          fontSize: 16.w,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
-                                           Text(
+                                      Text(
                                         'ON',
-                                        
                                         style: TextStyle(
-                                          color: const Color.fromARGB(255, 43, 223, 49),
-                                            fontSize: 16.w,
-                                            fontWeight: FontWeight.w700,
-                                            ),
+                                          color: const Color.fromARGB(
+                                              255, 43, 223, 49),
+                                          fontSize: 16.w,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ],
                                   ),
                                 )),
-                          )
-                          );
+                          ));
                     } else {
                       return const Text('');
                     }
@@ -129,7 +128,8 @@ class SelectPeriodWiseScreen extends StatelessWidget {
                 if (turnOnSnaps.data!.docs.isEmpty) {
                   return const SafeArea(
                       child: Center(
-                    child: Text('Please Click TurnON button to take attendance '),
+                    child:
+                        Text('Please Click TurnON button to take attendance '),
                   ));
                 } else {
                   return SafeArea(

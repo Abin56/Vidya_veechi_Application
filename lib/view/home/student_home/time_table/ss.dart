@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -113,9 +113,7 @@ class _SSState extends State<SS> with SingleTickerProviderStateMixin {
           color: adminePrimayColor,
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: const IconThemeData(
-            color: adminePrimayColor 
-            ),
+        iconTheme: const IconThemeData(color: adminePrimayColor),
         backgroundColor: Colors.transparent,
         elevation: 0,
         bottom: TabBar(

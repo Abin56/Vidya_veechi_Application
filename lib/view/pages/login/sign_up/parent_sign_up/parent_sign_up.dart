@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/controllers/sign_up_controller/parent_si
 import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../model/Signup_Image_Selction/image_selection.dart';
@@ -32,8 +32,8 @@ class ParentSignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-       onWillPop: (){
-        getImageController.pickedImage.value="";
+      onWillPop: () {
+        getImageController.pickedImage.value = "";
         parentSignUpController.clearControllers();
         return Future.value(true);
       },
@@ -93,12 +93,12 @@ class ParentSignUpPage extends StatelessWidget {
                     children: [
                       Obx(
                         () => CircleAvatar(
-                          backgroundImage: getImageController
-                                  .pickedImage.value.isEmpty
-                              ? const NetworkImage(netWorkImagePathPerson)
-                              : FileImage(
-                                      File(getImageController.pickedImage.value))
-                                  as ImageProvider,
+                          backgroundImage:
+                              getImageController.pickedImage.value.isEmpty
+                                  ? const NetworkImage(netWorkImagePathPerson)
+                                  : FileImage(File(
+                                          getImageController.pickedImage.value))
+                                      as ImageProvider,
                           radius: 60,
                           child: Stack(
                             children: [
@@ -227,10 +227,12 @@ class ParentSignUpPage extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () async {
                             if (formKey.currentState?.validate() ?? false) {
-                              if (getImageController.pickedImage.value.isEmpty) {
-                                return showToast(msg: 'Please upload your image');
+                              if (getImageController
+                                  .pickedImage.value.isEmpty) {
+                                return showToast(
+                                    msg: 'Please upload your image');
                               } else {
-                                parentSignUpController.isLoading.value=true;
+                                parentSignUpController.isLoading.value = true;
                                 FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
                                         email:
@@ -238,7 +240,8 @@ class ParentSignUpPage extends StatelessWidget {
                                         password: UserEmailandPasswordSaver
                                             .userPassword)
                                     .then((value) async {
-                                      parentSignUpController.isLoading.value=false;
+                                  parentSignUpController.isLoading.value =
+                                      false;
                                   await parentSignUpController
                                       .updateParentData()
                                       .then((value) {
@@ -249,9 +252,9 @@ class ParentSignUpPage extends StatelessWidget {
                                       builder: (BuildContext context) {
                                         return AlertDialog(
                                           title: const Text('Message'),
-                                          content: SingleChildScrollView(
+                                          content: const SingleChildScrollView(
                                             child: ListBody(
-                                              children: const <Widget>[
+                                              children: <Widget>[
                                                 Text(
                                                     'Your Profile Created Successfully,\nPlease Login again')
                                               ],
@@ -274,8 +277,9 @@ class ParentSignUpPage extends StatelessWidget {
                                       },
                                     );
                                   });
-                                }).catchError((error){
-                                  parentSignUpController.isLoading.value=false;
+                                }).catchError((error) {
+                                  parentSignUpController.isLoading.value =
+                                      false;
                                   showToast(msg: error.code);
                                 });
                               }

@@ -10,7 +10,7 @@ import 'package:dujo_kerala_application/view/widgets/button_container_widget.dar
 import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 class CreateRoomScreen extends StatefulWidget {
@@ -46,19 +46,19 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
         child: Stack(
           children: [
             Positioned(
-              bottom: 0.r,
-              left: 0.r,
-              right: 0.r,
-              top: 0.r,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              top: 0,
               child: ButtonContainerWidget(
-                curving: 0.r,
+                curving: 0,
                 colorindex: 0,
-                height: ScreenUtil().setHeight(100),
+                height: 100.h,
                 width: double.infinity,
                 child: Column(
                   children: [
                     SizedBox(
-                      height: ScreenUtil().setHeight(90),
+                      height: 90.h,
                     ),
                     GoogleMonstserratWidgets(
                         text: "DuJO Live",
@@ -66,7 +66,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                         color: cWhite,
                         fontWeight: FontWeight.bold),
                     SizedBox(
-                      height: ScreenUtil().setHeight(60),
+                      height: 60.h,
                     ),
                     Row(
                       children: [
@@ -93,8 +93,8 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                     child: Padding(
                                       padding: const EdgeInsets.only(right: 20),
                                       child: Container(
-                                        height: ScreenUtil().setHeight(40),
-                                        width: ScreenUtil().setWidth(150),
+                                        height: 40.h,
+                                        width: 150.w,
                                         color: const Color.fromARGB(
                                             63, 255, 255, 255),
                                         child: Center(
@@ -121,23 +121,23 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
             Form(
               key: updateFormkey,
               child: Positioned(
-                bottom: 0.r,
-                left: 0.r,
-                right: 0.r,
-                top: 300.r,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                top: 300,
                 child: Container(
                   decoration: const BoxDecoration(
                       color: cWhite,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30))),
-                  height: ScreenUtil().setHeight(250),
+                  height: 250.h,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: ScreenUtil().setHeight(40),
+                          height: 40.h,
                         ),
                         GooglePoppinsWidgets(
                           fontsize: 30.sp,
@@ -150,16 +150,16 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                           text: 'Enter session details',
                         ),
                         SizedBox(
-                          height: ScreenUtil().setHeight(30),
+                          height: 30.h,
                         ),
 
                         ButtonContainerWidget(
-                            curving: 10.r,
+                            curving: 10,
                             colorindex: 2,
-                            height: ScreenUtil().setHeight(40),
-                            width: ScreenUtil().setWidth(300),
+                            height: 40.h,
+                            width: 300.w,
                             child: Padding(
-                              padding: EdgeInsets.only(top: 5.r, left: 10.r),
+                              padding: const EdgeInsets.only(top: 5, left: 10),
                               child: Center(
                                 child: GooglePoppinsWidgets(
                                     text: 'Session ID :  $randomID',
@@ -168,12 +168,13 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                               ),
                             )),
                         SizedBox(
-                          height: ScreenUtil().setHeight(30),
+                          height: 30.h,
                         ),
                         SizedBox(
-                          height: ScreenUtil().setHeight(80),
+                          height: 80.h,
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8.0.r, right: 8.0.r),
+                            padding:
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,8 +188,8 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                     //   text: 'Room Name : ',
                                     // ),
                                     SizedBox(
-                                      height: ScreenUtil().setHeight(50),
-                                      width: ScreenUtil().setWidth(200),
+                                      height: 50.h,
+                                      width: 200.w,
                                       child: Center(
                                         child: TextFormField(
                                           style: TextStyle(fontSize: 16.sp),
@@ -201,11 +202,10 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                               return null;
                                             }
                                           },
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             hintText: 'Enter the topic',
-                                            border: const OutlineInputBorder(),
-                                            contentPadding:
-                                                const EdgeInsets.all(7).r,
+                                            border: OutlineInputBorder(),
+                                            contentPadding: EdgeInsets.all(7),
                                           ),
                                         ),
                                       ),
@@ -221,10 +221,10 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             selectTime(context);
                           },
                           child: SizedBox(
-                            height: ScreenUtil().setHeight(80),
+                            height: 80.h,
                             child: Padding(
                               padding:
-                                  EdgeInsets.only(left: 8.0.r, right: 8.0.r),
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,8 +233,8 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        height: ScreenUtil().setHeight(50),
-                                        width: ScreenUtil().setWidth(150),
+                                        height: 50.h,
+                                        width: 150.h,
                                         child: Center(
                                             child: TextFormField(
                                           style: TextStyle(fontSize: 16.sp),
@@ -289,10 +289,10 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                             }
                           },
                           child: ButtonContainerWidget(
-                              curving: 10.r,
+                              curving: 10,
                               colorindex: 2,
-                              height: ScreenUtil().setHeight(50),
-                              width: ScreenUtil().setWidth(240),
+                              height: 50.h,
+                              width: 240.h,
                               child: Center(
                                   child: GooglePoppinsWidgets(
                                 text: 'Create Session ',
@@ -304,7 +304,8 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 10.r, right: 20.r),
+                              padding:
+                                  const EdgeInsets.only(top: 10, right: 20),
                               child: Column(
                                 children: [
                                   GooglePoppinsWidgets(

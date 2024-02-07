@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -111,7 +111,7 @@ class ViewtProgressReportScreenState extends State<ViewProgressReportScreen> {
                                   fontSize: 30.w,
                                   fontWeight: FontWeight.w500),
                             ),
-                             SizedBox(
+                            SizedBox(
                               width: 20.w,
                             ),
                             CircleAvatar(
@@ -135,7 +135,7 @@ class ViewtProgressReportScreenState extends State<ViewProgressReportScreen> {
                                   ],
                                 ),
                                 FutureBuilder(
-                                               future: FirebaseFirestore.instance
+                                    future: FirebaseFirestore.instance
                                         .collection("SchoolListCollection")
                                         .doc(widget.schooilID)
                                         .collection(widget.batchId)
@@ -143,20 +143,18 @@ class ViewtProgressReportScreenState extends State<ViewProgressReportScreen> {
                                         .collection("classes")
                                         .doc(widget.classID)
                                         .get(),
-                                  builder: (context,snaos) {
-                                    if (snaos.hasData) {
-                                               return Row(
-                                      children: [
-                                        Text("Class :   ${snaos.data?.data()!['className']}"),
-                                      ],
-                                    );
-                                      
-                                    } else {
+                                    builder: (context, snaos) {
+                                      if (snaos.hasData) {
+                                        return Row(
+                                          children: [
+                                            Text(
+                                                "Class :   ${snaos.data?.data()!['className']}"),
+                                          ],
+                                        );
+                                      } else {
                                         return const Text('');
                                       }
-                           
-                                  }
-                                ),
+                                    }),
                                 FutureBuilder(
                                     future: FirebaseFirestore.instance
                                         .collection("SchoolListCollection")
@@ -183,14 +181,12 @@ class ViewtProgressReportScreenState extends State<ViewProgressReportScreen> {
                           ),
                         ),
                         Container(
-                          decoration: BoxDecoration(
-                            border: Border.all()
-                          ),
-                         // height: 600.h,
+                          decoration: BoxDecoration(border: Border.all()),
+                          // height: 600.h,
                           child: Column(
                             children: [
                               SingleChildScrollView(
-                                scrollDirection: Axis.horizontal ,
+                                scrollDirection: Axis.horizontal,
                                 child: DataTable(
                                   columns: const [
                                     DataColumn(

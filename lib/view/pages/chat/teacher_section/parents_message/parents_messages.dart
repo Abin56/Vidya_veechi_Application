@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/controllers/userCredentials/user_credent
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../search_parents/search_parents.dart';
@@ -17,7 +17,7 @@ class ParentMessagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _showSearch() async {
+    Future<void> showsearch() async {
       await showSearch(context: context, delegate: SearchParentsForChat());
     }
 
@@ -153,7 +153,7 @@ class ParentMessagesScreen extends StatelessWidget {
                       padding: EdgeInsets.only(right: 8.sp),
                       child: GestureDetector(
                         onTap: () {
-                          _showSearch();
+                          showsearch();
                         },
                         child: Container(
                           decoration: const BoxDecoration(

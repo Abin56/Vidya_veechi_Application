@@ -1,7 +1,7 @@
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../widgets/container_image.dart';
@@ -16,8 +16,8 @@ class UserLoginDesgin extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           SizedBox(
-            height: ScreenUtil().setHeight(10),
+          SizedBox(
+            height: 10.h,
           ),
           kHeight20,
           Padding(
@@ -33,14 +33,14 @@ class UserLoginDesgin extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 50.h),
             child: GooglePoppinsWidgets(
               fontsize: 23,
-              fontWeight: FontWeight.w500, 
+              fontWeight: FontWeight.w500,
               text: 'Select who you are ?'.tr,
             ),
           ),
           kHeight10,
           Center(
               child: ContainerImage(
-                  height: ScreenUtil().setHeight(300),
+                  height: 300.h,
                   width: double.infinity.w,
                   imagePath: 'assets/images/select_user (1).png'))
         ],

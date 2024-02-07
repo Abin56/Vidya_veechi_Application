@@ -9,7 +9,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/widgets/login_button.dart';
 import 'package:dujo_kerala_application/view/widgets/textformfield_login.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import '../../../../../../model/Text_hiden_Controller/password_field.dart';
 
@@ -114,7 +114,7 @@ class ResetPassword extends StatelessWidget {
             GestureDetector(
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    Get.to(()=>ForgotPassword());
+                    Get.to(() => ForgotPassword());
                   }
                 },
                 child:

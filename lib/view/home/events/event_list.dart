@@ -1,6 +1,6 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import 'Tabs/class_level_tab.dart';
@@ -21,7 +21,7 @@ class EventList extends StatelessWidget {
               SizedBox(
                 width: 20.w,
               ),
-               Text("Events".tr),
+              Text("Events".tr),
             ],
           ),
           backgroundColor: adminePrimayColor,
@@ -38,7 +38,7 @@ class EventList extends StatelessWidget {
         //  appBar: AppBar(backgroundColor: adminePrimayColor),
         body: const SafeArea(
           child: TabBarView(
-            children: [ ClassLevelPage(), SchoolLevelPage()],
+            children: [ClassLevelPage(), SchoolLevelPage()],
           ),
         ),
       ),

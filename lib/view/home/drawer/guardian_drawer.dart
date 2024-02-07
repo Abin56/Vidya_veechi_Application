@@ -9,7 +9,7 @@ import 'package:dujo_kerala_application/view/pages/Homework/view_home_work.dart'
 import 'package:dujo_kerala_application/view/pages/Notice/notice_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -143,7 +143,7 @@ Widget MyDrawerList(context) {
     child: Column(
       // show list  of menu drawer.........................
       children: [
-         MenuItem(1, 'assets/images/information.png', 'General Instructions'.tr,
+        MenuItem(1, 'assets/images/information.png', 'General Instructions'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
           Get.to(
             () => GeneralInstruction(),
@@ -160,24 +160,23 @@ Widget MyDrawerList(context) {
         }),
         MenuItem(3, 'assets/images/exam.png', 'Exams'.tr,
             currentPage == DrawerSections.favourites ? true : false, () {
-           Get.to(
+          Get.to(
             () => const UserExmNotifications(),
           );
         }),
         MenuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
-      Get.to(
+          Get.to(
             () => const SS(),
           );
         }),
 
         MenuItem(5, 'assets/images/homework.png', 'HomeWorks'.tr,
             currentPage == DrawerSections.contact ? true : false, () {
-         Get.to(
+          Get.to(
             () => const ViewHomeWorks(),
           );
         }),
-
 
         // MenuItem(8, 'assets/images/splash.png', 'Progress Report'.tr,
         //     currentPage == DrawerSections.dashboard ? true : false, () {
@@ -190,12 +189,11 @@ Widget MyDrawerList(context) {
         //   );
         // }),
 
-       
         MenuItem(8, 'assets/images/languages.png', 'Change Language'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
           Get.to(LanguageChangeDrawerPage());
         }),
-          MenuItem(7, 'assets/images/attendance.png', 'Privacy Policy'.tr,
+        MenuItem(7, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
           Get.to(const PrivacyViewScreen());
         }),
@@ -205,14 +203,14 @@ Widget MyDrawerList(context) {
           color: Colors.grey.withOpacity(0.2),
           height: 200,
           width: double.infinity,
-          child: Stack(children: [
+          child: const Stack(children: [
             Positioned(
               left: 20,
               top: 15,
               child: Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Text(
                         "Developed by",
                         style: TextStyle(
@@ -228,7 +226,7 @@ Widget MyDrawerList(context) {
                 left: 30,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
                       backgroundImage: NetworkImage(
@@ -252,7 +250,7 @@ Widget MyDrawerList(context) {
               child: Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         Icons.adb_outlined,
                         color: Colors.green,
@@ -264,7 +262,7 @@ Widget MyDrawerList(context) {
                       ),
                     ],
                   ),
-                  const Text(
+                  Text(
                     "    1.0.0",
                     style: TextStyle(color: Colors.black, fontSize: 11.5),
                   ),

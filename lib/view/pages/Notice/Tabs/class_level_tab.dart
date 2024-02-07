@@ -1,7 +1,7 @@
 import 'package:dujo_kerala_application/controllers/student_controller/student_notice_controller/student_notice_controller.dart';
 import 'package:dujo_kerala_application/view/pages/Notice/notice_class_display_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../widgets/fonts/google_poppins.dart';
@@ -21,15 +21,15 @@ class ClassLevelNoticePage extends StatelessWidget {
                 child: Text("Data Not Found"),
               )
             : ListView.separated(
-              //  reverse: true,
+                //  reverse: true,
                 itemCount: studentNoticeController.classLevelNoticeLists.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding:
-                             EdgeInsets.only(bottom: 5.h, right: 10.w, left: 10.w),
+                        padding: EdgeInsets.only(
+                            bottom: 5.h, right: 10.w, left: 10.w),
                         child: Card(
                           child: ListTile(
                             shape: BeveledRectangleBorder(

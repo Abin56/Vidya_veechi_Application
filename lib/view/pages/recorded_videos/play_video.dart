@@ -1,54 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:chewie/chewie.dart';
+import 'package:video_player/video_player.dart';
 
-// import 'package:flick_video_player/flick_video_player.dart';
-// import 'package:flutter/material.dart';
-// import 'package:video_player/video_player.dart';
+class Videoplayer extends StatefulWidget {
+  final String videoUrl;
 
-// class Videoplayer extends StatefulWidget {
-//   String videoUrl;
-//    Videoplayer({Key? key, required this.videoUrl}) : super(key: key);
+  const Videoplayer({super.key, required this.videoUrl});
 
-//   @override
-//   State<Videoplayer> createState() => _VideoplayerState();
-// }
+  @override
+  _VideoplayerState createState() => _VideoplayerState();
+}
 
-// class _VideoplayerState extends State<Videoplayer> {
-//  FlickManager? flickManager;
-//   @override
-  
-//   void initState() {
-//     super.initState();
-//     flickManager = FlickManager(
-//       videoPlayerController: VideoPlayerController.network(
-//           widget.videoUrl),
-//     );
-//   }
+class _VideoplayerState extends State<Videoplayer> {
+  late ChewieController _chewieController;
 
-//   @override
-//   void dispose() {
-//    flickManager!.dispose();
-//     super.dispose();
-//   }
+  @override
+  void initState() {
+    super.initState();
+    _initializeVideoPlayer();
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//      child: FlickVideoPlayer(flickManager: flickManager!),
-//     );
-//   }
-// }
+  void _initializeVideoPlayer() {
+    final videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'));
+    _chewieController = ChewieController(
+      videoPlayerController: videoPlayerController,
+      aspectRatio: 16 / 9, // Adjust according to your video's aspect ratio
+      autoPlay: true,
+      looping: true,
+    );
+  }
 
-// String videoUrlLandscape =
-//     "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4";
-// String videoUrlPortrait =
-//     'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4';
-// String longVideo =
-//     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Video Player'),
+      ),
+      body: Center(
+        child: Chewie(
+          controller: _chewieController,
+        ),
+      ),
+    );
+  }
 
-// String video720 =
-//     "https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4";
-
-// String video480 =
-//     "https://www.sample-videos.com/video123/mp4/480/big_buck_bunny_480p_10mb.mp4";
-
-// String video240 =
-//     "https://www.sample-videos.com/video123/mp4/240/big_buck_bunny_240p_10mb.mp4";
+  @override
+  void dispose() {
+    _chewieController.dispose();
+    _chewieController.videoPlayerController.dispose();
+    super.dispose();
+  }
+}

@@ -9,7 +9,7 @@ import 'package:dujo_kerala_application/view/pages/login/users_login_screen/widg
 import 'package:dujo_kerala_application/view/widgets/container_image.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
@@ -29,11 +29,16 @@ class UsersLoginScreen extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: cWhite,
         title: SizedBox(
-        // color: cred,
-        height: ScreenUtil().setHeight(80) ,
-              width: ScreenUtil().setWidth(115) ,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          // color: cred,
+          height:80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.white,
+            fit: BoxFit.cover,
+          )),
+        ),
         // ContainerImage(
         //     height: ScreenUtil().setHeight(28),
         //     width: ScreenUtil().setWidth(90),
@@ -65,17 +70,17 @@ class UsersLoginScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               if (index == 0) {
-                                Get.to(()=>StudentLoginScreen(
-                                  pageIndex: 0,
-                                ));
+                                Get.to(() => StudentLoginScreen(
+                                      pageIndex: 0,
+                                    ));
                               } else if (index == 1) {
-                                Get.to(()=>ParentLoginScreen(
-                                  pageIndex: 1,
-                                ));
+                                Get.to(() => ParentLoginScreen(
+                                      pageIndex: 1,
+                                    ));
                               } else if (index == 2) {
-                                Get.to(()=>GuardianLoginScreen(
-                                  pageIndex: 2,
-                                ));
+                                Get.to(() => GuardianLoginScreen(
+                                      pageIndex: 2,
+                                    ));
                               } else if (index == 3) {
                                 getWhichTeacher(3, 3);
                               }
@@ -109,7 +114,7 @@ class UsersLoginScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ContainerImage(
-                                      height: ScreenUtil().setHeight(60),
+                                      height: 60.h,
                                       width: 60,
                                       imagePath: icons[index]),
                                   GoogleMonstserratWidgets(
@@ -135,7 +140,12 @@ class UsersLoginScreen extends StatelessWidget {
     );
   }
 
-  List<String> userList = ['Student'.tr, 'Parent'.tr, 'Guardian'.tr, 'Teacher'.tr];
+  List<String> userList = [
+    'Student'.tr,
+    'Parent'.tr,
+    'Guardian'.tr,
+    'Teacher'.tr
+  ];
 }
 
 var icons = [
@@ -147,23 +157,23 @@ var icons = [
 getWhichTeacher(int teacherPageIndex, int classTeacherPageIndex) {
   Get.bottomSheet(Container(
     color: Colors.white,
-    height: ScreenUtil().setHeight(200),
+    height: 200.h,
     width: 200.w,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(()=>TeacherLoginScreen(
-              pageIndex: teacherPageIndex,
-            ));
+            Get.to(() => TeacherLoginScreen(
+                  pageIndex: teacherPageIndex,
+                ));
           },
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
               color: Color.fromARGB(255, 171, 198, 249),
             ),
-            height: ScreenUtil().setHeight(80),
+            height:80.h,
             width: 200.w,
             child: Center(
               child: GoogleMonstserratWidgets(
@@ -177,16 +187,16 @@ getWhichTeacher(int teacherPageIndex, int classTeacherPageIndex) {
         ),
         GestureDetector(
           onTap: () {
-            Get.to(()=>ClassTeacherLoginScreen(
-              pageIndex: classTeacherPageIndex,
-            ));
+            Get.to(() => ClassTeacherLoginScreen(
+                  pageIndex: classTeacherPageIndex,
+                ));
           },
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
               color: Color.fromARGB(255, 171, 198, 249),
             ),
-            height: ScreenUtil().setHeight(80),
+            height:80.h,
             width: 200.w,
             child: Center(
               child: GoogleMonstserratWidgets(
@@ -202,7 +212,12 @@ getWhichTeacher(int teacherPageIndex, int classTeacherPageIndex) {
   ));
 }
 
-List<String> userList = ['Student'.tr, 'Parent'.tr, 'Guardian'.tr, 'Teacher'.tr];
+List<String> userList = [
+  'Student'.tr,
+  'Parent'.tr,
+  'Guardian'.tr,
+  'Teacher'.tr
+];
 
 var iconss = [
   'assets/images/reading.png',

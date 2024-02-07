@@ -2,7 +2,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class SubjectWiseDisplay extends StatelessWidget {
@@ -23,47 +23,61 @@ class SubjectWiseDisplay extends StatelessWidget {
             itemCount: 7,
             separatorBuilder: (BuildContext context, int index) => kHeight10,
             itemBuilder: (BuildContext context, int index) {
-              return ListileCardChapterWidget(leading: const Icon(Icons.note_rounded), title: GooglePoppinsWidgets(
-            text: "Chapter 1", fontsize: 20.h,fontWeight: FontWeight.bold,), subtitle:Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 10.h),
-              child: GooglePoppinsWidgets(
-                  text: "CMOS & NMOS", fontsize: 15.h,fontWeight: FontWeight.bold,),
-            ),
-            InkWell(
-              onTap: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) =>  StudyMaterials()));
-              },
-              child: Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: GooglePoppinsWidgets(
-                  text: "Study Materials".tr,
-                  fontsize: 16.h,
-                  color: adminePrimayColor,
+              return ListileCardChapterWidget(
+                leading: const Icon(Icons.note_rounded),
+                title: GooglePoppinsWidgets(
+                  text: "Chapter 1",
+                  fontsize: 20.h,
+                  fontWeight: FontWeight.bold,
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 18.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GooglePoppinsWidgets(
-                      text: "Teacher Name : ",
-                      fontsize: 15.h,),
-                       GooglePoppinsWidgets(
-                      text: "Anupama",
-                      fontsize: 15.h,fontWeight: FontWeight.bold,),
-                ],
-              ),
-            ),
-          ],
-          ) , trailing: null,);
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.h),
+                      child: GooglePoppinsWidgets(
+                        text: "CMOS & NMOS",
+                        fontsize: 15.h,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>  StudyMaterials()));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 10.h),
+                        child: GooglePoppinsWidgets(
+                          text: "Study Materials".tr,
+                          fontsize: 16.h,
+                          color: adminePrimayColor,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 18.h),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GooglePoppinsWidgets(
+                            text: "Teacher Name : ",
+                            fontsize: 15.h,
+                          ),
+                          GooglePoppinsWidgets(
+                            text: "Anupama",
+                            fontsize: 15.h,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                trailing: null,
+              );
             },
           ),
         ),
@@ -73,8 +87,7 @@ class SubjectWiseDisplay extends StatelessWidget {
 }
 
 class ListileCardChapterWidget extends StatelessWidget {
-   ListileCardChapterWidget({
-    
+  ListileCardChapterWidget({
     required this.leading,
     required this.title,
     required this.subtitle,
@@ -82,20 +95,21 @@ class ListileCardChapterWidget extends StatelessWidget {
     super.key,
   });
 
-Widget leading;
-Widget title;
-Widget subtitle;
-Widget? trailing;
+  Widget leading;
+  Widget title;
+  Widget subtitle;
+  Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
-    return Card
-    (
-      child: ListTile(shape: const BeveledRectangleBorder(side:BorderSide(color: cWhite) ),
-          leading: leading,
-          title: title,
-          subtitle: subtitle,
-          trailing: trailing,),
+    return Card(
+      child: ListTile(
+        shape: const BeveledRectangleBorder(side: BorderSide(color: cWhite)),
+        leading: leading,
+        title: title,
+        subtitle: subtitle,
+        trailing: trailing,
+      ),
     );
   }
 }

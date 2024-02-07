@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/view/pages/chat/group_chats/parent_group
 import 'package:dujo_kerala_application/view/pages/chat/group_chats/student_group/student_groups.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/group_chat_controller/group_StudentsTeacher_chat_controller.dart';
@@ -113,7 +113,8 @@ class GroupChatScreenForTeachers extends StatelessWidget {
   }
 }
 
-userIndexBecomeZero(String docid,String groupName,{required String teacherParameter}) async {
+userIndexBecomeZero(String docid, String groupName,
+    {required String teacherParameter}) async {
   log("message Caliingggggggggggggggggggggggggg");
   final firebase = await FirebaseFirestore.instance
       .collection('SchoolListCollection')
@@ -129,7 +130,8 @@ userIndexBecomeZero(String docid,String groupName,{required String teacherParame
       .collection('Participants')
       .get();
   if (firebase.docs.isNotEmpty) {
-    addteacherTopaticipance(docid,groupName,teacherParameter:teacherParameter );
+    addteacherTopaticipance(docid, groupName,
+        teacherParameter: teacherParameter);
     await FirebaseFirestore.instance
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)

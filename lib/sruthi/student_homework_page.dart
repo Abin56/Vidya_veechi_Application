@@ -1,13 +1,11 @@
-
 import 'package:dujo_kerala_application/sruthi/homeWork/homework_display.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/widgets/Iconbackbutton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 import '../view/constant/sizes/sizes.dart';
 import '../view/widgets/fonts/google_poppins.dart';
-
 
 class StudentHomeWorkPage extends StatelessWidget {
   const StudentHomeWorkPage({super.key});
@@ -18,7 +16,8 @@ class StudentHomeWorkPage extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            IconButtonBackWidget(),kHeight20,
+            IconButtonBackWidget(),
+            kHeight20,
             GooglePoppinsWidgets(text: "HomeWork", fontsize: 25.h)
           ],
         ),
@@ -59,22 +58,20 @@ class StudentHomeWorkPage extends StatelessWidget {
                                         GooglePoppinsWidgets(
                                             text: "HomeWorks : ",
                                             fontsize: 15.h),
-                                             InkWell(
-                                              
-                                                    onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const HomeWorkDisplay()));
-                                               },
-                                              
-                                               child: GooglePoppinsWidgets(
-                                                                         text: "View",
-                                                                         fontsize: 16.h,
-                                                                         color: Colors.blue,
-                                                                       ),
-                                             ),
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const HomeWorkDisplay()));
+                                          },
+                                          child: GooglePoppinsWidgets(
+                                            text: "View",
+                                            fontsize: 16.h,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),

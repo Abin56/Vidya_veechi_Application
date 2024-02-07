@@ -11,7 +11,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/view/widgets/textformfield_login.dart';
 import 'package:dujo_kerala_application/widgets/login_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,13 +32,18 @@ class StudentSignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: cWhite,
+          foregroundColor: cWhite,
           title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+            // color: cred,
+            height: 80.h,
+            width: 115.w,
+            child: Center(
+                child: Image.asset(
+              'assets/images/vidyaveechi.png',
+              color: Colors.white,
+              fit: BoxFit.cover,
+            )),
+          ),
           backgroundColor: const Color.fromARGB(255, 6, 71, 157)),
       body: SafeArea(
           child: SingleChildScrollView(

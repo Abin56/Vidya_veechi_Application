@@ -4,7 +4,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/exam_results/edit_result.dart';
 import 'package:dujo_kerala_application/view/pages/exam_results/select_subject.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +13,8 @@ class SelectExamWiseScreen extends StatelessWidget {
   String classID;
   String examLevel;
 
-  SelectExamWiseScreen({required this.classID,required this.examLevel,  super.key});
+  SelectExamWiseScreen(
+      {required this.classID, required this.examLevel, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +57,8 @@ class SelectExamWiseScreen extends StatelessWidget {
                           child: FadeInAnimation(
                             child: GestureDetector(
                               onTap: () async {
-                                Get.to(()=>SelectExamSubjectScreen(
-                                  examLevel:examLevel ,
+                                Get.to(() => SelectExamSubjectScreen(
+                                    examLevel: examLevel,
                                     classID: classID,
                                     examId: snapshots.data!.docs[index]
                                         ['docid']));

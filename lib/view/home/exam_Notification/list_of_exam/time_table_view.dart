@@ -3,7 +3,7 @@ import 'package:dujo_kerala_application/model/exam_list_model/add_ex_timeTable.d
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
@@ -25,7 +25,11 @@ class TeacherExamTimeTableViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title:  Text("Exam Time Table".tr),backgroundColor: adminePrimayColor,),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Exam Time Table".tr),
+        backgroundColor: adminePrimayColor,
+      ),
       body: SafeArea(
         child: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -53,11 +57,11 @@ class TeacherExamTimeTableViewScreen extends StatelessWidget {
                       kHeight20,
                       Padding(
                         padding: EdgeInsets.only(left: 13.h, right: 13.h),
-                        child: Column( mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                             
                               children: [
                                 GooglePoppinsWidgets(
                                   text: examName,
@@ -102,9 +106,10 @@ class TeacherExamTimeTableViewScreen extends StatelessWidget {
                                             builder: (BuildContext context) {
                                               return AlertDialog(
                                                 title: const Text('Alert'),
-                                                content: SingleChildScrollView(
+                                                content:
+                                                    const SingleChildScrollView(
                                                   child: ListBody(
-                                                    children: const <Widget>[
+                                                    children: <Widget>[
                                                       Text(
                                                           'Do you want to remove this timetable ?')
                                                     ],

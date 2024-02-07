@@ -3,7 +3,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/pages/login/users_login_screen/student%20login/signin/student_sigin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../model/Text_hiden_Controller/password_field.dart';
@@ -24,9 +24,7 @@ class StudentLoginScreen extends StatelessWidget {
 
   final StudentSignInController signInController =
       Get.put(StudentSignInController());
-  final formKey = GlobalKey<FormState>(); 
-
-  
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +32,16 @@ class StudentLoginScreen extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: cWhite,
         title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          // color: cred,
+          height: 80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.white,
+            fit: BoxFit.cover,
+          )),
+        ),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
@@ -56,7 +59,7 @@ class StudentLoginScreen extends StatelessWidget {
                   children: [
                     // Enter Mail id Session >>>>>>>
                     Padding(
-                      padding: EdgeInsets.only(right: 140.w,left: 10.w),
+                      padding: EdgeInsets.only(right: 140.w, left: 10.w),
                       child: GoogleMonstserratWidgets(
                         fontsize: 25.w,
                         text: 'Student Login'.tr,
@@ -108,7 +111,7 @@ class StudentLoginScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 210.w),
                       child: GestureDetector(
                         onTap: () {
-                              Navigator.of(context).push(
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) =>
                                   const ForgotPasswordScreen(),
@@ -149,9 +152,9 @@ class StudentLoginScreen extends StatelessWidget {
                               text: "Don't Have an account?".tr, fontsize: 15),
                           GestureDetector(
                             onTap: () {
-                              Get.to(()=>StudentSignInScreen(
-                                pageIndex: pageIndex!,
-                              ));
+                              Get.to(() => StudentSignInScreen(
+                                    pageIndex: pageIndex!,
+                                  ));
                             },
                             child: GooglePoppinsWidgets(
                               text: ' Sign Up'.tr,

@@ -6,7 +6,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/pages/login/sign_up/parent_sign_up/parent_sign_up_verifcation_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../controllers/sign_in_controller/parent_login_controller.dart';
@@ -36,11 +36,16 @@ class ParentLoginScreen extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: cWhite,
         title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          // color: cred,
+          height: 80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.white,
+            fit: BoxFit.cover,
+          )),
+        ),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
@@ -58,7 +63,7 @@ class ParentLoginScreen extends StatelessWidget {
                   children: [
                     // Enter Mail id Session >>>>>>>
                     Padding(
-                      padding: EdgeInsets.only(right: 140.w,left: 10.w),
+                      padding: EdgeInsets.only(right: 140.w, left: 10.w),
                       child: GoogleMonstserratWidgets(
                         fontsize: 25.w,
                         text: 'Parent Login'.tr,
@@ -129,7 +134,7 @@ class ParentLoginScreen extends StatelessWidget {
                       padding: EdgeInsets.only(top: 60.h),
                       child: GestureDetector(
                         onTap: () {
-                      parentLoginController.signIn(context);
+                          parentLoginController.signIn(context);
                         },
                         child: Obx(
                           () => parentLoginController.isLoading.value
@@ -153,9 +158,9 @@ class ParentLoginScreen extends StatelessWidget {
                             ParentSignUpController parentSignUpController =
                                 Get.put(ParentSignUpController());
                             await parentSignUpController.getAllParent();
-                            Get.to(()=>ParentSignUpFirstScreen(
-                              pageIndex: 1,
-                            ));
+                            Get.to(() => ParentSignUpFirstScreen(
+                                  pageIndex: 1,
+                                ));
                           },
                           child: GooglePoppinsWidgets(
                             text: ' Sign Up'.tr,

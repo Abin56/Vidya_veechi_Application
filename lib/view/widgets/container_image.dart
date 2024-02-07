@@ -3,7 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class ContainerImage extends StatelessWidget {
   double height;
@@ -22,8 +22,11 @@ class ContainerImage extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      decoration:
-          BoxDecoration(image: DecorationImage(image: AssetImage(imagePath),fit: BoxFit.fill,)),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage(imagePath),
+        fit: BoxFit.fill,
+      )),
     );
   }
 }

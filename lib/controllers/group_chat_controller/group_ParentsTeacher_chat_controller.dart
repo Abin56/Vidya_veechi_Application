@@ -6,7 +6,7 @@ import 'package:dujo_kerala_application/view/home/events/event_display_school_le
 import 'package:dujo_kerala_application/view/pages/chat/group_chats/group_chat.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -40,9 +40,9 @@ class TeacherParentGroupChatController extends GetxController {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Alert'),
-                content: SingleChildScrollView(
+                content: const SingleChildScrollView(
                   child: ListBody(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text('Do you want Delete this message ?')
                     ],
                   ),
@@ -330,12 +330,12 @@ class TeacherParentGroupChatController extends GetxController {
           .doc(parentDetails.docid)
           .set(parentDetails.toMap());
     }
-    userIndexBecomeZero(groupID, 'Parents',teacherParameter: 'parentName');
+    userIndexBecomeZero(groupID, 'Parents', teacherParameter: 'parentName');
     isLoading.value = false;
   }
 
   customAddParentsInGroup(groupID) {
-    userIndexBecomeZero(groupID, 'Parents',teacherParameter: 'parentName');
+    userIndexBecomeZero(groupID, 'Parents', teacherParameter: 'parentName');
     RxMap<String, bool?> addParentList = <String, bool?>{}.obs;
 
     List<ParentModel> featchingParentlList = [];
@@ -697,9 +697,9 @@ createChatGroups(BuildContext context, String chatValue) async {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: const Text('Alert'),
-                                content: SingleChildScrollView(
+                                content: const SingleChildScrollView(
                                   child: ListBody(
-                                    children: const <Widget>[
+                                    children: <Widget>[
                                       Text('Sorry you not a class teacher')
                                     ],
                                   ),

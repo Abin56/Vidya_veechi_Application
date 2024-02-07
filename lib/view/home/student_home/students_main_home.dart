@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/view/home/student_home/student_home.dart
 import 'package:dujo_kerala_application/view/home/student_home/student_new_homepage.dart';
 import 'package:dujo_kerala_application/view/pages/live_classes/students_room/list_room.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -48,9 +48,9 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-        checkingSchoolActivate(context);
+    checkingSchoolActivate(context);
     List<Widget> pages = [
-      const NewStdHomePage(),///////////////////////////////////////////
+      const NewStdHomePage(), ///////////////////////////////////////////
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
@@ -60,16 +60,21 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
       const ChatScreen(),
     ];
     return WillPopScope(
-         onWillPop: () => onbackbuttonpressed(context),
+      onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
         appBar: AppBar(
-          foregroundColor: cWhite,
+            foregroundColor: cWhite,
             title: SizedBox(
-        // color: cred,
-        height: 80.h,
+              // color: cred,
+              height: 80.h,
               width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+              child: Center(
+                  child: Image.asset(
+                'assets/images/vidyaveechi.png',
+                color: Colors.white,
+                fit: BoxFit.cover,
+              )),
+            ),
             backgroundColor: adminePrimayColor),
         body: pages[_page],
         bottomNavigationBar: Container(

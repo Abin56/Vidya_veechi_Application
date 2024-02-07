@@ -4,7 +4,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/home/class_teacher_HOme/class_teacher_home.dart';
 import 'package:dujo_kerala_application/view/pages/live_classes/teacher_live_section/create_room.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -46,26 +46,31 @@ class _ClassTeacherMainHomeScreenState
     checkingSchoolActivate(context);
     List<Widget> pages = [
       ClassTeacherHomeScreen(),
-        RecSelectSubjectScreen(
+      RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
         schoolId: UserCredentialsController.schoolId!,
       ),
       CreateRoomScreen(),
-    const ChatScreen(),
+      const ChatScreen(),
     ];
     return WillPopScope(
-         onWillPop: () => onbackbuttonpressed(context),
+      onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
-         appBar: AppBar(
-          foregroundColor: cWhite,
-       title: SizedBox(
-        // color: cred,
-        height: 80.h,
+        appBar: AppBar(
+            foregroundColor: cWhite,
+            title: SizedBox(
+              // color: cred,
+              height: 80.h,
               width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ) ,backgroundColor: adminePrimayColor),
-       
+              child: Center(
+                  child: Image.asset(
+                'assets/images/vidyaveechi.png',
+                color: Colors.white,
+                fit: BoxFit.cover,
+              )),
+            ),
+            backgroundColor: adminePrimayColor),
         body: pages[_page],
         bottomNavigationBar: Container(
           height: 71,
@@ -88,7 +93,7 @@ class _ClassTeacherMainHomeScreenState
             rippleColor: Colors.grey,
             activeColor: Colors.white,
             color: Colors.white,
-            tabs:  [
+            tabs: [
               GButton(
                   iconSize: 20.h,
                   icon: LineIcons.home,
@@ -110,7 +115,7 @@ class _ClassTeacherMainHomeScreenState
               GButton(
                 iconSize: 30.h,
                 icon: Icons.chat,
-                      textSize: 20,
+                textSize: 20,
                 text: 'Ask\nDoubt'.tr,
               )
             ],
@@ -125,13 +130,13 @@ class _ClassTeacherMainHomeScreenState
           child: SingleChildScrollView(
             child: Column(
               children: [
-                 ClassTeacherHeaderDrawer(),
+                ClassTeacherHeaderDrawer(),
                 MyDrawerList(context),
               ],
             ),
           ),
-    ),
-    ),
+        ),
+      ),
     );
-}
+  }
 }

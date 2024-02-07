@@ -6,7 +6,7 @@ import 'package:dujo_kerala_application/view/home/bus_route_page/all_bus_list.da
 import 'package:dujo_kerala_application/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
 import 'package:dujo_kerala_application/view/pages/Notice/Tabs/school_level_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

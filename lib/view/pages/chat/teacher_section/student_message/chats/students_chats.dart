@@ -6,7 +6,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../controllers/chat_controller/teacher_controller/teacher_controller.dart';
@@ -140,8 +140,8 @@ class _StudentsChatsScreenState extends State<StudentsChatsScreen> {
                         child: SizedBox(
                           height: size.height / 15,
                           width: size.width,
-                          child: Column(
-                            children: const [
+                          child: const Column(
+                            children: [
                               Text('You Blocked this user'),
                               SizedBox(
                                 height: 10,
@@ -176,7 +176,7 @@ class _StudentsChatsScreenState extends State<StudentsChatsScreen> {
                                 ),
                               ),
                               CircleAvatar(
-                                radius: 28.r,
+                                radius: 28,
                                 backgroundColor: adminePrimayColor,
                                 child: Center(
                                   child: IconButton(

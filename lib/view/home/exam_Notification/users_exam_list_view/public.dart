@@ -4,7 +4,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/constant.dart';
 import 'package:dujo_kerala_application/view/home/exam_Notification/users_exam_list_view/user_exam_list_view.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
@@ -38,7 +38,7 @@ class UserPublicLevel extends StatelessWidget {
                             snaps.data!.docs[index].data());
                         return GestureDetector(
                           onTap: () {
-                            Get.to(()=>UsersExamTimeTableViewScreen(
+                            Get.to(() => UsersExamTimeTableViewScreen(
                                 examID: data.docid,
                                 collectionName: 'School Level',
                                 date: stringTimeToDateConvert(data.publishDate),
@@ -54,17 +54,14 @@ class UserPublicLevel extends StatelessWidget {
                                 color: adminePrimayColor,
                               ),
                               child: Padding(
-                                padding:  EdgeInsets.only(top: 12.h,left: 10.h),
+                                padding: EdgeInsets.only(top: 12.h, left: 10.h),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                    // Text(data.examName),
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  // Text(data.examName),
                                   children: [
-                                                          
                                     GooglePoppinsWidgets(
-                                        text:
-                                            "Exam Name  :   ${data.examName}",
+                                        text: "Exam Name  :   ${data.examName}",
                                         fontsize: 16.h,
                                         color: cWhite),
                                     SizedBox(

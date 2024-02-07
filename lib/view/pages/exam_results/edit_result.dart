@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/constant.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/userCredentials/user_credentials.dart';
@@ -289,7 +289,7 @@ editMark(BuildContext context, String classID, String examId, String subjectID,
                   log("studentID ::$studentID");
                   log("examlevel ::$examlevel");
                   log("examId ::$examId");
-                      log("subjectID ::$subjectID");
+                  log("subjectID ::$subjectID");
                   await FirebaseFirestore.instance
                       .collection('SchoolListCollection')
                       .doc(UserCredentialsController.schoolId)
@@ -414,9 +414,9 @@ deleteResult(BuildContext context, String classID, String examId,
     builder: (BuildContext context) {
       return AlertDialog(
         title: const Text('Alert'),
-        content: SingleChildScrollView(
+        content: const SingleChildScrollView(
           child: ListBody(
-            children: const <Widget>[Text('Are you sure to remove result ?')],
+            children: <Widget>[Text('Are you sure to remove result ?')],
           ),
         ),
         actions: <Widget>[

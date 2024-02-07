@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/pages/Meetings/meetings_list.dart';
 import 'package:dujo_kerala_application/view/pages/Notice/notice_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 import '../../../sruthi/Subject 2/subject_display.dart';
 import '../view/pages/exams/exam_display.dart';

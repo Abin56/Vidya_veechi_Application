@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 var allsubjectListValue;
@@ -45,13 +45,14 @@ class _GeClasseslListDropDownButtonState
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Padding(
-              padding:  const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: DropdownButtonFormField(
                 hint: allsubjectListValue == null
-                    ?  Text(
+                    ? Text(
                         "Select subject".tr,
                         style: TextStyle(
-                            color: const Color.fromARGB(255, 0, 0, 0), fontSize: 15.w),
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 15.w),
                       )
                     : Text(allsubjectListValue!["subjectName"]),
                 decoration: InputDecoration(
@@ -81,7 +82,7 @@ class _GeClasseslListDropDownButtonState
                       .toList()
                       .first;
                   log(categoryIDObject["subjectName"]);
-            
+
                   setState(
                     () {
                       allsubjectListValue = categoryIDObject;

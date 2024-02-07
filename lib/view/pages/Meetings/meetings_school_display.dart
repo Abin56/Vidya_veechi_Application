@@ -1,7 +1,7 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../model/meeting_model/meeting_model.dart';
@@ -16,7 +16,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: adminePrimayColor,
-          title:  Text("Meetings".tr),
+          title: Text("Meetings".tr),
         ),
         body: SizedBox(
           height: double.infinity, // set the height to fill available space

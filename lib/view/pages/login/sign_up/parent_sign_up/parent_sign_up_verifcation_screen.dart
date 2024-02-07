@@ -11,7 +11,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/view/widgets/textformfield_login.dart';
 import 'package:dujo_kerala_application/widgets/login_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,20 +36,25 @@ class ParentSignUpFirstScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-      foregroundColor: cWhite,
+        foregroundColor: cWhite,
         title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          // color: cred,
+          height: 80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.white,
+            fit: BoxFit.cover,
+          )),
+        ),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
           children: [
-          kHeight20,
+            kHeight20,
             ContainerImage(
               height: 250.h,
               width: double.infinity,
@@ -94,10 +99,8 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                       textEditingController:
                           parentSignUpController.emailController,
                       function: checkFieldEmailIsValid),
-
-                       kHeight10,
-
- Padding(
+                  kHeight10,
+                  Padding(
                     padding: EdgeInsets.only(right: 29.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -160,42 +163,47 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 20.h),
                     child: GestureDetector(
-                      onTap: () async {
-                        if (parentSignUpController.passwordController.text.trim() !=
-                            parentSignUpController
-                                .confirmPasswordController.text.trim()) {
-                          showToast(msg: "Password Missmatch".tr);
-                          return;
-                        }
-
-                        if (formKey.currentState!.validate()) {
-                          if (UserCredentialsController
-                                  .parentModel?.parentPhoneNumber !=
-                              null) {
-                            Get.to(() => UserSentOTPScreen(
-                                  userpageIndex: pageIndex,
-                                  phoneNumber:
-                                      "+91${UserCredentialsController.parentModel?.parentPhoneNumber}",
-                                  userEmail: parentSignUpController
-                                      .emailController.text.trim(),
-                                  userPassword: parentSignUpController
-                                      .passwordController.text.trim(),
-                                ));
-                          } else {
-                            showToast(msg: "Please select parent detail.");
+                        onTap: () async {
+                          if (parentSignUpController.passwordController.text
+                                  .trim() !=
+                              parentSignUpController
+                                  .confirmPasswordController.text
+                                  .trim()) {
+                            showToast(msg: "Password Missmatch".tr);
+                            return;
                           }
-                        }
-                      },
-                      child: Obx(() =>  parentSignUpController.isLoading.value
-                          ? circularProgressIndicatotWidget
-                          : loginButtonWidget(
-                              height: 60,
-                              width: 180,
-                              text: 'Submit'.tr,
-                            ),)
-                    ),
+
+                          if (formKey.currentState!.validate()) {
+                            if (UserCredentialsController
+                                    .parentModel?.parentPhoneNumber !=
+                                null) {
+                              Get.to(() => UserSentOTPScreen(
+                                    userpageIndex: pageIndex,
+                                    phoneNumber:
+                                        "+91${UserCredentialsController.parentModel?.parentPhoneNumber}",
+                                    userEmail: parentSignUpController
+                                        .emailController.text
+                                        .trim(),
+                                    userPassword: parentSignUpController
+                                        .passwordController.text
+                                        .trim(),
+                                  ));
+                            } else {
+                              showToast(msg: "Please select parent detail.");
+                            }
+                          }
+                        },
+                        child: Obx(
+                          () => parentSignUpController.isLoading.value
+                              ? circularProgressIndicatotWidget
+                              : loginButtonWidget(
+                                  height: 60,
+                                  width: 180,
+                                  text: 'Submit'.tr,
+                                ),
+                        )),
                   ),
-                   const SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -213,9 +221,9 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(()=>ParentLoginScreen(
-                            pageIndex: 3,
-                          ));
+                          Get.to(() => ParentLoginScreen(
+                                pageIndex: 3,
+                              ));
                         },
                         child: Text(
                           "Login".tr,

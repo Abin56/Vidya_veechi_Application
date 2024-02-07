@@ -1,7 +1,7 @@
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class SubjectWiseDisplay extends StatelessWidget {
@@ -12,7 +12,7 @@ class SubjectWiseDisplay extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: adminePrimayColor,
-        title:  Text("Chapters".tr),
+        title: Text("Chapters".tr),
       ),
       body: Column(
         children: [
@@ -25,7 +25,8 @@ class SubjectWiseDisplay extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SubjectWiseDisplay()));
+                              builder: (context) =>
+                                  const SubjectWiseDisplay()));
                     },
                     child: Container(
                       height: 180.h,

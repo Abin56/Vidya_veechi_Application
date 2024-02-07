@@ -8,8 +8,7 @@ import 'package:dujo_kerala_application/view/home/student_home/graph_std/homewor
 import 'package:dujo_kerala_application/view/home/student_home/graph_std/project_assignmnt_chart.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key});
@@ -23,7 +22,6 @@ class CarouselSliderWidget extends StatelessWidget {
           items: [
             CaroselmageWidget(
               sliderWidget: graphList[0],
-          
               slidertext: 'Homework',
             ),
             CaroselmageWidget(
@@ -67,12 +65,12 @@ class CaroselmageWidget extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-         child: sliderWidget,
+          child: sliderWidget,
         ),
         Padding(
-          padding:  EdgeInsets.only(bottom: 20.r),
+          padding: EdgeInsets.only(bottom: 20),
           child: GooglePoppinsWidgets(
-            text:slidertext,
+            text: slidertext,
             fontsize: 19.sp,
             color: cblack,
             fontWeight: FontWeight.w600,
@@ -88,5 +86,4 @@ final List<Widget> graphList = [
   const ExamResultGraph(),
   const AttendanceGraph(),
   const StdProjectAndAssignmnetGraph()
-
 ];

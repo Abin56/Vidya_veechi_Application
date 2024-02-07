@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/home/events/event_display_school_level.dart';
 import 'package:dujo_kerala_application/view/pages/Notice/notice_school_display_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../controllers/group_chat_controller/group_StudentsTeacher_chat_controller.dart';
@@ -181,9 +181,9 @@ class BootomSheet extends StatelessWidget {
                                                 return AlertDialog(
                                                   title: const Text('Alert'),
                                                   content:
-                                                      SingleChildScrollView(
+                                                      const SingleChildScrollView(
                                                     child: ListBody(
-                                                      children: const <Widget>[
+                                                      children: <Widget>[
                                                         Text(
                                                             'Do you want to Deactivate this group ?')
                                                       ],
@@ -272,9 +272,9 @@ class BootomSheet extends StatelessWidget {
                                                 return AlertDialog(
                                                   title: const Text('Alert'),
                                                   content:
-                                                      SingleChildScrollView(
+                                                      const SingleChildScrollView(
                                                     child: ListBody(
-                                                      children: const <Widget>[
+                                                      children: <Widget>[
                                                         Text(
                                                             'Do you want to Activate this group ?')
                                                       ],
@@ -430,9 +430,9 @@ class BootomSheet extends StatelessWidget {
                                                 return AlertDialog(
                                                   title: const Text('Alert'),
                                                   content:
-                                                      SingleChildScrollView(
+                                                      const SingleChildScrollView(
                                                     child: ListBody(
-                                                      children: const <Widget>[
+                                                      children: <Widget>[
                                                         Text(
                                                             'Do you want to remove this student ?')
                                                       ],

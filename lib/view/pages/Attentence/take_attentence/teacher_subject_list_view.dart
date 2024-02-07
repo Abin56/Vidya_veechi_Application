@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/view/pages/Attentence/take_attentence/st
 import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -84,8 +84,8 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(()=>
-                                StudentsAttendenceListViewScreen(
+                              Get.to(
+                                () => StudentsAttendenceListViewScreen(
                                   month: month,
                                   batchId: batchId,
                                   subject: snapshot.data!.docs[index]['docid'],
@@ -197,8 +197,11 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                                                                                 title: const Text('Message'),
                                                                                 content: SingleChildScrollView(
                                                                                   child: ListBody(
-                                                                                    children:  <Widget>[
-                                                                                    GoogleMonstserratWidgets(text: 'Sorry the time exceeded!!',fontsize: 15.w,)
+                                                                                    children: <Widget>[
+                                                                                      GoogleMonstserratWidgets(
+                                                                                        text: 'Sorry the time exceeded!!',
+                                                                                        fontsize: 15.w,
+                                                                                      )
                                                                                     ],
                                                                                   ),
                                                                                 ),

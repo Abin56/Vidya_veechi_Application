@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/button_container_widget.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -90,7 +90,6 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  
         backgroundColor: adminePrimayColor,
         title: Text(
           "HomeWorks".tr,
@@ -99,12 +98,10 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
             fontSize: 20,
           ),
         ),
-  
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-       
             SizedBox(
               height: 460.h,
               width: double.infinity,
@@ -114,14 +111,13 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Text(
-                          "Homework Tasks".tr,
-                          style: GoogleFonts.poppins(
-                              color:cblack,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold
-                              ),
-                        ),
+                    Text(
+                      "Homework Tasks".tr,
+                      style: GoogleFonts.poppins(
+                          color: cblack,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold),
+                    ),
                     kHeight10,
                     Container(
                       height: 130,
@@ -150,14 +146,13 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                             Text(
-                          "Choose your subject".tr,
-                          style: GoogleFonts.poppins(
-                              color:cblack,
-                              fontSize: 13,
-                                fontWeight: FontWeight.bold
-                              ),
-                        ),
+                          Text(
+                            "Choose your subject".tr,
+                            style: GoogleFonts.poppins(
+                                color: cblack,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
+                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -178,14 +173,13 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    Text(
-                          "Time period and deadline".tr,
-                          style: GoogleFonts.poppins(
-                              color:cblack,
-                              fontSize: 13,
-                                fontWeight: FontWeight.bold
-                              ),
-                        ),
+                  Text(
+                    "Time period and deadline".tr,
+                    style: GoogleFonts.poppins(
+                        color: cblack,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -209,7 +203,7 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                             controller: _applyFromDateController,
                             readOnly: true,
                             onTap: () => _selectFromDate(context),
-                            decoration:  InputDecoration(
+                            decoration: InputDecoration(
                               labelText: 'From'.tr,
                               border: OutlineInputBorder(),
                             ),
@@ -228,7 +222,7 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                             controller: _applyTODateController,
                             readOnly: true,
                             onTap: () => _selectToDate(context),
-                            decoration:  InputDecoration(
+                            decoration: InputDecoration(
                               labelText: 'To'.tr,
                               border: OutlineInputBorder(),
                             ),
@@ -237,7 +231,11 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                       ],
                     ),
                   ),
-                       GooglePoppinsWidgets(text: "Time to complete should be > 1 day".tr, fontsize: 13,fontWeight: FontWeight.w400,)
+                  GooglePoppinsWidgets(
+                    text: "Time to complete should be > 1 day".tr,
+                    fontsize: 13,
+                    fontWeight: FontWeight.w400,
+                  )
                 ],
               ),
             ),
@@ -277,14 +275,13 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                           height: 70.h,
                           width: 300.w,
                           child: Center(
-                            child:Text(
-                          "Submit".tr,
-                          style: GoogleFonts.poppins(
-                              color:cblack,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700
-                              ),
-                        ),
+                            child: Text(
+                              "Submit".tr,
+                              style: GoogleFonts.poppins(
+                                  color: cblack,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
                       ),
@@ -294,17 +291,15 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                 ],
               ),
             ),
-       
           ],
         ),
       ),
     );
   }
-   void clearFeild (){
+
+  void clearFeild() {
     _taskapplyController.clear();
-     _applyFromDateController.clear();
-      _applyTODateController.clear();
-     
-         
+    _applyFromDateController.clear();
+    _applyTODateController.clear();
   }
 }

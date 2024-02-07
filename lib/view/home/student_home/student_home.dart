@@ -9,7 +9,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -67,7 +67,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
     getDeviceToken();
   }
 
-  @override                                   
+  @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
@@ -122,16 +122,15 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                       (exception, stackTrace) {
                                     log(exception.toString());
                                   },
-                                  radius: 50.r,
+                                  radius: 50,
                                 ),
-                                Positioned(
-                                  right: 6.r,
-                                  bottom: 1.r,
+                                const Positioned(
+                                  right: 6,
+                                  bottom: 1,
                                   child: CircleAvatar(
                                     backgroundColor: cWhite,
-                                    radius: 12.r,
-                                    child:
-                                        const Center(child: Icon(Icons.info)),
+                                    radius: 12,
+                                    child: Center(child: Icon(Icons.info)),
                                   ),
                                 ),
                               ],

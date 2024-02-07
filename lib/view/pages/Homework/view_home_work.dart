@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/userCredentials/user_credentials.dart';
@@ -77,12 +77,13 @@ class ViewHomeWorks extends StatelessWidget {
                                   padding: EdgeInsets.only(
                                       left: 10.h, right: 10.h, top: 10.h),
                                   child: Card(
-                                    color: const Color.fromARGB(236, 228, 244, 255),
+                                    color: const Color.fromARGB(
+                                        236, 228, 244, 255),
                                     child: ListTile(
-                                      
                                         shape: const BeveledRectangleBorder(
                                             side: BorderSide(
-                                                color: Color.fromARGB(255, 125, 169, 225),
+                                                color: Color.fromARGB(
+                                                    255, 125, 169, 225),
                                                 width: 0.2)),
                                         leading: const Icon(Icons.paste_sharp),
                                         title: FutureBuilder(
@@ -186,8 +187,7 @@ class ViewHomeWorks extends StatelessWidget {
                                                             content:
                                                                 SingleChildScrollView(
                                                               child: ListBody(
-                                                                children: <
-                                                                    Widget>[
+                                                                children: <Widget>[
                                                                   Text(snaps.data
                                                                               ?.docs[
                                                                           index]

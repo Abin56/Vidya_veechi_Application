@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/firebase_options.dart';
@@ -16,9 +17,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
+// import 'package:play_video/play_video.dart';
 import 'package:provider/provider.dart';
 
 import 'controllers/bloc/user_phone_otp/auth_cubit.dart';
@@ -45,11 +47,9 @@ Future<void> main() async {
   );
   await FirebaseMessaging.instance.getInitialMessage();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await ScreenUtil.ensureScreenSize();
   //creating shared preference
   await SharedPreferencesHelper.initPrefs();
-  ScreenUtil.ensureScreenSize();
-
+  // await PlayVideoRender.init();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -69,11 +69,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        minTextAdapt: true,
-        splitScreenMode: true,
+    return ResponsiveLayout(
         designSize: const Size(423.5294196844927, 945.8823706287004),
-        builder: (context, child) {
+        builder: (context) {
           return BlocProvider(
             create: (context) => AuthCubit(),
             child: MultiProvider(
@@ -141,9 +139,9 @@ checkingSchoolActivate(BuildContext context) async {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Alert'),
-          content: SingleChildScrollView(
+          content: const SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[Text('Your School is Deactivated')],
+              children: <Widget>[Text('Your School is Deactivated')],
             ),
           ),
           actions: <Widget>[

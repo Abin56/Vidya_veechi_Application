@@ -3,7 +3,7 @@ import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:dujo_kerala_application/view/home/student_home/Student%20Edit%20Profile/widget/student_profile_edit_listtile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/student_controller/profile_edit_controllers/student_profile_edit_controller.dart';
