@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class ButtonContainerWidget extends StatelessWidget {
   double curving;
@@ -21,8 +21,8 @@ class ButtonContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(height),
-      width: ScreenUtil().setWidth(width),
+      height: height.h,
+      width: width.w,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(

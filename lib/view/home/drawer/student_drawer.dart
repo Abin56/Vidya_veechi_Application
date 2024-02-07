@@ -9,7 +9,7 @@ import 'package:dujo_kerala_application/view/home/student_home/time_table/ss.dar
 import 'package:dujo_kerala_application/view/pages/Homework/view_home_work.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -215,14 +215,14 @@ Widget MyDrawerList(context) {
           height: 200.h,
           width: double.infinity,
           child: Stack(children: [
-            Positioned(
+            const Positioned(
               left: 20,
               top: 15,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Text(
                         "Developed by",
                         style: TextStyle(
@@ -236,9 +236,9 @@ Widget MyDrawerList(context) {
             Positioned(
                 top: 40.h,
                 left: 30.h,
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
+                  children: [
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
                       backgroundImage: NetworkImage(
@@ -261,8 +261,8 @@ Widget MyDrawerList(context) {
               top: 73,
               child: Column(
                 children: [
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(
                         Icons.adb_outlined,
                         color: Colors.green,

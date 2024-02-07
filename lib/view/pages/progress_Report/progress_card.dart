@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/controllers/userCredentials/user_credent
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../model/teacher_model/progress_report_model/progress_report_model.dart';
@@ -292,10 +292,9 @@ class _StudentProgressReportScreenState
                                                     title:
                                                         const Text('Message'),
                                                     content:
-                                                        SingleChildScrollView(
+                                                        const SingleChildScrollView(
                                                       child: ListBody(
-                                                        children: const <
-                                                            Widget>[
+                                                        children: <Widget>[
                                                           Text(
                                                               'Records Updated'),
                                                         ],

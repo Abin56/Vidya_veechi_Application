@@ -6,7 +6,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../controllers/sign_up_controller/guardian_signup_controller.dart';
@@ -31,8 +31,8 @@ class GuardianSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-       onWillPop: (){
-        getImageController.pickedImage.value="";
+      onWillPop: () {
+        getImageController.pickedImage.value = "";
         guardianSignUpController.clearControllers();
         return Future.value(true);
       },
@@ -92,12 +92,12 @@ class GuardianSignUp extends StatelessWidget {
                     children: [
                       Obx(
                         () => CircleAvatar(
-                          backgroundImage: getImageController
-                                  .pickedImage.value.isEmpty
-                              ? const NetworkImage(netWorkImagePathPerson)
-                              : FileImage(
-                                      File(getImageController.pickedImage.value))
-                                  as ImageProvider,
+                          backgroundImage:
+                              getImageController.pickedImage.value.isEmpty
+                                  ? const NetworkImage(netWorkImagePathPerson)
+                                  : FileImage(File(
+                                          getImageController.pickedImage.value))
+                                      as ImageProvider,
                           radius: 60,
                           child: Stack(
                             children: [
@@ -226,10 +226,12 @@ class GuardianSignUp extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () async {
                             if (formKey.currentState?.validate() ?? false) {
-                              if (getImageController.pickedImage.value.isEmpty) {
-                                return showToast(msg: 'Please upload your image');
+                              if (getImageController
+                                  .pickedImage.value.isEmpty) {
+                                return showToast(
+                                    msg: 'Please upload your image');
                               } else {
-                                guardianSignUpController.isLoading.value=true;
+                                guardianSignUpController.isLoading.value = true;
                                 FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
                                         email:
@@ -237,12 +239,14 @@ class GuardianSignUp extends StatelessWidget {
                                         password: UserEmailandPasswordSaver
                                             .userPassword)
                                     .then((value) async {
-                                      guardianSignUpController.isLoading.value=false;
+                                  guardianSignUpController.isLoading.value =
+                                      false;
                                   await guardianSignUpController
                                       .updateGuardianData();
-                                }).catchError((error){
-                                  guardianSignUpController.isLoading.value=false;
-                                   showToast(msg: error.code);
+                                }).catchError((error) {
+                                  guardianSignUpController.isLoading.value =
+                                      false;
+                                  showToast(msg: error.code);
                                 });
                               }
                             }

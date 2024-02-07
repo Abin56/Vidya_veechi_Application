@@ -40,7 +40,6 @@ dependencies:
     sdk: flutter
   flutter_bloc: 
   flutter_markdown: 
-  flutter_screenutil: 
   flutter_staggered_animations: 
   flutter_svg: 
   fluttertoast: 
@@ -74,6 +73,9 @@ dependencies:
   hive: 
   hive_flutter: 
   photo_view: 
+  video_player:
+  chewie: 
+  adaptive_ui_layout: ^1.0.1
 flutter_icons:
   android: true
   ios: true
@@ -103,6 +105,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/flaticons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

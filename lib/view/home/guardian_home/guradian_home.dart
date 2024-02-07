@@ -9,7 +9,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../constant/sizes/constant.dart';
@@ -43,30 +43,35 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
         .doc(UserCredentialsController.classId)
         .collection('GuardianCollection')
         .doc(FirebaseAuth.instance.currentUser!.uid)
-        .set({'deviceToken': deviceToken}, SetOptions(merge: true)).then(
-            (value) => log('Device Token Saved To FIREBASE')).then(
-            (value) => log('Device Token Saved To FIREBASE')).then((value) =>
-             FirebaseFirestore.instance.collection('PushNotificationToAll').doc(FirebaseAuth.instance.currentUser!.uid).set({
-              'deviceToken' : deviceToken, 
-              'schoolID': UserCredentialsController.schoolId, 
-              'batchID': UserCredentialsController.batchId, 
-              'classID': UserCredentialsController.classId, 
-              'personID' :FirebaseAuth.instance.currentUser!.uid, 
+        .set({'deviceToken': deviceToken}, SetOptions(merge: true))
+        .then((value) => log('Device Token Saved To FIREBASE'))
+        .then((value) => log('Device Token Saved To FIREBASE'))
+        .then((value) => FirebaseFirestore.instance
+                .collection('PushNotificationToAll')
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .set({
+              'deviceToken': deviceToken,
+              'schoolID': UserCredentialsController.schoolId,
+              'batchID': UserCredentialsController.batchId,
+              'classID': UserCredentialsController.classId,
+              'personID': FirebaseAuth.instance.currentUser!.uid,
               'role': 'Guardian'
-            })).then((value) => 
-            FirebaseFirestore.instance.collection('SchoolListCollection').doc(UserCredentialsController.schoolId).collection('PushNotificationList')
-            .doc(FirebaseAuth.instance.currentUser!.uid).set({
-              'deviceToken' : deviceToken, 
-              'batchID': UserCredentialsController.batchId, 
-              'classID': UserCredentialsController.classId, 
-              'personID' :FirebaseAuth.instance.currentUser!.uid, 
+            }))
+        .then((value) => FirebaseFirestore.instance
+                .collection('SchoolListCollection')
+                .doc(UserCredentialsController.schoolId)
+                .collection('PushNotificationList')
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .set({
+              'deviceToken': deviceToken,
+              'batchID': UserCredentialsController.batchId,
+              'classID': UserCredentialsController.classId,
+              'personID': FirebaseAuth.instance.currentUser!.uid,
               'role': 'Guardian'
             }));
 
-
     //AAAAd0ScEck:APA91bELuwPRaLXrNxKTwj-z6EK-mCSPOon5WuZZAwkdklLhWvbi_NxXGtwHICE92vUzGJyE9xdOMU_-4ZPbWy8s2MuS_s-4nfcN_rZ1uBTOCMCcJ5aNS7rQHeUTXgYux54-n4eoYclp  apikey
   }
-
 
   @override
   void initState() {
@@ -121,17 +126,16 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
                                       UserCredentialsController
                                               .guardianModel!.profileImageURL ??
                                           netWorkImagePathPerson),
-                                  radius: 50.r,
+                                  radius: 50,
                                 ),
                                 //
-                                Positioned(
-                                  right: 6.r,
-                                  bottom: 1.r,
+                                const Positioned(
+                                  right: 6,
+                                  bottom: 1,
                                   child: CircleAvatar(
                                     // backgroundColor: cWhite,
-                                    radius: 12.r,
-                                    child:
-                                        const Center(child: Icon(Icons.info)),
+                                    radius: 12,
+                                    child: Center(child: Icon(Icons.info)),
                                   ),
                                 ),
                               ],
@@ -194,7 +198,9 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
                 ],
               ),
             ),
-            GuardianAccessories(studentName: UserCredentialsController.guardianModel!.studentID!)
+            GuardianAccessories(
+                studentName:
+                    UserCredentialsController.guardianModel!.studentID!)
           ],
         ),
       ),

@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/view/pages/Meetings/Tabs/school_level_me
 import 'package:dujo_kerala_application/view/pages/Notice/Tabs/school_level_tab.dart';
 import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -11,7 +11,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 class ClassTeacherHomeScreen extends StatefulWidget {
@@ -20,8 +20,7 @@ class ClassTeacherHomeScreen extends StatefulWidget {
 }
 
 class _ClassTeacherHomeScreenState extends State<ClassTeacherHomeScreen> {
-
-   String deviceToken = '';
+  String deviceToken = '';
 
   void getDeviceToken() async {
     await FirebaseMessaging.instance.getToken().then((token) {
@@ -43,27 +42,33 @@ class _ClassTeacherHomeScreenState extends State<ClassTeacherHomeScreen> {
         .doc(UserCredentialsController.classId)
         .collection('teachers')
         .doc(FirebaseAuth.instance.currentUser!.uid)
-        .set({'deviceToken': deviceToken}, SetOptions(merge: true)).then(
-            (value) => log('Device Token Saved To FIREBASE')).then((value) =>
-             FirebaseFirestore.instance.collection('PushNotificationToAll').doc(FirebaseAuth.instance.currentUser!.uid).set({
-              'deviceToken' : deviceToken, 
-              'schoolID': UserCredentialsController.schoolId, 
-              'batchID': UserCredentialsController.batchId, 
-              'classID': UserCredentialsController.classId, 
-              'personID' :FirebaseAuth.instance.currentUser!.uid, 
+        .set({'deviceToken': deviceToken}, SetOptions(merge: true))
+        .then((value) => log('Device Token Saved To FIREBASE'))
+        .then((value) => FirebaseFirestore.instance
+                .collection('PushNotificationToAll')
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .set({
+              'deviceToken': deviceToken,
+              'schoolID': UserCredentialsController.schoolId,
+              'batchID': UserCredentialsController.batchId,
+              'classID': UserCredentialsController.classId,
+              'personID': FirebaseAuth.instance.currentUser!.uid,
               'role': 'Class Teacher'
-            })).then((value) => 
-            FirebaseFirestore.instance.collection('SchoolListCollection').doc(UserCredentialsController.schoolId).collection('PushNotificationList')
-            .doc(FirebaseAuth.instance.currentUser!.uid).set({
-              'deviceToken' : deviceToken, 
-              'batchID': UserCredentialsController.batchId, 
-              'classID': UserCredentialsController.classId, 
-              'personID' :FirebaseAuth.instance.currentUser!.uid, 
+            }))
+        .then((value) => FirebaseFirestore.instance
+                .collection('SchoolListCollection')
+                .doc(UserCredentialsController.schoolId)
+                .collection('PushNotificationList')
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .set({
+              'deviceToken': deviceToken,
+              'batchID': UserCredentialsController.batchId,
+              'classID': UserCredentialsController.classId,
+              'personID': FirebaseAuth.instance.currentUser!.uid,
               'role': 'Class Teacher'
             }));
   }
 
-  
   @override
   void initState() {
     // TODO: implement initState
@@ -127,13 +132,12 @@ class _ClassTeacherHomeScreenState extends State<ClassTeacherHomeScreen> {
                                         ),
                                       ),
                                     ),
-                                    Positioned(
-                                      right: 6.r,
-                                      bottom: 1.r,
+                                    const Positioned(
+                                      right: 6,
+                                      bottom: 1,
                                       child: CircleAvatar(
-                                        radius: 12.r,
-                                        child: const Center(
-                                            child: Icon(Icons.info)),
+                                        radius: 12,
+                                        child: Center(child: Icon(Icons.info)),
                                       ),
                                     ),
                                   ],

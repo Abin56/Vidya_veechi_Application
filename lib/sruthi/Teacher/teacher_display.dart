@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 import '../../view/colors/colors.dart';
@@ -19,8 +19,7 @@ class TeacherDisplay extends StatelessWidget {
           children: [
             IconButtonBackWidget(),
             Text(
-              "Teachers".tr
-              ,
+              "Teachers".tr,
             ),
           ],
         ),
@@ -28,7 +27,7 @@ class TeacherDisplay extends StatelessWidget {
       ),
       body: Column(
         children: [
-        kHeight10,
+          kHeight10,
           Expanded(
             child: ListView.separated(
                 itemCount: 5,
@@ -48,8 +47,8 @@ class TeacherDisplay extends StatelessWidget {
                                     BorderSide(color: Colors.grey, width: 0.2)),
                             leading: const CircleAvatar(
                               radius: 25,
-                              backgroundImage: NetworkImage(
-                                  netWorkImagePathPerson),
+                              backgroundImage:
+                                  NetworkImage(netWorkImagePathPerson),
                             ),
                             title: Padding(
                               padding: EdgeInsets.only(top: 10.h),
@@ -102,8 +101,8 @@ class TeacherDisplay extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            trailing: Column(
-                              children: const [Icon(Icons.message)],
+                            trailing: const Column(
+                              children: [Icon(Icons.message)],
                             ),
                           ),
                         ),

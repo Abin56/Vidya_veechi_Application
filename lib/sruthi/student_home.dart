@@ -6,7 +6,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../view/widgets/container_image.dart';
@@ -21,7 +21,7 @@ class StudentLogin extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(children: [
-          Heading_Container_Widget(
+          const Heading_Container_Widget(
             text: 'Subject',
           ),
           Expanded(
@@ -61,7 +61,7 @@ class StudentLogin extends StatelessWidget {
                                   width: 75.w,
                                   height: 75.h,
                                   decoration: BoxDecoration(
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(blurRadius: 3.0, color: cWhite),
                                     ],
                                     borderRadius: BorderRadius.circular(8),
@@ -87,23 +87,23 @@ class StudentLogin extends StatelessWidget {
                           ),
                           kHeight20,
                           InkWell(
-                             onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              SubjectWiseDisplay()));
-                                },
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SubjectWiseDisplay()));
+                              },
                               child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              GooglePoppinsWidgets(
-                                text: "Chemistry",
-                                fontsize: 28.h,
-                                color: cblack,
-                              ),
-                            ],
-                          )),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GooglePoppinsWidgets(
+                                    text: "Chemistry",
+                                    fontsize: 28.h,
+                                    color: cblack,
+                                  ),
+                                ],
+                              )),
                         ]),
                   ),
 

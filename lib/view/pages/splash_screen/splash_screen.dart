@@ -15,7 +15,7 @@ import 'package:dujo_kerala_application/view/pages/login/dujo_login_screen.dart'
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
@@ -36,23 +36,24 @@ class SplashScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-           Center(
+          Center(
             child: AnimationConfiguration.staggeredGrid(
-               position: 1,
-                            duration: const Duration(milliseconds: 4000),
-                            columnCount: 3,
+              position: 1,
+              duration: const Duration(milliseconds: 4000),
+              columnCount: 3,
               child: ScaleAnimation(
-                  duration: const Duration(milliseconds: 900),
-                                curve: Curves.fastLinearToSlowEaseIn,
+                duration: const Duration(milliseconds: 900),
+                curve: Curves.fastLinearToSlowEaseIn,
                 child: FadeInAnimation(
                   child: Container(
-                
                     height: 220.h,
                     width: 220.w,
                     decoration: const BoxDecoration(
-                      
                         image: DecorationImage(
-                            image: AssetImage('assets/images/leptonlogo.png',), )),
+                      image: AssetImage(
+                        'assets/images/leptonlogo.png',
+                      ),
+                    )),
                   ),
                 ),
               ),
@@ -60,30 +61,30 @@ class SplashScreen extends StatelessWidget {
           ),
           Center(
             child: AnimationConfiguration.staggeredGrid(
-               position: 2,
-                            duration: const Duration(milliseconds: 4000),
-                            columnCount: 3,
+              position: 2,
+              duration: const Duration(milliseconds: 4000),
+              columnCount: 3,
               child: ScaleAnimation(
-                  duration: const Duration(milliseconds: 900),
-                                curve: Curves.fastLinearToSlowEaseIn,
+                duration: const Duration(milliseconds: 900),
+                curve: Curves.fastLinearToSlowEaseIn,
                 child: FadeInAnimation(
                   child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GoogleMonstserratWidgets(
-                  text: 'LEPTON',
-                  fontsize: 25,
-                  color: const Color.fromARGB(255, 230, 18, 3),
-                  fontWeight: FontWeight.bold,
-                ),
-                GoogleMonstserratWidgets(
-                  text: ' VidyaVeechi',
-                  fontsize: 25,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ],
-            ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GoogleMonstserratWidgets(
+                        text: 'LEPTON',
+                        fontsize: 25,
+                        color: const Color.fromARGB(255, 230, 18, 3),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      GoogleMonstserratWidgets(
+                        text: ' VidyaVeechi',
+                        fontsize: 25,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -99,12 +100,11 @@ class SplashScreen extends StatelessWidget {
           //     ),
           //     Text(
           //       " DuJo",
-                
+
           //       style: DGoogleFonts.headTextStyleMont,
           //     ),
           //   ],
           // ), const SizedBox(height: 10,),
-          
         ],
       )),
     );
@@ -133,8 +133,7 @@ nextpage() async {
   log('Firebase Auth ${FirebaseAuth.instance.currentUser?.uid}');
 
   if (auth.currentUser == null) {
-   
-   Get.offAll(() => const DujoLoginScren());
+    Get.offAll(() => const DujoLoginScren());
   } else {
     final DocumentReference<Map<String, dynamic>> firebaseFirestore =
         FirebaseFirestore.instance
@@ -272,9 +271,9 @@ Future<bool> onbackbuttonpressed(BuildContext context) async {
     builder: (BuildContext context) {
       return AlertDialog(
         title: const Text('Alert'),
-        content: SingleChildScrollView(
+        content: const SingleChildScrollView(
           child: ListBody(
-            children: const <Widget>[
+            children: <Widget>[
               Text('Do you want to exit from Lepton VidyaVeechi ?')
             ],
           ),

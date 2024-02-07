@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -38,9 +38,9 @@ class TeacherChatController extends GetxController {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Alert'),
-                content: SingleChildScrollView(
+                content: const SingleChildScrollView(
                   child: ListBody(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text('Do you want Delete this message ?')
                     ],
                   ),
@@ -109,7 +109,7 @@ class TeacherChatController extends GetxController {
                   children: [
                     Text(
                       '$message              ',
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: const Color.fromARGB(255, 0, 0, 0),
@@ -117,21 +117,23 @@ class TeacherChatController extends GetxController {
                     ),
                     Text(
                       timeformattedd,
-                      style:  TextStyle(
-                          color: const Color.fromARGB(255, 90, 90, 90), fontSize: 10.sp),
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 90, 90, 90),
+                          fontSize: 10.sp),
                     ),
                   ],
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 height: 05.h,
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Text(
                   dayformattedd,
-                  style:  TextStyle(
-                      color: const Color.fromARGB(255, 90, 90, 90), fontSize: 10.sp),
+                  style: TextStyle(
+                      color: const Color.fromARGB(255, 90, 90, 90),
+                      fontSize: 10.sp),
                 ),
               ),
             ],
@@ -166,7 +168,7 @@ class TeacherChatController extends GetxController {
                 children: [
                   Text(
                     '$message              ',
-                    style:  TextStyle(
+                    style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                       color: const Color.fromARGB(255, 0, 0, 0),
@@ -174,21 +176,23 @@ class TeacherChatController extends GetxController {
                   ),
                   Text(
                     timeformattedd,
-                    style:  TextStyle(
-                        color: const Color.fromARGB(255, 90, 90, 90), fontSize: 10.sp),
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 90, 90, 90),
+                        fontSize: 10.sp),
                   ),
                 ],
               ),
             ),
-             SizedBox(
+            SizedBox(
               height: 05.h,
             ),
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: Text(
                 dayformattedd,
-                style:  TextStyle(
-                    color: const Color.fromARGB(255, 90, 90, 90), fontSize: 10.sp),
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 90, 90, 90),
+                    fontSize: 10.sp),
               ),
             ),
           ],
@@ -197,7 +201,9 @@ class TeacherChatController extends GetxController {
     }
   }
 
-  sentMessage(String studentDocID,) async {
+  sentMessage(
+    String studentDocID,
+  ) async {
     var countPlusone = await FirebaseFirestore.instance
         .collection('SchoolListCollection')
         .doc(UserCredentialsController.schoolId)
@@ -210,7 +216,7 @@ class TeacherChatController extends GetxController {
         .collection('TeachersChatCounter')
         .doc('c3cDX5ymHfITQ3AXcwSp')
         .get();
-            int sentStudentChatIndex = countPlusone.data()?['chatIndex'] + 1 ??0;
+    int sentStudentChatIndex = countPlusone.data()?['chatIndex'] + 1 ?? 0;
 
     final id = uuid.v1();
     final userDetails = SendUserStatusModel(
@@ -276,9 +282,8 @@ class TeacherChatController extends GetxController {
               .doc(studentDocID)
               .collection('TeachersChatCounter')
               .doc('c3cDX5ymHfITQ3AXcwSp')
-              .update({
-            'chatIndex': sentStudentChatIndex
-          }).then((value) => messageController.clear());
+              .update({'chatIndex': sentStudentChatIndex}).then(
+                  (value) => messageController.clear());
         });
       });
     });
@@ -291,9 +296,9 @@ class TeacherChatController extends GetxController {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Alert'),
-          content: SingleChildScrollView(
+          content: const SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[Text('Do you want to unblock this user?')],
+              children: <Widget>[Text('Do you want to unblock this user?')],
             ),
           ),
           actions: <Widget>[
@@ -367,12 +372,10 @@ class TeacherChatController extends GetxController {
     }
   }
 
-
-
   @override
   void onInit() async {
     await fetchStudent();
- 
+
     super.onInit();
   }
 }

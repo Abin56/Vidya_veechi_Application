@@ -17,7 +17,7 @@ import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/view/widgets/textformfield_login.dart';
 import 'package:dujo_kerala_application/widgets/login_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -37,19 +37,23 @@ class TeachersSignUpScreen extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: cWhite,
         title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          // color: cred,
+          height: 80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.white,
+            fit: BoxFit.cover,
+          )),
+        ),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
           children: [
-        
-             kHeight20,
+            kHeight20,
             ContainerImage(
               height: 250.h,
               width: double.infinity,
@@ -107,9 +111,8 @@ class TeachersSignUpScreen extends StatelessWidget {
                       textEditingController:
                           teacherSignUpController.emailController,
                       function: checkFieldEmailIsValid),
-
-                       kHeight10,
-                       Padding(
+                  kHeight10,
+                  Padding(
                     padding: EdgeInsets.only(right: 29.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -122,7 +125,6 @@ class TeachersSignUpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   Obx(
                     () => SigninTextFormfield(
                       hintText: 'Password'.tr,
@@ -220,9 +222,9 @@ class TeachersSignUpScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(()=>TeacherLoginScreen(
-                            pageIndex: 3,
-                          ));
+                          Get.to(() => TeacherLoginScreen(
+                                pageIndex: 3,
+                              ));
                         },
                         child: Text(
                           "Login".tr,

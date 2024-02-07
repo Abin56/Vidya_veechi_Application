@@ -3,7 +3,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/Meetings/meetings_school_display.dart';
 import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/student_controller/student_meeting_controller.dart';

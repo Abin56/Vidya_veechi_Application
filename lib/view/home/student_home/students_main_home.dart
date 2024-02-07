@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/view/home/student_home/student_new_homep
 import 'package:dujo_kerala_application/view/pages/live_classes/students_room/list_room.dart';
 import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -47,9 +47,9 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-        checkingSchoolActivate(context);
+    checkingSchoolActivate(context);
     List<Widget> pages = [
-      const NewStdHomePage(),///////////////////////////////////////////
+      const NewStdHomePage(), ///////////////////////////////////////////
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
@@ -59,19 +59,24 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
       const ChatScreen(),
     ];
     return WillPopScope(
-         onWillPop: () => onbackbuttonpressed(context),
+      onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
         appBar: AppBar(
           flexibleSpace: const AppBarColorWidget(),
           foregroundColor: cWhite,
-            title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          title: SizedBox(
+            // color: cred,
+            height: 80.h,
+            width: 115.w,
+            child: Center(
+                child: Image.asset(
+              'assets/images/vidyaveechi.png',
+              color: Colors.white,
+              fit: BoxFit.cover,
+            )),
+          ),
           //  backgroundColor: adminePrimayColor
-            ),
+        ),
         body: pages[_page],
         bottomNavigationBar: Container(
           height: 71,
@@ -84,12 +89,11 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
               begin: Alignment.topLeft,
               end: Alignment.bottomCenter,
               colors: [
-                       // Color.fromARGB(255, 222, 29, 151),
-                       // Color.fromARGB(255, 39, 48, 211)
-                       Color.fromARGB(255, 15, 73, 208),
-                         Color.fromARGB(255, 6, 152, 225),
-                        //  Color.fromARGB(255, 92, 168, 240),
-
+                // Color.fromARGB(255, 222, 29, 151),
+                // Color.fromARGB(255, 39, 48, 211)
+                Color.fromARGB(255, 15, 73, 208),
+                Color.fromARGB(255, 6, 152, 225),
+                //  Color.fromARGB(255, 92, 168, 240),
 
                 // Color.fromARGB(255, 6, 71, 157),
                 // Color.fromARGB(255, 5, 85, 222)

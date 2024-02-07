@@ -2,7 +2,7 @@
 
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class SinUpTextFromFiled extends StatelessWidget {
   String text;
@@ -19,7 +19,7 @@ class SinUpTextFromFiled extends StatelessWidget {
     this.keyboardType,
     required this.textfromController,
     this.onTapFunction,
-    this.readOnly=false,
+    this.readOnly = false,
     super.key,
   });
 

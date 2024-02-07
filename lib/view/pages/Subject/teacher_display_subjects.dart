@@ -8,7 +8,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../view/widgets/container_image.dart';
@@ -64,19 +64,24 @@ class TeacherSubjectHome extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
-                    children: 
+                    children:
                         List.generate(snapshot.data!.docs.length, (index) {
-                      teacherSubjectController
-                          .getSubject(snapshot.data!.docs[index]['teacherdocid']);
-                      return GestureDetector( 
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> 
-                          
-                          //StudyMaterials()
-                          ChapterUpoload(subjectID: snapshot.data!.docs[index]['docid'],)
-                          ));
+                      teacherSubjectController.getSubject(
+                          snapshot.data!.docs[index]['teacherdocid']);
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
 
-                         // ChapterDisplay(subjectID: snapshot.data!.docs[index]['docid'],)));
+                                      //StudyMaterials()
+                                      ChapterUpoload(
+                                        subjectID: snapshot.data!.docs[index]
+                                            ['docid'],
+                                      )));
+
+                          // ChapterDisplay(subjectID: snapshot.data!.docs[index]['docid'],)));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -84,7 +89,7 @@ class TeacherSubjectHome extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           height: 50,
-                      
+
                           // ignore: sort_child_properties_last
                           child: Padding(
                             padding: EdgeInsets.only(
@@ -115,17 +120,21 @@ class TeacherSubjectHome extends StatelessWidget {
                                               50, // set a fixed height for the container
                                           child: Center(
                                               child: FutureBuilder(
-                                                  future: teacherSubjectController
-                                                      .getSubject(
-                                                          snapshot.data?.docs[index]
+                                                  future:
+                                                      teacherSubjectController
+                                                          .getSubject(snapshot
+                                                                  .data
+                                                                  ?.docs[index]
                                                               ['teacherdocid']),
                                                   builder: (context, snap) {
                                                     return SizedBox(
                                                       height: 40,
                                                       width: 70,
-                                                      child: GooglePoppinsWidgets(
-                                                          text: snap.data ?? "",
-                                                          fontsize: 12),
+                                                      child:
+                                                          GooglePoppinsWidgets(
+                                                              text: snap.data ??
+                                                                  "",
+                                                              fontsize: 12),
                                                     );
                                                   })),
                                         ),

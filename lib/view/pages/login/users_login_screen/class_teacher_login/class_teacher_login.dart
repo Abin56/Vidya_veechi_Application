@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/utils/utils.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../model/Text_hiden_Controller/password_field.dart';
@@ -35,11 +35,16 @@ class ClassTeacherLoginScreen extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: cWhite,
         title: SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          // color: cred,
+          height: 80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.white,
+            fit: BoxFit.cover,
+          )),
+        ),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
@@ -148,9 +153,9 @@ class ClassTeacherLoginScreen extends StatelessWidget {
                             text: "Don't have an account?".tr, fontsize: 15),
                         GestureDetector(
                           onTap: () {
-                            Get.to(()=>TeachersSignUpScreen(
-                              pageIndex: 3,
-                            ));
+                            Get.to(() => TeachersSignUpScreen(
+                                  pageIndex: 3,
+                                ));
                           },
                           child: GooglePoppinsWidgets(
                             text: ' Sign Up'.tr,

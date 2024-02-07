@@ -2,7 +2,7 @@ import 'package:dujo_kerala_application/main.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/widgets/container_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -52,12 +52,17 @@ class _GuardianMainHomeScreenState extends State<GuardianMainHomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           foregroundColor: cWhite,
-          title:  SizedBox(
-        // color: cred,
-        height: 80.h,
-              width: 115.w,
-            child: Center(child: Image.asset('assets/images/vidyaveechi.png',color: Colors.white,fit: BoxFit.cover,)),
-       ),
+          title: SizedBox(
+            // color: cred,
+            height: 80.h,
+            width: 115.w,
+            child: Center(
+                child: Image.asset(
+              'assets/images/vidyaveechi.png',
+              color: Colors.white,
+              fit: BoxFit.cover,
+            )),
+          ),
           backgroundColor: adminePrimayColor,
         ),
         body: pages[_page],
@@ -94,7 +99,7 @@ class _GuardianMainHomeScreenState extends State<GuardianMainHomeScreen> {
                 icon: Icons.tv,
                 text: 'Recorded\nClasses'.tr,
               ),
-             GButton(
+              GButton(
                 iconSize: 30,
                 icon: Icons.assignment_ind_outlined,
                 textSize: 20,

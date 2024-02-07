@@ -7,7 +7,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../view/widgets/container_image.dart';
@@ -74,7 +74,6 @@ class RecordedClassMainPage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-
                                       RecordedClassChapterUploadPage(
                                         subjectID: snapshot.data!.docs[index]
                                             ['docid'],

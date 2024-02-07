@@ -4,7 +4,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/button_container_widget.dart';
 import 'package:dujo_kerala_application/widgets/Iconbackbutton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,7 +30,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
             IconButtonBackWidget(
               color: cWhite,
             ),
-             Text("Chapter Upload".tr),
+            Text("Chapter Upload".tr),
           ],
         ),
         backgroundColor: adminePrimayColor,
@@ -65,13 +65,13 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title:  Text('Chapter Upload'.tr),
-                              content:  Text('New Chapter Added!'.tr),
+                              title: Text('Chapter Upload'.tr),
+                              content: Text('New Chapter Added!'.tr),
                               actions: [
                                 Padding(
-                                  padding:  EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: MaterialButton(
-                                    child:  Text('Ok'.tr),
+                                    child: Text('Ok'.tr),
                                     onPressed: () => Navigator.pop(context),
                                   ),
                                 )

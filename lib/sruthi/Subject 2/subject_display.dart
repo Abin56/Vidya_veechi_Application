@@ -5,7 +5,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/widgets/Iconbackbutton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import '../../../view/widgets/container_image.dart';
 import 'subject_chapterwise_display.dart';
 
@@ -73,17 +73,15 @@ class SubjectList extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(width: 10.w),
-                          
-                                 SizedBox(
-                                  height:
-                                      50.h, // set a fixed height for the container
-                                  child: GooglePoppinsWidgets(
-                                    text: text[index],
-                                    fontsize: 12.h,
-                                    color: Colors.white,
-                                  ),
+                              SizedBox(
+                                height: 50
+                                    .h, // set a fixed height for the container
+                                child: GooglePoppinsWidgets(
+                                  text: text[index],
+                                  fontsize: 12.h,
+                                  color: Colors.white,
                                 ),
-                              
+                              ),
                             ],
                           ),
                         ),

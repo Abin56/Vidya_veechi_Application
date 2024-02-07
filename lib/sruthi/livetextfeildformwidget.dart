@@ -2,7 +2,7 @@
 
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class LiveTextFormFieldWidget extends StatelessWidget {
   String text;
@@ -18,7 +18,7 @@ class LiveTextFormFieldWidget extends StatelessWidget {
     required this.hintText,
     this.validator,
     this.keyboardType,
-     this.textfromController,
+    this.textfromController,
     this.onTapFunction,
     // this.readOnly=false,
     this.maxLines,
@@ -48,15 +48,13 @@ class LiveTextFormFieldWidget extends StatelessWidget {
               // color: const Color.fromARGB(255, 211, 225, 236),
               child: Center(
                 child: TextFormField(
-                     
-                    
-                      // keyboardType: TextInputType.multiline,
-                      decoration: InputDecoration(
-                         hintText: hintText,
-                        border: const OutlineInputBorder(),
-                        contentPadding: const EdgeInsets.all(7),
-                      ),
-                    ),
+                  // keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    hintText: hintText,
+                    border: const OutlineInputBorder(),
+                    contentPadding: const EdgeInsets.all(7),
+                  ),
+                ),
               ),
             )
           ],

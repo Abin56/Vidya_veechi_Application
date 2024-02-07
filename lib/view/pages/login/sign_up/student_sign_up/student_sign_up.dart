@@ -10,7 +10,7 @@ import 'package:dujo_kerala_application/view/widgets/container_image.dart';
 import 'package:dujo_kerala_application/view/widgets/sinup_textform_filed.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../model/Signup_Image_Selction/image_selection.dart';
@@ -33,8 +33,8 @@ class StudentSignInPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: (){
-        getImageController.pickedImage.value="";
+      onWillPop: () {
+        getImageController.pickedImage.value = "";
         studentController.clearFields();
         return Future.value(true);
       },
@@ -94,12 +94,12 @@ class StudentSignInPageScreen extends StatelessWidget {
                     children: [
                       Obx(
                         () => CircleAvatar(
-                          backgroundImage: getImageController
-                                  .pickedImage.value.isEmpty
-                              ? const NetworkImage(netWorkImagePathPerson)
-                              : FileImage(
-                                      File(getImageController.pickedImage.value))
-                                  as ImageProvider,
+                          backgroundImage:
+                              getImageController.pickedImage.value.isEmpty
+                                  ? const NetworkImage(netWorkImagePathPerson)
+                                  : FileImage(File(
+                                          getImageController.pickedImage.value))
+                                      as ImageProvider,
                           radius: 60,
                           child: Stack(
                             children: [
@@ -215,7 +215,8 @@ class StudentSignInPageScreen extends StatelessWidget {
                       SinUpTextFromFiled(
                         text: 'House Name'.tr,
                         hintText: 'Enter your House Name'.tr,
-                        textfromController: studentController.houseNameController,
+                        textfromController:
+                            studentController.houseNameController,
                         validator: checkFieldEmpty,
                       ),
                       SinUpTextFromFiled(
@@ -235,7 +236,8 @@ class StudentSignInPageScreen extends StatelessWidget {
                       SinUpTextFromFiled(
                         text: 'District'.tr,
                         hintText: 'Enter your District'.tr,
-                        textfromController: studentController.districtController,
+                        textfromController:
+                            studentController.districtController,
                         validator: checkFieldEmpty,
                       ),
                       SinUpTextFromFiled(
@@ -251,78 +253,73 @@ class StudentSignInPageScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 20),
                         child: GestureDetector(
                           onTap: () {
-                              if (getImageController.pickedImage.value.isEmpty) {
-                                return showToast(msg: 'Please upload your image');
+                            if (getImageController.pickedImage.value.isEmpty) {
+                              return showToast(msg: 'Please upload your image');
+                            } else {
+                              if (studentController.checkAllFieldIsEmpty()) {
+                                showToast(msg: "All Fields are mandatory");
+                                return;
                               } else {
-                                if (studentController.checkAllFieldIsEmpty()) {
-                                  showToast(msg: "All Fields are mandatory");
-                                  return;
-                                } else {
-                                  try {
-                                    studentController.isLoading.value=true;
-                                    FirebaseAuth.instance
+                                try {
+                                  studentController.isLoading.value = true;
+                                  FirebaseAuth.instance
                                       .createUserWithEmailAndPassword(
-                                          email:
-                                              UserEmailandPasswordSaver.userEmail,
+                                          email: UserEmailandPasswordSaver
+                                              .userEmail,
                                           password: UserEmailandPasswordSaver
                                               .userPassword)
-                                      .then((value)  {
-                                         studentController.isLoading.value=false;
-                                            studentController
-                                                .updateStudentData()
-                                                .then((value) {
-                                              return showDialog(
-                                                context: context,
-                                                barrierDismissible:
-                                                    false, // user must tap button!
-                                                builder: (BuildContext context) {
-                                                  studentController.isLoading.value=false;
-                                                  return AlertDialog(
-                                                    title: const Text('Message'),
-                                                    content:
-                                                           SingleChildScrollView(
-                                                      child: ListBody(
-                                                        children: <Widget>[
-                                                          Text(
-                                                              'Your Profile Created Successfully,\nPlease Login again')
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    actions: <Widget>[
-                                                      TextButton(
-                                                        child: const Text('Ok'),
-                                                        onPressed: () {
-                                                          Navigator
-                                                              .pushAndRemoveUntil(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                            builder: (context) {
-                                                              return StudentLoginScreen();
-                                                            },
-                                                          ), (route) => false);
-                                                        },
-                                                      ),
-                                                    ],
-                                                  );
+                                      .then((value) {
+                                    studentController.isLoading.value = false;
+                                    studentController
+                                        .updateStudentData()
+                                        .then((value) {
+                                      return showDialog(
+                                        context: context,
+                                        barrierDismissible:
+                                            false, // user must tap button!
+                                        builder: (BuildContext context) {
+                                          studentController.isLoading.value =
+                                              false;
+                                          return AlertDialog(
+                                            title: const Text('Message'),
+                                            content:
+                                                const SingleChildScrollView(
+                                              child: ListBody(
+                                                children: <Widget>[
+                                                  Text(
+                                                      'Your Profile Created Successfully,\nPlease Login again')
+                                                ],
+                                              ),
+                                            ),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                child: const Text('Ok'),
+                                                onPressed: () {
+                                                  Navigator.pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                    builder: (context) {
+                                                      return StudentLoginScreen();
+                                                    },
+                                                  ), (route) => false);
                                                 },
-                                              );
-                                            });
-                                          }).catchError((error){
-                                             studentController.isLoading.value=false;
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    });
+                                  }).catchError((error) {
+                                    studentController.isLoading.value = false;
                                     showToast(msg: error.code);
-                                          });
-                                  }on FirebaseAuthException catch (e) {
-                                    studentController.isLoading.value=false;
-                                    showToast(msg: e.code);
-                                  }
-
-
-                          
-                                }}
-                            },
-                              
-                            
-                          
+                                  });
+                                } on FirebaseAuthException catch (e) {
+                                  studentController.isLoading.value = false;
+                                  showToast(msg: e.code);
+                                }
+                              }
+                            }
+                          },
                           child: Obx(() => studentController.isLoading.value
                               ? circularProgressIndicatotWidget
                               : loginButtonWidget(

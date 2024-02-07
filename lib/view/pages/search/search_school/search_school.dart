@@ -2,7 +2,7 @@ import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
 import 'package:dujo_kerala_application/view/pages/search/search_school/search_school_searchdeligate.dart';
 import 'package:dujo_kerala_application/view/widgets/container_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -95,11 +95,11 @@ class SearchSchoolScreen extends StatelessWidget {
                   }
                 },
                 child: LottieBuilder.network(
-                    'https://assets2.lottiefiles.com/packages/lf20_itvvjtah.json',),
+                  'https://assets2.lottiefiles.com/packages/lf20_itvvjtah.json',
+                ),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                
                 children: [
                   GooglePoppinsWidgets(text: "Developed by", fontsize: 12),
                   kHeight10,

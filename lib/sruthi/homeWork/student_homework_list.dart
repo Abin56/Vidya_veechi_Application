@@ -4,7 +4,7 @@ import 'package:dujo_kerala_application/controllers/userCredentials/user_credent
 import 'package:dujo_kerala_application/sruthi/homeWork/homework_display.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../view/constant/sizes/sizes.dart';
@@ -129,7 +129,7 @@ class HomeWorkList extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                               children: [
-                                             GooglePoppinsWidgets(
+                                                GooglePoppinsWidgets(
                                                     text: "Assigned Teacher:",
                                                     fontsize: 15.h),
                                                 Flexible(
