@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/firebase_options.dart';
 import 'package:dujo_kerala_application/view/constant/responsive.dart';
-import 'package:dujo_kerala_application/view/home/mobile_view_home.dart/vidyaveechi_home.dart';
 import 'package:dujo_kerala_application/view/language/language.dart';
 import 'package:dujo_kerala_application/view/language/select_language/select_language.dart';
 import 'package:dujo_kerala_application/view/pages/chat_gpt/providers/chats_provider.dart';
@@ -18,7 +17,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 // import 'package:play_video/play_video.dart';
@@ -97,20 +95,20 @@ class MyApp extends StatelessWidget {
                     if (state is AuthLoggedInState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const MobileHomePage();
+                        return const SplashScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     } else if (state is AuthLoggedOutState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const MobileHomePage();
+                        return const SplashScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     }
                     if (SharedPreferencesHelper.getString("langCode") != null) {
-                      return const MobileHomePage();
+                      return const SplashScreen();
                     } else {
                       return const SelectLanguage();
                     }

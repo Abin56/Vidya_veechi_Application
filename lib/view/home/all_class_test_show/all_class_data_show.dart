@@ -1,3 +1,4 @@
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,9 @@ class AllClassTestShowPage extends StatelessWidget {
         (totalMark == -1 ? "Mark not entered" : totalMark).toString();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: adminePrimayColor,
+        foregroundColor: cWhite,
+        flexibleSpace: const AppBarColorWidget(),
+        //backgroundColor: adminePrimayColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

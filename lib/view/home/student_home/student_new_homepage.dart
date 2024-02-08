@@ -203,11 +203,11 @@ class NewStdHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 70),
+                        padding: const EdgeInsets.only(top: 80),
                         child: Center(
                           child: SizedBox(
-                            height: 100,
-                            width: 100,
+                            height: 80,
+                            width: 80,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shape: GuiShapeBorder(
@@ -258,7 +258,7 @@ class NewStdHomePage extends StatelessWidget {
                           Get.to(() => screenNavigationOfStd[1]);
                         }),
                     ContainerWidget(
-                      image: '',
+                      image: 'assets/flaticons/study-time.png',
                       //  icon: Icons.assignment_rounded,
                         text: 'Time Table',
                         onTap: () {
@@ -320,7 +320,7 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                      image: '',
+                      image: 'assets/flaticons/exam.png',
                        // icon: Icons.list_alt,
                         text: 'Exams',
                         onTap: () {
@@ -346,60 +346,61 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                      image: '',
+                      image: 'assets/flaticons/schedule.png',
                      //   icon: Icons.event,
                         text: 'Events',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[9]);
                         }),
                     ContainerWidget(
-                      image: '',
+                      image: 'assets/flaticons/meeting.png',
                       //  icon: Icons.meeting_room,
                         text: 'Meetings',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[10]);
                         }),
-                    ContainerWidget(
-                      image: '',
-                      //  icon: Icons.bus_alert,
-                        text: 'Bus Route',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfStd[11]);
-                        }),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ContainerWidget(image: '',
+                         ContainerWidget(image: 'assets/flaticons/exam (1).png',
                      //   icon: Icons.class_,
                         text: 'Class Test',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[12]);
                         }),
-                    ContainerWidget(
-                      image: '',
-                       // icon: Icons.view_list,
-                        text: 'Monthly Class Test',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfStd[13]);
-                        }),
-                    ContainerWidget(
-                      image: '',
-                      //  icon: Icons.library_books,
-                        text: 'Library',
-                        onTap: () {}),
+                    // ContainerWidget(
+                    //   image: '',
+                    //   //  icon: Icons.bus_alert,
+                    //     text: 'Bus Route',
+                    //     onTap: () {
+                    //       Get.to(() => screenNavigationOfStd[11]);
+                    //     }),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                   
                     ContainerWidget(
-                      image: '',
-                      //  icon: Icons.food_bank,
-                         text: 'Canteen', onTap: () {}),
+                      image: 'assets/flaticons/test.png',
+                       // icon: Icons.view_list,
+                        text: 'Monthly Class Test',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfStd[13]);
+                        }),
+                    // ContainerWidget(
+                    //   image: '',
+                    //   //  icon: Icons.library_books,
+                    //     text: 'Library',
+                    //     onTap: () {}),
                   ],
-                )
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     ContainerWidget(
+                //       image: '',
+                //       //  icon: Icons.food_bank,
+                //          text: 'Canteen', onTap: () {}),
+                //   ],
+                // )
               ],
             )
           ],

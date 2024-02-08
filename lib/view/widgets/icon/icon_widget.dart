@@ -38,7 +38,7 @@ class ContainerWidget extends StatelessWidget {
                         Border.all(color: adminePrimayColor.withOpacity(0.5))),
                 child: Center(
                   child: Image.asset(
-                    image,
+                    image,height: 40,width: 40,
                     fit: BoxFit.contain,
                     scale: 2,
                   ),

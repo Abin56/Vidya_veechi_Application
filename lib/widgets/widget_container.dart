@@ -1,5 +1,4 @@
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
-import 'package:dujo_kerala_application/widgets/responsive/responsive.dart';
 
 import 'package:flutter/material.dart';
 
