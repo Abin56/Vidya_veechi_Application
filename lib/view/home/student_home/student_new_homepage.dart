@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_kerala_application/controllers/userCredentials/user_credentials.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
@@ -18,11 +19,9 @@ import 'package:dujo_kerala_application/view/pages/Notice/notice_list.dart';
 import 'package:dujo_kerala_application/view/pages/exam_results/for_users/select_examlevel_uses.dart';
 import 'package:dujo_kerala_application/view/pages/teacher_list/teacher_list.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_lemon.dart';
-import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_salsa.dart';
 import 'package:dujo_kerala_application/view/widgets/icon/icon_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:gui_shape/geo/geo_common.dart';
 import 'package:gui_shape/gui/gui_shape_border.dart';
@@ -244,21 +243,23 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ContainerWidget(
-                        icon: Icons.waving_hand,
+                    ContainerWidget(image: 'assets/flaticons/icons8-attendance-100.png',
+                      //  icon: Icons.waving_hand,
                         text: ' Attendance',
                         onTap: () {
                           print("object");
                           Get.to(() => screenNavigationOfStd[0]);
                         }),
                     ContainerWidget(
-                        icon: Icons.home_work,
+                      image: 'assets/flaticons/icons8-homework-67.png',
+                      //  icon: Icons.home_work,
                         text: 'Homework',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[1]);
                         }),
                     ContainerWidget(
-                        icon: Icons.assignment_rounded,
+                      image: '',
+                      //  icon: Icons.assignment_rounded,
                         text: 'Time Table',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[2]);
@@ -268,45 +269,47 @@ class NewStdHomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
-                      width: 100.w, //110
-                      height: 100.h,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 80.h,
-                            width: 80.w,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: adminePrimayColor.withOpacity(0.5))),
-                            child: Center(
-                              child: Image.asset(
-                                'assets/flaticons/icons8-attendance-100.png',
-                                fit: BoxFit.contain,
-                                scale: 2,
-                              ),
-                            ),
-                          ),
-                          GooglePoppinsWidgets(text: 'Attendence', fontsize: 10)
-                        ],
-                      ),
-                    ),
-                    // ContainerWidget(
-                    //     icon: Icons.person_2,
-                    //     text: 'Teachers',
-                    //     onTap: () {
-                    //       Get.to(() => screenNavigationOfStd[3]);
-                    //     }),
+                    // SizedBox(
+                    //   width: 100.w, //110
+                    //   height: 100.h,
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       Container(
+                    //         height: 80.h,
+                    //         width: 80.w,
+                    //         decoration: BoxDecoration(
+                    //             shape: BoxShape.circle,
+                    //             border: Border.all(
+                    //                 color: adminePrimayColor.withOpacity(0.5))),
+                    //         child: Center(
+                    //           child: Image.asset(
+                    //             'assets/flaticons/icons8-attendance-100.png',
+                    //             fit: BoxFit.contain,
+                    //             scale: 2,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       GooglePoppinsWidgets(text: 'Attendence', fontsize: 10)
+                    //     ],
+                    //   ),
+                    // ),
+                    ContainerWidget(image: 'assets/flaticons/icons8-teacher-100.png',
+                      //  icon: Icons.person_2,
+                        text: 'Teachers',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfStd[3]);
+                        }),
                     ContainerWidget(
-                        icon: Icons.chat_rounded,
+                      image: 'assets/flaticons/icons8-chat-100.png',
+                       // icon: Icons.chat_rounded,
                         text: 'Chats',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[4]);
                         }),
                     ContainerWidget(
-                        icon: Icons.import_contacts,
+                      image: 'assets/flaticons/icons8-books-48.png',
+                      //  icon: Icons.import_contacts,
                         text: 'Subjects',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[5]);
@@ -317,19 +320,22 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.list_alt,
+                      image: '',
+                       // icon: Icons.list_alt,
                         text: 'Exams',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[6]);
                         }),
                     ContainerWidget(
-                        icon: Icons.add_chart,
+                      image: 'assets/flaticons/icons8-grades-100.png',
+                     //   icon: Icons.add_chart,
                         text: 'Exam Results',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[7]);
                         }),
                     ContainerWidget(
-                        icon: Icons.notification_add,
+                      image: 'assets/flaticons/icons8-notice-100.png',
+                      //  icon: Icons.notification_add,
                         text: 'Notices',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[8]);
@@ -340,19 +346,22 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.event,
+                      image: '',
+                     //   icon: Icons.event,
                         text: 'Events',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[9]);
                         }),
                     ContainerWidget(
-                        icon: Icons.meeting_room,
+                      image: '',
+                      //  icon: Icons.meeting_room,
                         text: 'Meetings',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[10]);
                         }),
                     ContainerWidget(
-                        icon: Icons.bus_alert,
+                      image: '',
+                      //  icon: Icons.bus_alert,
                         text: 'Bus Route',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[11]);
@@ -362,20 +371,22 @@ class NewStdHomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ContainerWidget(
-                        icon: Icons.class_,
+                    ContainerWidget(image: '',
+                     //   icon: Icons.class_,
                         text: 'Class Test',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[12]);
                         }),
                     ContainerWidget(
-                        icon: Icons.view_list,
+                      image: '',
+                       // icon: Icons.view_list,
                         text: 'Monthly Class Test',
                         onTap: () {
                           Get.to(() => screenNavigationOfStd[13]);
                         }),
                     ContainerWidget(
-                        icon: Icons.library_books,
+                      image: '',
+                      //  icon: Icons.library_books,
                         text: 'Library',
                         onTap: () {}),
                   ],
@@ -384,7 +395,9 @@ class NewStdHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ContainerWidget(
-                        icon: Icons.food_bank, text: 'Canteen', onTap: () {}),
+                      image: '',
+                      //  icon: Icons.food_bank,
+                         text: 'Canteen', onTap: () {}),
                   ],
                 )
               ],

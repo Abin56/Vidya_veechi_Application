@@ -21,7 +21,7 @@ class MobileHomePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 100,
+                      height: 70,
                       child: Container(
                         //height: 100,width: 50,
                         // height: screenSize.width / 10,
@@ -206,7 +206,7 @@ class MobileHomePage extends StatelessWidget {
                           fit: BoxFit.fitWidth)),
                   child: const Align(
                       alignment: Alignment.center,
-                      child: Text("വിദ്യാവീചി", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold))),
+                      child: Text("വിദ്യാവീചി", style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold))),
                 ),
               ),
             ],

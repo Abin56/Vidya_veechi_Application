@@ -97,20 +97,20 @@ class MyApp extends StatelessWidget {
                     if (state is AuthLoggedInState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const SplashScreen();
+                        return const MobileHomePage();
                       } else {
                         return const SelectLanguage();
                       }
                     } else if (state is AuthLoggedOutState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const SplashScreen();
+                        return const MobileHomePage();
                       } else {
                         return const SelectLanguage();
                       }
                     }
                     if (SharedPreferencesHelper.getString("langCode") != null) {
-                      return const SplashScreen();
+                      return const MobileHomePage();
                     } else {
                       return const SelectLanguage();
                     }

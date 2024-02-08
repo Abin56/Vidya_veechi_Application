@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:dujo_kerala_application/config.dart';
+//import 'package:dujo_kerala_application/config.dart';
 import 'package:http/http.dart' as http;
 
 // import '../../../../config.dart';
@@ -15,8 +15,8 @@ class ApiService {
   static Future<List<ModelsModel>> getModels() async {
     try {
       var response = await http.get(
-        Uri.parse("$BASE_URL/models"),
-        headers: {'Authorization': 'Bearer $openApiKey'},
+        Uri.parse(" BASE_URL/models"),
+        headers: {'Authorization': 'Bearer openApiKey'},
       );
 
       Map jsonResponse = jsonDecode(response.body);
@@ -44,9 +44,9 @@ class ApiService {
     try {
       log("modelId $modelId");
       var response = await http.post(
-        Uri.parse("$BASE_URL/completions"),
+        Uri.parse("BASE_URL/completions"),
         headers: {
-          'Authorization': 'Bearer $openApiKey',
+          'Authorization': 'Bearer openApiKey',
           "Content-Type": "application/json"
         },
         body: jsonEncode(
@@ -92,9 +92,9 @@ class ApiService {
     try {
       log("modelId $modelId");
       var response = await http.post(
-        Uri.parse("$BASE_URL/completions"),
+        Uri.parse("BASE_URL/completions"),
         headers: {
-          'Authorization': 'Bearer $openApiKey',
+          'Authorization': 'Bearer openApiKey',
           "Content-Type": "application/json"
         },
         body: jsonEncode(

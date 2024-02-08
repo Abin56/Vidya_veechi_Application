@@ -1,4 +1,5 @@
 import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
+import 'package:dujo_kerala_application/widgets/responsive/responsive.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class WidgetContainerOnHome extends StatelessWidget {
     return SizedBox(
       // color: Colors.blue,
       height: 400,
-      width: 300,
+      width:  300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -31,24 +32,24 @@ class WidgetContainerOnHome extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               // color: Colors.red,
-              color: const Color.fromARGB(255, 219, 91, 82),
+              color:  Colors.lightBlueAccent[900],
               shape: BoxShape.circle,
-              border: Border.all(width: 1, color: Colors.red),
-              boxShadow: const [
+              border: Border.all(width: 1, color: Colors.blue),
+             boxShadow: const [
                 BoxShadow(
-                  color: Colors.black38,
+                  color: Color.fromARGB(255, 2, 107, 193),
                   offset: Offset(
-                    10.0,
-                    2.0,
+                    1.0,
+                    0.01,
                   ),
                   blurRadius: 10.0,
-                  spreadRadius: 2.0,
+                  spreadRadius: 2,
                 ), //BoxShadow
                 BoxShadow(
-                  color: Colors.black38,
+                  color: Colors.white,
                   offset: Offset(5.0, 5.0),
-                  blurRadius: 10.0,
-                  spreadRadius: 2.0,
+                  blurRadius: 1.0,
+                  spreadRadius: 0.01,
                 ), //BoxShadow
               ],
             ),
