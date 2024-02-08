@@ -1,10 +1,9 @@
 import 'dart:developer';
 
-import 'package:dujo_kerala_application/view/colors/colors.dart';
-import 'package:dujo_kerala_application/view/home/parent_home/parent_home_screen.dart';
-import 'package:dujo_kerala_application/view/widgets/container_image.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:dujo_kerala_application/view/colors/colors.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/parent_new_home.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -42,7 +41,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
     log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      ParentHomeScreen(),
+      const ParentProfileHomePage(),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,

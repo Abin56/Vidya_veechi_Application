@@ -1,4 +1,4 @@
-import 'package:dash_board/view/fonts/google_poppins.dart';
+import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 

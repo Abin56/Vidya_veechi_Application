@@ -1,4 +1,4 @@
-import 'package:dash_board/school_parent_pages/parent_home_profile_page.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/parent_new_home.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {

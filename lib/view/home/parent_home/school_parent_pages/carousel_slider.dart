@@ -1,11 +1,12 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dash_board/school_parent_pages/assignment_graph.dart';
-import 'package:dash_board/school_parent_pages/attendence_graph.dart';
-import 'package:dash_board/school_parent_pages/exam_graph.dart';
-import 'package:dash_board/school_parent_pages/home_work.dart';
-import 'package:dash_board/view/fonts/google_poppins.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/assignment_graph.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/attendence_graph.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/exam_graph.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/home_work.dart';
+import 'package:dujo_kerala_application/view/widgets/fonts/google_poppins.dart';
+
 import 'package:flutter/material.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
