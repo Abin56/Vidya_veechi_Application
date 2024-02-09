@@ -14,6 +14,7 @@ import 'package:dujo_kerala_application/view/home/bus_route_page/all_bus_list.da
 import 'package:dujo_kerala_application/view/home/events/event_list.dart';
 import 'package:dujo_kerala_application/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import 'package:dujo_kerala_application/view/home/fees%20and%20bills/fees_page.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/leave_application/apply_leave_application.dart';
 import 'package:dujo_kerala_application/view/home/parent_home/parent_profile_edit/parent_edit_profile.dart';
 import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/carousel_slider.dart';
 import 'package:dujo_kerala_application/view/home/student_home/subjects/subject_display.dart';
@@ -38,7 +39,10 @@ import 'package:http/http.dart' as http;
 import '../../../controllers/multipile_students/multipile_students_controller.dart';
 
 class ParentProfileHomePage extends StatefulWidget {
-  const ParentProfileHomePage({super.key});
+  final String studentName;
+  const ParentProfileHomePage({super.key,
+  required this.studentName,
+  });
 
   @override
   State<ParentProfileHomePage> createState() => _ParentProfileHomePageState();
@@ -151,13 +155,13 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
           batchId: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!), //Attendence
 
-      // LeaveApplicationScreen(
-      //    // studentName: studentName,
-      //     guardianName: UserCredentialsController.parentModel!.parentName!,
-      //     classID: UserCredentialsController.classId!,
-      //     schoolId: UserCredentialsController.schoolId!,
-      //     studentID: UserCredentialsController.parentModel!.studentID!,
-      //     batchId: UserCredentialsController.batchId!), //Leave Letter////
+      LeaveApplicationScreen(
+          studentName:widget.studentName,
+          guardianName: UserCredentialsController.parentModel!.parentName!,
+          classID: UserCredentialsController.classId!,
+          schoolId: UserCredentialsController.schoolId!,
+          studentID: UserCredentialsController.parentModel!.studentID!,
+          batchId: UserCredentialsController.batchId!), //Leave Letter////
       ///student name error
 
 

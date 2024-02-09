@@ -41,7 +41,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
     log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      const ParentProfileHomePage(),
+      const ParentProfileHomePage(studentName: ''),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
