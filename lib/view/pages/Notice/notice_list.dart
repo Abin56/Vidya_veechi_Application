@@ -28,7 +28,11 @@ class NoticePage extends StatelessWidget {
               flexibleSpace: const AppBarColorWidget(),
               foregroundColor: cWhite,
           //  backgroundColor: adminePrimayColor,
-            bottom:   TabBar(tabs: [
+            bottom:   TabBar(
+              indicatorColor: cred,
+              labelColor: cWhite,
+              
+              tabs: [
               Tab(
                 text: 'Class Level'.tr,
               ),

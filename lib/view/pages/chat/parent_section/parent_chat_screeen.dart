@@ -3,6 +3,7 @@ import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/pages/chat/parent_section/search/search_teachers.dart';
 import 'package:dujo_kerala_application/view/pages/chat/parent_section/teacher_messages/teachers_messages.dart';
 import 'package:dujo_kerala_application/view/pages/chat/student_section/search/search_teachers.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -24,22 +25,26 @@ class ParentChatScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
+          foregroundColor: cWhite,
+          flexibleSpace: const AppBarColorWidget(),
           title: Text('Dujo Chat'.tr),
-          bottom: TabBar(
+          bottom: TabBar(labelColor: cWhite,
+          indicatorColor: cred,
+
             tabs: [
               Tab(
                 icon: ListView(
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(right: 0),
-                      child: Icon(Icons.group),
+                      child: Icon(Icons.group,color: cWhite,),
                     ),
                     //////////////////////////////////////////////////////////////////////////////////////////////////
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Teachers".tr),
+                        Text("Teachers".tr,
+                        ),
                         StreamBuilder(
                             stream: FirebaseFirestore.instance
                                 .collection('SchoolListCollection')
@@ -94,8 +99,10 @@ class ParentChatScreen extends StatelessWidget {
               Tab(
                   icon: const Icon(
                     Icons.class_,
+                    color: cWhite,
                   ),
-                  text: 'Group'.tr),
+                  text: 'Group'.tr,),
+                  
             ],
           ),
         ),
@@ -111,6 +118,7 @@ class ParentChatScreen extends StatelessWidget {
           radius: 25,
           child: Center(
             child: IconButton(
+              
                 onPressed: () async {
                   await _showSearch();
                 },

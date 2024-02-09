@@ -17,7 +17,10 @@ class UserExmNotifications extends StatelessWidget {
          foregroundColor: cWhite,
           flexibleSpace: const AppBarColorWidget(),
         //  backgroundColor: adminePrimayColor,
-          bottom:   TabBar(tabs: [
+          bottom:   TabBar(
+            labelColor: cWhite,
+            indicatorColor: cred,
+            tabs: [
             Tab(
               text: 'School Level'.tr,
             ),

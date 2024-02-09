@@ -6,6 +6,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:dujo_kerala_application/controllers/get_student_detail/get_student_details.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/sizes.dart';
+import 'package:dujo_kerala_application/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
@@ -124,7 +125,8 @@ class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
       } else {
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: adminePrimayColor,
+          foregroundColor: cWhite,
+        flexibleSpace: const AppBarColorWidget(),
             title: Text(
               "Apply Leave".tr,
               style: GoogleFonts.poppins(
@@ -138,7 +140,7 @@ class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 220,
+                  // height: 300,
                   width: double.infinity,
                   child: Padding(
                     padding: const EdgeInsets.all(10),

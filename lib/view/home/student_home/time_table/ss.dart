@@ -107,6 +107,7 @@ class _SSState extends State<SS> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: GoogleMonstserratWidgets(
           text: 'Time Table'.tr,
           fontsize: 17.w,
@@ -120,10 +121,10 @@ class _SSState extends State<SS> with SingleTickerProviderStateMixin {
           unselectedLabelColor: adminePrimayColor,
           unselectedLabelStyle:
               GoogleFonts.montserrat(fontSize: 10, fontWeight: FontWeight.bold),
-          dividerColor: adminePrimayColor,
+          dividerColor: cred,
           indicator: BoxDecoration(
-              color: adminePrimayColor,
-              borderRadius: BorderRadius.circular(50)),
+              color: cblue,
+              borderRadius: BorderRadius.circular(5)),
           labelStyle: GoogleFonts.montserrat(
             fontSize: 11,
             fontWeight: FontWeight.bold,

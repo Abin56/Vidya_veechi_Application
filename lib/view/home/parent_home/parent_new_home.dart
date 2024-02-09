@@ -165,7 +165,7 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
       ///student name error
 
 
-      const ParentChatScreen(),/////......2
+      const ParentChatScreen(),//Chats///......2
 
       const SS(), // Time Table...........3
 
@@ -194,15 +194,15 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
 
       TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................11
 
-      BusRouteListPage(),//////////......................12
+      BusRouteListPage(),//////Bus Route......................12
       /////// all bus
-      const FeesPage(),////////////////////...........13
+      const FeesPage(),///////////Fees...........13
       AllClassTestPage(
         pageNameFrom: "parent",
-      ), //class test page////////////////////////////14
+      ), //////////class test page...............14
       AllClassTestMonthlyPage(
         pageNameFrom: "parent",
-      ),//////////////15
+      ),//////Monthly Class Test............15
     ];
     log("Parent DOCID :::::::::::::::::::  ${UserCredentialsController.parentModel?.docid}");
     log("Firebase Auth DOCID :::::::::::::::::::  ${FirebaseAuth.instance.currentUser?.uid}");
@@ -439,7 +439,8 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                             text: 'Time Table',
                             onTap: () {
                                Get.to(screenNavigationOfParent[3]);
-                            }),
+                            }
+                            ),
                       ),
                     ],
                   ),
@@ -453,7 +454,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/icons8-teacher-100.png',
                             //icon: Icons.person_2,
                             text: 'Teachers',
-                            onTap: () {}),
+                            onTap: () {
+                               Get.to(screenNavigationOfParent[11]);
+                            }),
                       ),
                        Padding(
                           padding: const EdgeInsets.only(
@@ -462,17 +465,21 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                             image: 'assets/flaticons/icons8-books-48.png',
                               //icon: Icons.import_contacts,
                               text: 'Subjects',
-                              onTap: () {}),
+                              onTap: () {
+                                 Get.to(screenNavigationOfParent[10]);
+                              }),
                         ),
                       
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 10, right: 10, bottom: 10),
                         child: ContainerWidget(
-                          image: '',
+                          image: 'assets/flaticons/leave_letter.png',
                             //icon: Icons.note_sharp,
                             text: 'Leave Letters',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[1]);
+                            }),
                       ),
                     ],
                   ),
@@ -486,7 +493,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/exam.png',
                             //icon: Icons.list_alt,
                             text: 'Exams',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[5]);
+                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -494,7 +503,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/icons8-grades-100.png',
                             //icon: Icons.add_chart,
                             text: 'Exam Results',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[6]);
+                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -503,7 +514,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/icons8-notice-100.png',
                           //  icon: Icons.notification_add,
                             text: 'Notices',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[8]);
+                            }),
                       ),
                     ],
                   ),
@@ -516,7 +529,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                         child: ContainerWidget(
                           image: 'assets/flaticons/schedule.png',
                            // icon: Icons.event, 
-                            text: 'Events', onTap: () {}),
+                            text: 'Events', onTap: () {
+                              Get.to(screenNavigationOfParent[9]);
+                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -524,7 +539,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/meeting.png',
                           //  icon: Icons.meeting_room,
                             text: 'Meetings',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[4]);
+                            }),
                       ),
                        Padding(
                           padding: const EdgeInsets.only(bottom: 10),
@@ -532,7 +549,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                             image: 'assets/flaticons/icons8-chat-100.png',
                               //icon: Icons.chat_rounded,
                               text: 'Chats',
-                              onTap: () {}),
+                              onTap: () {
+                                Get.to(screenNavigationOfParent[2]);
+                              }),
                         ),
                       // Padding(
                       //   padding: const EdgeInsets.only(
@@ -556,7 +575,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/exam (1).png',
                             //icon: Icons.class_,
                             text: 'Class Test',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[14]);
+                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -564,15 +585,19 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/test.png',
                             //icon: Icons.view_list,
                             text: 'Monthly Class Test',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[15]);
+                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: ContainerWidget(
-                          image: '',
+                         image: 'assets/flaticons/bill.png',
                             //icon: Icons.attach_money_rounded,
                             text: 'Fees & Bills',
-                            onTap: () {}),
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[13]);
+                            }),
                       ),
                       // Expanded(
                       //   child: Padding(
@@ -597,9 +622,3 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
     );
   }
 }
-
-
-
-
-
-
