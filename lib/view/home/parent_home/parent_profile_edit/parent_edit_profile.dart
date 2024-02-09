@@ -1,7 +1,7 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:dujo_kerala_application/view/home/parent_home/parent_profile_edit/widgets/edit_list_tile_widget.dart';
 import 'package:dujo_kerala_application/view/home/parent_home/parent_profile_edit/widgets/parent_email_update_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/student_controller/profile_edit_controllers/parent_profile_edit_controller.dart';
@@ -22,6 +22,7 @@ class ParentEditProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          foregroundColor: cWhite,
           elevation: 0,
           backgroundColor: adminePrimayColor,
           title: const Text("Profile"),

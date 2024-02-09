@@ -54,6 +54,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           foregroundColor: cWhite,
+          flexibleSpace: const ParentAppBarColor(),
           title: SizedBox(
             // color: cred,
             height: 80.h,
@@ -75,14 +76,20 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             border: Border.all(color: Colors.white.withOpacity(0.13)),
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 6, 71, 157),
-                Color.fromARGB(255, 5, 85, 222)
-              ],
-            ),
+           gradient: const LinearGradient(
+                      colors: [
+                        Color.fromARGB(255, 139, 195, 248),
+                        Color.fromARGB(255, 6, 152, 225),
+                        Color.fromARGB(255, 15, 73, 208),
+                         Color.fromARGB(255, 130, 192, 243),
+                      Color.fromARGB(255, 39, 48, 211),
+                     Color.fromARGB(255, 6, 152, 225),
+                    Color.fromARGB(255, 139, 233, 223)
+                      ],
+                      end: Alignment.topLeft,
+                      begin: Alignment.bottomRight,
+                    ),
+                    color: adminePrimayColor
           ),
           child: GNav(
             gap: 8,
@@ -125,6 +132,31 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+
+class ParentAppBarColor extends StatelessWidget {
+  const ParentAppBarColor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            colors: [
+              Color.fromARGB(255, 139, 195, 248),
+                        Color.fromARGB(255, 6, 152, 225),
+                        Color.fromARGB(255, 15, 73, 208),
+                         Color.fromARGB(255, 130, 192, 243),
+                      Color.fromARGB(255, 39, 48, 211),
+                     Color.fromARGB(255, 6, 152, 225),
+                    Color.fromARGB(255, 139, 233, 223)
+            ]),
       ),
     );
   }

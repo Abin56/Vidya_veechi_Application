@@ -25,8 +25,8 @@ import '../../fees and bills/fees_page.dart';
 import '../../student_home/time_table/ss.dart';
 
 class ParentAccessories extends StatelessWidget {
-  String studentName;
-  ParentAccessories({
+  final String studentName;
+  const ParentAccessories({
     required this.studentName,
     super.key,
   });

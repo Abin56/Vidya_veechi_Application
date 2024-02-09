@@ -7,9 +7,7 @@ class Attendences extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // title: const Text('KindaCode.com'),
-          ),
+     
       body: Padding(
         padding: const EdgeInsets.all(3),
         // implement the bar chart

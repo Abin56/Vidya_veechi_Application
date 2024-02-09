@@ -8,9 +8,25 @@ import 'package:dujo_kerala_application/controllers/userCredentials/user_credent
 import 'package:dujo_kerala_application/local_database/parent_login_database.dart';
 import 'package:dujo_kerala_application/view/colors/colors.dart';
 import 'package:dujo_kerala_application/view/constant/sizes/constant.dart';
+import 'package:dujo_kerala_application/view/home/all_class_test_monthly_show/all_class_list_monthly_show.dart';
+import 'package:dujo_kerala_application/view/home/all_class_test_show/all_class_list_show.dart';
+import 'package:dujo_kerala_application/view/home/bus_route_page/all_bus_list.dart';
+import 'package:dujo_kerala_application/view/home/events/event_list.dart';
+import 'package:dujo_kerala_application/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
+import 'package:dujo_kerala_application/view/home/fees%20and%20bills/fees_page.dart';
+import 'package:dujo_kerala_application/view/home/parent_home/parent_profile_edit/parent_edit_profile.dart';
 import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/carousel_slider.dart';
-import 'package:dujo_kerala_application/view/home/parent_home/school_parent_pages/container_widget.dart';
+import 'package:dujo_kerala_application/view/home/student_home/subjects/subject_display.dart';
+import 'package:dujo_kerala_application/view/home/student_home/time_table/ss.dart';
+import 'package:dujo_kerala_application/view/pages/Attentence/take_attentence/attendence_book_status_month.dart';
+import 'package:dujo_kerala_application/view/pages/Homework/view_home_work.dart';
+import 'package:dujo_kerala_application/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
+import 'package:dujo_kerala_application/view/pages/Notice/notice_list.dart';
+import 'package:dujo_kerala_application/view/pages/chat/parent_section/parent_chat_screeen.dart';
+import 'package:dujo_kerala_application/view/pages/exam_results/for_users/select_examlevel_uses.dart';
+import 'package:dujo_kerala_application/view/pages/teacher_list/teacher_list.dart';
 import 'package:dujo_kerala_application/view/widgets/fonts/google_monstre.dart';
+import 'package:dujo_kerala_application/view/widgets/icon/icon_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -30,7 +46,7 @@ class ParentProfileHomePage extends StatefulWidget {
 
 class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
   MultipileStudentsController multipileStudentsController =
-      Get.put(MultipileStudentsController()); 
+      Get.put(MultipileStudentsController());
 
   String deviceToken = '';
 
@@ -127,9 +143,63 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
     //   sendPushMessage( deviceToken, 'Hello Everyone', 'DUJO APP');
   }
 
-  
   @override
   Widget build(BuildContext context) {
+     final screenNavigationOfParent = [
+      AttendenceBookScreenSelectMonth(
+          schoolId: UserCredentialsController.schoolId!,
+          batchId: UserCredentialsController.batchId!,
+          classID: UserCredentialsController.classId!), //Attendence
+
+      // LeaveApplicationScreen(
+      //    // studentName: studentName,
+      //     guardianName: UserCredentialsController.parentModel!.parentName!,
+      //     classID: UserCredentialsController.classId!,
+      //     schoolId: UserCredentialsController.schoolId!,
+      //     studentID: UserCredentialsController.parentModel!.studentID!,
+      //     batchId: UserCredentialsController.batchId!), //Leave Letter////
+      ///student name error
+
+
+      const ParentChatScreen(),
+
+      const SS(), // Time Table
+
+      SchoolLevelMeetingPage(), //Meetings
+
+      const UserExmNotifications(), // Exams
+
+      UsersSelectExamLevelScreen(
+          classId: UserCredentialsController.classId!,
+          studentID: UserCredentialsController
+              .parentModel!.studentID!), ////// exam result
+
+      const ViewHomeWorks(), // Home Works
+
+      NoticePage(), //Notice
+
+      const EventList(), //Events
+
+      // ProgressReportListViewScreen(
+      //     schoolId: UserCredentialsController.schoolId!,
+      //     classID: UserCredentialsController.classId!,
+      //     studentId: UserCredentialsController.parentModel?.studentID ?? "",
+      //     batchId: UserCredentialsController.batchId!), //Progress Report
+
+      const StudentSubjectHome(), //Subjects
+
+      TeacherSubjectWiseList(navValue: 'parent'), //Teachers
+
+      BusRouteListPage(),
+      /////// all bus
+      const FeesPage(),
+      AllClassTestPage(
+        pageNameFrom: "parent",
+      ), //class test page
+      AllClassTestMonthlyPage(
+        pageNameFrom: "parent",
+      ),
+    ];
     log("Parent DOCID :::::::::::::::::::  ${UserCredentialsController.parentModel?.docid}");
     log("Firebase Auth DOCID :::::::::::::::::::  ${FirebaseAuth.instance.currentUser?.uid}");
     final parentAuth = DBParentLogin(
@@ -146,7 +216,7 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
         FirebaseAuth.instance.currentUser!.uid, parentAuth);
 
     String studentName = '';
-  
+
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -168,25 +238,28 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                             Color.fromARGB(99, 214, 212, 212),
                             Color.fromARGB(255, 139, 233, 223)
                           ]),
-
+                             color: adminePrimayColor,
                       // color: Color.fromARGB(192, 208, 191, 234),
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(45),
                           bottomRight: Radius.circular(45))),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.only(left: screenSize.width / 30, top: 20),
-                  child: Text(
-                    "Welcome...",
-                    style: GoogleFonts.abel(
-                        fontSize: 12, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: screenSize.width / 30, top: 50),
-                  child: GestureDetector(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text(
+                          "Welcome...",
+                          style: GoogleFonts.abel(
+                              fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: GestureDetector(
                           onTap: () {
                             log(UserCredentialsController
                                 .parentModel!.studentID!);
@@ -203,72 +276,76 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                             ),
                           ),
                         ),
-                ),
-                // Padding(
-                //   padding:
-                //       EdgeInsets.only(left: screenSize.width / 1.4, top: 30),
-                //   child: const CircleAvatar(
-                //     maxRadius: 40,
-                //     backgroundImage: AssetImage('assets/images/IOT.jpg'),
-                //   ),
-                // ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 10, top: 130),
-                  child:  FutureBuilder(
-                      future: FirebaseFirestore.instance
-                          .collection("SchoolListCollection")
-                          .doc(UserCredentialsController.schoolId)
-                          .collection("AllStudents")
-                          .doc(UserCredentialsController
-                                  .parentModel?.studentID ??
-                              '')
-                          .get(),
-                      builder: (context, snap) {
-                        if (snap.hasData) {
-                          return GoogleMonstserratWidgets(
-                            text:
-                                'Student : ${snap.data?.data()?['studentName']}',
-                            fontsize: 14.5.sp,
-                            fontWeight: FontWeight.w500,
-                            color: cblack.withOpacity(0.8),
-                          );
-                        } else {
-                          return const Text('');
-                        }
-                      }),
-                ),
-                GoogleMonstserratWidgets(
-                    text:
-                        'email : ${UserCredentialsController.parentModel?.parentEmail ?? ""}',
-                    fontsize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                    color: cblack.withOpacity(0.7),
+                      ),
+
+                      // Padding(
+                      //   padding:
+                      //       EdgeInsets.only(left: screenSize.width / 1.4, top: 30),
+                      //   child: const CircleAvatar(
+                      //     maxRadius: 40,
+                      //     backgroundImage: AssetImage('assets/images/IOT.jpg'),
+                      //   ),
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: FutureBuilder(
+                            future: FirebaseFirestore.instance
+                                .collection("SchoolListCollection")
+                                .doc(UserCredentialsController.schoolId)
+                                .collection("AllStudents")
+                                .doc(UserCredentialsController
+                                        .parentModel?.studentID ??
+                                    '')
+                                .get(),
+                            builder: (context, snap) {
+                              if (snap.hasData) {
+                                return GoogleMonstserratWidgets(
+                                  text:
+                                      'Student : ${snap.data?.data()?['studentName']}',
+                                  fontsize: 14.5.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: cblack.withOpacity(0.8),
+                                );
+                              } else {
+                                return const Text('');
+                              }
+                            }),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: FutureBuilder(
+                            future: FirebaseFirestore.instance
+                                .collection('SchoolListCollection')
+                                .doc(UserCredentialsController.schoolId)
+                                .collection(UserCredentialsController.batchId!)
+                                .doc(UserCredentialsController.batchId)
+                                .collection('classes')
+                                .doc(UserCredentialsController.classId)
+                                .get(),
+                            builder: (context, snaps) {
+                              if (snaps.hasData) {
+                                return GoogleMonstserratWidgets(
+                                  text:
+                                      'Class : ${snaps.data?.data()?['className']}',
+                                  fontsize: 13.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: cblack.withOpacity(0.8),
+                                );
+                              } else {
+                                return const Text('');
+                              }
+                            }),
+                      ),
+                      GoogleMonstserratWidgets(
+                        text:
+                            'email : ${UserCredentialsController.parentModel?.parentEmail ?? ""}',
+                        fontsize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        color: cblack.withOpacity(0.7),
+                      ),
+                    ],
                   ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 10, top: 150),
-                  child: FutureBuilder(
-                      future: FirebaseFirestore.instance
-                          .collection('SchoolListCollection')
-                          .doc(UserCredentialsController.schoolId)
-                          .collection(UserCredentialsController.batchId!)
-                          .doc(UserCredentialsController.batchId)
-                          .collection('classes')
-                          .doc(UserCredentialsController.classId)
-                          .get(),
-                      builder: (context, snaps) {
-                        if (snaps.hasData) {
-                          return GoogleMonstserratWidgets(
-                            text: 'Class : ${snaps.data?.data()?['className']}',
-                            fontsize: 13.sp,
-                            fontWeight: FontWeight.w500,
-                            color: cblack.withOpacity(0.8),
-                          );
-                        } else {
-                          return const Text('');
-                        }
-                      }),
                 ),
                 // Padding(
                 //   padding: const EdgeInsets.only(left: 40, top: 110),
@@ -280,25 +357,45 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                 //             image: AssetImage('assets/images/company.jpg'))),
                 //   ),
                 // ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: screenSize.width / 7, top: 180),
-                  child: const CircleAvatar(
-                    maxRadius: 40,
-                    backgroundImage: AssetImage('assets/images/company.jpg'),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: screenSize.width / 2.5, top: 180),
-                  child: const CircleAvatar(
-                    maxRadius: 40,
-                    backgroundImage: AssetImage('assets/images/AI.jpg'),
-                  ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 80, top: 180),
+                      child: GestureDetector(
+                        onTap: () {
+                            Get.to(() => ParentEditProfileScreen());
+                          },
+                        child: CircleAvatar(
+                          maxRadius: 40,
+                          backgroundImage: NetworkImage(UserCredentialsController
+                                  .parentModel!.profileImageURL ??
+                              ''),
+                          child: const Padding(
+                            padding: EdgeInsets.only(top: 55,left: 50),
+                            child: CircleAvatar(
+                              //  backgroundColor: cWhite,
+                              radius: 12,
+                              child: Center(child: Icon(Icons.info)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 30, top: 180),
+                      child: CircleAvatar(
+                        maxRadius: 40,
+                        backgroundImage: AssetImage('assets/images/AI.jpg'),
+                      ),
+                    ),
+                  ],
                 ),
               ],
-            ),
-            const CarouselSliderWidget(),
+            ),/////////////////////////////////////
+            const Padding(
+              padding: EdgeInsets.only(top: 12,left: 8,right: 8,bottom: 10),
+              child: CarouselSliderWidget(),
+            ),////////////////////////////////////
             Container(
               child: Column(
                 children: [
@@ -306,212 +403,194 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.waving_hand,
-                              text: ' Attendance',
-                              onTap: () {}),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, top: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/icons8-attendance-100.png',
+                           // icon: Icons.waving_hand,
+                            text: ' Attendance',
+                            onTap: () {
+                              Get.to(screenNavigationOfParent[0]
+                              );
+                            }),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.home_work,
-                              text: 'Homework',
-                              onTap: () {}),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/icons8-homework-67.png',
+                         //   icon: Icons.home_work,
+                            text: 'Homework',
+                            onTap: () {}),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.assignment_rounded,
-                              text: 'Time Table',
-                              onTap: () {}),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.person_2,
-                              text: 'Teachers',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.attach_money_rounded,
-                              text: 'Fees & Bills',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.note_sharp,
-                              text: 'Leave Letters',
-                              onTap: () {}),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, top: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/study-time.png',
+                           // icon: Icons.assignment_rounded,
+                            text: 'Time Table',
+                            onTap: () {}),
                       ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(
-                        child: Padding(
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/icons8-teacher-100.png',
+                            //icon: Icons.person_2,
+                            text: 'Teachers',
+                            onTap: () {}),
+                      ),
+                       Padding(
                           padding: const EdgeInsets.only(
                               left: 10, right: 10, bottom: 10),
                           child: ContainerWidget(
-                              icon: Icons.list_alt,
-                              text: 'Exams',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.add_chart,
-                              text: 'Exam Results',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.notification_add,
-                              text: 'Notices',
-                              onTap: () {}),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.event, text: 'Events', onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.meeting_room,
-                              text: 'Meetings',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.bus_alert,
-                              text: 'Bus Route',
-                              onTap: () {}),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.class_,
-                              text: 'Class Test',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.view_list,
-                              text: 'Monthly Class Test',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.library_books,
-                              text: 'Library',
-                              onTap: () {}),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.food_bank,
-                              text: 'Canteen',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.chat_rounded,
-                              text: 'Chats',
-                              onTap: () {}),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                              icon: Icons.import_contacts,
+                            image: 'assets/flaticons/icons8-books-48.png',
+                              //icon: Icons.import_contacts,
                               text: 'Subjects',
                               onTap: () {}),
                         ),
+                      
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: '',
+                            //icon: Icons.note_sharp,
+                            text: 'Leave Letters',
+                            onTap: () {}),
                       ),
                     ],
-                  )
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/exam.png',
+                            //icon: Icons.list_alt,
+                            text: 'Exams',
+                            onTap: () {}),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/icons8-grades-100.png',
+                            //icon: Icons.add_chart,
+                            text: 'Exam Results',
+                            onTap: () {}),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/icons8-notice-100.png',
+                          //  icon: Icons.notification_add,
+                            text: 'Notices',
+                            onTap: () {}),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/schedule.png',
+                           // icon: Icons.event, 
+                            text: 'Events', onTap: () {}),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/meeting.png',
+                          //  icon: Icons.meeting_room,
+                            text: 'Meetings',
+                            onTap: () {}),
+                      ),
+                       Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: ContainerWidget(
+                            image: 'assets/flaticons/icons8-chat-100.png',
+                              //icon: Icons.chat_rounded,
+                              text: 'Chats',
+                              onTap: () {}),
+                        ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(
+                      //       left: 10, right: 10, bottom: 10),
+                      //   child: ContainerWidget(
+                      //     image: '',
+                      //       //icon: Icons.bus_alert,
+                      //       text: 'Bus Route',
+                      //       onTap: () {}),
+                      // ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                     
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 10, right: 10, bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/exam (1).png',
+                            //icon: Icons.class_,
+                            text: 'Class Test',
+                            onTap: () {}),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ContainerWidget(
+                          image: 'assets/flaticons/test.png',
+                            //icon: Icons.view_list,
+                            text: 'Monthly Class Test',
+                            onTap: () {}),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ContainerWidget(
+                          image: '',
+                            //icon: Icons.attach_money_rounded,
+                            text: 'Fees & Bills',
+                            onTap: () {}),
+                      ),
+                      // Expanded(
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.only(
+                      //         left: 10, right: 10, bottom: 10),
+                      //     child: ContainerWidget(
+                      //       image: '',
+                      //         //icon: Icons.library_books,
+                      //         text: 'Library',
+                      //         onTap: () {}),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                  
                 ],
               ),
             ),
           ],
         ),
       )),
-      
     );
   }
 }
+
+
+
+
+
+
