@@ -153,7 +153,7 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
       AttendenceBookScreenSelectMonth(
           schoolId: UserCredentialsController.schoolId!,
           batchId: UserCredentialsController.batchId!,
-          classID: UserCredentialsController.classId!), //Attendence
+          classID: UserCredentialsController.classId!), //Attendence...0
 
       LeaveApplicationScreen(
           studentName:widget.studentName,
@@ -161,28 +161,28 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
           classID: UserCredentialsController.classId!,
           schoolId: UserCredentialsController.schoolId!,
           studentID: UserCredentialsController.parentModel!.studentID!,
-          batchId: UserCredentialsController.batchId!), //Leave Letter////
+          batchId: UserCredentialsController.batchId!), //Leave Letter////...1
       ///student name error
 
 
-      const ParentChatScreen(),
+      const ParentChatScreen(),/////......2
 
-      const SS(), // Time Table
+      const SS(), // Time Table...........3
 
-      SchoolLevelMeetingPage(), //Meetings
+      SchoolLevelMeetingPage(), //Meetings................4
 
-      const UserExmNotifications(), // Exams
+      const UserExmNotifications(), // Exams...........5
 
       UsersSelectExamLevelScreen(
           classId: UserCredentialsController.classId!,
           studentID: UserCredentialsController
-              .parentModel!.studentID!), ////// exam result
+              .parentModel!.studentID!), ////// exam result............6
 
-      const ViewHomeWorks(), // Home Works
+      const ViewHomeWorks(), // Home Works...............7
 
-      NoticePage(), //Notice
+      NoticePage(), //Notice.........8
 
-      const EventList(), //Events
+      const EventList(), //Events.................9
 
       // ProgressReportListViewScreen(
       //     schoolId: UserCredentialsController.schoolId!,
@@ -190,19 +190,19 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
       //     studentId: UserCredentialsController.parentModel?.studentID ?? "",
       //     batchId: UserCredentialsController.batchId!), //Progress Report
 
-      const StudentSubjectHome(), //Subjects
+      const StudentSubjectHome(), //Subjects...............10
 
-      TeacherSubjectWiseList(navValue: 'parent'), //Teachers
+      TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................11
 
-      BusRouteListPage(),
+      BusRouteListPage(),//////////......................12
       /////// all bus
-      const FeesPage(),
+      const FeesPage(),////////////////////...........13
       AllClassTestPage(
         pageNameFrom: "parent",
-      ), //class test page
+      ), //class test page////////////////////////////14
       AllClassTestMonthlyPage(
         pageNameFrom: "parent",
-      ),
+      ),//////////////15
     ];
     log("Parent DOCID :::::::::::::::::::  ${UserCredentialsController.parentModel?.docid}");
     log("Firebase Auth DOCID :::::::::::::::::::  ${FirebaseAuth.instance.currentUser?.uid}");
@@ -425,7 +425,10 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/icons8-homework-67.png',
                          //   icon: Icons.home_work,
                             text: 'Homework',
-                            onTap: () {}),
+                            onTap: () 
+                            {
+                               Get.to(screenNavigationOfParent[7]);
+                            }),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
@@ -434,7 +437,9 @@ class _ParentProfileHomePageState extends State<ParentProfileHomePage> {
                           image: 'assets/flaticons/study-time.png',
                            // icon: Icons.assignment_rounded,
                             text: 'Time Table',
-                            onTap: () {}),
+                            onTap: () {
+                               Get.to(screenNavigationOfParent[3]);
+                            }),
                       ),
                     ],
                   ),
