@@ -42,7 +42,7 @@ class ClassTeacherNewHomePage extends StatefulWidget {
 
 class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
   UserLogOutController userLogOutController = Get.put(UserLogOutController());
- // int _page = 0;
+  // int _page = 0;
 
   // onPageChanged(int page) {
   //   setState(() {
@@ -70,8 +70,7 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
         schoolId: UserCredentialsController.schoolId!,
       ), ////////////  Attendance book
 
-      const TeacherChatScreen(),// Chats
-      
+      const TeacherChatScreen(), // Chats
 
       const SS(), //TimeTable
 
@@ -101,15 +100,13 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
 
       const EventList(), //Events
 
-  
-
       TeacherSubjectWiseList(navValue: ''), //Teachers
 
       BusRouteListPage(), /////// all bus
     ];
     // checkingSchoolActivate(context);
     // List<Widget> pages = [
-    
+
     //   RecSelectSubjectScreen(
     //     batchId: UserCredentialsController.batchId!,
     //     classID: UserCredentialsController.classId!,
@@ -129,73 +126,86 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 280,
+                      height: 340,
                       decoration: const BoxDecoration(
                           gradient: LinearGradient(colors: [
                             Color.fromARGB(255, 5, 85, 222),
                             Colors.lightBlueAccent
-                          ]),//fromARGB(255, 234, 234, 234),
+                          ]), //fromARGB(255, 234, 234, 234),
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30),
                               bottomRight: Radius.circular(30))),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Column(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  UserCredentialsController
-                                          .teacherModel?.imageUrl ??
-                                      " "),
-                              maxRadius: 45,
+                            Container(
+                              color: AppColors.blackColor,
+                              height: 200,
+                              width: 200,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8),
-                              child: GoogleMonstserratWidgets(
-                              overflow: TextOverflow.ellipsis,
-                              text: UserCredentialsController
-                                      .teacherModel?.teacherName ??
-                                  " ",
-                              fontsize: 23.sp,
-                              fontWeight: FontWeight.bold,
-                              color: cWhite,
-                                                        ),
+                            Column(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      UserCredentialsController
+                                              .teacherModel?.imageUrl ??
+                                          " "),
+                                  maxRadius: 45,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: GoogleMonstserratWidgets(
+                                    overflow: TextOverflow.ellipsis,
+                                    text: UserCredentialsController
+                                            .teacherModel?.teacherName ??
+                                        " ",
+                                    fontsize: 23.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: cWhite,
+                                  ),
+                                ),
+                                FutureBuilder(
+                                    future: FirebaseFirestore.instance
+                                        .collection('SchoolListCollection')
+                                        .doc(UserCredentialsController.schoolId)
+                                        .collection(
+                                            UserCredentialsController.batchId!)
+                                        .doc(UserCredentialsController.batchId)
+                                        .collection('classes')
+                                        .doc(UserCredentialsController.classId)
+                                        .get(),
+                                    builder: (context, snaps) {
+                                      if (snaps.hasData) {
+                                        return GoogleMonstserratWidgets(
+                                          text:
+                                              'Class : ${snaps.data!.data()!['className']}',
+                                          fontsize: 15.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: cWhite.withOpacity(0.8),
+                                        );
+                                      } else {
+                                        return const Text('');
+                                      }
+                                    }),
+                                GoogleMonstserratWidgets(
+                                  text:
+                                      'ID : ${UserCredentialsController.teacherModel?.employeeID ?? " "}',
+                                  fontsize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: cWhite.withOpacity(0.8),
+                                ),
+                                GoogleMonstserratWidgets(
+                                  text:
+                                      'email : ${UserCredentialsController.teacherModel?.teacherEmail ?? " "}',
+                                  fontsize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: cWhite.withOpacity(0.7),
+                                ),
+                              ],
                             ),
-                                     FutureBuilder(
-                      future: FirebaseFirestore.instance
-                          .collection('SchoolListCollection')
-                          .doc(UserCredentialsController.schoolId)
-                          .collection(UserCredentialsController.batchId!)
-                          .doc(UserCredentialsController.batchId)
-                          .collection('classes')
-                          .doc(UserCredentialsController.classId)
-                          .get(),
-                      builder: (context, snaps) {
-                        if (snaps.hasData) {
-                          return GoogleMonstserratWidgets(
-                            text: 'Class : ${snaps.data!.data()!['className']}',
-                            fontsize: 15.sp,
-                            fontWeight: FontWeight.w500,
-                            color: cWhite.withOpacity(0.8),
-                          );
-                        } else {
-                          return const Text('');
-                        }
-                      }),
-                            GoogleMonstserratWidgets(
-                              text:
-                                  'ID : ${UserCredentialsController.teacherModel?.employeeID ?? " "}',
-                              fontsize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: cWhite.withOpacity(0.8),
-                            ),
-                             GoogleMonstserratWidgets(
-                    text:
-                        'email : ${UserCredentialsController.teacherModel?.teacherEmail ?? " "}',
-                    fontsize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                    color: cWhite.withOpacity(0.7),
-                  ),
                           ],
                         ),
                       ),
@@ -263,26 +273,28 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                         // crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ContainerWidget(
-                             //icon: Icons.waving_hand,
+                            //icon: Icons.waving_hand,
                             text: ' Take Attendance',
                             onTap: () {
-                              Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, 
-                            icon: 'assets/flaticons/roll-call.png', 
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/roll-call.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.import_contacts,
                             text: 'Attendance Book',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[1]);
-                            },  icon: 'assets/flaticons/book.png',
+                              Get.to(() => screenNavigationOfClsTr[1]);
+                            },
+                            icon: 'assets/flaticons/book.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.chat_rounded,
                             text: 'Chats',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[2]);
-                            },  icon:'assets/flaticons/icons8-chat-100.png',
+                              Get.to(() => screenNavigationOfClsTr[2]);
+                            },
+                            icon: 'assets/flaticons/icons8-chat-100.png',
                           ),
                         ],
                       ),
@@ -294,21 +306,25 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                             // icon: Icons.waving_hand,
                             text: ' Time Table',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/worksheet.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/worksheet.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.import_contacts,
                             text: 'Leave Letters',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/email.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/email.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.chat_rounded,
                             text: 'Home Work',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);}, icon: 'assets/flaticons/email.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/email.png',
                           ),
                         ],
                       ),
@@ -320,22 +336,25 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                             // icon: Icons.waving_hand,
                             text: 'My Students ',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/students.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/students.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.import_contacts,
                             text: 'Study Materials',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/school-material.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/school-material.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.chat_rounded,
                             text: 'Meeting',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/teamwork.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/teamwork.png',
                           ),
                         ],
                       ),
@@ -347,22 +366,25 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                             // icon: Icons.waving_hand,
                             text: 'Exams ',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/icons8-grades-100.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/icons8-grades-100.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.import_contacts,
                             text: 'Notices',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/icons8-notice-100.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/icons8-notice-100.png',
                           ),
                           ContainerWidget(
                             //icon: Icons.chat_rounded,
                             text: 'Events',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/calendar.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/calendar.png',
                           ),
                         ],
                       ),
@@ -374,8 +396,9 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                             // icon: Icons.waving_hand,
                             text: 'Teacher ',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, icon: 'assets/flaticons/female.png',
+                              Get.to(() => screenNavigationOfClsTr[0]);
+                            },
+                            icon: 'assets/flaticons/female.png',
                           ),
                           // ContainerWidget(
                           //   //icon: Icons.import_contacts,

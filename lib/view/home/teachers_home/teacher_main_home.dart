@@ -68,7 +68,7 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
             backgroundColor: adminePrimayColor),
         body: pages[_page],
         bottomNavigationBar: Container(
-          height: 71,
+          height: 81,
           decoration: BoxDecoration(
             // color: Colors.white,
             borderRadius: const BorderRadius.only(
