@@ -38,6 +38,7 @@ class ContainerWidget extends StatelessWidget {
                 child: Image.asset(
                   icon,
                   fit: BoxFit.contain,
+                  height: 40,width: 40,
                   scale: 2,
                 ),
               ),
