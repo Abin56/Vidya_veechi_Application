@@ -14,3 +14,4 @@ const Color cgraident2 = Color.fromARGB(255, 23, 155, 231);
 const Color cgrey1 = Color.fromARGB(255, 241, 241, 241);
 
 const Color adminePrimayColor = Color.fromARGB(255, 6, 71, 157);
+Color greenthemColor = const Color.fromARGB(255, 123, 182, 97);
