@@ -2,6 +2,7 @@ import 'package:vidya_veechi/controllers/log_out/user_logout_controller.dart';
 import 'package:vidya_veechi/main.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/class_teacher_HOme/class_teacher_home.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/class_teacher_new_homepage.dart';
 import 'package:vidya_veechi/view/pages/live_classes/teacher_live_section/create_room.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
@@ -17,7 +18,7 @@ import '../drawer/class_teacher.dart';
 import '../teachers_home/teacher_classes_list.dart';
 
 class ClassTeacherMainHomeScreen extends StatefulWidget {
-  const ClassTeacherMainHomeScreen({Key? key}) : super(key: key);
+  const ClassTeacherMainHomeScreen({super.key});
 
   @override
   State<ClassTeacherMainHomeScreen> createState() =>
@@ -45,7 +46,7 @@ class _ClassTeacherMainHomeScreenState
   Widget build(BuildContext context) {
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      ClassTeacherHomeScreen(),
+      const ClassTeacherNewHomePage(),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
