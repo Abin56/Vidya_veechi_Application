@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "341868646352",
+    "project_id": "vidya-veechi-8-feb-2024",
+    "storage_bucket": "vidya-veechi-8-feb-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341868646352:android:da5b9136a6e3ba679a33d5",
+        "android_client_info": {
+          "package_name": "in.vidyaveechi.leptoncommunications"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNm7KuQcHr2J9gUHpzBa7aJk2xt7zT8DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
