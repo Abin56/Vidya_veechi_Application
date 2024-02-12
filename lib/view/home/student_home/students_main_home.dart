@@ -1,15 +1,14 @@
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
-import 'package:vidya_veechi/view/home/student_home/student_home.dart';
-import 'package:vidya_veechi/view/home/student_home/student_new_homepage.dart';
-import 'package:vidya_veechi/view/pages/live_classes/students_room/list_room.dart';
-import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
+import 'package:vidya_veechi/view/home/student_home/student_new_homepage.dart';
+import 'package:vidya_veechi/view/pages/live_classes/students_room/list_room.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../main.dart';
 import '../../pages/chat_gpt/screens/chat_screen.dart';
@@ -49,7 +48,8 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
   Widget build(BuildContext context) {
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      const StudentHomeScreen(),
+      const NewStdHomePage(),
+     // const StudentHomeScreen(),
       // const NewStdHomePage(), ///////////////////////////////////////////
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,

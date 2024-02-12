@@ -1,55 +1,53 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_salsa.dart';
+
 import 'package:flutter/material.dart';
-import 'package:gradient_icon/gradient_icon.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 
 class ContainerWidget extends StatelessWidget {
   final String text;
-  final String icon;
+  //final IconData icon;
+  final String image;
   final void Function()? onTap;
 
   const ContainerWidget({
     required this.text,
-    required this.icon,
+    //required this.icon,
+    required this.image,
     required this.onTap,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        width: 80.w, //110
-        height: 110.h,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 80.h,
-              width: 80.w,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border:
-                      Border.all(color: adminePrimayColor.withOpacity(0.5))),
-              child: Center(
-                child: Image.asset(
-                  icon,
-                  fit: BoxFit.contain,
-                  scale: 2,
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: GestureDetector(
+        onTap: onTap,
+        child: SizedBox(
+          width: 105.w, //110
+          height: 100.h,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 80.h,
+                width: 80.w,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border:
+                        Border.all(color: adminePrimayColor.withOpacity(0.5))),
+                child: Center(
+                  child: Image.asset(
+                    image,height: 40,width: 40,
+                    fit: BoxFit.contain,
+                    scale: 2,
+                  ),
                 ),
               ),
-            ),
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
-              ),
-            )
-          ],
+              GooglePoppinsWidgets(text: text, fontsize: 10,fontWeight: FontWeight.bold,)
+            ],
+          ),
         ),
       ),
     );
