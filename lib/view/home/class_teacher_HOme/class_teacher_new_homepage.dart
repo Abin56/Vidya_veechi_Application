@@ -89,7 +89,7 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
 
       const MyStudents(), //My students
 
-      StudentSubjectHome(), //Subject
+      const StudentSubjectHome(), //Subject
 
       SchoolLevelMeetingPage(), //Meetings
 
@@ -255,36 +255,39 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 50,),
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ContainerWidget(
-                             //icon: Icons.waving_hand,
-                            text: ' Take Attendance',
-                            onTap: () {
-                              Get.to(() =>screenNavigationOfClsTr[0]);
-                            }, 
-                            icon: 'assets/flaticons/roll-call.png', 
-                          ),
-                          ContainerWidget(
-                            //icon: Icons.import_contacts,
-                            text: 'Attendance Book',
-                            onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[1]);
-                            },  icon: 'assets/flaticons/book.png',
-                          ),
-                          ContainerWidget(
-                            //icon: Icons.chat_rounded,
-                            text: 'Chats',
-                            onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[2]);
-                            },  icon:'assets/flaticons/icons8-chat-100.png',
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ContainerWidget(
+                               //icon: Icons.waving_hand,
+                              text: ' Take Attendance',
+                              onTap: () {
+                                Get.to(() =>screenNavigationOfClsTr[0]);
+                              }, 
+                              icon: 'assets/flaticons/roll-call.png', 
+                            ),
+                            ContainerWidget(
+                              //icon: Icons.import_contacts,
+                              text: 'Attendance Book',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[1]);
+                              },  icon: 'assets/flaticons/book.png',
+                            ),
+                            ContainerWidget(
+                              //icon: Icons.chat_rounded,
+                              text: 'Chats',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[2]);
+                              },  icon:'assets/flaticons/icons8-chat-100.png',
+                            ),
+                          ],
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -308,7 +311,7 @@ class _ClassTeacherNewHomePageState extends State<ClassTeacherNewHomePage> {
                             //icon: Icons.chat_rounded,
                             text: 'Home Work',
                             onTap: () {
-                                 Get.to(() =>screenNavigationOfClsTr[0]);}, icon: 'assets/flaticons/email.png',
+                                 Get.to(() =>screenNavigationOfClsTr[0]);}, icon: 'assets/flaticons/homework.png',
                           ),
                         ],
                       ),
@@ -418,6 +421,7 @@ class CaroselWidget extends StatelessWidget {
           child: GooglePoppinsWidgets(
             text: slidertext,
             fontsize: 15,
+            
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),

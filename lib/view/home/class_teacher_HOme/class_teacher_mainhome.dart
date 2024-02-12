@@ -60,6 +60,7 @@ class _ClassTeacherMainHomeScreenState
       child: Scaffold(
         appBar: AppBar(
             foregroundColor: cWhite,
+             flexibleSpace: const ClsTeacherAppBarColor(),
             title: SizedBox(
               // color: cred,
               height: 80.h,
@@ -141,3 +142,18 @@ class _ClassTeacherMainHomeScreenState
     );
   }
 }
+class ClsTeacherAppBarColor extends StatelessWidget {
+  const ClsTeacherAppBarColor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+        Color.fromARGB(255, 5, 85, 222),
+        Colors.lightBlueAccent
+      ])),
+    );
+  }
+}
+
