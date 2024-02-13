@@ -10,8 +10,8 @@ class QuickActionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80.h,
-      width: 80.w,
+      height: 86.h,
+      width: 86.w,
       child: Column(
         children: [
           Container(
@@ -26,7 +26,10 @@ class QuickActionsWidget extends StatelessWidget {
               scale: 2.5,
             ),
           ),
-          const Text("Chat")
+          Text(
+            "Attendence",
+            style: TextStyle(fontSize: 12.sp),
+          )
         ],
       ),
     );

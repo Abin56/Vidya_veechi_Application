@@ -133,263 +133,263 @@ class SampleHome extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 244, 244, 244),
       body: SafeArea(
-          child: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 160.sp),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 218, 247, 229),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.sp),
-                    topRight: Radius.circular(15.sp)),
-              ),
-              child: Stack(
-                children: [
-                  ListView(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 120.sp, right: 20.sp, left: 20.sp),
-                        child: Container(
-                          height: 120.h,
-                          decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: cblack.withOpacity(0.1)),
-                              color: const Color.fromARGB(255, 218, 247, 229),
-                              borderRadius: BorderRadius.circular(20.sp)),
-                          child: Padding(
-                            padding: EdgeInsets.all(10.sp),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'QUICK ACTIONS',
-                                  style: TextStyle(
-                                      color:
-                                          const Color.fromARGB(255, 48, 88, 86),
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const Spacer(),
-                                GestureDetector(
-                                  onTap: () {
-                                    viewallMenus();
-                                  },
-                                  child: Text(
-                                    "View all",
-                                    style: TextStyle(
-                                        color: cblack.withOpacity(0.8)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: 80.sp, right: 20.sp, left: 20.sp),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'NOTIFICATIONS',
-                                  style: TextStyle(
-                                      color:
-                                          const Color.fromARGB(255, 48, 88, 86),
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      height: 1.h,
-                                      color:
-                                          const Color.fromARGB(255, 48, 88, 86)
-                                              .withOpacity(0.1),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.only(top: 0),
-                                child: SizedBox(
-                                  height: 230.h,
-                                  child: ListView.separated(
-                                      itemBuilder: (context, index) {
-                                        return ListTile(
-                                          leading: CircleAvatar(
-                                            backgroundColor: cWhite,
-                                            radius: 25.sp,
-                                            child: Center(
-                                              child: CircleAvatar(
-                                                radius: 20.sp,
-                                              ),
-                                            ),
-                                          ),
-                                          title: Text(
-                                            "Holiday",
-                                            style: TextStyle(
-                                                color: const Color.fromARGB(
-                                                    255, 48, 88, 86),
-                                                fontSize: 18.sp,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          subtitle: const Text(
-                                            "Tommorow is Holiday",
-                                            style: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 48, 88, 86),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) {
-                                        return const SizedBox();
-                                      },
-                                      itemCount: 10),
-                                ))
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 190, left: 40),
-                    child: Row(
-                      children: [
-                        QuickActionsWidget(),
-                        QuickActionsWidget(),
-                        QuickActionsWidget(),
-                        QuickActionsWidget(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              // child: const Column(
-              //   children: [],
-              // ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 80, right: 10, left: 10),
-            child: Container(
-              height: 190.h,
-              decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: cblack,
-                    ),
-                  ],
-                  color: cWhite,
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 08),
+          child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 160.sp),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 218, 247, 229),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.sp),
+                      topRight: Radius.circular(15.sp)),
+                ),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 120.sp, right: 20.sp, left: 20.sp),
+                      child: Container(
+                        height: 100.h,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: cblack.withOpacity(0.1)),
+                            color: const Color.fromARGB(255, 218, 247, 229),
+                            borderRadius: BorderRadius.circular(20.sp)),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.sp),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: 40.h,
-                                child: Image.asset(
-                                    'assets/flaticons/icons8-attendance-100.png'),
-                              ),
                               Text(
-                                '  Attendance',
+                                'QUICK ACTIONS',
                                 style: TextStyle(
                                     color:
                                         const Color.fromARGB(255, 48, 88, 86),
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold),
                               ),
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  viewallMenus();
+                                },
+                                child: Text(
+                                  "View all",
+                                  style:
+                                      TextStyle(color: cblack.withOpacity(0.8)),
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 05, left: 20),
-                          child: Text(
-                            'AVERAGE',
-                            style: TextStyle(
-                                color: const Color.fromARGB(255, 228, 173, 21),
-                                fontSize: 30.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 05, left: 25),
-                          child: Text(
-                            '200/300',
-                            style: TextStyle(
-                                fontSize: 35.sp, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  const Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: AttendanceGraphOfStudent(),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 80.sp, right: 20.sp, left: 20.sp),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'NOTIFICATIONS',
+                                style: TextStyle(
+                                    color:
+                                        const Color.fromARGB(255, 48, 88, 86),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 1.h,
+                                    color: const Color.fromARGB(255, 48, 88, 86)
+                                        .withOpacity(0.1),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 290.h,
+                            child: ListView.separated(
+                                // physics:
+                                //     const NeverScrollableScrollPhysics(),
+                                // shrinkWrap: false,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    leading: CircleAvatar(
+                                      backgroundColor: cWhite,
+                                      radius: 25.sp,
+                                      child: Center(
+                                        child: CircleAvatar(
+                                          radius: 20.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    title: Text(
+                                      "Holiday",
+                                      style: TextStyle(
+                                          color: const Color.fromARGB(
+                                              255, 48, 88, 86),
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: const Text(
+                                      "Tommorow is Holiday",
+                                      style: TextStyle(
+                                        color: Color.fromARGB(255, 48, 88, 86),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (context, index) {
+                                  return const SizedBox();
+                                },
+                                itemCount: 10),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+
+                // child: const Column(
+                //   children: [],
+                // ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 100.h,
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: 05.sp,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: CircleAvatar(
-                        radius: 25,
+            Padding(
+              padding: const EdgeInsets.only(top: 80, right: 10, left: 10),
+              child: Container(
+                height: 190.h,
+                decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: cblack,
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 12, top: 10),
-                      child: SizedBox(
-                        width: 200,
-                        child: GooglePoppinsEventsWidgets(
-                          text: "ARTURO ROMAN",
-                          fontsize: 17.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
+                    ],
+                    color: cWhite,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
                       flex: 1,
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.now_widgets)))
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, top: 08),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 40.h,
+                                  child: Image.asset(
+                                      'assets/flaticons/icons8-attendance-100.png'),
+                                ),
+                                Text(
+                                  '  Attendance',
+                                  style: TextStyle(
+                                      color:
+                                          const Color.fromARGB(255, 48, 88, 86),
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 05, left: 20),
+                            child: Text(
+                              'AVERAGE',
+                              style: TextStyle(
+                                  color:
+                                      const Color.fromARGB(255, 228, 173, 21),
+                                  fontSize: 30.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 05, left: 25),
+                            child: Text(
+                              '200/300',
+                              style: TextStyle(
+                                  fontSize: 35.sp, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: AttendanceGraphOfStudent(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100.h,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 05.sp,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: CircleAvatar(
+                          radius: 25,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12, top: 10),
+                        child: SizedBox(
+                          width: 200,
+                          child: GooglePoppinsEventsWidgets(
+                            text: "ARTURO ROMAN",
+                            fontsize: 17.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.now_widgets)))
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 340.sp, left: 40),
+              child: const Row(
+                children: [
+                  QuickActionsWidget(),
+                  QuickActionsWidget(),
+                  QuickActionsWidget(),
+                  QuickActionsWidget(),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       )),
     );
   }
