@@ -22,7 +22,7 @@ class ContainerWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 80.w, //110
+        width: 105.w, //110
         height: 110.h,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
