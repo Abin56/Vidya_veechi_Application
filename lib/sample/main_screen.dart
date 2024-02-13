@@ -1,24 +1,17 @@
 import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/sample/qucik_action.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
 import 'package:vidya_veechi/view/home/student_home/graph_std/attendance_std_g.dart';
-import 'package:vidya_veechi/view/home/student_home/slider/carosal_silder.dart';
-import 'package:vidya_veechi/view/home/student_home/student_home.dart';
-import 'package:vidya_veechi/view/home/student_home/student_new_homepage.dart';
-import 'package:vidya_veechi/view/pages/live_classes/students_room/list_room.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 
 import '../../../main.dart';
-import '../view/home/student_home/graph_std/homework_std_g.dart';
 
 class SampleMainHomeScreen extends StatefulWidget {
   // var schoolID;
