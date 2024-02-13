@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 
 class AppBarColorWidget extends StatelessWidget {
   const AppBarColorWidget({
@@ -8,20 +9,10 @@ class AppBarColorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-            decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      //   Color.fromARGB(255, 6, 152, 225),
-                      //  Color.fromARGB(255, 15, 73, 208),
-                         Color.fromARGB(255, 6, 152, 225),
-                         Color.fromARGB(255, 15, 73, 208),
-                    ],
-                    end: Alignment.topLeft,
-                    begin: Alignment.bottomRight,
-                  ),
-                 // color: cgraident.withOpacity(0.5),
-                 
-                ),
-          );
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 88, 167, 123),
+        // color: cgraident.withOpacity(0.5),
+      ),
+    );
   }
 }
