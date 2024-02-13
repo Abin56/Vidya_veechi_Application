@@ -4,6 +4,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/firebase_options.dart';
+import 'package:vidya_veechi/sample/main_screen.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/responsive.dart';
 import 'package:vidya_veechi/view/home/mobile_view_home.dart/vidyaveechi_home.dart';
@@ -106,20 +107,20 @@ class MyApp extends StatelessWidget {
                     if (state is AuthLoggedInState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const SplashScreen();
+                        return const SampleMainHomeScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     } else if (state is AuthLoggedOutState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const SplashScreen();
+                        return const SampleMainHomeScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     }
                     if (SharedPreferencesHelper.getString("langCode") != null) {
-                      return const SplashScreen();
+                      return const SampleMainHomeScreen();
                     } else {
                       return const SelectLanguage();
                     }

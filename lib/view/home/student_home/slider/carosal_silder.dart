@@ -16,36 +16,32 @@ class CarouselSliderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
-    return Container(
-      child: Center(
-        child: CarouselSlider(
-          items: [
-            CaroselmageWidget(
-              sliderWidget: graphList[0],
-              slidertext: 'Homework',
-            ),
-            CaroselmageWidget(
-              sliderWidget: graphList[1],
-              slidertext: 'Exam Result',
-            ),
-            CaroselmageWidget(
-              sliderWidget: graphList[2],
-              slidertext: 'Attendance',
-            ),
-            CaroselmageWidget(
-              sliderWidget: graphList[3],
-              slidertext: 'Assignment & Project',
-            ),
-          ],
-          options: CarouselOptions(
-            height: 220.w,
-            enlargeCenterPage: true,
-            autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 2),
-            autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            autoPlayCurve: Curves.fastOutSlowIn,
-          ),
+    return CarouselSlider(
+      items: [
+        CaroselmageWidget(
+          sliderWidget: graphList[0],
+          slidertext: 'Homework',
         ),
+        CaroselmageWidget(
+          sliderWidget: graphList[1],
+          slidertext: 'Exam Result',
+        ),
+        CaroselmageWidget(
+          sliderWidget: graphList[2],
+          slidertext: 'Attendance',
+        ),
+        CaroselmageWidget(
+          sliderWidget: graphList[3],
+          slidertext: 'Assignment & Project',
+        ),
+      ],
+      options: CarouselOptions(
+        height: 220.w,
+        enlargeCenterPage: true,
+        autoPlay: true,
+        autoPlayInterval: const Duration(seconds: 2),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
+        autoPlayCurve: Curves.fastOutSlowIn,
       ),
     );
   }
