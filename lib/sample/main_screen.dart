@@ -397,20 +397,11 @@ class SampleHome extends StatelessWidget {
 
 viewallMenus() {
   Get.bottomSheet(
-      SizedBox(
+      const SizedBox(
         height: double.infinity,
+        width: double.infinity,
         child: Wrap(
-          children: <Widget>[
-            ListTile(
-                leading: const Icon(Icons.music_note),
-                title: const Text('Music'),
-                onTap: () => {}),
-            ListTile(
-              leading: const Icon(Icons.videocam),
-              title: const Text('Video'),
-              onTap: () => {},
-            ),
-          ],
+          children: <Widget>[Text("All Categories")],
         ),
       ),
       backgroundColor: Colors.white);
