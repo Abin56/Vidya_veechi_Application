@@ -22,7 +22,7 @@ class StudentSubjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: AppBarColorWidget(),
+        flexibleSpace: const AppBarColorWidget(),
         foregroundColor: cWhite,
         automaticallyImplyLeading: false,
        // backgroundColor: adminePrimayColor,
@@ -52,7 +52,7 @@ class StudentSubjectScreen extends StatelessWidget {
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
@@ -72,7 +72,7 @@ class StudentSubjectScreen extends StatelessWidget {
                           teacherSubjectController.getSubject(
                               snapshot.data!.docs[index]['teacherId']);
                         } else {
-                          return SizedBox();
+                          return const SizedBox();
                         }
 
                         return GestureDetector(
@@ -92,11 +92,11 @@ class StudentSubjectScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 12,bottom: 12,left: 8,),
                             child: Container(
-                               decoration: BoxDecoration(border: Border.all(color: cblue,width: 2 ),),
+                               decoration: BoxDecoration(border: Border.all(color: Colors.green,width: 2 ),),
                               child: Container(
                                   decoration: BoxDecoration(border: Border.all(color: cWhite,width: 2 ),),
                                 child: Container(
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.lightBlue,width: 2 ),
+                                  decoration: BoxDecoration(border: Border.all(color: Colors.lightGreen,width: 2 ),
                                     // gradient: RadialGradient(colors: [
                                     //    Colors.lightBlueAccent,
                                     //    Colors.blue
@@ -113,7 +113,7 @@ class StudentSubjectScreen extends StatelessWidget {
                                        // crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Colors.white,
                                             ),

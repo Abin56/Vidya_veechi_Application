@@ -1,13 +1,14 @@
 import 'dart:developer';
 
-import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../helper/shared_pref_helper.dart';
 
 class LanguageChangeDrawerPage extends StatelessWidget {
-  LanguageChangeDrawerPage({Key? key}) : super(key: key);
+  LanguageChangeDrawerPage({super.key});
 
   final List<Map<String, dynamic>> locale = [
     {'name': 'ENGLISH', 'locale': const Locale('en', 'US')},
@@ -27,7 +28,9 @@ class LanguageChangeDrawerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Select Language".tr),
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+       // backgroundColor: adminePrimayColor,
       ),
       body: Container(
         alignment: Alignment.center,

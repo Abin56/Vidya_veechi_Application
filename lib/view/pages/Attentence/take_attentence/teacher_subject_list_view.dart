@@ -1,28 +1,29 @@
 import 'dart:developer';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
-import 'package:vidya_veechi/view/pages/Attentence/take_attentence/students_attendence_list_view.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/pages/Attentence/take_attentence/students_attendence_list_view.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 import '../../../../utils/utils.dart';
 
 class AttendenceSubjectListScreen extends StatelessWidget {
-  String schoolId;
-  String classID;
-  String date;
-  String batchId;
-  String month;
-  AttendenceSubjectListScreen(
+ final String schoolId;
+ final String classID;
+ final  String date;
+ final String batchId;
+ final String month;
+  const AttendenceSubjectListScreen(
       {required this.schoolId,
       required this.classID,
       required this.date,
@@ -40,7 +41,9 @@ class AttendenceSubjectListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Subject'.tr),
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+       // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(

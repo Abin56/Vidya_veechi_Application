@@ -29,7 +29,7 @@ class UserLoginCheckController extends GetxController {
 
     User? currentUser = auth.currentUser;
     if (currentUser == null) {
-      Get.to(const DujoLoginScren());
+      Get.to(()=>const DujoLoginScren());
     } else {
       log('UID: ${currentUser.uid}');
 

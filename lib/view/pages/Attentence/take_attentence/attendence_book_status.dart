@@ -1,11 +1,12 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../../model/teacher_model/attentence/attendance_model.dart';
 import 'teacher_subject_list_view.dart';
@@ -31,7 +32,9 @@ class AttendenceBookScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Attendance Book'.tr),
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+       // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -84,14 +87,14 @@ class AttendenceBookScreen extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
                               decoration: BoxDecoration(
-                                color: Colors.lightBlueAccent.withOpacity(0.1),
+                                color: Colors.lightGreenAccent.withOpacity(0.1),
                                 //  const Color.fromARGB(212, 67, 30, 203)
                                 //     .withOpacity(0.1),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(10)),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.blue.withOpacity(0.4),
+                                    color: Colors.green.withOpacity(0.4),
                                     blurRadius: 1,
                                     spreadRadius: 1,
                                   ),

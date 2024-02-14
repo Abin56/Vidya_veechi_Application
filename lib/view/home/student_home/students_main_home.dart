@@ -6,7 +6,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
-import 'package:vidya_veechi/view/home/student_home/student_new_homepage.dart';
+import 'package:vidya_veechi/view/home/student_home/student__homepage.dart';
 import 'package:vidya_veechi/view/pages/live_classes/students_room/list_room.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
@@ -86,18 +86,13 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             border: Border.all(color: Colors.white.withOpacity(0.13)),
-            gradient: const LinearGradient(
+            gradient:  LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomCenter,
               colors: [
-                // Color.fromARGB(255, 222, 29, 151),
-                // Color.fromARGB(255, 39, 48, 211)
-                Color.fromARGB(255, 15, 73, 208),
-                Color.fromARGB(255, 6, 152, 225),
-                //  Color.fromARGB(255, 92, 168, 240),
-
-                // Color.fromARGB(255, 6, 71, 157),
-                // Color.fromARGB(255, 5, 85, 222)
+                const Color.fromARGB(255, 88, 167, 123),
+                const Color.fromARGB(255, 88, 167, 123).withOpacity(0.7),
+                
               ],
             ),
           ),

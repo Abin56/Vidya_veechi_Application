@@ -1,6 +1,6 @@
-import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:spline_chart/spline_chart.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 
 void main() {
   runApp(const StdProjectAndAssignmnetGraph());
@@ -14,7 +14,7 @@ class StdProjectAndAssignmnetGraph extends StatelessWidget {
     return Scaffold(
       body: Container(
         height: 200,
-        width: 250,
+        width: 210,
         color: cWhite,
         child: const SplineChartOfStd(),
       ),
@@ -23,7 +23,7 @@ class StdProjectAndAssignmnetGraph extends StatelessWidget {
 }
 
 class SplineChartOfStd extends StatelessWidget {
-  const SplineChartOfStd({Key? key}) : super(key: key);
+  const SplineChartOfStd({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,9 @@ class SplineChartOfStd extends StatelessWidget {
             values: {
               0: 10,
               15: 30,
-              60: 40,
-              44: 50,
+              // 35: 45,
+              // 50: 60,
+              // 44: 50,
             },
             //values: {0:10, 7.69 :52, 15.38 :74, 23.08 :1464, 30.77 :942, 38.46 :2433, 46.15 :2379, 53.85 :3820, 61.54 :2750, 69.23 :2739, 76.92 :3057, 84.62 :1598, 92.31 :1450,100:630},
             //values: {0.0: 583.0, 50.0: 972.0, 100.0: 910.0},
@@ -47,7 +48,7 @@ class SplineChartOfStd extends StatelessWidget {
             verticalLineText: "Your score",
             drawCircles: true,
             circleRadius: 4,
-            width: 200,
+            width: 210,
             height: 400,
           ),
         ],

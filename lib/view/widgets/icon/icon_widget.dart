@@ -1,7 +1,6 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-
 import 'package:flutter/material.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 
 class ContainerWidget extends StatelessWidget {
@@ -20,33 +19,63 @@ class ContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: GestureDetector(
-        onTap: onTap,
-        child: SizedBox(
-          width: 105.w, //110
-          height: 100.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 80.h,
-                width: 80.w,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border:
-                        Border.all(color: adminePrimayColor.withOpacity(0.5))),
-                child: Center(
-                  child: Image.asset(
-                    image,height: 40,width: 40,
-                    fit: BoxFit.contain,
-                    scale: 2,
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12,right: 12,top: 8,bottom: 8),
+        child: Container(
+          decoration:  const BoxDecoration(color: cWhite,
+             boxShadow: [
+                BoxShadow(
+                  color: cWhite,
+                  offset: Offset( .5, 0, ),
+                  blurRadius: 3,
+                  spreadRadius: 1,
+                ), 
+                BoxShadow(
+                   color: cWhite,
+                  offset: Offset( .5, 0, ),
+                  blurRadius: 3,
+                  spreadRadius: 1,
+                  // color: cWhite,
+                  // offset: Offset(5.0, 5.0),
+                  // blurRadius: 5,
+                  // spreadRadius: 5,
+                ), 
+              ],
+            //  border: Border(right: BorderSide(color: Colors.green,width: 2),top: BorderSide(color: Colors.green,width: 2),
+            //  bottom: BorderSide(color: cWhite,width: 2,),left: BorderSide(color: cWhite,width: 2,) )
+             ),
+          width: 109.w,
+          height: 110.h,
+          child: Container(
+            color: cWhite,
+            width: 109.w, //110
+            height: 100.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 80.h,
+                  width: 80.w,
+                  decoration: BoxDecoration(color: cWhite,
+                      shape: BoxShape.circle,
+                      border:
+                          Border.all(color: adminePrimayColor.withOpacity(0.5))),
+                  child: Center(
+                    child: Image.asset(
+                      image,height: 40,width: 40,
+                      fit: BoxFit.contain,
+                      scale: 2,
+                    ),
                   ),
                 ),
-              ),
-              GooglePoppinsWidgets(text: text, fontsize: 10,fontWeight: FontWeight.bold,)
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: GooglePoppinsWidgets(text: text, fontsize: 10,fontWeight: FontWeight.bold,),
+                )
+              ],
+            ),
           ),
         ),
       ),

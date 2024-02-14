@@ -1,21 +1,22 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../../model/teacher_model/attentence/attendance_model.dart';
 
 class StudentsAttendenceListViewScreen extends StatelessWidget {
-  String schoolId;
-  String classID;
-  String date;
-  String subject;
-  String batchId;
-  String month;
+ final  String schoolId;
+ final String classID;
+ final String date;
+ final String subject;
+ final String batchId;
+ final String month;
 
-  StudentsAttendenceListViewScreen(
+  const StudentsAttendenceListViewScreen(
       {required this.schoolId,
       required this.classID,
       required this.batchId,
@@ -30,7 +31,9 @@ class StudentsAttendenceListViewScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Attendance List'.tr),
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+       // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
         child: StreamBuilder(
