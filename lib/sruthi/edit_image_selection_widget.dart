@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../view/constant/sizes/constant.dart';
-import '../view/home/sample/under_maintance.dart';
+import '../view/home/undermaintance/under_maintance.dart';
 
 class CircleAvatharImageSelectionWidget extends StatelessWidget {
   ImageProvider<Object>? backgroundImage;

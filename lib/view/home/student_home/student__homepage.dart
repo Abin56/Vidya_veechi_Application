@@ -62,9 +62,9 @@ class NewStdHomePage extends StatelessWidget {
               ),
             ),
              Padding(
-              padding: EdgeInsets.only(top: 60, right: 10, left: 10),
+              padding: EdgeInsets.only(top: 60.sp, right: 10.sp, left: 10.sp),
               child: GestureDetector(
-                child: CarouselSliderStd())
+                child: const CarouselSliderStd())
             ),//////////////////////////////////////////////////////details showing graph
             SizedBox(
               height: 100.h,
@@ -90,7 +90,7 @@ class NewStdHomePage extends StatelessWidget {
                           radius: 25,
                         ),
                       ),
-                    ),///////////////name
+                    ),/////////////////////////////////////image
                     Expanded(
                       flex: 5,
                       child: Padding(
@@ -105,7 +105,7 @@ class NewStdHomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
+                    ),/////////////////////////////////////////name
                     Expanded(
                         flex: 1,
                         child: IconButton(

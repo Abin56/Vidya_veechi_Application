@@ -47,6 +47,7 @@ dependencies:
   flutter_staggered_animations: 
   flutter_svg: 
   fluttertoast: 
+  fl_chart:
   get: 
   google_fonts: 
   google_nav_bar: 

@@ -5,7 +5,8 @@ import 'package:vidya_veechi/view/home/student_home/graph_std/assignment_project
 import 'package:vidya_veechi/view/home/student_home/graph_std/attendance_std_g.dart';
 import 'package:vidya_veechi/view/home/student_home/graph_std/exm_std.dart';
 import 'package:vidya_veechi/view/home/student_home/graph_std/homework_std_g.dart';
-import 'package:vidya_veechi/view/home/student_home/student_pages/slider/slider.dart';
+import 'package:vidya_veechi/view/home/student_home/student_pages/on_click_std_details/attendance_bottomsheet.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 
 class GraphShowingPartStdAttendance extends StatelessWidget {
   const GraphShowingPartStdAttendance({super.key});
@@ -13,7 +14,7 @@ class GraphShowingPartStdAttendance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => attendanceGraphDetails(),
+      onTap: () => attendanceOnClickDetailsShowing(),
       child: Container(
         height: 190.h,
         decoration: const BoxDecoration(
@@ -55,7 +56,7 @@ class GraphShowingPartStdAttendance extends StatelessWidget {
                       'AVERAGE',
                       style: TextStyle(
                           color: const Color.fromARGB(255, 228, 173, 21),
-                          fontSize: 28.sp,
+                          fontSize: 26.sp,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -67,6 +68,10 @@ class GraphShowingPartStdAttendance extends StatelessWidget {
                           TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25,top: 05),
+                    child: GooglePoppinsWidgets(text: "Click To View", fontsize: 13,fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
@@ -130,7 +135,7 @@ class GraphShowingPartStdHomework extends StatelessWidget {
                     'AVERAGE',
                     style: TextStyle(
                         color: const Color.fromARGB(255, 228, 173, 21),
-                        fontSize: 28.sp,
+                        fontSize: 26.sp,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -149,7 +154,10 @@ class GraphShowingPartStdHomework extends StatelessWidget {
             flex: 1,
             child: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: HomeWorkGraph(),
+              child: HomeWorkGraphOfStd(  pending: 5,
+        completed: 15,
+        //total: 21,
+        ),
             ),
           ),
         ],
@@ -204,7 +212,7 @@ class GraphShowingPartStdExamResult extends StatelessWidget {
                     'AVERAGE',
                     style: TextStyle(
                         color: const Color.fromARGB(255, 228, 173, 21),
-                        fontSize: 28.sp,
+                        fontSize: 26.sp,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -223,7 +231,7 @@ class GraphShowingPartStdExamResult extends StatelessWidget {
             flex: 1,
             child: Padding(
               padding: EdgeInsets.only(top: 10),
-              child:    AssignmentPrijectGraph(),
+              child:    AssignmentProjectGraph(),
 
             ),
           ),
@@ -279,7 +287,7 @@ class GraphShowingPartStdAssignProject extends StatelessWidget {
                     'AVERAGE',
                     style: TextStyle(
                         color: const Color.fromARGB(255, 228, 173, 21),
-                        fontSize: 28.sp,
+                        fontSize: 26.sp,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -298,7 +306,7 @@ class GraphShowingPartStdAssignProject extends StatelessWidget {
             flex: 1,
             child: Padding(
               padding: EdgeInsets.only(top: 10),
-              child: ExamResultGraph(),
+              child: ExamGraphOfStd(),
             ),
           ),
         ],
