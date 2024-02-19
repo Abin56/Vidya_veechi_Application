@@ -1,9 +1,6 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_salsa.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 
 class ContainerWidget extends StatelessWidget {
   final String text;

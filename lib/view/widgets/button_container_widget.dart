@@ -15,8 +15,8 @@ class ButtonContainerWidget extends StatelessWidget {
     required this.colorindex,
     required this.height,
     required this.width,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,9 @@ class ButtonContainerWidget extends StatelessWidget {
 }
 
 const containerColor = [
-  [Color.fromARGB(226, 6, 71, 157), Color.fromARGB(255, 86, 59, 243)],
+  [Color.fromARGB(255, 88, 167, 123),Color.fromARGB(255, 209, 238, 222)],
   [Color.fromARGB(255, 202, 141, 161), Color.fromARGB(255, 55, 124, 158)],
-  [Color(0xff6448fe), Color(0xff5fc6ff)],
+  [Color.fromARGB(255, 88, 167, 123), Color.fromARGB(255, 138, 238, 183),],
   [Color(0xfffe6197), Color.fromARGB(255, 159, 94, 25)],
   [Color.fromARGB(107, 2, 141, 64), Color.fromARGB(107, 2, 141, 64)],
   [Color.fromARGB(255, 116, 130, 255), Color.fromARGB(255, 86, 74, 117)],

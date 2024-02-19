@@ -8,12 +8,12 @@ import 'package:get/get.dart';
 import '../../../../model/teacher_model/attentence/attendance_model.dart';
 
 class StudentsAttendenceListViewScreen extends StatelessWidget {
-  String schoolId;
-  String classID;
-  String date;
-  String subject;
-  String batchId;
-  String month;
+  final String schoolId;
+  final String classID;
+  final String date;
+ final String subject;
+  final String batchId;
+ final  String month;
 
   StudentsAttendenceListViewScreen(
       {required this.schoolId,

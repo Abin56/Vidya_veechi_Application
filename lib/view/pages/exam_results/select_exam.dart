@@ -21,7 +21,8 @@ class SelectExamLevelScreen extends StatelessWidget {
             fontsize: 15.w,
             fontWeight: FontWeight.w700,
           ),
-          backgroundColor: adminePrimayColor),
+          backgroundColor: adminePrimayColor
+          ),
       body: SafeArea(
           child: Center(
         child: Column(

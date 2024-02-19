@@ -2,7 +2,6 @@ import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
 import 'package:vidya_veechi/view/home/student_home/student_home.dart';
-import 'package:vidya_veechi/view/home/student_home/student_new_homepage.dart';
 import 'package:vidya_veechi/view/pages/live_classes/students_room/list_room.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';

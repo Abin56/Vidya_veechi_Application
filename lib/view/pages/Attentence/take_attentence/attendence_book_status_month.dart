@@ -12,9 +12,9 @@ import '../../../../model/teacher_model/attentence/attendance_model.dart';
 import 'attendence_book_status.dart';
 
 class AttendenceBookScreenSelectMonth extends StatelessWidget {
-  String schoolId;
-  String classID;
-  String batchId;
+ final String schoolId;
+  final String classID;
+  final String batchId;
   AttendenceBookScreenSelectMonth(
       {required this.schoolId,
       required this.batchId,

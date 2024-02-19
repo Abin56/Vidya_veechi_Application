@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, duplicate_ignore, empty_catches, unused_element
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/sign_in_controller/parent_login_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';

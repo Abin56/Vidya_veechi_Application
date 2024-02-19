@@ -1,6 +1,6 @@
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/home/teachers_home/teacher_home.dart';
-import 'package:vidya_veechi/view/widgets/container_image.dart';
+import 'package:vidya_veechi/view/home/teachers_home/teacher_new_home_page.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
@@ -16,7 +16,7 @@ import '../../pages/splash_screen/splash_screen.dart';
 import '../drawer/teacher_drawer.dart';
 
 class TeacherMainHomeScreen extends StatefulWidget {
-  const TeacherMainHomeScreen({Key? key}) : super(key: key);
+  const TeacherMainHomeScreen({super.key});
 
   @override
   State<TeacherMainHomeScreen> createState() => _TeacherMainHomeScreenState();
@@ -40,7 +40,7 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
   Widget build(BuildContext context) {
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      TeacherHomeScreen(),
+      const TeacherNewHomePage(),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
@@ -53,6 +53,7 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
       onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
         appBar: AppBar(
+           flexibleSpace: const AppBarColorWidget(),
             foregroundColor: cWhite,
             title: SizedBox(
               // color: cred,
@@ -74,14 +75,16 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             border: Border.all(color: Colors.white.withOpacity(0.13)),
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 6, 71, 157),
-                Color.fromARGB(255, 5, 85, 222)
-              ],
-            ),
+            // gradient: const LinearGradient(
+            //   begin: Alignment.topLeft,
+            //   end: Alignment.bottomCenter,
+            //   colors: [
+            //     Color.fromARGB(255, 6, 71, 157),
+            //     Color.fromARGB(255, 5, 85, 222)
+            //   ],
+            // ),
+             color: const Color.fromARGB(255, 88, 167, 123),
+
           ),
           child: GNav(
             gap: 8,
@@ -95,20 +98,20 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
                   text: 'Home'.tr,
                   style: GnavStyle.google),
               GButton(
-                iconSize: 30,
+                iconSize: 20,
                 textSize: 20,
                 icon: Icons.tv,
                 text: 'Recorded\nClasses'.tr,
               ),
               GButton(
-                iconSize: 30,
+                iconSize: 20,
                 // iconSize: 10,
                 textSize: 20,
                 icon: Icons.laptop,
                 text: 'Live\nClasses'.tr,
               ),
               GButton(
-                iconSize: 30,
+                iconSize: 20,
                 icon: Icons.chat,
                 textSize: 20,
                 text: 'Ask\nDoubt'.tr,

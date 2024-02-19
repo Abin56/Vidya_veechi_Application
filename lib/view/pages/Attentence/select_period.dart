@@ -10,14 +10,15 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import 'take_attentence_subject_listView.dart';
 
 class SelectPeriodWiseScreen extends StatelessWidget {
   AttendanceController attendanceController = Get.put(AttendanceController());
-  String schoolId;
-  String batchId;
-  String classID;
+  final String schoolId;
+  final String batchId;
+  final String classID;
 
   SelectPeriodWiseScreen(
       {required this.batchId,
@@ -43,6 +44,8 @@ class SelectPeriodWiseScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          flexibleSpace: const AppBarColorWidget(),
+          foregroundColor: cWhite,
           title: Text('Select Period'.tr),
           backgroundColor: adminePrimayColor,
           actions: [

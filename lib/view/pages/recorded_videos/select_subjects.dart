@@ -7,7 +7,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../model/teacher_model/attentence/attendance_model.dart';
 
 class RecSelectSubjectScreen extends StatelessWidget {
   String schoolId;
