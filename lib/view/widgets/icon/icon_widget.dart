@@ -1,9 +1,6 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_salsa.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_icon/gradient_icon.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 
 class ContainerWidget extends StatelessWidget {
   final String text;
@@ -25,28 +22,48 @@ class ContainerWidget extends StatelessWidget {
         width: 80.w, //110
         height: 110.h,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: 80.h,
-              width: 80.w,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border:
-                      Border.all(color: adminePrimayColor.withOpacity(0.5))),
-              child: Center(
-                child: Image.asset(
-                  icon,
-                  fit: BoxFit.contain,
-                  scale: 2,
+            Expanded(
+              child: Container(
+                height: 80.h,
+                width: 80.w,
+                decoration: const BoxDecoration(shape: BoxShape.circle,
+                 // borderRadius: BorderRadiusDirectional.all(Radius.circular(10),),
+                  boxShadow: [
+                        BoxShadow(
+                          color: Colors.greenAccent,
+                          offset: Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), ],),
+                child: Center(
+                  child: Image.asset(
+                    icon,
+                    fit: BoxFit.contain,
+                    height: 40,width: 40,
+                    scale: 2,
+                  ),
                 ),
               ),
             ),
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Center(
+                  child:GooglePoppinsWidgets(  
+                      
+                      fontWeight: FontWeight.w500, text:text,fontsize: 12,)
+                ),
               ),
             )
           ],

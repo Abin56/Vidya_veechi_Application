@@ -1,415 +1,345 @@
-import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/sample/qucik_action.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
-import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
-import 'package:vidya_veechi/view/home/student_home/graph_std/attendance_std_g.dart';
-import 'package:vidya_veechi/view/home/student_home/slider/carosal_silder.dart';
-import 'package:vidya_veechi/view/home/student_home/student_home.dart';
-import 'package:vidya_veechi/view/home/student_home/student_new_homepage.dart';
-import 'package:vidya_veechi/view/pages/live_classes/students_room/list_room.dart';
-import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
+// import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:google_nav_bar/google_nav_bar.dart';
+// import 'package:line_icons/line_icons.dart';
+// import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+// import 'package:vidya_veechi/sample/sample_homepage.dart';
+// import 'package:vidya_veechi/view/colors/colors.dart';
+// import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
+// import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
+// import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
+// import 'package:vidya_veechi/view/pages/Attentence/take_attentence/attendence_book_status_month.dart';
+// import 'package:vidya_veechi/view/pages/Homework/view_home_work.dart';
+// import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
+// import 'package:vidya_veechi/view/widgets/icon/icon_widget.dart';
 
-import '../../../main.dart';
-import '../view/home/student_home/graph_std/homework_std_g.dart';
+// import '../../../main.dart';
 
-class SampleMainHomeScreen extends StatefulWidget {
-  // var schoolID;
-  // var classID;
-  // var studentEmailid;
-  const SampleMainHomeScreen(
-      {
-      //   required this.schoolID,
-      // required this.classID,
-      // required this.studentEmailid,
-      super.key});
+// class SampleMainHomeScreen extends StatefulWidget {
+//   // var schoolID;
+//   // var classID;
+//   // var studentEmailid;
+//   const SampleMainHomeScreen({
+//     //   required this.schoolID,
+//     // required this.classID,
+//     // required this.studentEmailid,
+//     super.key,
+//   });
 
-  @override
-  State<SampleMainHomeScreen> createState() => _amplesMainHomeScreenState();
-}
+//   @override
+//   State<SampleMainHomeScreen> createState() => _amplesMainHomeScreenState();
+// }
 
-class _amplesMainHomeScreenState extends State<SampleMainHomeScreen> {
-  int _page = 0;
+// class _amplesMainHomeScreenState extends State<SampleMainHomeScreen> {
+// //
 
-  onPageChanged(int page) {
-    setState(() {
-      _page = page;
-    });
-  }
+//   int _page = 0;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+//   onPageChanged(int page) {
+//     setState(() {
+//       _page = page;
+//     });
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    checkingSchoolActivate(context);
-    List<Widget> pages = [const SampleHome()];
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: const AppBarColorWidget(),
-        foregroundColor: cWhite,
-        title: SizedBox(
-          // color: cred,
-          height: 80.h,
-          width: 115.w,
-          child: Center(
-              child: Image.asset(
-            'assets/images/vidyaveechi.png',
-            color: Colors.black,
-            fit: BoxFit.cover,
-          )),
-        ),
-        //  backgroundColor: adminePrimayColor
-      ),
-      body: pages[_page],
-      bottomNavigationBar: Container(
-        height: 71,
-        decoration: BoxDecoration(
-          // color: Colors.white,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(0), topRight: Radius.circular(0)),
-          border: Border.all(color: Colors.white.withOpacity(0.13)),
-          color: const Color.fromARGB(255, 92, 180, 132),
-        ),
-        child: GNav(
-          gap: 8,
-          rippleColor: Colors.grey,
-          activeColor: Colors.white,
-          color: Colors.white,
-          tabs: [
-            GButton(
-                iconSize: 20,
-                icon: LineIcons.home,
-                text: 'Home'.tr,
-                style: GnavStyle.google),
-            GButton(
-              iconSize: 30,
-              textSize: 20,
-              icon: Icons.tv,
-              text: 'Recorded\nClasses'.tr,
-            ),
-            GButton(
-              iconSize: 30,
-              // iconSize: 10,
-              textSize: 20,
-              icon: Icons.laptop,
-              text: 'Live\nClasses'.tr,
-            ),
-            GButton(
-              iconSize: 30,
-              textSize: 20,
-              icon: Icons.chat,
-              text: 'Ask\nDoubt'.tr,
-            )
-          ],
-          selectedIndex: _page,
-          onTabChange: (value) {
-            onPageChanged(value);
-          },
-        ),
-      ),
-      drawer: Drawer(
-        backgroundColor: cblack,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const StudentsHeaderDrawer(),
-              MyDrawerList(context),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   void initState() {
+//     super.initState();
+//   }
 
-class SampleHome extends StatelessWidget {
-  const SampleHome({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     checkingSchoolActivate(context);
+//     List<Widget> pages = [const SampleHome()];
+//     return Scaffold(
+//       appBar: AppBar(
+//         flexibleSpace: const AppBarColorWidget(),
+//         foregroundColor: cWhite,
+//         title: SizedBox(
+//           // color: cred,
+//           height: 80.h,
+//           width: 115.w,
+//           child: Center(
+//               child: Image.asset(
+//             'assets/images/vidyaveechi.png',
+//             color: Colors.black,
+//             fit: BoxFit.cover,
+//           )),
+//         ),
+//         //  backgroundColor: adminePrimayColor
+//       ),
+//       body: pages[_page],
+//       bottomNavigationBar: Container(
+//         height: 71,
+//         decoration: BoxDecoration(
+//           // color: Colors.white,
+//           borderRadius: const BorderRadius.only(
+//               topLeft: Radius.circular(0), topRight: Radius.circular(0)),
+//           border: Border.all(color: Colors.white.withOpacity(0.13)),
+//           color: const Color.fromARGB(255, 92, 180, 132),
+//         ),
+//         child: GNav(
+//           gap: 8,
+//           rippleColor: Colors.grey,
+//           activeColor: Colors.white,
+//           color: Colors.white,
+//           tabs: [
+//             GButton(
+//                 iconSize: 20,
+//                 icon: LineIcons.home,
+//                 text: 'Home'.tr,
+//                 style: GnavStyle.google),
+//             GButton(
+//               iconSize: 30,
+//               textSize: 20,
+//               icon: Icons.tv,
+//               text: 'Recorded\nClasses'.tr,
+//             ),
+//             GButton(
+//               iconSize: 30,
+//               // iconSize: 10,
+//               textSize: 20,
+//               icon: Icons.laptop,
+//               text: 'Live\nClasses'.tr,
+//             ),
+//             GButton(
+//               iconSize: 30,
+//               textSize: 20,
+//               icon: Icons.chat,
+//               text: 'Ask\nDoubt'.tr,
+//             )
+//           ],
+//           selectedIndex: _page,
+//           onTabChange: (value) {
+//             onPageChanged(value);
+//           },
+//         ),
+//       ),
+//       drawer: Drawer(
+//         backgroundColor: cblack,
+//         child: SingleChildScrollView(
+//           child: Column(
+            //  children: [   StudentsHeaderDrawer(),
+            //   MyDrawerList(context),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 244, 244, 244),
-      body: SafeArea(
-          child: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 160.sp),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 218, 247, 229),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.sp),
-                      topRight: Radius.circular(15.sp)),
-                ),
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: 120.sp, right: 20.sp, left: 20.sp),
-                      child: Container(
-                        height: 100.h,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: cblack.withOpacity(0.1)),
-                            color: const Color.fromARGB(255, 218, 247, 229),
-                            borderRadius: BorderRadius.circular(20.sp)),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.sp),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'QUICK ACTIONS',
-                                style: TextStyle(
-                                    color:
-                                        const Color.fromARGB(255, 48, 88, 86),
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const Spacer(),
-                              GestureDetector(
-                                onTap: () {
-                                  viewallMenus();
-                                },
-                                child: Text(
-                                  "View all",
-                                  style:
-                                      TextStyle(color: cblack.withOpacity(0.8)),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: 80.sp, right: 20.sp, left: 20.sp),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'NOTIFICATIONS',
-                                style: TextStyle(
-                                    color:
-                                        const Color.fromARGB(255, 48, 88, 86),
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 1.h,
-                                    color: const Color.fromARGB(255, 48, 88, 86)
-                                        .withOpacity(0.1),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 290.h,
-                            child: ListView.separated(
-                                // physics:
-                                //     const NeverScrollableScrollPhysics(),
-                                // shrinkWrap: false,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundColor: cWhite,
-                                      radius: 25.sp,
-                                      child: Center(
-                                        child: CircleAvatar(
-                                          radius: 20.sp,
-                                        ),
-                                      ),
-                                    ),
-                                    title: Text(
-                                      "Holiday",
-                                      style: TextStyle(
-                                          color: const Color.fromARGB(
-                                              255, 48, 88, 86),
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    subtitle: const Text(
-                                      "Tommorow is Holiday",
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 48, 88, 86),
-                                      ),
-                                    ),
-                                  );
-                                },
-                                separatorBuilder: (context, index) {
-                                  return const SizedBox();
-                                },
-                                itemCount: 10),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+// viewallMenus() {
+//   final screenNavigationOfStd = [
+//     AttendenceBookScreenSelectMonth(
+//         schoolId: UserCredentialsController.schoolId!,
+//         batchId: UserCredentialsController.batchId!,
+//         classID: UserCredentialsController.classId!), //Attendence
 
-                // child: const Column(
-                //   children: [],
+//     const ViewHomeWorks(), // Home Works
+
+//     const SS(), //Time table
+
+    //   TeacherSubjectWiseList(navValue: 'student'), //Teachers
+
+    //   const StudentChatScreen(), // Chats
+
+    //  // StudentSubjectScreen(), //Subjects/////////<--
+
+    // const UserExmNotifications(), //Exam
+
+    //   UsersSelectExamLevelScreen(
+    //       classId: UserCredentialsController.classId!,
+    //       studentID:
+    //           UserCredentialsController.studentModel!.docid), ////// exam result
+
+    //   NoticePage(), //Notice
+    //   const EventList(), //Events
+
+    //   SchoolLevelMeetingPage(), //Meetings
+    //   BusRouteListPage(),
+
+    //   AllClassTestPage(
+    //     pageNameFrom: "student",
+    //   ), //class test page
+    //   AllClassTestMonthlyPage(
+    //     pageNameFrom: "student",
+    //   ),
+    // HostelHomePage(),
+//   ];
+//   Get.bottomSheet(
+//       SizedBox(
+//         height: double.infinity,
+//         width: double.infinity,
+//         child: Wrap(
+//           children: <Widget>[
+//             Column(
+//               children: [
+//                 const Padding(
+//                   padding: EdgeInsets.all(8.0),
+//                   child: Text("All Categories"),
+//                 ),
+//                 Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                   // crossAxisAlignment: CrossAxisAlignment.center,
+//                   children: [
+//                     ContainerWidget(
+//                         icon: 'assets/flaticons/icons8-attendance-100.png',
+//                         //  icon: Icons.waving_hand,
+//                         text: ' Attendance',
+//                         onTap: () {
+//                           // print("object");
+//                           Get.to(() => screenNavigationOfStd[0]);
+//                         }),
+//                     ContainerWidget(
+//                         icon: 'assets/flaticons/icons8-homework-67.png',
+//                         //  icon: Icons.home_work,
+//                         text: 'Homework',
+//                         onTap: () {
+//                           Get.to(() => screenNavigationOfStd[1]);
+//                         }),
+//                     ContainerWidget(
+//                         icon: 'assets/flaticons/study-time.png',
+//                         //  icon: Icons.assignment_rounded,
+//                         text: 'Time Table',
+//                         onTap: () {
+//                           Get.to(() => screenNavigationOfStd[2]);
+//                         }),
+//                   ],
+                //),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/icons8-teacher-100.png',
+                //         //  icon: Icons.person_2,
+                //         text: 'Teachers',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[3]);
+                //         }),
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/icons8-chat-100.png',
+                //         // icon: Icons.chat_rounded,
+                //         text: 'Chats',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[4]);
+                //         }),
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/icons8-books-48.png',
+                //         //  icon: Icons.import_contacts,
+                //         text: 'Subjects',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[5]);
+                //         }),
+                //   ],
                 // ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 80, right: 10, left: 10),
-              child: Container(
-                height: 190.h,
-                decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: cblack,
-                      ),
-                    ],
-                    color: cWhite,
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, top: 08),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 40.h,
-                                  child: Image.asset(
-                                      'assets/flaticons/icons8-attendance-100.png'),
-                                ),
-                                Text(
-                                  '  Attendance',
-                                  style: TextStyle(
-                                      color:
-                                          const Color.fromARGB(255, 48, 88, 86),
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 05, left: 20),
-                            child: Text(
-                              'AVERAGE',
-                              style: TextStyle(
-                                  color:
-                                      const Color.fromARGB(255, 228, 173, 21),
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 05, left: 25),
-                            child: Text(
-                              '200/300',
-                              style: TextStyle(
-                                  fontSize: 35.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: AttendanceGraphOfStudent(),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 100.h,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 05.sp,
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: CircleAvatar(
-                          radius: 25,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 12, top: 10),
-                        child: SizedBox(
-                          width: 200,
-                          child: GooglePoppinsEventsWidgets(
-                            text: "ARTURO ROMAN",
-                            fontsize: 17.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                        flex: 1,
-                        child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.now_widgets)))
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 340.sp, left: 40),
-              child: const Row(
-                children: [
-                  QuickActionsWidget(),
-                  QuickActionsWidget(),
-                  QuickActionsWidget(),
-                  QuickActionsWidget(),
-                ],
-              ),
-            ),
-          ],
-        ),
-      )),
-    );
-  }
-}
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/exam.png',
+                //         // icon: Icons.list_alt,
+                //         text: 'Exams',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[6]);
+                //         }),
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/icons8-grades-100.png',
+                //         //   icon: Icons.add_chart,
+                //         text: 'Exam Results',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[7]);
+                //         }),
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/icons8-notice-100.png',
+                //         //  icon: Icons.notification_add,
+                //         text: 'Notices',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[8]);
+                //         }),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/schedule.png',
+                //         //   icon: Icons.event,
+                //         text: 'Events',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[9]);
+                //         }),
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/meeting.png',
+                //         //  icon: Icons.meeting_room,
+                //         text: 'Meetings',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[10]);
+                //         }),
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/exam (1).png',
+                //         //   icon: Icons.class_,
+                //         text: 'Class Test',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[12]);
+                //         }),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     ContainerWidget(
+                //         icon: 'assets/flaticons/test.png',
+                //         // icon: Icons.view_list,
+                //         text: 'Monthly Class Test',
+                //         onTap: () {
+                //           Get.to(() => screenNavigationOfStd[13]);
+                //         }),
+                //   ],
+                // ),
+//               ],
+//             )
+//           ],
+//         ),
+//       ),
+//       backgroundColor: Colors.white);
+// }
 
-viewallMenus() {
-  Get.bottomSheet(
-      const SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Wrap(
-          children: <Widget>[Text("All Categories")],
-        ),
-      ),
-      backgroundColor: Colors.white);
-}
+// class ViewAllContainerWidget extends StatelessWidget {
+//   const ViewAllContainerWidget({
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(left: 20, top: 20),
+//       child: Container(
+//         decoration: const BoxDecoration(
+//           borderRadius: BorderRadiusDirectional.all(
+//             Radius.circular(10),
+//           ),
+//           boxShadow: [
+//             BoxShadow(
+//               color: Colors.greenAccent,
+//               offset: Offset(
+//                 5.0,
+//                 5.0,
+//               ),
+//               blurRadius: 10.0,
+//               spreadRadius: 2.0,
+//             ), //BoxShadow
+//             BoxShadow(
+//               color: Colors.white,
+//               offset: Offset(0.0, 0.0),
+//               blurRadius: 0.0,
+//               spreadRadius: 0.0,
+//             ),
+//           ],
+//         ),
+//         height: 70,
+//         width: 70,
+//       ),
+//     );
+//   }
+// }

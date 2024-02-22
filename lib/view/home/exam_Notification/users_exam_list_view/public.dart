@@ -51,7 +51,7 @@ class UserPublicLevel extends StatelessWidget {
                               width: 80.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.h),
-                                color: adminePrimayColor,
+                                color: Color.fromARGB(255, 88, 167, 123),
                               ),
                               child: Padding(
                                 padding: EdgeInsets.only(top: 12.h, left: 10.h),

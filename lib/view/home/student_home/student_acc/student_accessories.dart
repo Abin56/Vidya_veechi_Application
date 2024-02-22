@@ -51,7 +51,7 @@ class _StudentAccessoriesState extends State<StudentAccessories> {
 
       const ViewHomeWorks(), // Home Works
 
-      StudentSubjectHome(), //Subjects
+      StudentSubjectScreen(), //Subjects
 
       TeacherSubjectWiseList(navValue: 'student'), //Teachers
 

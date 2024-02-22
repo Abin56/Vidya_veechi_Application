@@ -1,6 +1,7 @@
-import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/home/parent_home/graph_std/pie%20chart/pie_chart.dart';
 
 class AttendanceGraphOfStudent extends StatelessWidget {
   const AttendanceGraphOfStudent({super.key});
@@ -9,11 +10,12 @@ class AttendanceGraphOfStudent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfRadialGauge(axes: <RadialAxis>[
       RadialAxis(
+       // labelFormat: ,
           radiusFactor: 0.9,
           minimum: 0,
           maximum: 100,
           showLabels: false,
-          showTicks: true,
+          showTicks: false,
           interval: 8,
           ticksPosition: ElementsPosition.inside,
           tickOffset: 10,
@@ -48,8 +50,8 @@ class AttendanceGraphOfStudent extends StatelessWidget {
   }
 }
 
-class AttendanceGraph extends StatelessWidget {
-  const AttendanceGraph({super.key});
+class AttendanceGraphparent extends StatelessWidget {
+  const AttendanceGraphparent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class AttendanceGraph extends StatelessWidget {
       height: 200,
       width: 200,
       color: cWhite,
-      child: const AttendanceGraphOfStudent(),
+      child: const AttendancegraphS(presentPercentage: 50.0,),
     );
   }
 }

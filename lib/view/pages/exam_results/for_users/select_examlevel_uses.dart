@@ -36,7 +36,7 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
                 height: 100.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: adminePrimayColor),
+                    color: Color.fromARGB(255, 88, 167, 123),),
                 child: TextButton.icon(
                     onPressed: () async {
                       Get.to(() => UsersSelectExamWiseScreen(
@@ -62,7 +62,7 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
             height: 100.h,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: adminePrimayColor),
+                color: Color.fromARGB(255, 88, 167, 123),),
             child: TextButton.icon(
                 onPressed: () async {
                   Get.to(() => UsersSelectExamWiseScreen(

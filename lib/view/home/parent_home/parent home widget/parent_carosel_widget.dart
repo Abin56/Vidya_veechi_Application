@@ -1,6 +1,3 @@
-// ignore_for_file: must_be_immutable
-
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -10,6 +7,53 @@ import 'package:vidya_veechi/view/home/parent_home/graph_std/homework_std_g.dart
 import 'package:vidya_veechi/view/home/parent_home/graph_std/pie%20chart/pie_chart.dart';
 import 'package:vidya_veechi/view/home/parent_home/graph_std/project_assignmnt_chart.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
+
+class ParentCaroselWidget extends StatelessWidget {
+  const ParentCaroselWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 80, right: 10, left: 10),
+      child: Container(
+        height: 248,
+        decoration: const BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: cblack,
+          ),
+        ], color: cWhite, borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.only(top: 12, left: 8, right: 8, bottom: 10),
+                    child: CarouselSliderWidget(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+List<String> quicktext = ['Attendence', 'Home work', 'Exam', 'Chat'];
+List<String> image = [
+  'assets/flaticons/icons8-attendance-100.png',
+  'assets/flaticons/icons8-homework-100.png',
+  'assets/flaticons/icons8-books-48.png',
+  'assets/flaticons/icons8-chat-100.png'
+];
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key});
@@ -45,7 +89,7 @@ class CarouselSliderWidget extends StatelessWidget {
         // ),
       ],
       options: CarouselOptions(
-        height: 220.w,
+        height: 220,
         enlargeCenterPage: true,
         autoPlay: true,
         autoPlayInterval: const Duration(seconds: 2),
@@ -89,7 +133,7 @@ class CaroselmageWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: GooglePoppinsWidgets(
                           text: slidertext,
-                          fontsize: 16.sp,
+                          fontsize: 16,
                           color: cblack,
                           fontWeight: FontWeight.w600,
                         ),
@@ -102,7 +146,7 @@ class CaroselmageWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: GooglePoppinsWidgets(
                   text: slidersecondtext,
-                  fontsize: 24.sp,
+                  fontsize: 24,
                   color: Colors.amber,
                   fontWeight: FontWeight.w800,
                 ),
@@ -111,7 +155,7 @@ class CaroselmageWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: GooglePoppinsWidgets(
                   text: count,
-                  fontsize: 22.sp,
+                  fontsize: 22,
                   color: cblack,
                   fontWeight: FontWeight.bold,
                 ),

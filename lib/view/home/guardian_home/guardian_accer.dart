@@ -68,7 +68,7 @@ class GuardianAccessories extends StatelessWidget {
       //     studentId: UserCredentialsController.guardianModel!.studentID!,
       //     batchId: UserCredentialsController.batchId!), //Progress Report
 
-      StudentSubjectHome(), //Subjects
+      StudentSubjectScreen(), //Subjects
 
       TeacherSubjectWiseList(navValue: ''), //Teachers
 

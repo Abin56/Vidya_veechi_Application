@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/Attentence/take_attentence/students_attendence_list_view.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,8 @@ class AttendenceSubjectListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Subject'.tr),
-        backgroundColor: adminePrimayColor,
+           flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
       ),
       body: SafeArea(
           child: StreamBuilder(

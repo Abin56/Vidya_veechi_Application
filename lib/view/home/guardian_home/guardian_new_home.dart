@@ -2,46 +2,48 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/main.dart';
+import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/qucik_action.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/all_class_test_monthly_show/all_class_list_monthly_show.dart';
 import 'package:vidya_veechi/view/home/all_class_test_show/all_class_list_show.dart';
-import 'package:vidya_veechi/view/home/bus_route_page/all_bus_list.dart';
 import 'package:vidya_veechi/view/home/events/event_list.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import 'package:vidya_veechi/view/home/parent_home/leave_application/apply_leave_application.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent_profile_edit/parent_edit_profile.dart';
-import 'package:vidya_veechi/view/home/student_home/subjects/subject_display.dart';
 import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
 import 'package:vidya_veechi/view/pages/Homework/view_home_work.dart';
 import 'package:vidya_veechi/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
 import 'package:vidya_veechi/view/pages/Notice/notice_list.dart';
+import 'package:vidya_veechi/view/pages/Subject/subject_display.dart';
 import 'package:vidya_veechi/view/pages/chat/parent_section/parent_chat_screeen.dart';
 import 'package:vidya_veechi/view/pages/exam_results/for_users/select_examlevel_uses.dart';
 import 'package:vidya_veechi/view/pages/teacher_list/teacher_list.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:vidya_veechi/view/widgets/icon/icon_widget.dart';
 
 import '../../pages/Attentence/take_attentence/attendence_book_status_month.dart';
-import '../student_home/slider/carosal_silder.dart';
 
-class GuardianHomeScreen extends StatefulWidget {   
-   final String studentName;
+class GuardianHomeScreen2 extends StatefulWidget {
+  final String studentName;
 
-  const GuardianHomeScreen({super.key, required this.studentName});
+  const GuardianHomeScreen2({super.key, required this.studentName});
 
   @override
-  
-  State<GuardianHomeScreen> createState() => _GuardianHomeScreenState();
+  State<GuardianHomeScreen2> createState() => _GuardianHomeScreen2State();
 }
 
-class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
+class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
+  int _page = 0;
+  onPageChanged(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
+
   String deviceToken = '';
 
   void getDeviceToken() async {
@@ -104,30 +106,81 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
   }
 
   Widget build(BuildContext context) {
+  
+   
 
- final screenNavigationOfParent = [
+    // String studentName = '';
+    var screenSize = MediaQuery.of(context).size;
+    checkingSchoolActivate(context);
+
+    return Scaffold(
+        body: SingleChildScrollView(
+      child: Stack(
+        children: [
+          // GuardianNotificationContaierWidget(
+          //   onTap: () {
+          //     viewallMenus();
+          //   },
+          // ),
+          // const GuardianCaroselWidget(),
+          // const ParentNameWidget(),
+          Padding(
+            padding: const EdgeInsets.only(top: 400, left: 40),
+            child: Row(
+              children: [
+                // QuickActionsWidget(
+                //   text: quicktext[0],
+                //   image: image[0],
+                // ),
+                // QuickActionsWidget(
+                //   text: quicktext[1],
+                //   image: image[1],
+                // ),
+                // QuickActionsWidget(
+                //   text: quicktext[2],
+                //   image: image[2],
+                // ),
+                // QuickActionsWidget(
+                //   text: quicktext[3],
+                //   image: image[3],
+                // ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ));
+  }
+
+  viewallMenus() {
+    final screenNavigationOfParent = [
       AttendenceBookScreenSelectMonth(
           schoolId: UserCredentialsController.schoolId!,
           batchId: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!), //Attendence...0
 
-      LeaveApplicationScreen(
-          studentName:widget.studentName,
+          const ViewHomeWorks(), // Home Works...............1
+           const SS(), // Time Table...........2
+           TeacherSubjectWiseList(
+          navValue: 'guardian'), //Teachers.................3
+          StudentSubjectScreen(), //Subjects...............4
+          LeaveApplicationScreen(
+          studentName: widget.studentName,
           guardianName: UserCredentialsController.guardianModel!.guardianName!,
           classID: UserCredentialsController.classId!,
           schoolId: UserCredentialsController.schoolId!,
           studentID: UserCredentialsController.guardianModel!.studentID!,
-          batchId: UserCredentialsController.batchId!), //Leave Letter////...1
-      ///student name error
+          batchId: UserCredentialsController.batchId!), //Leave Letter////...5
+          const UserExmNotifications(), // Exams...........6
+          UsersSelectExamLevelScreen(
+          classId: UserCredentialsController.classId!,
+          studentID: UserCredentialsController
+              .guardianModel!.studentID!), ////// exam result............7
+              NoticePage(), //Notice.........8
+              const EventList(), //Events.................9
+              SchoolLevelMeetingPage(),////////////////////////////10
 
-
-      const ParentChatScreen(),/////......2
-
-      const SS(), // Time Table...........3
-
-      SchoolLevelMeetingPage(), //Meetings................4
-
-      const UserExmNotifications(), // Exams...........5
+      
 
       UsersSelectExamLevelScreen(
           classId: UserCredentialsController.classId!,
@@ -139,452 +192,166 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
       NoticePage(), //Notice.........8
 
       const EventList(), //Events.................9
+      SchoolLevelMeetingPage(),////////////////////////10
 
-      // ProgressReportListViewScreen(
-      //     schoolId: UserCredentialsController.schoolId!,
-      //     classID: UserCredentialsController.classId!,
-      //     studentId: UserCredentialsController.parentModel?.studentID ?? "",
-      //     batchId: UserCredentialsController.batchId!), //Progress Report
-
-      const StudentSubjectHome(), //Subjects...............10
-
-      TeacherSubjectWiseList(navValue: 'guardian'), //Teachers.................11
-
-      BusRouteListPage(),//////////......................12
-      /////// all bus
-     // const FeesPage(),////////////////////...........13
+          const ParentChatScreen(),/////......11
       AllClassTestPage(
         pageNameFrom: "guardian",
-      ), //class test page////////////////////////////14
+      ), //class test page////////////////////////////11
       AllClassTestMonthlyPage(
         pageNameFrom: "guardian",
-      ),//////////////15
+      ), //////////////12
+
     ];
 
-
-   // String studentName = '';
-    var screenSize = MediaQuery.of(context).size;
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: SizedBox(height: 1100,width: double.infinity,
-            child: Column(
-              children: [
-                 Stack(
-                   children: [
-                     Container(
-                        height: 220,
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.bottomLeft,
-                                end: Alignment.topRight,
-                                colors: [
-                                  Color.fromARGB(255, 130, 192, 243),
-                                  Color.fromARGB(153, 241, 240, 240),
-                                  Color.fromARGB(255, 149, 226, 236),
-                                  Color.fromARGB(99, 214, 212, 212),
-                                  Color.fromARGB(255, 139, 233, 223)
-                                ]),
-                                   color: adminePrimayColor,
-                            // color: Color.fromARGB(192, 208, 191, 234),
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(45),
-                                bottomRight: Radius.circular(45))),
-                      ),
-                            Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            "Welcome...",
-                            style: GoogleFonts.abel(
-                                fontSize: 12, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              log(UserCredentialsController
-                                  .guardianModel!.studentID!);
-                            },
-                            child: SizedBox(
-                              width: screenSize.width / 2,
-                              child: GoogleMonstserratWidgets(
-                                overflow: TextOverflow.ellipsis,
-                                text: UserCredentialsController
-                                    .guardianModel!.guardianName!,
-                                fontsize: 23,
-                                fontWeight: FontWeight.bold,
-                                color: cblack,
-                              ),
-                            ),
-                          ),
-                        ),
-            
-                        // Padding(
-                        //   padding:
-                        //       EdgeInsets.only(left: screenSize.width / 1.4, top: 30),
-                        //   child: const CircleAvatar(
-                        //     maxRadius: 40,
-                        //     backgroundImage: AssetImage('assets/images/IOT.jpg'),
-                        //   ),
-                        // ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: FutureBuilder(
-                              future: FirebaseFirestore.instance
-                                  .collection("SchoolListCollection")
-                                  .doc(UserCredentialsController.schoolId)
-                                  .collection("AllStudents")
-                                  .doc(UserCredentialsController
-                                          .guardianModel?.studentID ??
-                                      '')
-                                  .get(),
-                              builder: (context, snap) {
-                                if (snap.hasData) {
-                                  return GoogleMonstserratWidgets(
-                                    text:
-                                        'Student : ${snap.data?.data()?['studentName']}',
-                                    fontsize: 14.5,
-                                    fontWeight: FontWeight.w500,
-                                    color: cblack.withOpacity(0.8),
-                                  );
-                                } else {
-                                  return const Text('');
-                                }
-                              }),
-                        ),
-            
-                        Padding(
-                          padding: const EdgeInsets.only(top: 2),
-                          child: FutureBuilder(
-                   
-                   
-                              future: FirebaseFirestore.instance
-                                  .collection('SchoolListCollection')
-                                  .doc(UserCredentialsController.schoolId)
-                                  .collection(UserCredentialsController.batchId!)
-                                  .doc(UserCredentialsController.batchId)
-                                  .collection('classes')
-                                  .doc(UserCredentialsController.classId)
-                                  .get(),
-                              builder: (context, snaps) {
-                                if (snaps.hasData) {
-                                  return GoogleMonstserratWidgets(
-                                    text:
-                                        'Class : ${snaps.data?.data()?['className']}',
-                                    fontsize: 13,
-                                    fontWeight: FontWeight.w500,
-                                    color: cblack.withOpacity(0.8),
-                                  );
-                                } else {
-                                  return const Text('');
-                                }
-                              }),
-                        ),
-                        GoogleMonstserratWidgets(
-                          text:
-                              'email : ${UserCredentialsController.guardianModel?.guardianEmail ?? ""}',
-                          fontsize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: cblack.withOpacity(0.7),
-                        ),
-                      ],
-                    ),
-                  ),
-                        Row(
+    Get.bottomSheet(
+        SingleChildScrollView(
+          child: SizedBox(
+            height: 800,
+            width: double.infinity,
+            child: Wrap(
+              children: <Widget>[
+                Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 80, top: 180),
-                      child: GestureDetector(
-                        onTap: () {
-                            Get.to(() => ParentEditProfileScreen());
-                          },
-                        child: CircleAvatar(
-                          maxRadius: 40,
-                          backgroundImage: NetworkImage(UserCredentialsController
-                                  .guardianModel!.profileImageURL ??
-                              ''),
-                          child: const Padding(
-                            padding: EdgeInsets.only(top: 55,left: 50),
-                            child: CircleAvatar(
-                              //  backgroundColor: cWhite,
-                              radius: 12,
-                              child: Center(child: Icon(Icons.info)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                     const Padding(
-                      padding: EdgeInsets.only(left: 30, top: 180),
-                      child: CircleAvatar(
-                        maxRadius: 40,
-                        backgroundImage: AssetImage('assets/images/AI.jpg'),
-                      ),
+                      padding: EdgeInsets.all(15.0),
+                      child: Text("All Categoris"),
                     ),
+                     SingleChildScrollView(
+                       child: SizedBox(
+                        height: 400,
+                         child: GridView.count(
+                           padding: const EdgeInsets.all(10),
+                           crossAxisCount: 3,
+                           crossAxisSpacing: 20,
+                           mainAxisSpacing: 20,
+                           children: List.generate(
+                             14,
+                             (index) => Container(
+                               decoration: BoxDecoration(
+                                 color: cWhite,
+                                 borderRadius: BorderRadius.circular(20),
+                               ),
+                               height: 60,
+                         
+                               // ignore: sort_child_properties_last
+                               child: Padding(
+                                 padding:
+                                     const EdgeInsets.only(left: 20, top: 10, right: 20),
+                                // child: SingleChildScrollView(
+                                   child: Column(
+                                       crossAxisAlignment: CrossAxisAlignment.start,
+                                       children: [
+                                         ContainerWidget(
+                                           icon: img[index],
+                                           //icon: Icons.view_list,
+                                           text: text[index], onTap: () { Get.to(screenNavigationOfParent[index]); },
+                                         ),
+                                       ]),
+                                // ),//
+                               ),
+                         
+                               // GooglePoppinsWidgets(text: "Subject", fontsize: 16),
+                               // kHeight10,
+                             ),
+                           ),
+                         ),
+                       ),
+                     ),
+                    // const SizedBox(height: 20,)
                   ],
-                ),
-                  
-                   ],
-                 ),
-                 /////////////////////////////////////
-            const Padding(
-              padding: EdgeInsets.only(top: 12,left: 8,right: 8,bottom: 10),
-              child: CarouselSliderWidget(),
-            ),////////////////////////////////////
-                 Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, top: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/icons8-attendance-100.png',
-                           // icon: Icons.waving_hand,
-                            text: ' Attendance',
-                            onTap: () {
-                               Get.to(screenNavigationOfParent[0]
-                             );
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/icons8-homework-67.png',
-                         //   icon: Icons.home_work,
-                            text: 'Homework',
-                            onTap: () 
-                            {
-                              Get.to(screenNavigationOfParent[7]);
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, top: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/study-time.png',
-                           // icon: Icons.assignment_rounded,
-                            text: 'Time Table',
-                            onTap: () {
-                               Get.to(screenNavigationOfParent[3]);
-                            }),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/icons8-teacher-100.png',
-                            //icon: Icons.person_2,
-                            text: 'Teachers',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[11]);
-                            }),
-                      ),
-                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10),
-                          child: ContainerWidget(
-                            icon: 'assets/flaticons/icons8-books-48.png',
-                              //icon: Icons.import_contacts,
-                              text: 'Subjects',
-                              onTap: () {
-                                  Get.to(screenNavigationOfParent[10]);
-                              }),
-                        ),
-                      
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/leave_letter.png',
-                           // icon: Icons.note_sharp,
-                            text: 'Leave Letters',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[1]);
-                            }),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/exam.png',
-                            //icon: Icons.list_alt,
-                            text: 'Exams',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[5]);
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/icons8-grades-100.png',
-                            //icon: Icons.add_chart,
-                            text: 'Exam Results',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[6]);
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/icons8-notice-100.png',
-                          //  icon: Icons.notification_add,
-                            text: 'Notices',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[8]);
-                            }),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/schedule.png',
-                           // icon: Icons.event, 
-                            text: 'Events', onTap: () {
-                                Get.to(screenNavigationOfParent[9]);
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/meeting.png',
-                          //  icon: Icons.meeting_room,
-                            text: 'Meetings',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[4]);
-                            }),
-                      ),
-                       Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ContainerWidget(
-                            icon: 'assets/flaticons/icons8-chat-100.png',
-                              //icon: Icons.chat_rounded,
-                              text: 'Chats',
-                              onTap: () {
- Get.to(screenNavigationOfParent[2]);
-                              }),
-                        ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(
-                      //       left: 10, right: 10, bottom: 10),
-                      //   child: ContainerWidget(
-                      //     image: '',
-                      //       //icon: Icons.bus_alert,
-                      //       text: 'Bus Route',
-                      //       onTap: () {}),
-                      // ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                     
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 10, bottom: 10),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/exam (1).png',
-                            //icon: Icons.class_,
-                            text: 'Class Test',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[14]);
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10,left: 20),
-                        child: ContainerWidget(
-                          icon: 'assets/flaticons/test.png',
-                            //icon: Icons.view_list,
-                            text: 'Monthly Class Test',
-                            onTap: () {
-                                Get.to(screenNavigationOfParent[14]);
-                            }),
-                      ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(bottom: 10),
-                      //   child: ContainerWidget(
-                      //     image: '',
-                      //       //icon: Icons.attach_money_rounded,
-                      //       text: 'Fees & Bills',
-                      //       onTap: () {}),
-                      // ),
-                      // Expanded(
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(
-                      //         left: 10, right: 10, bottom: 10),
-                      //     child: ContainerWidget(
-                      //       image: '',
-                      //         //icon: Icons.library_books,
-                      //         text: 'Library',
-                      //         onTap: () {}),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                  
-                ],
-              ),
-            ), 
+                )
               ],
             ),
           ),
         ),
-      ),
-    );
+        backgroundColor: Colors.white);
   }
 }
 
-Widget MenuItem(int id, String image, String title, bool selected, onTap) {
-  return Material(
-    color: Colors.white,
-    child: InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: Container(
-                height: 30,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(image))),
-              ),
-            ),
-            Expanded(
-                flex: 3,
-                child: Text(
-                  title,
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
-                ))
-          ],
-        ),
-      ),
-    ),
-  );
-}
+// class CategoryRowWidget extends StatelessWidget {
+//   const CategoryRowWidget({
+//     super.key,
+//     required this.screenNavigationOfParent,
+//   });
+
+//   final List<Widget> screenNavigationOfParent;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SingleChildScrollView(
+//       child:
+//     )
+//   }
+// }
+
+List<String> quicktext = ['Attendence', 'Home work', 'Exam', 'Chat'];
+List<String> image = [
+  'assets/flaticons/icons8-attendance-100.png',
+  'assets/flaticons/icons8-homework-100.png',
+  'assets/flaticons/icons8-books-48.png',
+  'assets/flaticons/icons8-chat-100.png'
+];
+
+// Widget MenuItem(int id, String image, String title, bool selected, onTap) {
+//   return Material(
+//     color: Colors.white,
+//     child: InkWell(
+//       onTap: onTap,
+//       child: Padding(
+//         padding: const EdgeInsets.all(15.0),
+//         child: Row(
+//           children: [
+//             Expanded(
+//               child: Container(
+//                 height: 30,
+//                 width: double.infinity,
+//                 decoration: BoxDecoration(
+//                     image: DecorationImage(image: AssetImage(image))),
+//               ),
+//             ),
+//             Expanded(
+//                 flex: 3,
+//                 child: Text(
+//                   title,
+//                   style: const TextStyle(color: Colors.black, fontSize: 16),
+//                 ))
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }
+
+List<String> img = [
+  'assets/flaticons/icons8-attendance-100.png',
+  'assets/flaticons/icons8-homework-67.png',
+  'assets/flaticons/study-time.png',
+  'assets/flaticons/icons8-teacher-100.png',
+  'assets/flaticons/icons8-books-48.png',
+  'assets/flaticons/leave_letter.png',
+  'assets/flaticons/exam.png',
+  'assets/flaticons/icons8-grades-100.png',
+  'assets/flaticons/icons8-notice-100.png',
+  'assets/flaticons/schedule.png',
+  'assets/flaticons/meeting.png',
+  'assets/flaticons/icons8-chat-100.png',
+  'assets/flaticons/exam (1).png',
+  'assets/flaticons/test.png',
+];
+List <String> text=[
+  'Attendance',
+  'Homework',
+   'Time Table',
+   'Teachers',
+   'Subjects',
+    'Leave Letters',
+     'Exams',
+     'Exam Results',
+     'Notices',
+     'Events',
+     'Meetings',
+     'Chats',
+     'Class Test',
+     'Monthly Class Test',
+];

@@ -6,6 +6,7 @@ import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/Subject/student/chapter_display.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
@@ -15,17 +16,18 @@ import 'package:get/get.dart';
 import '../../../../view/widgets/container_image.dart';
 import '../../../widgets/Iconbackbutton.dart';
 
-class StudentSubjectHome extends StatelessWidget {
-  TeacherSubjectController teacherSubjectController =
+class StudentSubjectScreen extends StatelessWidget {
+ final TeacherSubjectController teacherSubjectController =
       Get.put(TeacherSubjectController());
-  StudentSubjectHome({super.key});
+  StudentSubjectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: adminePrimayColor,
+           flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
         title: Row(
           children: [
             IconButtonBackWidget(

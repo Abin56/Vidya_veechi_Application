@@ -62,7 +62,7 @@ class ClassTeacherAccessories extends StatelessWidget {
 
       const MyStudents(), //My students
 
-      StudentSubjectHome(), //Subject
+      StudentSubjectScreen(), //Subject
 
       SchoolLevelMeetingPage(), //Meetings
 
