@@ -144,7 +144,7 @@ class MobileHomePage extends StatelessWidget {
                       height: 30,
                       width: 100,
                       child: InkWell(
-                        onTap: () => const SplashScreen(),
+                        onTap: () =>  SplashScreen(),
                         child: Text(
                           'LOGIN',
                           style: GoogleFonts.poppins(

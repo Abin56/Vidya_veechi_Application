@@ -88,6 +88,8 @@ class MyApp extends StatelessWidget {
               ],
               child: GetMaterialApp(
                 theme: ThemeData(
+                    dialogTheme: const DialogTheme(
+                        shape: RoundedRectangleBorder(side: BorderSide.none)),
                     tabBarTheme: TabBarTheme(
                       unselectedLabelColor: cWhite,
                       labelColor: Colors.blue[100],
@@ -107,20 +109,20 @@ class MyApp extends StatelessWidget {
                     if (state is AuthLoggedInState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const SampleMainHomeScreen();
+                        return SplashScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     } else if (state is AuthLoggedOutState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return const SampleMainHomeScreen();
+                        return SplashScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     }
                     if (SharedPreferencesHelper.getString("langCode") != null) {
-                      return const SampleMainHomeScreen();
+                      return SplashScreen();
                     } else {
                       return const SelectLanguage();
                     }

@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
-
+import 'package:vidya_veechi/controllers/application_controller/application_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/chatgpt_Controller/chatgpt_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/parent_model/parent_model.dart';
 import 'package:vidya_veechi/model/student_model/student_model.dart';
@@ -25,11 +26,17 @@ import '../../home/guardian_home/guardian_main_home.dart';
 import '../../widgets/fonts/google_monstre.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  final ChatGPTController chatGPTController = Get.put(ChatGPTController());
+  final ApplicationController applicationController =
+      Get.put(ApplicationController());
+  SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    nextpage();
+    applicationController
+        .getLatestApplicationVersion()
+        .then((value) => applicationController.checkingLatestVersion(context));
+   
     return Scaffold(
       body: SafeArea(
           child: Column(

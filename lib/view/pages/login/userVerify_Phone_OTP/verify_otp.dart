@@ -160,7 +160,7 @@ class UserVerifyOTPScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
-                            primary: Colors.green.shade600),
+                            foregroundColor: Colors.green.shade600),
                         onPressed: () async {
                           BlocProvider.of<AuthCubit>(context)
                               .verifyOTP(otpController.text);
