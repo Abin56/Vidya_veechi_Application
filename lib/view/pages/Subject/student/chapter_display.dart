@@ -12,9 +12,9 @@ import '../chapterdisplay.dart';
 import '../show_teacher_studymaterials.dart';
 
 class ChapterDisplay extends StatelessWidget {
-  ChapterDisplay({super.key, required this.subjectID});
+  const ChapterDisplay({super.key, required this.subjectID});
 
-  String subjectID;
+ final String subjectID;
 
   @override
   Widget build(BuildContext context) {

@@ -7,10 +7,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ViewExamsForProgressreport extends StatelessWidget {
-  String schooilID;
-  String batchId;
-  String classID;
-  ViewExamsForProgressreport(
+ final String schooilID;
+ final String batchId;
+ final String classID;
+  const ViewExamsForProgressreport(
       {required this.batchId,
       required this.classID,
       required this.schooilID,
@@ -58,7 +58,7 @@ class ViewExamsForProgressreport extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(ViewAllStudentsListScreen(
+                                    Get.to(()=>ViewAllStudentsListScreen(
                                         schooilID: schooilID,
                                         classID: classID,
                                         examName: snapshot.data?.docs[index]

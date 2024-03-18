@@ -29,7 +29,8 @@ class QuickActionPart extends StatelessWidget {
       height: 100.h,
       decoration: BoxDecoration(
           border: Border.all(color: cblack.withOpacity(0.1)),
-          color: const Color.fromARGB(255, 80, 200, 120).withOpacity(0.2),
+          color: adminePrimayColor.withOpacity(0.2),
+          // const Color.fromARGB(255, 80, 200, 120).withOpacity(0.2),
           borderRadius: BorderRadius.circular(20.sp)),
       child: Padding(
         padding: EdgeInsets.all(10.sp),
@@ -39,7 +40,8 @@ class QuickActionPart extends StatelessWidget {
             Text(
               'QUICK ACTIONS',
               style: TextStyle(
-                  color: const Color.fromARGB(255, 48, 88, 86),
+                  color: const Color.fromARGB(255, 11, 2, 74),
+                  // const Color.fromARGB(255, 48, 88, 86),
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
             ),
@@ -90,7 +92,6 @@ viewallMenus(BuildContext context) {
     const EventList(), //Events
 
     SchoolLevelMeetingPage(), //Meetings
-    BusRouteListPage(),
 
     AllClassTestPage(
       pageNameFrom: "student",
@@ -98,24 +99,26 @@ viewallMenus(BuildContext context) {
     AllClassTestMonthlyPage(
       pageNameFrom: "student",
     ),
+      BusRouteListPage(),
     // HostelHomePage(),
   ];
   Get.bottomSheet(
       SingleChildScrollView(
         child: SizedBox(
-          height: 600,
+          height: 620,
           width: double.infinity,
           child: Wrap(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(children: [ 
+                child: Row(
+                  children: [ 
                   Image.asset("assets/flaticons/menu.png",height: 30,),
                   GooglePoppinsWidgets(text: "All Categories", fontsize: 15,fontWeight: FontWeight.w500,)
                 ],),
               ),
               SizedBox(
-                height: 600,
+                height: 610,
                 child: AnimationLimiter(
                   child: GridView.count(
                     physics: const BouncingScrollPhysics(),

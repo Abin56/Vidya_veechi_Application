@@ -31,7 +31,8 @@ class StudentProfileEditPage extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12.h),
               bottomRight: Radius.circular(12.h)),
-          color: const Color.fromARGB(255, 88, 167, 123),
+          color: adminePrimayColor,
+          //const Color.fromARGB(255, 88, 167, 123),
         ),
         child: Column(children: [
           Row(

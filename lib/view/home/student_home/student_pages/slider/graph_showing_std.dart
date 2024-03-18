@@ -43,7 +43,8 @@ class GraphShowingPartStdAttendance extends StatelessWidget {
                         Text(
                           '  Attendance',
                           style: TextStyle(
-                              color: const Color.fromARGB(255, 48, 88, 86),
+                              color:  const Color.fromARGB(255, 11, 2, 74),
+                              //const Color.fromARGB(255, 48, 88, 86),
                               fontSize: 16.sp,
                               fontWeight: FontWeight.bold),
                         ),
@@ -122,7 +123,8 @@ class GraphShowingPartStdHomework extends StatelessWidget {
                       Text(
                         '  Homework',
                         style: TextStyle(
-                            color: const Color.fromARGB(255, 48, 88, 86),
+                            color: 
+                            const Color.fromARGB(255, 48, 88, 86),
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold),
                       ),
@@ -199,7 +201,8 @@ class GraphShowingPartStdExamResult extends StatelessWidget {
                       Text(
                         '  Exam Result',
                         style: TextStyle(
-                            color: const Color.fromARGB(255, 48, 88, 86),
+                            color: const Color.fromARGB(255, 11, 2, 74),
+                            // const Color.fromARGB(255, 48, 88, 86),
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold),
                       ),

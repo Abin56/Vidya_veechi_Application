@@ -18,11 +18,11 @@ class LiveClassRoom extends StatefulWidget {
   String docId;
   String teacherName;
   LiveClassRoom({
-    Key? key,
+    super.key,
     required this.teacherName,
     required this.docId,
     required this.roomID,
-  }) : super(key: key);
+  });
 
   @override
   State<LiveClassRoom> createState() => _LiveClassRoomState();

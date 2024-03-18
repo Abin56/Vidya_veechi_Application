@@ -14,7 +14,8 @@ class NotificationPartOfStd extends StatelessWidget {
             Text(
               'NOTIFICATIONS',
               style: TextStyle(
-                  color: const Color.fromARGB(255, 48, 88, 86),
+                  color:  const Color.fromARGB(255, 11, 2, 74),
+                  //const Color.fromARGB(255, 48, 88, 86),
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
             ),
@@ -23,7 +24,8 @@ class NotificationPartOfStd extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 1.h,
-                  color: const Color.fromARGB(255, 48, 88, 86).withOpacity(0.1),
+                  color: const Color.fromARGB(255, 11, 2, 74).withOpacity(0.1),
+                  // const Color.fromARGB(255, 48, 88, 86).withOpacity(0.1),
                 ),
               ),
             )
@@ -49,14 +51,16 @@ class NotificationPartOfStd extends StatelessWidget {
                   title: Text(
                     "Holiday",
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 48, 88, 86),
+                        color:  const Color.fromARGB(255, 11, 2, 74),
+                        //const Color.fromARGB(255, 48, 88, 86),
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold),
                   ),
                   subtitle: const Text(
                     "Tommorow is Holiday",
                     style: TextStyle(
-                      color: Color.fromARGB(255, 48, 88, 86),
+                      color: Color.fromARGB(255, 11, 2, 74),
+                      // Color.fromARGB(255, 48, 88, 86),
                     ),
                   ),
                 );

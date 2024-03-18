@@ -88,7 +88,7 @@ attendanceOnClickDetailsShowing() {
                                       text: 'Present  ',
                                       isSquare: true,
                                     ),
-                                    Text("50",style: TextStyle(fontWeight: FontWeight.w500))
+                                    Text("45",style: TextStyle(fontWeight: FontWeight.w500))
                                   ],
                                 ),
                               ),
@@ -101,7 +101,7 @@ attendanceOnClickDetailsShowing() {
                                             text: 'Absent   ',
                                             isSquare: true,
                                           ),
-                                          Text("50",style: TextStyle(fontWeight: FontWeight.w500))
+                                          Text("5",style: TextStyle(fontWeight: FontWeight.w500))
                                   ],
                                 ),
                               )
@@ -148,7 +148,7 @@ attendanceOnClickDetailsShowing() {
                                 width: 45.w,
                                 child: Center(
                                     child: GoogleLemonWidgets(
-                                  text: "1",
+                                  text: index.toString(),
                                   fontsize: 17.sp,
                                   color: cWhite,
                                 )),

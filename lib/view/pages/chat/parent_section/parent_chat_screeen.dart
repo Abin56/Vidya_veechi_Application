@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/pages/chat/parent_section/search/search_teachers.dart';
 import 'package:vidya_veechi/view/pages/chat/parent_section/teacher_messages/teachers_messages.dart';
-import 'package:vidya_veechi/view/pages/chat/student_section/search/search_teachers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';

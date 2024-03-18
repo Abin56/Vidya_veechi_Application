@@ -122,12 +122,12 @@ class NoticeClassDisplayPage extends StatelessWidget {
 }
 
 class GooglePoppinsWidgetsNotice extends StatelessWidget {
-  String text;
-  double fontsize;
-  FontWeight? fontWeight;
-  Color? color;
-  VoidCallback? onTap;
-  GooglePoppinsWidgetsNotice({
+ final String text;
+ final double fontsize;
+ final FontWeight? fontWeight;
+ final Color? color;
+ final VoidCallback? onTap;
+  const GooglePoppinsWidgetsNotice({
     required this.text,
     required this.fontsize,
     this.fontWeight,

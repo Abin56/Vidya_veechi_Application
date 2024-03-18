@@ -90,8 +90,10 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
               begin: Alignment.topLeft,
               end: Alignment.bottomCenter,
               colors: [
-                const Color.fromARGB(255, 88, 167, 123),
-                const Color.fromARGB(255, 88, 167, 123).withOpacity(0.7),
+                adminePrimayColor,
+                adminePrimayColor.withOpacity(0.7)
+                // const Color.fromARGB(255, 88, 167, 123),
+                // const Color.fromARGB(255, 88, 167, 123).withOpacity(0.7),
                 
               ],
             ),

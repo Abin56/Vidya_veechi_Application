@@ -21,7 +21,7 @@ class QuickActionsWidgetAttendance extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.to(   AttendenceBookScreenSelectMonth(
+            onTap: () => Get.to( ()=>  AttendenceBookScreenSelectMonth(
           schoolId: UserCredentialsController.schoolId!,
           batchId: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!), ),
@@ -63,7 +63,7 @@ class QuickActionsWidgetHW extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.to( const ViewHomeWorks(), ),
+            onTap: () => Get.to(()=>  const ViewHomeWorks(), ),
             child: Container(
               height: 55.h,
               width: 55.w,
@@ -100,7 +100,7 @@ class QuickActionsWidgetTT extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.to(const SS()),
+            onTap: () => Get.to(()=> const SS()),
             child: Container(
               height: 55.h,
               width: 55.w,
@@ -138,7 +138,7 @@ class QuickActionsWidgetChat extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.to( const StudentChatScreen(),),
+            onTap: () => Get.to( ()=> const StudentChatScreen(),),
             child: Container(
               height: 55.h,
               width: 55.w,

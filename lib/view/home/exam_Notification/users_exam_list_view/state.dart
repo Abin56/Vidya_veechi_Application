@@ -51,7 +51,8 @@ class UserStateLevel extends StatelessWidget {
                               width: 80.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.h),
-                                color: const Color.fromARGB(255, 83, 153, 115),
+                                color: adminePrimayColor,
+                                // const Color.fromARGB(255, 83, 153, 115),
                               ),
                               child: Padding(
                                 padding: EdgeInsets.only(top: 12.h, left: 10.h),

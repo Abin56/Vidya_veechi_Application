@@ -4,6 +4,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
 import 'package:vidya_veechi/view/home/student_home/Student%20Edit%20Profile/student_edit_profile_page.dart';
 import 'package:vidya_veechi/view/home/student_home/student_pages/notification_part_std.dart';
@@ -20,9 +21,6 @@ class NewStdHomePage extends StatelessWidget {
     log(
       UserCredentialsController.studentModel!.docid,
     );
-   
-  //  var screenSize = MediaQuery.of(context).size;
-
 
  return Scaffold(
       backgroundColor: const Color.fromARGB(255, 244, 244, 244),
@@ -34,7 +32,8 @@ class NewStdHomePage extends StatelessWidget {
               padding: EdgeInsets.only(top: 160.sp),
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 218, 247, 229),
+                  color: adminePrimayColor.withOpacity(0.1),
+                  // const Color.fromARGB(255, 218, 247, 229),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15.sp),
                       topRight: Radius.circular(15.sp)),
@@ -63,8 +62,7 @@ class NewStdHomePage extends StatelessWidget {
             ),
              Padding(
               padding: EdgeInsets.only(top: 60.sp, right: 10.sp, left: 10.sp),
-              child: GestureDetector(
-                child: const CarouselSliderStd())
+              child: const CarouselSliderStd()
             ),//////////////////////////////////////////////////////details showing graph
             SizedBox(
               height: 100.h,
