@@ -2,15 +2,16 @@
 
 import 'dart:developer';
 
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:vidya_veechi/controllers/get_student_detail/get_student_details.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:vidya_veechi/controllers/get_student_detail/get_student_details.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../../model/leave_letter_model/leave_letter.dart';
 import '../../../widgets/button_container_widget.dart';
@@ -124,7 +125,8 @@ class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
       } else {
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: adminePrimayColor,
+            flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
             title: Text(
               "Apply Leave".tr,
               style: GoogleFonts.poppins(
@@ -183,7 +185,7 @@ class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
                           height: 20,
                         ),
                         SizedBox(
-                          height: 90,
+                          height: 85,
                           width: double.infinity,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,

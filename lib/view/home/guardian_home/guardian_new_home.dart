@@ -1,30 +1,21 @@
 // ignore_for_file: use_key_in_widget_constructors, must_call_super, annotate_overrides, non_constant_identifier_names
-import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/local_database/parent_login_database.dart';
+import 'package:vidya_veechi/main.dart';
+import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/qucik_action.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/home/all_class_test_monthly_show/all_class_list_monthly_show.dart';
 import 'package:vidya_veechi/view/home/all_class_test_show/all_class_list_show.dart';
 import 'package:vidya_veechi/view/home/events/event_list.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import 'package:vidya_veechi/view/home/parent_home/leave_application/apply_leave_application.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/parent_carosel_widget.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/parent_name_widget.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/parent_view_all_categories.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/qucik_action.dart';
 import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
-import 'package:vidya_veechi/view/pages/Attentence/take_attentence/attendence_book_status_month.dart';
 import 'package:vidya_veechi/view/pages/Homework/view_home_work.dart';
 import 'package:vidya_veechi/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
 import 'package:vidya_veechi/view/pages/Notice/notice_list.dart';
@@ -34,19 +25,24 @@ import 'package:vidya_veechi/view/pages/exam_results/for_users/select_examlevel_
 import 'package:vidya_veechi/view/pages/teacher_list/teacher_list.dart';
 import 'package:vidya_veechi/view/widgets/icon/icon_widget.dart';
 
-import '../../../controllers/multipile_students/multipile_students_controller.dart';
+import '../../pages/Attentence/take_attentence/attendence_book_status_month.dart';
 
-class ParentHomeScreen extends StatefulWidget {
-    const ParentHomeScreen({super.key, required this.studentName});
-  @override
+class GuardianHomeScreen2 extends StatefulWidget {
   final String studentName;
-  
-  State<ParentHomeScreen> createState() => _ParentHomeScreenState();
+
+  const GuardianHomeScreen2({super.key, required this.studentName});
+
+  @override
+  State<GuardianHomeScreen2> createState() => _GuardianHomeScreen2State();
 }
 
-class _ParentHomeScreenState extends State<ParentHomeScreen> {
-  MultipileStudentsController multipileStudentsController =
-      Get.put(MultipileStudentsController());
+class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
+  int _page = 0;
+  onPageChanged(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
 
   String deviceToken = '';
 
@@ -68,9 +64,10 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
         .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('GuardianCollection')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set({'deviceToken': deviceToken}, SetOptions(merge: true))
+        .then((value) => log('Device Token Saved To FIREBASE'))
         .then((value) => log('Device Token Saved To FIREBASE'))
         .then((value) => FirebaseFirestore.instance
                 .collection('PushNotificationToAll')
@@ -81,7 +78,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
               'batchID': UserCredentialsController.batchId,
               'classID': UserCredentialsController.classId,
               'personID': FirebaseAuth.instance.currentUser!.uid,
-              'role': 'Parent'
+              'role': 'Guardian'
             }))
         .then((value) => FirebaseFirestore.instance
                 .collection('SchoolListCollection')
@@ -93,45 +90,10 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
               'batchID': UserCredentialsController.batchId,
               'classID': UserCredentialsController.classId,
               'personID': FirebaseAuth.instance.currentUser!.uid,
-              'role': 'Parent'
+              'role': 'Guardian'
             }));
-  }
 
-// }
-
-  Future<void> sendPushMessage(String token, String body, String title) async {
-    try {
-      final reponse = await http.post(
-        Uri.parse('https://fcm.googleapis.com/fcm/send'),
-        headers: <String, String>{
-          'Content-Type': 'application/json',
-          'Authorization':
-              'key=AAAAT5j1j9A:APA91bFcF5EBAVJGG-vU-ybkkpPQSw2y-a95cAsKTokuRYEeco9CU2NoFPL6ceQRZsMXYHoBmsRIEZTDrs-aY0CseLYQwgdSytHnajpDA0s4ZVJjlAJLI7IL-uhqgCqESvEeMsExmmBK'
-        },
-        body: jsonEncode(
-          <String, dynamic>{
-            'priority': 'high',
-            'data': <String, dynamic>{
-              'click_action': 'FLUTTER_NOTIFICATION_CLICK',
-              'status': 'done',
-              'body': body,
-              'title': title,
-            },
-            "notification": <String, dynamic>{
-              'title': title,
-              'body': body,
-              'android_channel_id': 'high_importance_channel'
-            },
-            'to': token,
-          },
-        ),
-      );
-      log(reponse.body.toString());
-    } catch (e) {
-      if (kDebugMode) {
-        log("error push Notification");
-      }
-    }
+    //AAAAd0ScEck:APA91bELuwPRaLXrNxKTwj-z6EK-mCSPOon5WuZZAwkdklLhWvbi_NxXGtwHICE92vUzGJyE9xdOMU_-4ZPbWy8s2MuS_s-4nfcN_rZ1uBTOCMCcJ5aNS7rQHeUTXgYux54-n4eoYclp  apikey
   }
 
   @override
@@ -144,77 +106,52 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
   }
 
   Widget build(BuildContext context) {
-    log("Parent DOCID :::::::::::::::::::  ${UserCredentialsController.parentModel?.docid}");
-    log("Firebase Auth DOCID :::::::::::::::::::  ${FirebaseAuth.instance.currentUser?.uid}");
-    final parentAuth = DBParentLogin(
-        parentPassword: ParentPasswordSaver.parentPassword,
-        parentEmail: ParentPasswordSaver.parentemailID,
-        schoolID: UserCredentialsController.schoolId!,
-        batchID: UserCredentialsController.batchId!,
-        classID: UserCredentialsController.classId!,
-        studentID: UserCredentialsController.parentModel!.studentID!,
-        parentID: FirebaseAuth.instance.currentUser!.uid,
-        emailID: FirebaseAuth.instance.currentUser!.email ?? "",
-        parentDocID: FirebaseAuth.instance.currentUser!.uid);
-    multipileStudentsController.checkalreadyexist(
-        FirebaseAuth.instance.currentUser!.uid, parentAuth);
-
   
-  
-     List<Widget> screenNav=[AttendenceBookScreenSelectMonth(
-          schoolId: UserCredentialsController.schoolId!,
-          batchId: UserCredentialsController.batchId!,
-          classID: UserCredentialsController.classId!),///////////////////Attendance 0
+   
 
-           const ViewHomeWorks(), // Home Works...............1
-               const UserExmNotifications(), // Exams...........2
-               const ParentChatScreen(),/////......3
-               
-          
-          ];
+    // String studentName = '';
+    var screenSize = MediaQuery.of(context).size;
+    checkingSchoolActivate(context);
+
     return Scaffold(
-      body: SafeArea(
-        child:
-        SingleChildScrollView(
+        body: SingleChildScrollView(
       child: Stack(
         children: [
-          ParentViewAllCategories(
-            onTap: () {
-              viewallMenus();
-            },
-          ),
-          const ParentCaroselWidget(),
-          const ParentNameWidget(),
+          // GuardianNotificationContaierWidget(
+          //   onTap: () {
+          //     viewallMenus();
+          //   },
+          // ),
+          // const GuardianCaroselWidget(),
+          // const ParentNameWidget(),
           Padding(
             padding: const EdgeInsets.only(top: 400, left: 40),
             child: Row(
               children: [
-                QuickActionsWidget(
-                  text: quicktext[0],
-                  image: image[0], onTap:(){Get.to(screenNav[0]) ;}
-                ),
-                QuickActionsWidget(
-                  text: quicktext[1],
-                  image: image[1], onTap:(){Get.to(screenNav[1]);} ,
-                ),
-                QuickActionsWidget(
-                  text: quicktext[2],
-                  image: image[2], onTap:(){Get.to(screenNav[2]);} ,
-                ),
-                QuickActionsWidget(
-                  text: quicktext[3],
-                  image: image[3], onTap: (){Get.to(screenNav[3]);},
-                ),
+                // QuickActionsWidget(
+                //   text: quicktext[0],
+                //   image: image[0],
+                // ),
+                // QuickActionsWidget(
+                //   text: quicktext[1],
+                //   image: image[1],
+                // ),
+                // QuickActionsWidget(
+                //   text: quicktext[2],
+                //   image: image[2],
+                // ),
+                // QuickActionsWidget(
+                //   text: quicktext[3],
+                //   image: image[3],
+                // ),
               ],
-            )
+            ),
           ),
         ],
       ),
-    )
-       
-      ),
-    );
+    ));
   }
+
   viewallMenus() {
     final screenNavigationOfParent = [
       AttendenceBookScreenSelectMonth(
@@ -225,35 +162,45 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           const ViewHomeWorks(), // Home Works...............1
            const SS(), // Time Table...........2
            TeacherSubjectWiseList(
-          navValue: 'parent'), //Teachers.................3
+          navValue: 'guardian'), //Teachers.................3
           StudentSubjectScreen(), //Subjects...............4
           LeaveApplicationScreen(
           studentName: widget.studentName,
-          guardianName: UserCredentialsController.parentModel!.parentName!,
+          guardianName: UserCredentialsController.guardianModel!.guardianName!,
           classID: UserCredentialsController.classId!,
           schoolId: UserCredentialsController.schoolId!,
-          studentID: UserCredentialsController.parentModel!.studentID!,
+          studentID: UserCredentialsController.guardianModel!.studentID!,
           batchId: UserCredentialsController.batchId!), //Leave Letter////...5
           const UserExmNotifications(), // Exams...........6
           UsersSelectExamLevelScreen(
           classId: UserCredentialsController.classId!,
           studentID: UserCredentialsController
-              .parentModel!.studentID!), ////// exam result............7
+              .guardianModel!.studentID!), ////// exam result............7
               NoticePage(), //Notice.........8
               const EventList(), //Events.................9
               SchoolLevelMeetingPage(),////////////////////////////10
 
-                const ParentChatScreen(),/////......11
-                 AllClassTestPage(
-        pageNameFrom: "parent",
-      ), //class test page////////////////////////////12
-      AllClassTestMonthlyPage(
-        pageNameFrom: "parent",
-      ), //////////////13
-              
       
 
-     
+      UsersSelectExamLevelScreen(
+          classId: UserCredentialsController.classId!,
+          studentID: UserCredentialsController
+              .guardianModel!.studentID!), ////// exam result............6
+
+      const ViewHomeWorks(), // Home Works...............7
+
+      NoticePage(), //Notice.........8
+
+      const EventList(), //Events.................9
+      SchoolLevelMeetingPage(),////////////////////////10
+
+          const ParentChatScreen(),/////......11
+      AllClassTestPage(
+        pageNameFrom: "guardian",
+      ), //class test page////////////////////////////11
+      AllClassTestMonthlyPage(
+        pageNameFrom: "guardian",
+      ), //////////////12
 
     ];
 
@@ -268,7 +215,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                   children: [
                     const Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Text("All Categories"),
+                      child: Text("All Categoris"),
                     ),
                      SingleChildScrollView(
                        child: SizedBox(
@@ -319,8 +266,24 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           ),
         ),
         backgroundColor: Colors.white);
-  } 
+  }
 }
+
+// class CategoryRowWidget extends StatelessWidget {
+//   const CategoryRowWidget({
+//     super.key,
+//     required this.screenNavigationOfParent,
+//   });
+
+//   final List<Widget> screenNavigationOfParent;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SingleChildScrollView(
+//       child:
+//     )
+//   }
+// }
 
 List<String> quicktext = ['Attendence', 'Home work', 'Exam', 'Chat'];
 List<String> image = [
@@ -330,6 +293,35 @@ List<String> image = [
   'assets/flaticons/icons8-chat-100.png'
 ];
 
+// Widget MenuItem(int id, String image, String title, bool selected, onTap) {
+//   return Material(
+//     color: Colors.white,
+//     child: InkWell(
+//       onTap: onTap,
+//       child: Padding(
+//         padding: const EdgeInsets.all(15.0),
+//         child: Row(
+//           children: [
+//             Expanded(
+//               child: Container(
+//                 height: 30,
+//                 width: double.infinity,
+//                 decoration: BoxDecoration(
+//                     image: DecorationImage(image: AssetImage(image))),
+//               ),
+//             ),
+//             Expanded(
+//                 flex: 3,
+//                 child: Text(
+//                   title,
+//                   style: const TextStyle(color: Colors.black, fontSize: 16),
+//                 ))
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
 List<String> img = [
   'assets/flaticons/icons8-attendance-100.png',
@@ -363,4 +355,3 @@ List <String> text=[
      'Class Test',
      'Monthly Class Test',
 ];
-

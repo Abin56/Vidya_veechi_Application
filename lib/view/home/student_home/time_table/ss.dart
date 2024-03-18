@@ -1,10 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 
@@ -110,19 +110,19 @@ class _SSState extends State<SS> with SingleTickerProviderStateMixin {
         title: GoogleMonstserratWidgets(
           text: 'Time Table'.tr,
           fontsize: 17.w,
-          color: adminePrimayColor,
+          color: const Color.fromARGB(255, 88, 167, 123),
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: const IconThemeData(color: adminePrimayColor),
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 88, 167, 123),),
         backgroundColor: Colors.transparent,
         elevation: 0,
         bottom: TabBar(
-          unselectedLabelColor: adminePrimayColor,
+          unselectedLabelColor: const Color.fromARGB(255, 88, 167, 123),
           unselectedLabelStyle:
               GoogleFonts.montserrat(fontSize: 10, fontWeight: FontWeight.bold),
-          dividerColor: adminePrimayColor,
+          dividerColor: const Color.fromARGB(255, 88, 167, 123),
           indicator: BoxDecoration(
-              color: adminePrimayColor,
+              color: const Color.fromARGB(255, 88, 167, 123),
               borderRadius: BorderRadius.circular(50)),
           labelStyle: GoogleFonts.montserrat(
             fontSize: 11,

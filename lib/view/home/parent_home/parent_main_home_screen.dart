@@ -1,12 +1,13 @@
 import 'dart:developer';
 
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent_home_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/home/parent_home/parent_home_screen.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../controllers/userCredentials/user_credentials.dart';
 import '../../../main.dart';
@@ -16,7 +17,7 @@ import '../drawer/parent_drawer.dart';
 import '../student_home/Student Edit Profile/parent_edit_profile.dart';
 
 class ParentMainHomeScreen extends StatefulWidget {
-  const ParentMainHomeScreen({Key? key}) : super(key: key);
+  const ParentMainHomeScreen({super.key});
 
   @override
   State<ParentMainHomeScreen> createState() => _ParentMainHomeScreenState();
@@ -38,10 +39,10 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
+   log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      ParentHomeScreen(),
+     ParentHomeScreen(studentName:  UserCredentialsController.parentModel!.studentID!,),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
@@ -65,25 +66,18 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
               fit: BoxFit.cover,
             )),
           ),
-          backgroundColor: adminePrimayColor,
+          flexibleSpace: const AppBarColorWidget(),
         ),
         body: pages[_page],
         bottomNavigationBar: Container(
           height: 71,
           decoration: BoxDecoration(
-            // color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            border: Border.all(color: Colors.white.withOpacity(0.13)),
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 6, 71, 157),
-                Color.fromARGB(255, 5, 85, 222)
-              ],
-            ),
-          ),
+          // color: Colors.white,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(0), topRight: Radius.circular(0)),
+          border: Border.all(color: Colors.white.withOpacity(0.13)),
+          color: const Color.fromARGB(255, 92, 180, 132),
+        ),
           child: GNav(
             gap: 8,
             rippleColor: Colors.grey,
@@ -106,7 +100,13 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
                 icon: Icons.assignment_ind_outlined,
                 textSize: 20,
                 text: 'Profile'.tr,
-              )
+              ),
+               GButton(
+              iconSize: 30,
+              textSize: 20,
+              icon: Icons.chat,
+              text: 'Ask\nDoubt'.tr,
+            )
             ],
             selectedIndex: _page,
             onTabChange: (value) {
