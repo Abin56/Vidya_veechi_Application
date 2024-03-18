@@ -61,7 +61,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                       height: 90.h,
                     ),
                     GoogleMonstserratWidgets(
-                        text: "DuJO Live",
+                        text: "Vidya Veechi Live",
                         fontsize: 35.sp,
                         color: cWhite,
                         fontWeight: FontWeight.bold),

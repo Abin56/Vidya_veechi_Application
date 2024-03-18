@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/parent_home/parent_home_screen.dart';
-import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
 
 class AppBarColorWidget extends StatelessWidget {
   const AppBarColorWidget({

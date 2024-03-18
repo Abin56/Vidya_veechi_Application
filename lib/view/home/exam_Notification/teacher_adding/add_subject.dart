@@ -33,7 +33,7 @@ class AddTimeTable extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: adminePrimayColor),
+                    ),
                 child: SizedBox(
                     height: 80.h,
                     width: 250.w,

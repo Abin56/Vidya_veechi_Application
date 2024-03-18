@@ -11,6 +11,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/widgets/icon/teachericonWidget/imagecontainer.dart';
 
 import '../../../utils/utils.dart';
 import '../../colors/colors.dart';
@@ -132,13 +133,14 @@ class ClickOnClasss extends StatelessWidget {
       ClassTestPage(),
       ClassMonthlyTestPage(), //class test monthly
     ];
-    int columnCount = 2;
+    int columnCount = 3;
     double w = ResponsiveApp.mq.size.width;
     double h = ResponsiveApp.mq.size.height;
     log('Teacher class iddddddd$classID');
     return Scaffold(
-      appBar: AppBar(
-        title: Text(className),
+       appBar: AppBar(
+           flexibleSpace: const AppBarColorWidget(),
+        title: Text(className,style: const TextStyle(color: Colors.white)),
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -173,12 +175,12 @@ class ClickOnClasss extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Expanded(
+                       Expanded(
                           child: AnimationLimiter(
                             child: GridView.count(
                               physics: const BouncingScrollPhysics(
                                   parent: AlwaysScrollableScrollPhysics()),
-                              padding: EdgeInsets.all(w / 60),
+                              padding: EdgeInsets.all(w / 20),
                               crossAxisCount: columnCount,
                               children: List.generate(
                                 _acc_text.length,
@@ -199,62 +201,30 @@ class ClickOnClasss extends StatelessWidget {
                                               Get.to(() =>
                                                   noDataNavigation[index]);
                                             },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.white
-                                                    .withOpacity(0.5),
-                                                borderRadius:
-                                                    const BorderRadius.all(
-                                                        Radius.circular(30)),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.1),
-                                                    blurRadius: 40,
-                                                    spreadRadius: 10,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceEvenly,
+                                              children: [
+                                                _acc_images[index] ,
+                                                Center(
+                                                  child: Text(
+                                                    textAlign:
+                                                        TextAlign.center,
+                                                    _acc_text[index],
+                                                    style: GoogleFonts
+                                                        .montserrat(
+                                                            color: Colors
+                                                                .black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            fontSize: 13,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
                                                   ),
-                                                ],
-                                              ),
-                                              height: h / 100,
-                                              width: double.infinity,
-                                              margin: EdgeInsets.only(
-                                                  top: w / 30,
-                                                  left: w / 30,
-                                                  right: w / 30),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  Container(
-                                                    height: 75,
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                        image: AssetImage(
-                                                            _acc_images[index]),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Center(
-                                                    child: Text(
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      _acc_text[index],
-                                                      style: GoogleFonts
-                                                          .montserrat(
-                                                              color: Colors
-                                                                  .black
-                                                                  .withOpacity(
-                                                                      0.5),
-                                                              fontSize: 13,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ),
@@ -293,18 +263,18 @@ class ClickOnClasss extends StatelessWidget {
                                         Get.to(() => hasDataNavigation[index]);
                                       },
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
-                                          borderRadius: const BorderRadius.all(
+                                        decoration: const BoxDecoration(
+                                         // color: Colors.white.withOpacity(0.5),
+                                          borderRadius: BorderRadius.all(
                                               Radius.circular(10)),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.1),
-                                              blurRadius: 40,
-                                              spreadRadius: 10,
-                                            ),
-                                          ],
+                                          // boxShadow: [
+                                          //   BoxShadow(
+                                          //     color:
+                                          //         Colors.black.withOpacity(0.1),
+                                          //     blurRadius: 40,
+                                          //     spreadRadius: 10,
+                                          //   ),
+                                          // ],
                                         ),
                                         height: h / 100,
                                         width: double.infinity,
@@ -315,17 +285,17 @@ class ClickOnClasss extends StatelessWidget {
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Container(
-                                              height: 75,
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      hasDataImages[index]),
-                                                ),
-                                              ),
-                                            ),
+                                          children: [ hasDataImages[index],
+                                            // Container(
+                                            //   height: 75,
+                                            //   width: double.infinity,
+                                            //   decoration: BoxDecoration(
+                                            //     image: DecorationImage(
+                                            //       image: AssetImage(
+                                            //           hasDataImages[index]),
+                                            //     ),
+                                            //   ),
+                                            // ),
                                             Center(
                                               child: Text(
                                                 translateString(
@@ -373,34 +343,34 @@ List<String> _acc_text = [
   'Class Test'.tr,
   'Monthly Class Test'.tr,
 ];
-var _acc_images = [
-  'assets/images/classroom.png',
-  'assets/images/exam.png',
-  'assets/images/library.png',
-  'assets/images/notices.png',
-  'assets/images/subjects.png',
-  'assets/images/activity.png',
-  'assets/images/meetings.png',
-  'assets/images/exmresult1.png',
-  'assets/images/test.png',
+List<Widget> _acc_images = [
+  const ImageContainer(image: "assets/flaticons/book.png"),
+   const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
+   const ImageContainer(image: "assets/flaticons/worksheet.png"),
+   const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
+   const ImageContainer(image: "assets/flaticons/icons8-books-48.png"),
+   const ImageContainer(image: "assets/flaticons/calendar.png"),
+   const ImageContainer(image: "assets/flaticons/meeting.png"),
+   const ImageContainer(image: "assets/flaticons/exam.png"),
+    const ImageContainer(image: "assets/flaticons/test.png"),
 ];
-var hasDataImages = [
-  'assets/images/attendance.png',
-  'assets/images/classroom.png',
-  'assets/images/chat.png',
-  'assets/images/virtual-class.png',
-  'assets/images/exam.png',
-  'assets/images/exmresult1.png',
-  'assets/images/library.png',
-  'assets/images/homework.png',
-  'assets/images/notices.png',
-  'assets/images/activity.png',
-  'assets/images/subjects.png',
-  'assets/images/meetings.png',
-  'assets/images/recorded_classes.png',
-  'assets/images/bus.png',
-  'assets/images/exmresult1.png',
-  'assets/images/test.png'
+List<Widget> hasDataImages = [
+   const ImageContainer(image: "assets/flaticons/roll-call.png"),
+    const ImageContainer(image: "assets/flaticons/book.png"),
+      const ImageContainer(image: "assets/flaticons/icons8-chat-100.png"),
+       const ImageContainer(image: "assets/flaticons/icons8-teacher-100.png"),
+    const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
+      const ImageContainer(image: "assets/flaticons/exam (1).png"),
+       const ImageContainer(image: "assets/flaticons/worksheet.png"),
+    const ImageContainer(image: "assets/flaticons/icons8-homework-67.png"),
+      const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
+       const ImageContainer(image: "assets/flaticons/calendar.png"),
+    const ImageContainer(image: "assets/flaticons/school-material.png"),
+      const ImageContainer(image: "assets/flaticons/meeting.png"),
+       const ImageContainer(image: "assets/flaticons/recording.png"),
+    const ImageContainer(image: "assets/flaticons/route (1).png"),
+      const ImageContainer(image: "assets/flaticons/exam.png"),
+      const ImageContainer(image: "assets/flaticons/test.png"),
 ];
 List<String> hasDataText = [
   'Take Attendance'.tr,

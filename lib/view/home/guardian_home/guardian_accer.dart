@@ -23,7 +23,7 @@ import '../exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import '../student_home/time_table/ss.dart';
 
 class GuardianAccessories extends StatelessWidget {
-  String studentName;
+ final String studentName;
   GuardianAccessories({
     required this.studentName,
     super.key,
