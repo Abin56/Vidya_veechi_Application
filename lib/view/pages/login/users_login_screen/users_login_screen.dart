@@ -158,7 +158,6 @@ getWhichTeacher(int teacherPageIndex, int classTeacherPageIndex) {
   Get.bottomSheet(Container(
     color: Colors.white,
     height: 200.h,
-    width: 200.w,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

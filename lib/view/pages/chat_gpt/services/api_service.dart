@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:get/get.dart';
 import 'package:vidya_veechi/config.dart';
 import 'package:http/http.dart' as http;
+import 'package:vidya_veechi/controllers/chatgpt_Controller/chatgpt_controller.dart';
 
 // import '../../../../config.dart';
 
@@ -15,7 +17,7 @@ class ApiService {
     try {
       var response = await http.get(
         Uri.parse("$BASE_URL/models"),
-        headers: {'Authorization': 'Bearer $openApiKey'},
+        headers: {'Authorization': 'Bearer ${Get.find<ChatGPTController>().apikey.value}'},
       );
 
       Map jsonResponse = jsonDecode(response.body);
@@ -45,7 +47,7 @@ class ApiService {
       var response = await http.post(
         Uri.parse("$BASE_URL/completions"),
         headers: {
-          'Authorization': 'Bearer $openApiKey',
+          'Authorization': 'Bearer ${Get.find<ChatGPTController>().apikey.value}',
           "Content-Type": "application/json"
         },
         body: jsonEncode(
@@ -93,7 +95,7 @@ class ApiService {
       var response = await http.post(
         Uri.parse("$BASE_URL/completions"),
         headers: {
-          'Authorization': 'Bearer $openApiKey',
+          'Authorization': 'Bearer ${Get.find<ChatGPTController>().apikey.value}',
           "Content-Type": "application/json"
         },
         body: jsonEncode(

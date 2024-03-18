@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:vidya_veechi/controllers/chatgpt_Controller/chatgpt_controller.dart';
 
 import '../providers/chats_provider.dart';
 import '../providers/models_provider.dart';
@@ -17,6 +19,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  ChatGPTController chatGPTController = Get.put(ChatGPTController());
   bool _isTyping = false;
 
   late TextEditingController textEditingController;
@@ -24,10 +27,12 @@ class _ChatScreenState extends State<ChatScreen> {
   late FocusNode focusNode;
   @override
   void initState() {
+    chatGPTController.getAPIKEY();
+
     _listScrollController = ScrollController();
     textEditingController = TextEditingController();
     focusNode = FocusNode();
-  
+
     super.initState();
   }
 

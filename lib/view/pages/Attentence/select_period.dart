@@ -146,6 +146,7 @@ class SelectPeriodWiseScreen extends StatelessWidget {
                         .collection(monthwise)
                         .doc(formatted)
                         .collection("PeriodCollection")
+                        .orderBy('period', descending: false)
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
