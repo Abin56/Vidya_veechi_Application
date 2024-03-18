@@ -275,7 +275,7 @@ class ClassTeacherHome extends StatelessWidget {
                                 'QUICK ACTIONS',
                                 style: TextStyle(
                                     color:
-                                        const Color.fromARGB(255, 48, 88, 86),
+                                        const Color.fromARGB(255, 11, 2, 74),
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -306,7 +306,7 @@ class ClassTeacherHome extends StatelessWidget {
                                 'NOTIFICATIONS',
                                 style: TextStyle(
                                     color:
-                                        const Color.fromARGB(255, 48, 88, 86),
+                                        const Color.fromARGB(255, 11, 2, 74),
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -315,7 +315,7 @@ class ClassTeacherHome extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     height: 1.h,
-                                    color: const Color.fromARGB(255, 48, 88, 86)
+                                    color: const Color.fromARGB(255, 11, 2, 74)
                                         .withOpacity(0.1),
                                   ),
                                 ),
@@ -342,15 +342,14 @@ class ClassTeacherHome extends StatelessWidget {
                                     title: Text(
                                       "Holiday",
                                       style: TextStyle(
-                                          color: const Color.fromARGB(
-                                              255, 48, 88, 86),
+                                          color: const Color.fromARGB(255, 11, 2, 74),
                                           fontSize: 18.sp,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     subtitle: const Text(
                                       "Tommorow is Holiday",
                                       style: TextStyle(
-                                        color: Color.fromARGB(255, 48, 88, 86),
+                                        color: const Color.fromARGB(255, 11, 2, 74),
                                       ),
                                     ),
                                   );

@@ -2,7 +2,6 @@ import 'dart:math' as math;
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:vidya_veechi/sample/main_screen.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 
 class AssignmentGraphClassTeacher extends StatefulWidget {

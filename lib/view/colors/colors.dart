@@ -22,6 +22,10 @@ class AppColors {
   static const greyColor = Colors.grey;
   static const blackColor = Colors.black;
 
+ Color themeColorBlue = Color.fromARGB(255, 6, 71, 157);
+ Color adminePrimayColor = Color.fromARGB(255, 27, 92, 176);
+ Color adminePrimayColor1 = Color.fromARGB(255, 67, 0, 212);
+
   static const redColor = Colors.red;
   static const lightRedColor = Color.fromARGB(255, 255, 198, 194);
   static const greenColor = Colors.green;

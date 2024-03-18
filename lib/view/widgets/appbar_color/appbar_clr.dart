@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 
 class AppBarColorWidget extends StatelessWidget {
   const AppBarColorWidget({
@@ -9,7 +10,7 @@ class AppBarColorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: adminePrimayColor
+        color: adminePrimayColor,
         // Color.fromARGB(255, 88, 167, 123),
         // color: cgraident.withOpacity(0.5),
       ),

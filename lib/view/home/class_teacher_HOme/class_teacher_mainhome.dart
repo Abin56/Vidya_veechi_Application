@@ -226,21 +226,21 @@ viewallMenus() {
                               onTap: () {
                                 Get.to(() =>screenNavigationOfClsTr[0]);
                               }, 
-                               icon: 'assets/flaticons/roll-call.png',
+                              image: 'assets/flaticons/roll-call.png',
                             ),
                       ContainerWidget(
-                        //icon: Icons.import_contacts,
+                        //icon:images.import_contacts,
                         text: 'Attendance Book',
                         onTap: () => Get.to(() => screenNavigationOfClsTr[1]),
         
-                        icon: 'assets/flaticons/book.png',
+                       image: 'assets/flaticons/book.png',
                       ),
                        ContainerWidget(
-                              //icon: Icons.chat_rounded,
+                              //icon:images.chat_rounded,
                               text: 'Chats',
                               onTap: () {
                                    Get.to(() =>screenNavigationOfClsTr[2]);
-                              }, icon: 'assets/flaticons/icons8-chat-100.png',
+                              },image: 'assets/flaticons/icons8-chat-100.png',
                             ),
                            
                     ],
@@ -250,27 +250,27 @@ viewallMenus() {
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                         ContainerWidget(
-                              // icon: Icons.waving_hand,
+                              //image:images.waving_hand,
                               text: ' Time Table',
                               onTap: () {
                                    Get.to(() =>screenNavigationOfClsTr[3]);
-                              }, icon: 'assets/flaticons/worksheet.png',
+                              },image: 'assets/flaticons/worksheet.png',
                             ),
                       ContainerWidget(
-                        //icon: Icons.import_contacts,
+                        //icon:images.import_contacts,
                         text: 'Leave Letters',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[4]);
                         },
-                        icon: 'assets/flaticons/email.png',
+                       image: 'assets/flaticons/email.png',
                       ),
                       ContainerWidget(
-                        //icon: Icons.chat_rounded,
+                        //icon:images.chat_rounded,
                         text: 'Home Work',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[5]);
                         },
-                        icon: 'assets/flaticons/homework.png',
+                       image: 'assets/flaticons/homework.png',
                       ),
                       
                      
@@ -281,28 +281,28 @@ viewallMenus() {
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                        ContainerWidget(
-                        // icon: Icons.waving_hand,
+                        //image:images.waving_hand,
                         text: 'My Students ',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[6]);
                         },
-                        icon: 'assets/flaticons/students.png',
+                       image: 'assets/flaticons/students.png',
                       ),
                       ContainerWidget(
-                        //icon: Icons.import_contacts,
+                        //icon:images.import_contacts,
                         text: 'Study Materials',
                        onTap: () {
                           Get.to(() => screenNavigationOfClsTr[7]);
                         },
-                        icon: 'assets/flaticons/school-material.png',
+                       image: 'assets/flaticons/school-material.png',
                       ),
                       ContainerWidget(
-                        //icon: Icons.chat_rounded,
+                        //icon:images.chat_rounded,
                         text: 'Meeting',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[8]);
                         },
-                        icon: 'assets/flaticons/teamwork.png',
+                       image: 'assets/flaticons/teamwork.png',
                       ),
                      
                     ],
@@ -312,27 +312,27 @@ viewallMenus() {
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                        ContainerWidget(
-                              // icon: Icons.waving_hand,
+                              //image:images.waving_hand,
                               text: 'Exams ',
                               onTap: () {
                                    Get.to(() =>screenNavigationOfClsTr[9]);
-                              }, icon: 'assets/flaticons/icons8-grades-100.png',
+                              },image: 'assets/flaticons/icons8-grades-100.png',
                             ),
                         ContainerWidget(
-                        //icon: Icons.import_contacts,
+                        //icon:images.import_contacts,
                         text: 'Notices',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[10]);
                         },
-                        icon: 'assets/flaticons/icons8-notice-100.png',
+                       image: 'assets/flaticons/icons8-notice-100.png',
                       ),
                       ContainerWidget(
-                        //icon: Icons.chat_rounded,
+                        //icon:images.chat_rounded,
                         text: 'Events',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[11]);
                         },
-                        icon: 'assets/flaticons/calendar.png',
+                       image: 'assets/flaticons/calendar.png',
                       ),
                     
                      
@@ -345,12 +345,12 @@ viewallMenus() {
                     children: [
                        
                         ContainerWidget(
-                        // icon: Icons.waving_hand,
+                        //image:images.waving_hand,
                         text: 'Teacher ',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[12]);
                         },
-                        icon: 'assets/flaticons/female.png',
+                       image: 'assets/flaticons/female.png',
                       ),
                       
                      
