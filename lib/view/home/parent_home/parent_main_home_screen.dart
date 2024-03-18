@@ -39,10 +39,10 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
+   log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      ParentHomeScreen(studentName:  UserCredentialsController.parentModel!.studentID!,),
+     ParentHomeScreen(studentName:  UserCredentialsController.parentModel!.studentID!,),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
