@@ -1,10 +1,10 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/pages/exam_results/for_users/select_exam_users.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../constant/sizes/sizes.dart';
 
@@ -36,7 +36,7 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
                 height: 100.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: adminePrimayColor),
+                    color: const Color.fromARGB(255, 83, 153, 115)),
                 child: TextButton.icon(
                     onPressed: () async {
                       Get.to(() => UsersSelectExamWiseScreen(
@@ -62,7 +62,7 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
             height: 100.h,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: adminePrimayColor),
+                color: const Color.fromARGB(255, 83, 153, 115)),
             child: TextButton.icon(
                 onPressed: () async {
                   Get.to(() => UsersSelectExamWiseScreen(

@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import '../../../../model/teacher_model/attentence/attendance_model.dart';
 
 class DatedAttendenceListViewScreen extends StatelessWidget {
-  var schoolId;
-  var classID;
-  var date;
+  final schoolId;
+  final classID;
+  final date;
 
-  DatedAttendenceListViewScreen(
+  const DatedAttendenceListViewScreen(
       {required this.schoolId,
       required this.classID,
       required this.date,

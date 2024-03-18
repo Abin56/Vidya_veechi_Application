@@ -1,10 +1,11 @@
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 
 import '../../../controllers/general_instructions/general_instructions_controller.dart';
 
@@ -20,7 +21,9 @@ class GeneralInstruction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+        //backgroundColor: adminePrimayColor,
         title: GooglePoppinsWidgets(
             text: "General Instructions".tr, fontsize: 20.h),
       ),

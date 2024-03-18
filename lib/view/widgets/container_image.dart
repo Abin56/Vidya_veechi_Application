@@ -3,14 +3,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class ContainerImage extends StatelessWidget {
-  double height;
-  double width;
-  String imagePath;
+ final double height;
+ final double width;
+ final String imagePath;
 
-  ContainerImage({
+  const ContainerImage({
     required this.height,
     required this.width,
     required this.imagePath,

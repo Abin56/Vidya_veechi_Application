@@ -137,7 +137,7 @@ class SearchTeachers extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.to(TeachersChatsScreen(
+                  Get.to(()=>TeachersChatsScreen(
                       teacherDocID: data.docid!,
                       teacherName: data.teacherName!));
                 },

@@ -1,8 +1,9 @@
 import 'dart:developer';
 
-import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:zoom_widget/zoom_widget.dart';
 
 class PrivacyViewScreen extends StatelessWidget {
@@ -15,7 +16,9 @@ class PrivacyViewScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Privacy Policy'.tr),
-          backgroundColor: adminePrimayColor,
+          flexibleSpace: const AppBarColorWidget(),
+          foregroundColor: cWhite,
+         // backgroundColor: adminePrimayColor,
         ),
         body: Zoom(
           maxZoomWidth: screenSize.width,

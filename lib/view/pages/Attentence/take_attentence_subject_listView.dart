@@ -10,12 +10,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TakeAttentenceSubjectWise extends StatelessWidget {
-  String schoolId;
-  String batchId;
-  String periodTokenID;
-  int periodNumber;
-  String classID;
-  TakeAttentenceSubjectWise(
+ final String schoolId;
+ final String batchId;
+ final String periodTokenID;
+ final int periodNumber;
+ final String classID;
+  const TakeAttentenceSubjectWise(
       {required this.batchId,
       required this.classID,
       required this.schoolId,

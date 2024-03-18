@@ -14,10 +14,10 @@ import 'package:intl/intl.dart';
 import 'take_attentence_subject_listView.dart';
 
 class SelectPeriodWiseScreen extends StatelessWidget {
-  AttendanceController attendanceController = Get.put(AttendanceController());
-  String schoolId;
-  String batchId;
-  String classID;
+ final AttendanceController attendanceController = Get.put(AttendanceController());
+ final String schoolId;
+ final String batchId;
+ final String classID;
 
   SelectPeriodWiseScreen(
       {required this.batchId,

@@ -221,11 +221,11 @@ Widget MyDrawerList(context) {
         // }),
         menuItem(7, 'assets/images/languages.png', 'Change Language'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(LanguageChangeDrawerPage());
+          Get.to(()=>LanguageChangeDrawerPage());
         }),
         menuItem(8, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(const PrivacyViewScreen());
+          Get.to(()=>const PrivacyViewScreen());
         }),
 
         kHeight10,

@@ -2,29 +2,26 @@ import 'dart:developer';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/firebase_options.dart';
-import 'package:vidya_veechi/sample/main_screen.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/constant/responsive.dart';
-import 'package:vidya_veechi/view/home/mobile_view_home.dart/vidyaveechi_home.dart';
-import 'package:vidya_veechi/view/language/language.dart';
-import 'package:vidya_veechi/view/language/select_language/select_language.dart';
-import 'package:vidya_veechi/view/pages/chat_gpt/providers/chats_provider.dart';
-import 'package:vidya_veechi/view/pages/chat_gpt/providers/models_provider.dart';
-import 'package:vidya_veechi/view/pages/login/dujo_login_screen.dart';
-import 'package:vidya_veechi/view/pages/splash_screen/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 // import 'package:play_video/play_video.dart';
 import 'package:provider/provider.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/firebase_options.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/constant/responsive.dart';
+import 'package:vidya_veechi/view/language/language.dart';
+import 'package:vidya_veechi/view/language/select_language/select_language.dart';
+import 'package:vidya_veechi/view/pages/chat_gpt/providers/chats_provider.dart';
+import 'package:vidya_veechi/view/pages/chat_gpt/providers/models_provider.dart';
+import 'package:vidya_veechi/view/pages/login/dujo_login_screen.dart';
+import 'package:vidya_veechi/view/pages/splash_screen/splash_screen.dart';
 
 import 'controllers/bloc/user_phone_otp/auth_cubit.dart';
 import 'controllers/bloc/user_phone_otp/auth_state.dart';
@@ -88,8 +85,6 @@ class MyApp extends StatelessWidget {
               ],
               child: GetMaterialApp(
                 theme: ThemeData(
-                    dialogTheme: const DialogTheme(
-                        shape: RoundedRectangleBorder(side: BorderSide.none)),
                     tabBarTheme: TabBarTheme(
                       unselectedLabelColor: cWhite,
                       labelColor: Colors.blue[100],
@@ -109,20 +104,20 @@ class MyApp extends StatelessWidget {
                     if (state is AuthLoggedInState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return SplashScreen();
+                        return const SplashScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     } else if (state is AuthLoggedOutState) {
                       if (SharedPreferencesHelper.getString("langCode") !=
                           null) {
-                        return SplashScreen();
+                        return const SplashScreen();
                       } else {
                         return const SelectLanguage();
                       }
                     }
                     if (SharedPreferencesHelper.getString("langCode") != null) {
-                      return SplashScreen();
+                      return const SplashScreen();
                     } else {
                       return const SelectLanguage();
                     }

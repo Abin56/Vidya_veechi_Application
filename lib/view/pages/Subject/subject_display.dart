@@ -1,31 +1,31 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/get_teacher_subject/get_sub.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/Subject/student/chapter_display.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
+import 'package:vidya_veechi/widgets/Iconbackbutton.dart';
 
-import '../../../../view/widgets/container_image.dart';
-import '../../../widgets/Iconbackbutton.dart';
-
-class StudentSubjectHome extends StatelessWidget {
-  TeacherSubjectController teacherSubjectController =
+class StudentSubjectScreen extends StatelessWidget {
+ final TeacherSubjectController teacherSubjectController =
       Get.put(TeacherSubjectController());
-  StudentSubjectHome({super.key});
+  StudentSubjectScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
         automaticallyImplyLeading: false,
-        backgroundColor: adminePrimayColor,
+       // backgroundColor: adminePrimayColor,
         title: Row(
           children: [
             IconButtonBackWidget(
@@ -52,7 +52,7 @@ class StudentSubjectHome extends StatelessWidget {
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
@@ -72,7 +72,7 @@ class StudentSubjectHome extends StatelessWidget {
                           teacherSubjectController.getSubject(
                               snapshot.data!.docs[index]['teacherId']);
                         } else {
-                          return SizedBox();
+                          return const SizedBox();
                         }
 
                         return GestureDetector(
@@ -89,41 +89,45 @@ class StudentSubjectHome extends StatelessWidget {
                                       ['docid']),
                             ));
                           },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 90, 147, 194),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 50,
-
-                            // ignore: sort_child_properties_last
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 20.h, top: 20.h, right: 20.h),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12,bottom: 12,left: 8,),
+                            child: Container(
+                               decoration: BoxDecoration(border: Border.all(color: Colors.green,width: 2 ),),
+                              child: Container(
+                                  decoration: BoxDecoration(border: Border.all(color: cWhite,width: 2 ),),
+                                child: Container(
+                                  decoration: BoxDecoration(border: Border.all(color: Colors.lightGreen,width: 2 ),
+                                    // gradient: RadialGradient(colors: [
+                                    //    Colors.lightBlueAccent,
+                                    //    Colors.blue
+                                    // ]),
+                                    color: cWhite,
+                                    // Color.fromARGB(255, 90, 123, 194),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  height: 30,
+                                
+                                  // ignore: sort_child_properties_last
+                                  child: Center(
+                                    child: Column(
+                                       // crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.white,
+                                            ),
+                                            child: ContainerImage(
+                                              height: 60.h,
+                                              imagePath:
+                                                  'assets/images/teachernew.png',
+                                              width: 70.w,
+                                            ),
                                           ),
-                                          child: ContainerImage(
-                                            height: 60.h,
-                                            imagePath:
-                                                'assets/images/teachernew.png',
-                                            width: 70.w,
-                                          ),
-                                        ),
-                                        SizedBox(width: 10.h),
-                                        Expanded(
-                                          child: SizedBox(
+                                        //  SizedBox(width: 10.h),
+                                          SizedBox(
                                             height:
-                                                50, // set a fixed height for the container
+                                                30, // set a fixed height for the container
                                             child: Center(
                                                 child: FutureBuilder(
                                                     future:
@@ -134,7 +138,7 @@ class StudentSubjectHome extends StatelessWidget {
                                                                 ['teacherId']),
                                                     builder: (context, snap) {
                                                       return SizedBox(
-                                                        height: 40,
+                                                        height: 20,
                                                         width: 70,
                                                         child:
                                                             GooglePoppinsWidgets(
@@ -145,27 +149,19 @@ class StudentSubjectHome extends StatelessWidget {
                                                       );
                                                     })),
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                    kHeight20,
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Flexible(
-                                          child: GooglePoppinsWidgets(
-                                            text: snapshot.data!.docs[index]
-                                                ['subjectName'],
-                                            fontsize: 20.h,
-                                            color: cWhite,
+                                         // kHeight20,
+                                          Flexible(
+                                            child: GooglePoppinsWidgets(
+                                              text: snapshot.data!.docs[index]
+                                                  ['subjectName'],
+                                              fontsize: 20.h,
+                                              color: cblack,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ]),
+                                        ]),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         );

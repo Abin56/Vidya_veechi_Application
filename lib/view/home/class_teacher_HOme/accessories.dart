@@ -24,8 +24,8 @@ import '../events/event_list.dart';
 import '../exam_Notification/teacher_adding/add_subject.dart';
 
 class ClassTeacherAccessories extends StatelessWidget {
-  String classID;
-  ClassTeacherAccessories({
+ final String classID;
+  const ClassTeacherAccessories({
     required this.classID,
     super.key,
   });
@@ -62,7 +62,7 @@ class ClassTeacherAccessories extends StatelessWidget {
 
       const MyStudents(), //My students
 
-      StudentSubjectHome(), //Subject
+      StudentSubjectScreen(), //Subject
 
       SchoolLevelMeetingPage(), //Meetings
 

@@ -114,7 +114,7 @@ class _ClassTeacherHomeScreenState extends State<ClassTeacherHomeScreen> {
                             ? kHeight
                             : GestureDetector(
                                 onTap: () {
-                                  Get.to(const TeacherEditProfileScreen());
+                                  Get.to(()=>const TeacherEditProfileScreen());
                                 },
                                 child: Stack(
                                   children: [

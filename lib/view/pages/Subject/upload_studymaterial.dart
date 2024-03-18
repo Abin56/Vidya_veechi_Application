@@ -27,10 +27,10 @@ class UploadStudyMaterial extends StatefulWidget {
       required this.chapterID,
       required this.chapterName});
 
-  String subjectID;
-  String subjectName;
-  String chapterName;
-  String chapterID;
+ final String subjectID;
+ final String subjectName;
+ final String chapterName;
+ final String chapterID;
   bool stat = false;
 
   @override

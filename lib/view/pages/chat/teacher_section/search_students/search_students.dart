@@ -119,7 +119,7 @@ class SearchStudentsForChat extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.to(StudentsChatsScreen(
+                  Get.to(()=>StudentsChatsScreen(
                       studentDocID: data.docid!,
                       studentName: data.studentName!));
                 },

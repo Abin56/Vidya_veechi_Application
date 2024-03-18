@@ -1,26 +1,24 @@
 // ignore_for_file: empty_catches, unused_element
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import 'package:vidya_veechi/view/home/general_instructions/general_instructions.dart';
-import 'package:vidya_veechi/view/home/parent_home/progress_report/progress_report.dart';
 import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
 import 'package:vidya_veechi/view/pages/Homework/view_home_work.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/utils.dart';
 import '../../language/language_change_drawer.dart';
 import '../../pages/Attentence/take_attentence/attendence_book_status_month.dart';
 import '../../pages/privacy_policy/dialogs/privacy_policy.dart';
-import '../all_class_test_show/all_class_list_show.dart';
 
 class StudentsHeaderDrawer extends StatelessWidget {
-  const StudentsHeaderDrawer({Key? key}) : super(key: key);
+  const StudentsHeaderDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -200,11 +198,11 @@ Widget MyDrawerList(context) {
 
         MenuItem(7, 'assets/images/languages.png', 'Change Language'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(LanguageChangeDrawerPage());
+          Get.to(()=>LanguageChangeDrawerPage());
         }),
         MenuItem(8, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(const PrivacyViewScreen());
+          Get.to(()=>const PrivacyViewScreen());
         }),
 
         kHeight10,

@@ -71,7 +71,7 @@ class ParentAccessories extends StatelessWidget {
       //     studentId: UserCredentialsController.parentModel?.studentID ?? "",
       //     batchId: UserCredentialsController.batchId!), //Progress Report
 
-      StudentSubjectHome(), //Subjects
+      StudentSubjectScreen(), //Subjects
 
       TeacherSubjectWiseList(navValue: 'parent'), //Teachers
 

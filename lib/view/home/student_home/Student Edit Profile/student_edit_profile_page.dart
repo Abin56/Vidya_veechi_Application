@@ -1,10 +1,10 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/utils/utils.dart';
-import 'package:vidya_veechi/view/home/student_home/Student%20Edit%20Profile/widget/student_profile_edit_listtile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/utils/utils.dart';
+import 'package:vidya_veechi/view/home/student_home/Student%20Edit%20Profile/widget/student_profile_edit_listtile.dart';
 
 import '../../../../controllers/student_controller/profile_edit_controllers/student_profile_edit_controller.dart';
 import '../../../../controllers/userCredentials/user_credentials.dart';
@@ -32,6 +32,7 @@ class StudentProfileEditPage extends StatelessWidget {
               bottomLeft: Radius.circular(12.h),
               bottomRight: Radius.circular(12.h)),
           color: adminePrimayColor,
+          //const Color.fromARGB(255, 88, 167, 123),
         ),
         child: Column(children: [
           Row(
@@ -254,7 +255,7 @@ class StudentCircleAvatarImgeWidget extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: Color.fromARGB(255, 52, 50, 50),
+                    backgroundColor: cWhite,
                     child: Icon(Icons.edit),
                   ),
                 ),
