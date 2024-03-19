@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +7,7 @@ class GetParentAndGuardian extends GetxController {
     var vari = await FirebaseFirestore.instance
         .collection("SchoolListCollection")
         .doc('MarthCheng13283')
-        .collection("Students_Parents")
+        .collection("Students_ParentCollection ")
         .where('studentID', isEqualTo: studentID)
         .get();
 
@@ -30,7 +29,7 @@ class GetParentAndGuardian extends GetxController {
     var vari = await FirebaseFirestore.instance
         .collection("SchoolListCollection")
         .doc('MarthCheng13283')
-        .collection('Students_Parents')
+        .collection('Students_ParentCollection ')
         .doc('1AqOvcgqUpn3I8o4MKB7')
         .get();
     parentID.value = vari.data()!['docid'];

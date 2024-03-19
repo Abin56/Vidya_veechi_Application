@@ -39,7 +39,7 @@ class _ViewParentDetailsState extends State<ViewParentDetails> {
 //               .doc(UserCredentialsController.batchId)
 //               .collection('classes')
 //               .doc(UserCredentialsController.classId)
-//               .collection('ParentCollection')
+//               .collection('Parents')
 //         .where('studentID', isEqualTo: widget.studentID)
 //         .get();
 
@@ -71,7 +71,7 @@ class _ViewParentDetailsState extends State<ViewParentDetails> {
                 .doc(UserCredentialsController.batchId)
                 .collection('classes')
                 .doc(UserCredentialsController.classId)
-                .collection('ParentCollection')
+                .collection('Parents')
                 .where('studentID', isEqualTo: widget.studentID)
                 .get(),
             builder: (context, snapshot) {

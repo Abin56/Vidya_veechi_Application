@@ -4,7 +4,7 @@ import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'dart:developer';
 import '../../helper/shared_pref_helper.dart';
 import '../../utils/utils.dart';
 import '../../view/home/parent_home/parent_main_home_screen.dart';
@@ -24,6 +24,7 @@ class ParentLoginController extends GetxController {
         password: passwordController.text.trim(),
       )
           .then((value) async {
+        log('parent auth success.............');
         //fetching parent data from firebase
         final DocumentSnapshot<Map<String, dynamic>> parentData =
             await FirebaseFirestore.instance
@@ -33,9 +34,10 @@ class ParentLoginController extends GetxController {
                 .doc(UserCredentialsController.batchId)
                 .collection('classes')
                 .doc(UserCredentialsController.classId)
-                .collection('ParentCollection')
+                .collection('Parents')
                 .doc(value.user?.uid)
                 .get();
+        log(parentData.data().toString());
 
         if (parentData.data() != null) {
           UserCredentialsController.parentModel = ParentModel.fromMap(

@@ -1,7 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:url_launcher/url_launcher.dart';
+import 'package:vidya_veechi/controllers/sign_in_controller/teacher_login_controller.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/pages/login/users_login_screen/guardian_login/guardian_login.dart';
+
 import 'package:vidya_veechi/view/pages/login/users_login_screen/parent_login/parent_login.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/student%20login/student_login.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/teacher_login/teacher_login.dart';
@@ -14,11 +16,11 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../../../model/Text_hiden_Controller/password_field.dart';
-import 'class_teacher_login/class_teacher_login.dart';
 
 class UsersLoginScreen extends StatelessWidget {
   PasswordField hideGetxController = Get.put(PasswordField());
-
+  TeacherLoginController teacherLoginController =
+      Get.put(TeacherLoginController());
   UsersLoginScreen({super.key});
 
   @override
@@ -39,10 +41,6 @@ class UsersLoginScreen extends StatelessWidget {
             fit: BoxFit.cover,
           )),
         ),
-        // ContainerImage(
-        //     height: ScreenUtil().setHeight(28),
-        //     width: ScreenUtil().setWidth(90),
-        //     imagePath: 'assets/images/vidyaveechi.png'),
         backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
@@ -78,11 +76,13 @@ class UsersLoginScreen extends StatelessWidget {
                                       pageIndex: 1,
                                     ));
                               } else if (index == 2) {
-                                Get.to(() => GuardianLoginScreen(
+                                Get.to(() => TeacherLoginScreen(
                                       pageIndex: 2,
                                     ));
                               } else if (index == 3) {
-                                getWhichTeacher(3, 3);
+                                const String url = 'https://vidyaveechi.com';
+                                // _launchWhatsapp();
+                                _launchUrl(url);
                               }
                             },
                             child: Container(
@@ -143,84 +143,37 @@ class UsersLoginScreen extends StatelessWidget {
   List<String> userList = [
     'Student'.tr,
     'Parent'.tr,
-    'Guardian'.tr,
-    'Teacher'.tr
+    'Teacher'.tr,
+    'Admin'.tr,
   ];
 }
 
 var icons = [
   'assets/images/reading.png',
   'assets/images/family.png',
-  'assets/images/guard.png',
   'assets/images/teacher.png',
+  'assets/images/guard.png',
 ];
-getWhichTeacher(int teacherPageIndex, int classTeacherPageIndex) {
-  Get.bottomSheet(Container(
-    color: Colors.white,
-    height: 200.h,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        GestureDetector(
-          onTap: () {
-            Get.to(() => TeacherLoginScreen(
-                  pageIndex: teacherPageIndex,
-                ));
-          },
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
-              color: Color.fromARGB(255, 171, 198, 249),
-            ),
-            height: 80.h,
-            width: 200.w,
-            child: Center(
-              child: GoogleMonstserratWidgets(
-                text: 'Teacher'.tr,
-                letterSpacing: 1,
-                fontsize: 20,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            Get.to(() => ClassTeacherLoginScreen(
-                  pageIndex: classTeacherPageIndex,
-                ));
-          },
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.elliptical(15, 15)),
-              color: Color.fromARGB(255, 171, 198, 249),
-            ),
-            height: 80.h,
-            width: 200.w,
-            child: Center(
-              child: GoogleMonstserratWidgets(
-                text: 'Class Teacher'.tr,
-                fontsize: 19,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        )
-      ],
-    ),
-  ));
-}
 
-List<String> userList = [
-  'Student'.tr,
-  'Parent'.tr,
-  'Guardian'.tr,
-  'Teacher'.tr
-];
+List<String> userList = ['Student'.tr, 'Parent'.tr, 'Teacher'.tr];
 
 var iconss = [
   'assets/images/reading.png',
   'assets/images/family.png',
-  'assets/images/guard.png',
   'assets/images/teacher.png',
+  'assets/images/guard.png',
 ];
+_launchWhatsapp() async {
+  const url = "https://wa.me/?text=Hey buddy, try this super cool new app!";
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Future<void> _launchUrl(url) async {
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
+  }
+}

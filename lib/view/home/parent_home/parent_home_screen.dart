@@ -50,7 +50,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
         .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set({'deviceToken': deviceToken}, SetOptions(merge: true))
         .then((value) => log('Device Token Saved To FIREBASE'))
@@ -214,7 +214,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                           .doc(UserCredentialsController.batchId)
                           .collection('classes')
                           .doc(UserCredentialsController.classId)
-                          .collection('ParentCollection')
+                          .collection('Parents')
                           .doc(UserCredentialsController.parentModel!.docid)
                           .snapshots(),
                       builder: (context, snapshot) {
@@ -232,91 +232,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                                     fontWeight: FontWeight.bold),
                               );
                       }),
-                  //     StreamBuilder(
-                  //       stream: FirebaseFirestore.instance.collection('SchoolListCollection')
-                  //       .doc(UserCredentialsController.schoolId)
-                  //       .collection(UserCredentialsController.batchId!)
-                  //       .doc(UserCredentialsController.batchId)
-                  //       .collection('classes')
-                  //       .doc(UserCredentialsController.classId)
-                  //       .collection('ParentCollection')
-                  //       .doc(UserCredentialsController.parentModel!.docid).snapshots(),
-                  //       builder: ((context, snapshot) {
-                  //         if(snapshot.hasData){
-                  //            return StreamBuilder(
-                  //         stream: FirebaseFirestore.instance
-                  //             .collection("SchoolListCollection")
-                  //             .doc(UserCredentialsController.schoolId)
-                  //             .collection("AllStudents")
-                  //             .doc(snapshot.data?.data()?['childrenIDList'][1])
-                  //             .snapshots(),
-                  //         builder: (context, snap) {
-                  //           if (snap.hasData) {
-                  //             return GestureDetector(
-                  //               onTap: ()async{
-                  //       //           DocumentSnapshot sur= await FirebaseFirestore.instance.collection('SchoolListCollection')
-                  //       // .doc(UserCredentialsController.schoolId)
-                  //       // .collection(UserCredentialsController.batchId!)
-                  //       // .doc(UserCredentialsController.batchId)
-                  //       // .collection('classes')
-                  //       // .doc(UserCredentialsController.classId)
-                  //       // .collection('ParentCollection').doc(UserCredentialsController.parentModel!.docid).get();
-
-                  //       //  DocumentSnapshot kur = await FirebaseFirestore.instance
-                  //       //       .collection("SchoolListCollection")
-                  //       //       .doc(UserCredentialsController.schoolId)
-                  //       //       .collection("AllStudents")
-                  //       //       .doc(snapshot.data?.data()?['childrenIDList'][0])
-                  //       //       .get();
-
-                  //       // DocumentReference surRef = sureference;
-
-                  //       // List<String> listToUpdate = [];
-                  //       // listToUpdate.add(sur['childrenIDList'][1]);
-                  //       // listToUpdate.add(sur['childrenIDList'][0]);
-                  //       // surRef.update({
-                  //       //   'childrenIDList' : listToUpdate,
-                  //       //   'studentID' : listToUpdate[0]
-                  //       // });
-
-                  //       // UserCredentialsController.parentModel!.studentID = await sur['childrenIDList'][0];
-                  //       // UserCredentialsController.classId = await kur['classID'];
-                  //       // UserCredentialsController.parentModel!.studentID = await kur['docid'];
-
-                  //       // Timer(const Duration(seconds: 5), () {
-                  //       //   log('STUDENT ID :${UserCredentialsController.parentModel!.studentID!}');
-                  //       // log( 'CLASS ID :${UserCredentialsController.classId!}');
-                  //       // });
-
-                  //   //     await FirebaseAuth.instance.signOut().then((value) async {
-                  //   // await SharedPreferencesHelper.clearSharedPreferenceData();
-                  //   // UserCredentialsController.clearUserCredentials();
-                  //   // Get.offAll(() => ParentLoginScreen());
-
-                  // /////  });
-
-                  //               },
-                  //               child: GoogleMonstserratWidgets(
-                  //                 text:
-                  //                     'Switch to ${snap.data?.data()?['studentName']} ',
-                  //                 fontsize: 15.sp,
-                  //                 fontWeight: FontWeight.bold,
-                  //                 color: cWhite,
-                  //               ),
-                  //             );
-                  //           } else {
-                  //             return const Text('');
-                  //           }
-                  //         });
-                  // return (snapshot.data?.data()?['multipleChildren']==true)? GoogleMonstserratWidgets(text: 'Switch to ${snapshot.data?.data()?['childrenIDList'][1]}',  fontsize: 15.sp, overflow: TextOverflow.ellipsis,
-                  //     fontWeight: FontWeight.bold,
-                  //     color: cWhite,):
-                  //    ;
-                  //  }
-
-                  //   return const CircularProgressIndicator();
-                  // })),
-
+                 
                   const SizedBox(
                     height: 5,
                   ),
@@ -328,7 +244,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                           .doc(UserCredentialsController.batchId)
                           .collection('classes')
                           .doc(UserCredentialsController.classId)
-                          .collection('ParentCollection')
+                          .collection('Parents')
                           .doc(UserCredentialsController.parentModel!.docid)
                           .snapshots(),
                       builder: (context, snapshot) {

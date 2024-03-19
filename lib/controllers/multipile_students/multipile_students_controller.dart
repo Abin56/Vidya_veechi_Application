@@ -224,7 +224,7 @@ class MultipileStudentsController extends GetxController {
                   .doc(batchID)
                   .collection('classes')
                   .doc(classID)
-                  .collection('ParentCollection')
+                  .collection('Parents')
                   .doc(parentDocID)
                   .get();
           log("fecting data....");

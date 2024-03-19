@@ -234,7 +234,7 @@ Future<void> checkParent(
           .doc(UserCredentialsController.batchId)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(auth.currentUser?.uid)
           .get();
 

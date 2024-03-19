@@ -23,7 +23,7 @@ class ClassMonthlyTestListPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: adminePrimayColor,
-          title:  Text("All Test".tr),
+          title: Text("All Test".tr),
         ),
         body: Obx(
           () => classListShowController.isLoading.value
@@ -45,7 +45,7 @@ class ClassMonthlyTestListPage extends StatelessWidget {
                           children: [
                             IconButton(
                                 tooltip:
-                                    "Send test Notifiaction to students&parents",
+                                    "Send test Notifiaction to students&ParentCollection ",
                                 onPressed: () async {
                                   ClassTestModel cModel =
                                       classListShowController

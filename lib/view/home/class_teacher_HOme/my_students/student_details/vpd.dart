@@ -29,7 +29,7 @@ class _vpdState extends State<vpd> {
         .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .where('studentID', isEqualTo: widget.studentID)
         .get();
 

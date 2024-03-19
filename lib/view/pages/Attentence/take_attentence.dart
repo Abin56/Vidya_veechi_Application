@@ -16,14 +16,14 @@ import 'package:intl/intl.dart';
 import '../../widgets/button_container_widget.dart';
 
 class TakeAttenenceScreen extends StatefulWidget {
- final String periodNumber;
- final String periodTokenID;
- final String schoolID;
- final String classID;
- final String teacheremailID;
- final String subjectID;
- final String subjectName;
- final String batchId;
+  final String periodNumber;
+  final String periodTokenID;
+  final String schoolID;
+  final String classID;
+  final String teacheremailID;
+  final String subjectID;
+  final String subjectName;
+  final String batchId;
 
   const TakeAttenenceScreen(
       {required this.classID,
@@ -451,7 +451,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                         .doc(widget.batchId)
                         .collection("classes")
                         .doc(widget.classID)
-                        .collection('ParentCollection')
+                        .collection('Parents')
                         .get();
 
                 Future<QuerySnapshot<Map<String, dynamic>>> guardianss =
@@ -719,7 +719,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                         .doc(widget.batchId)
                                         .collection("classes")
                                         .doc(widget.classID)
-                                        .collection('ParentCollection')
+                                        .collection('Parents')
                                         .get();
 
                                 Future<QuerySnapshot<Map<String, dynamic>>>

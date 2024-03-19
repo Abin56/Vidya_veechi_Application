@@ -309,7 +309,7 @@ class TeacherParentGroupChatController extends GetxController {
         .doc(UserCredentialsController.batchId!)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .get();
 
     for (var i = 0; i < firabase.docs.length; i++) {
@@ -371,7 +371,7 @@ class TeacherParentGroupChatController extends GetxController {
                     .doc(UserCredentialsController.batchId!)
                     .collection('classes')
                     .doc(UserCredentialsController.classId)
-                    .collection('ParentCollection')
+                    .collection('Parents')
                     .get(),
                 builder: (context, parentsSnaps) {
                   if (parentsSnaps.hasData) {

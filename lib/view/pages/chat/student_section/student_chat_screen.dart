@@ -106,11 +106,11 @@ class StudentChatScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             TeachersMessagesScreen(),
             // const Icon(Icons.directions_transit, size: 350),
-            const StudentsGroupMessagesScreen(),
+            StudentsGroupMessagesScreen(),
           ],
         ),
         floatingActionButton: CircleAvatar(

@@ -8,7 +8,6 @@ class GetxLanguage extends Translations {
 
         ////////////////////
         'hi_IN': {
-          
           'Hello...': 'हैलो वर्ल्ड',
           'Change Language': "डुजो में आपका स्वागत है",
           'School Teacher Home Page': "स्कूल शिक्षक घर पेज",
@@ -89,21 +88,19 @@ class GetxLanguage extends Translations {
           '': "",
         },
         'ml_IN': {
-        
-       // 'Create Monthly Test':'ക്രീയേറ്റ്'
-       //'Monthly Class Test':''
-       //'All Test':'എല്ലാ ടെസ്റ്റ് ',
-          'Group':'ഗ്രൂപ്പ് ',
-          'Public Level':'പബ്ലിക് ലെവൽ ',
-          'Class Test':'ക്ലാസ് ടെസ്റ്റ്',
-          'Monthly Class Test':'പ്രതിമാസ ക്ലാസ് പരീക്ഷ',
-          'Chats':'ചാറ്റുകൾ',
-          'Fees & Bills':'ഫീസ് & ബിൽ',
-          'Search Student':'സെർച്ച് സ്റ്റുഡൻറ്സ്',
-          'Select Student':'സെലക്ട് സ്റ്റുഡൻറ്സ്',
+          // 'Create Monthly Test':'ക്രീയേറ്റ്'
+          //'Monthly Class Test':''
+          //'All Test':'എല്ലാ ടെസ്റ്റ് ',
+          'Group': 'ഗ്രൂപ്പ് ',
+          'Public Level': 'പബ്ലിക് ലെവൽ ',
+          'Class Test': 'ക്ലാസ് ടെസ്റ്റ്',
+          'Monthly Class Test': 'പ്രതിമാസ ക്ലാസ് പരീക്ഷ',
+          'Chats': 'ചാറ്റുകൾ',
+          'Fees & Bills': 'ഫീസ് & ബിൽ',
+          'Search Student': 'സെർച്ച് സ്റ്റുഡൻറ്സ്',
+          'Select Student': 'സെലക്ട് സ്റ്റുഡൻറ്സ്',
           ''
-          
-          'Sign up': 'സൈൻ അപ്പ് ',
+              'Sign up': 'സൈൻ അപ്പ് ',
           'Personal Data': 'വ്യക്തിപരമായ വിവരങ്ങൾ',
           'Your Name': 'നിങ്ങളുടെ പേര്',
           'Enter your Name': 'നിങ്ങളുടെ പേര് നൽകുക',
@@ -212,9 +209,9 @@ class GetxLanguage extends Translations {
           // 'State Level':'പബ്ലിക് ലെവൽ',
           'Exam Results': 'പരീക്ഷാ ഫലം',
           'Exam Results Upload': 'പരീക്ഷാ ഫലം അപ്‌ലോഡ്',
-         'Select Language':'ഭാഷ തിരഞ്ഞെടുക്കു',
+          'Select Language': 'ഭാഷ തിരഞ്ഞെടുക്കു',
 
-     //    ഭാഷ തിരഞ്ഞെടുക്കു
+          //    ഭാഷ തിരഞ്ഞെടുക്കു
 
           //'Teachers':'ടീച്ചേർസ്',
           'View': 'കാണുക',
@@ -284,7 +281,7 @@ class GetxLanguage extends Translations {
           'Add Achievement': 'ആഡ് അചീവമെന്റ് ',
           'Date of Achievement': 'അചീവമെന്റ് ഡേറ്റ്',
           'Achievement': 'അചീവമെന്റ്',
-          '* Use a valid email':'യഥാർത്ഥ ഇമെയിൽ ഉപയോഗിക്കുക',
+          '* Use a valid email': 'യഥാർത്ഥ ഇമെയിൽ ഉപയോഗിക്കുക',
 
           'Time to complete should be > 1 day':
               'പൂർത്തിയാക്കാനുള്ള സമയം > 1 ദിവസം ആയിരിക്കണം',
@@ -306,9 +303,9 @@ class GetxLanguage extends Translations {
           'View Details': 'വിശദാംശങ്ങൾ കാണുക',
           'Select Period': 'സെലക്ട് പീരീഡ്',
           'Profile Photo': 'പ്രൊഫൈൽ ഫോട്ടോ',
-'Students':'സ്റ്റുഡൻറ്സ്',
-'Parents':'പാരെന്റ്സ്',
-'Dujo Chat':'ഡുജോ ചാറ്റ്',
+          'Students': 'സ്റ്റുഡൻറ്സ്',
+          'Parents': 'പാരെന്റ്സ്',
+          'Dujo Chat': 'ഡുജോ ചാറ്റ്',
           'page': 'പേജ്',
           'selected': 'തിരഞ്ഞെടുത്തത്',
           'School Student Home': 'സ്കൂൾ സ്റ്റുഡന്റ് ഹോം',
@@ -340,7 +337,7 @@ class GetxLanguage extends Translations {
           'Class': 'ക്ലാസ്',
           'Leave Letter': 'അവധി കത്ത്',
           //'Live Classes': 'ലൈവ് ക്ലാസുകൾ',
-           'Chats': 'ചാറ്റ്',
+          'Chats': 'ചാറ്റ്',
           //  'Student': 'വിദ്യാർത്ഥി',
           //'Parent': 'രക്ഷാകർതൃ',
           //'Teacher': 'ടീച്ചർ',

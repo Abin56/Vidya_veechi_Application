@@ -47,7 +47,7 @@ class ParentChatScreen extends StatelessWidget {
                                 .doc(UserCredentialsController.batchId)
                                 .collection('classes')
                                 .doc(UserCredentialsController.classId)
-                                .collection('ParentCollection')
+                                .collection('Parents')
                                 .doc(FirebaseAuth.instance.currentUser?.uid)
                                 .collection("TeachersChatCounter")
                                 .doc("c3cDX5ymHfITQ3AXcwSp")

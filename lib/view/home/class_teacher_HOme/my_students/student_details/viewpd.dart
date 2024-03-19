@@ -32,7 +32,7 @@ class _ViewPDState extends State<ViewPD> {
           .doc(UserCredentialsController.batchId)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .where('studentID', isEqualTo: widget.studentID)
           .get();
 

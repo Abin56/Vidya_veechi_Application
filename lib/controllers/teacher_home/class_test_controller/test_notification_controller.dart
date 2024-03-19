@@ -37,7 +37,7 @@ class TestNotificationController {
 
   Future<void> fetchParentId({required String classId}) async {
     final data =
-        await _firebase.doc(classId).collection("ParentCollection").get();
+        await _firebase.doc(classId).collection("ParentCollection ").get();
     for (var element in data.docs) {
       tokenId.add(element.data()["deviceToken"]);
     }

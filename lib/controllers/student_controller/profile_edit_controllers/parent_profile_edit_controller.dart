@@ -27,7 +27,7 @@ class ParentProfileEditController {
           .doc(UserCredentialsController.batchId)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(UserCredentialsController.parentModel?.docid);
   Future<void> changeParentEmail(
       String newEmail, BuildContext context, String password) async {

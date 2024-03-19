@@ -38,9 +38,9 @@ class TeacherParentChatController extends GetxController {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Alert'),
-                content: SingleChildScrollView(
+                content: const SingleChildScrollView(
                   child: ListBody(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text('Do you want Delete this message ?')
                     ],
                   ),
@@ -68,7 +68,7 @@ class TeacherParentChatController extends GetxController {
                             .doc(UserCredentialsController.batchId)
                             .collection('classes')
                             .doc(UserCredentialsController.classId)
-                            .collection('ParentCollection')
+                            .collection('Parents')
                             .doc(parentDocID)
                             .collection('TeacherChats')
                             .doc(UserCredentialsController.teacherModel!.docid)
@@ -205,12 +205,12 @@ class TeacherParentChatController extends GetxController {
         .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(parentDocID)
         .collection('TeachersChatCounter')
         .doc('c3cDX5ymHfITQ3AXcwSp')
         .get();
-            int sentStudentChatIndex = countPlusone.data()?['chatIndex'] + 1;
+    int sentStudentChatIndex = countPlusone.data()?['chatIndex'] + 1;
 
     final id = uuid.v1();
     final userDetails = SendUserStatusModel(
@@ -244,7 +244,7 @@ class TeacherParentChatController extends GetxController {
           .doc(UserCredentialsController.batchId)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(parentDocID)
           .collection('TeacherChats')
           .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -257,7 +257,7 @@ class TeacherParentChatController extends GetxController {
             .doc(UserCredentialsController.batchId)
             .collection('classes')
             .doc(UserCredentialsController.classId)
-            .collection('ParentCollection')
+            .collection('Parents')
             .doc(parentDocID)
             .collection('TeacherChats')
             .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -272,13 +272,12 @@ class TeacherParentChatController extends GetxController {
               .doc(UserCredentialsController.batchId)
               .collection('classes')
               .doc(UserCredentialsController.classId)
-              .collection('ParentCollection')
+              .collection('Parents')
               .doc(parentDocID)
               .collection('TeachersChatCounter')
               .doc('c3cDX5ymHfITQ3AXcwSp')
-              .update({
-            'chatIndex': sentStudentChatIndex
-          }).then((value) => messageController.clear());
+              .update({'chatIndex': sentStudentChatIndex}).then(
+                  (value) => messageController.clear());
         });
       });
     });
@@ -291,9 +290,9 @@ class TeacherParentChatController extends GetxController {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Alert'),
-          content: SingleChildScrollView(
+          content: const SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[Text('Do you want to unblock this user ?')],
+              children: <Widget>[Text('Do you want to unblock this user ?')],
             ),
           ),
           actions: <Widget>[
@@ -331,7 +330,7 @@ class TeacherParentChatController extends GetxController {
         .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(parentDocID)
         .collection('TeacherChats')
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -358,7 +357,7 @@ class TeacherParentChatController extends GetxController {
               .doc(UserCredentialsController.batchId!)
               .collection("classes")
               .doc(UserCredentialsController.classId!)
-              .collection('ParentCollection')
+              .collection('Parents')
               .get();
       searchParentCollection =
           snapshot.docs.map((e) => AddStudentModel.fromMap(e.data())).toList();
@@ -366,7 +365,6 @@ class TeacherParentChatController extends GetxController {
       showToast(msg: "Student Data Error");
     }
   }
-
 
   List<ParentModel> searchParents = [];
   Future<void> fetchParents() async {
@@ -380,7 +378,7 @@ class TeacherParentChatController extends GetxController {
               .doc(UserCredentialsController.batchId!)
               .collection("classes")
               .doc(UserCredentialsController.classId!)
-              .collection('ParentCollection')
+              .collection('Parents')
               .get();
       searchParents =
           snapshot.docs.map((e) => ParentModel.fromMap(e.data())).toList();
@@ -388,6 +386,7 @@ class TeacherParentChatController extends GetxController {
       showToast(msg: "Student Data Error");
     }
   }
+
   @override
   void onInit() async {
     await fetchStudent();
