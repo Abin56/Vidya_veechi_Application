@@ -1,23 +1,42 @@
-import 'package:vidya_veechi/controllers/log_out/user_logout_controller.dart';
-import 'package:vidya_veechi/main.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/home/class_teacher_HOme/class_teacher_home.dart';
-import 'package:vidya_veechi/view/pages/live_classes/teacher_live_section/create_room.dart';
-import 'package:flutter/material.dart';
+//ClassTeacherMainHomeScreen
+
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
-
-import '../../../controllers/userCredentials/user_credentials.dart';
-import '../../pages/chat_gpt/screens/chat_screen.dart';
-import '../../pages/recorded_videos/select_subjects.dart';
-import '../../pages/splash_screen/splash_screen.dart';
-import '../drawer/class_teacher.dart';
-import '../teachers_home/teacher_classes_list.dart';
+import 'package:vidya_veechi/controllers/log_out/user_logout_controller.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/class_teacher_home.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/graph_class_teacher/assignmentGraph.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/graph_class_teacher/attendenceGraph.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/graph_class_teacher/exam.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/graph_class_teacher/projectGraph.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/leave_letters/leave_lettersList.dart';
+import 'package:vidya_veechi/view/home/class_teacher_HOme/my_students/my_students.dart';
+import 'package:vidya_veechi/view/home/drawer/class_teacher.dart';
+import 'package:vidya_veechi/view/home/events/event_list.dart';
+import 'package:vidya_veechi/view/home/exam_Notification/teacher_adding/add_subject.dart';
+import 'package:vidya_veechi/view/home/student_home/subjects/subject_display.dart';
+import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
+import 'package:vidya_veechi/view/pages/Attentence/select_period.dart';
+import 'package:vidya_veechi/view/pages/Attentence/take_attentence/attendence_book_status_month.dart';
+import 'package:vidya_veechi/view/pages/Homework/homework.dart';
+import 'package:vidya_veechi/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
+import 'package:vidya_veechi/view/pages/Notice/notice_list.dart';
+import 'package:vidya_veechi/view/pages/chat/teacher_section/teacher_chat-screen.dart';
+import 'package:vidya_veechi/view/pages/chat_gpt/screens/chat_screen.dart';
+import 'package:vidya_veechi/view/pages/live_classes/teacher_live_section/create_room.dart';
+import 'package:vidya_veechi/view/pages/recorded_videos/select_subjects.dart';
+import 'package:vidya_veechi/view/pages/teacher_list/teacher_list.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
+import 'package:vidya_veechi/view/widgets/icon/icon_widget.dart';
 
 class ClassTeacherMainHomeScreen extends StatefulWidget {
-  const ClassTeacherMainHomeScreen({Key? key}) : super(key: key);
+  const ClassTeacherMainHomeScreen({super.key});
 
   @override
   State<ClassTeacherMainHomeScreen> createState() =>
@@ -37,96 +56,86 @@ class _ClassTeacherMainHomeScreenState
 
   @override
   void initState() {
-    backtoSwitchClass();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    checkingSchoolActivate(context);
-    List<Widget> pages = [
-      ClassTeacherHomeScreen(),
-      RecSelectSubjectScreen(
+    List<Widget> pages = [const ClassTeacherHome(),
+     RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
         schoolId: UserCredentialsController.schoolId!,
       ),
       CreateRoomScreen(),
-      const ChatScreen(),
-    ];
-    return WillPopScope(
-      onWillPop: () => onbackbuttonpressed(context),
-      child: Scaffold(
-        appBar: AppBar(
-            foregroundColor: cWhite,
-            title: SizedBox(
-              // color: cred,
-              height: 80.h,
-              width: 115.w,
-              child: Center(
-                  child: Image.asset(
-                'assets/images/vidyaveechi.png',
-                color: Colors.white,
-                fit: BoxFit.cover,
-              )),
-            ),
-            backgroundColor: adminePrimayColor),
-        body: pages[_page],
-        bottomNavigationBar: Container(
-          height: 71,
-          decoration: BoxDecoration(
-            // color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            border: Border.all(color: Colors.white.withOpacity(0.13)),
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 6, 71, 157),
-                Color.fromARGB(255, 5, 85, 222)
-              ],
-            ),
-          ),
-          child: GNav(
-            gap: 8,
-            rippleColor: Colors.grey,
-            activeColor: Colors.white,
-            color: Colors.white,
-            tabs: [
-              GButton(
-                  iconSize: 20.h,
-                  icon: LineIcons.home,
-                  text: 'Home'.tr,
-                  style: GnavStyle.google),
-              GButton(
-                iconSize: 30.h,
-                textSize: 20,
-                icon: Icons.tv,
-                text: 'Recorded\nClasses'.tr,
-              ),
-              GButton(
-                iconSize: 30.h,
-                // iconSize: 10,
-                textSize: 20,
-                icon: Icons.laptop,
-                text: 'Live\nClasses'.tr,
-              ),
-              GButton(
-                iconSize: 30.h,
-                icon: Icons.chat,
-                textSize: 20,
-                text: 'Ask\nDoubt'.tr,
-              )
-            ],
-            selectedIndex: _page,
-            onTabChange: (value) {
-              onPageChanged(value);
-            },
-          ),
+      const ChatScreen(),];
+    return Scaffold(
+      appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
+        title: SizedBox(
+          // color: cred,
+          height: 80.h,
+          width: 115.w,
+          child: Center(
+              child: Image.asset(
+            'assets/images/vidyaveechi.png',
+            color: Colors.black,
+            fit: BoxFit.cover,
+          )),
         ),
-        drawer: Drawer(
-          backgroundColor: Colors.white,
+        //  backgroundColor: adminePrimayColor
+      ),
+      body: pages[_page],
+      bottomNavigationBar: Container(
+        height: 71,
+        decoration: BoxDecoration(
+          // color: Colors.white,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(0), topRight: Radius.circular(0)),
+          border: Border.all(color: Colors.white.withOpacity(0.13)),
+
+          color: const Color.fromARGB(255, 92, 180, 132),
+        ),
+        child: GNav(
+          gap: 8,
+          rippleColor: Colors.grey,
+          activeColor: Colors.white,
+          color: Colors.white,
+          tabs: [
+            GButton(
+                iconSize: 20,
+                icon: LineIcons.home,
+                text: 'Home'.tr,
+                style: GnavStyle.google),
+            GButton(
+              iconSize: 30,
+              textSize: 20,
+              icon: Icons.tv,
+              text: 'Recorded\nClasses'.tr,
+            ),
+            GButton(
+              iconSize: 30,
+              // iconSize: 10,
+              textSize: 20,
+              icon: Icons.laptop,
+              text: 'Live\nClasses'.tr,
+            ),
+            GButton(
+              iconSize: 30,
+              textSize: 20,
+              icon: Icons.chat,
+              text: 'Ask\nDoubt'.tr,
+            )
+          ],
+          selectedIndex: _page,
+          onTabChange: (value) {
+            onPageChanged(value);
+          },
+        ),
+      ),
+      drawer: Drawer(
+          backgroundColor: cWhite,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -136,7 +145,258 @@ class _ClassTeacherMainHomeScreenState
             ),
           ),
         ),
-      ),
     );
   }
 }
+
+//ClassTeacherMainHomeScreen.........................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+viewallMenus() {
+  UserLogOutController userLogOutController = Get.put(UserLogOutController());
+  final screenNavigationOfClsTr = [
+    SelectPeriodWiseScreen(
+        batchId: UserCredentialsController.batchId!,
+        classID: UserCredentialsController.classId!,
+        schoolId: UserCredentialsController.schoolId!), //Take Attendance
+
+    AttendenceBookScreenSelectMonth(
+      batchId: UserCredentialsController.batchId!,
+      classID: UserCredentialsController.classId!,
+      schoolId: UserCredentialsController.schoolId!,
+    ), ////////////  Attendance book
+
+    const TeacherChatScreen(), // Chats
+
+    const SS(), //TimeTable
+
+    LeaveLettersListviewScreen(
+        schooilID: UserCredentialsController.schoolId!,
+        batchID: UserCredentialsController.batchId!,
+        classID: UserCredentialsController.classId!), //Leave letters
+
+    HomeWorkUpload(
+      batchId: UserCredentialsController.batchId!,
+      classId: UserCredentialsController.classId!,
+      schoolID: UserCredentialsController.schoolId!,
+      teacherID: UserCredentialsController.teacherModel!.docid!,
+    ), //////////Home Work
+
+    const MyStudents(), //My students
+
+    const StudentSubjectHome(), //Subject
+
+    SchoolLevelMeetingPage(), //Meetings
+
+    const AddTimeTable(), //Exam
+
+    // SelectExamLevelScreen(classId: classID), //exam result upload
+
+    NoticePage(), //Notice
+
+    const EventList(), //Events
+
+    TeacherSubjectWiseList(navValue: ''), //Teachers
+
+    /////// all bus
+  ];
+
+  Get.bottomSheet(
+      SingleChildScrollView(
+        child: SizedBox(
+          height: 700,
+          width: double.infinity,
+          child: Wrap(
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                    child: Text("All Catagories", style: TextStyle(fontSize: 15)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                       ContainerWidget(
+                              // icon: Icons.waving_hand,
+                              text: ' Take Attendance',
+                              onTap: () {
+                                Get.to(() =>screenNavigationOfClsTr[0]);
+                              }, 
+                              image: 'assets/flaticons/roll-call.png',
+                            ),
+                      ContainerWidget(
+                        //icon:images.import_contacts,
+                        text: 'Attendance Book',
+                        onTap: () => Get.to(() => screenNavigationOfClsTr[1]),
+        
+                       image: 'assets/flaticons/book.png',
+                      ),
+                       ContainerWidget(
+                              //icon:images.chat_rounded,
+                              text: 'Chats',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[2]);
+                              },image: 'assets/flaticons/icons8-chat-100.png',
+                            ),
+                           
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                        ContainerWidget(
+                              //image:images.waving_hand,
+                              text: ' Time Table',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[3]);
+                              },image: 'assets/flaticons/worksheet.png',
+                            ),
+                      ContainerWidget(
+                        //icon:images.import_contacts,
+                        text: 'Leave Letters',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[4]);
+                        },
+                       image: 'assets/flaticons/email.png',
+                      ),
+                      ContainerWidget(
+                        //icon:images.chat_rounded,
+                        text: 'Home Work',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[5]);
+                        },
+                       image: 'assets/flaticons/homework.png',
+                      ),
+                      
+                     
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                       ContainerWidget(
+                        //image:images.waving_hand,
+                        text: 'My Students ',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[6]);
+                        },
+                       image: 'assets/flaticons/students.png',
+                      ),
+                      ContainerWidget(
+                        //icon:images.import_contacts,
+                        text: 'Study Materials',
+                       onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[7]);
+                        },
+                       image: 'assets/flaticons/school-material.png',
+                      ),
+                      ContainerWidget(
+                        //icon:images.chat_rounded,
+                        text: 'Meeting',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[8]);
+                        },
+                       image: 'assets/flaticons/teamwork.png',
+                      ),
+                     
+                    ],
+                  ),
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                       ContainerWidget(
+                              //image:images.waving_hand,
+                              text: 'Exams ',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[9]);
+                              },image: 'assets/flaticons/icons8-grades-100.png',
+                            ),
+                        ContainerWidget(
+                        //icon:images.import_contacts,
+                        text: 'Notices',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[10]);
+                        },
+                       image: 'assets/flaticons/icons8-notice-100.png',
+                      ),
+                      ContainerWidget(
+                        //icon:images.chat_rounded,
+                        text: 'Events',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[11]);
+                        },
+                       image: 'assets/flaticons/calendar.png',
+                      ),
+                    
+                     
+                    ],
+                    
+                  ),
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                       
+                        ContainerWidget(
+                        //image:images.waving_hand,
+                        text: 'Teacher ',
+                        onTap: () {
+                          Get.to(() => screenNavigationOfClsTr[12]);
+                        },
+                       image: 'assets/flaticons/female.png',
+                      ),
+                      
+                     
+                    ],
+                    
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white);
+}
+
+class CaroselWidget extends StatelessWidget {
+  Widget sliderImagePath;
+  String slidertext;
+  CaroselWidget({
+    required this.sliderImagePath,
+    required this.slidertext,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(child: sliderImagePath),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 0),
+          child: GooglePoppinsWidgets(
+            text: slidertext,
+            fontsize: 15,
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+final List<Widget> imagesList = [
+  ExamGraphClassTeacher(),
+  const PrjectClassThrGraph(),
+  const AttendenceClassThrGraph(),
+  AssignmentGraphClassTeacher(),
+];

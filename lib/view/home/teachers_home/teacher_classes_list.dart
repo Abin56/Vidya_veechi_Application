@@ -81,14 +81,20 @@ class TeacherClassListView extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(212, 67, 30, 203)
-                                    .withOpacity(0.1),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                 gradient: const LinearGradient(colors: [
+                             Color.fromARGB(255, 84, 244, 156),
+                Color.fromARGB(255, 98, 193, 141),
+                          ]),
+                               
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 40,
+                                    color: const Color.fromARGB(255, 4, 76, 7)
+                                        .withOpacity(0.1),
+                                    blurStyle: BlurStyle.outer,
+                                    blurRadius: 80,
                                     spreadRadius: 10,
                                   ),
                                 ],
@@ -97,7 +103,7 @@ class TeacherClassListView extends StatelessWidget {
                                 child: Text(
                                   snapshot.data?.docs[index]['className'] ?? "",
                                   style: GoogleFonts.poppins(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700),
                                 ),

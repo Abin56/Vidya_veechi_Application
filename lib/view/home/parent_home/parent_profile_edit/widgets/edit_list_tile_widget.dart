@@ -11,7 +11,7 @@ class ParentEditListileWidget extends StatelessWidget {
   final IconData icon;
   final IconData? editicon;
   final VoidCallback voidCallback;
-  String newEmail = "";
+ final  String newEmail = "";
   ParentProfileEditController parentProfileEditController =
       Get.put(ParentProfileEditController());
 

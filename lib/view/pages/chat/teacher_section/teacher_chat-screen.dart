@@ -7,6 +7,7 @@ import 'package:vidya_veechi/view/pages/chat/teacher_section/student_message/stu
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 import '../../../constant/sizes/constant.dart';
@@ -22,8 +23,10 @@ class TeacherChatScreen extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
           backgroundColor: adminePrimayColor,
-          title: Text('Dujo Chat'.tr),
+          title: Text('Vidya Veechi Chat'.tr),
           bottom: TabBar(
             tabs: [
               Tab(

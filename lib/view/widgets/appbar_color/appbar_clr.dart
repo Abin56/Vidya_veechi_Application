@@ -10,7 +10,7 @@ class AppBarColorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: adminePrimayColor
+        color: adminePrimayColor,
         // Color.fromARGB(255, 88, 167, 123),
         // color: cgraident.withOpacity(0.5),
       ),
