@@ -71,9 +71,9 @@ class ApplicationController extends GetxController {
     }
   }
 
-  @override
-  void onInit() async {
-    await getLatestApplicationVersion();
-    super.onInit();
-  }
+  // @override
+  // void onInit() async {
+  //   await getLatestApplicationVersion();
+  //   super.onInit();
+  // }
 }

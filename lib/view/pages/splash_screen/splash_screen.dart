@@ -26,16 +26,14 @@ import '../../home/guardian_home/guardian_main_home.dart';
 import '../../widgets/fonts/google_monstre.dart';
 
 class SplashScreen extends StatelessWidget {
-  final ChatGPTController chatGPTController = Get.put(ChatGPTController());
+  // final ChatGPTController chatGPTController = Get.put(ChatGPTController());
   final ApplicationController applicationController =
       Get.put(ApplicationController());
   SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    applicationController
-        .getLatestApplicationVersion()
-        .then((value) => applicationController.checkingLatestVersion(context));
+
    
     return Scaffold(
       body: SafeArea(
