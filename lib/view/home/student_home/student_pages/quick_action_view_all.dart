@@ -165,6 +165,13 @@ viewallMenus(BuildContext context) {
                                         height: 80.h,
                                         width: 80.w,
                                         decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: adminePrimayColor,
+                                              //spreadRadius: 2,
+                                              offset: Offset(2, 2)
+                                            )
+                                          ],
                                             color: cWhite,
                                             shape: BoxShape.circle,
                                             border: Border.all(
