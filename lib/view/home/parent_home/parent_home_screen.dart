@@ -228,6 +228,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
            TeacherSubjectWiseList(
           navValue: 'parent'), //Teachers.................3
           StudentSubjectScreen(), //Subjects...............4
+
           LeaveApplicationScreen(
           studentName: widget.studentName,
           guardianName: UserCredentialsController.parentModel!.parentName!,
@@ -235,6 +236,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           schoolId: UserCredentialsController.schoolId!,
           studentID: UserCredentialsController.parentModel!.studentID!,
           batchId: UserCredentialsController.batchId!), //Leave Letter////...5
+          
           const UserExmNotifications(), // Exams...........6
           UsersSelectExamLevelScreen(
           classId: UserCredentialsController.classId!,
