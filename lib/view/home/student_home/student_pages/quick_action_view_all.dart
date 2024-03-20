@@ -118,7 +118,7 @@ viewallMenus(BuildContext context) {
                 ],),
               ),
               SizedBox(
-                height: 610,
+                height: 480,//
                 child: AnimationLimiter(
                   child: GridView.count(
                     physics: const BouncingScrollPhysics(),
