@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 
 import '../../../controllers/teacher_home/class_test_controller/class_test_controller.dart';
 import '../../../controllers/teacher_home/class_test_controller/monthly_controllers/class_test_monthly_controller.dart';
@@ -80,11 +81,12 @@ class TeacherClassListView extends StatelessWidget {
                               width: double.infinity,
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
-                              decoration: BoxDecoration(
-                                 gradient: const LinearGradient(colors: [
-                             Color.fromARGB(255, 84, 244, 156),
-                Color.fromARGB(255, 98, 193, 141),
-                          ]),
+                              decoration:
+                               BoxDecoration(color: adminePrimayColor,
+                          //        gradient: const LinearGradient(
+                          //         colors: [
+                          //    Color.fromARGB(255, 27, 92, 176),Color.fromARGB(255, 51, 158, 245),
+                          // ]),
                                
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(10),
