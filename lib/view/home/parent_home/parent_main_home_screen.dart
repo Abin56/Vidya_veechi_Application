@@ -17,7 +17,10 @@ import '../drawer/parent_drawer.dart';
 import '../student_home/Student Edit Profile/parent_edit_profile.dart';
 
 class ParentMainHomeScreen extends StatefulWidget {
-  const ParentMainHomeScreen({super.key});
+  final String studentName;
+  const ParentMainHomeScreen({
+    required this.studentName,
+    super.key});
 
   @override
   State<ParentMainHomeScreen> createState() => _ParentMainHomeScreenState();
@@ -50,6 +53,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
       ),
       const ParentEditProfileScreen()
     ];
+    
     return WillPopScope(
       onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
