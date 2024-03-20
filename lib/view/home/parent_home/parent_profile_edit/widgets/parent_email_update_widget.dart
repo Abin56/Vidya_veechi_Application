@@ -10,7 +10,7 @@ class ParentEditListileWidgetEmail extends StatelessWidget {
   final IconData icon;
   final IconData? editicon;
   final _formKey = GlobalKey<FormState>();
-  final String newEmail = "";
+  String newEmail = "";
   ParentProfileEditController parentProfileEditController =
       Get.put(ParentProfileEditController());
 
