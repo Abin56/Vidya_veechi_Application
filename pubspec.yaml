@@ -2,7 +2,7 @@ name: vidya_veechi
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.1 <4.0.0'
+  sdk: ">=3.3.1 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,55 +31,53 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  cloud_firestore: 
-  carousel_slider: 
-  dropdown_search: 
-  firebase_auth: 
-  firebase_core: 
-  firebase_database: 
-  firebase_storage: 
-  flutter_bloc: 
-  flutter_markdown: 
-  flutter_staggered_animations: 
-  flutter_svg: 
-  fluttertoast: 
-  fl_chart:
-  get: 
-  google_fonts: 
-  google_nav_bar: 
-  gradient_icon: 
-  gui_shape: 
-  image_picker: 
-  intl: 
-  line_icons: 
-  lottie: 
-  pinput: 
+  cloud_firestore:
+  carousel_slider:
+  dropdown_search:
+  firebase_auth:
+  firebase_core:
+  firebase_database:
+  firebase_storage:
+  flutter_bloc:
+  flutter_markdown:
+  flutter_staggered_animations:
+  flutter_svg:
+  fluttertoast:
+  get:
+  google_fonts:
+  google_nav_bar:
+  gradient_icon:
+  gui_shape:
+  image_picker:
+  intl:
+  line_icons:
+  lottie:
+  pinput:
   printing:
-  shared_preferences: 
-  url_launcher: 
-  uuid: 
-  file_picker: 
-  omni_jitsi_meet: 
+  shared_preferences:
+  url_launcher:
+  uuid:
+  file_picker:
+  omni_jitsi_meet:
   zoom_widget:
   path_provider:
-  provider: 
+  provider:
   spline_chart:
   syncfusion_flutter_charts: null
   syncfusion_flutter_gauges: null
-  animated_text_kit: 
-  flutter_spinkit: 
+  animated_text_kit:
+  flutter_spinkit:
   flutter_local_notifications:
   firebase_messaging:
   upgrader:
-  hive: 
-  hive_flutter: 
-  photo_view: 
+  hive:
+  hive_flutter:
+  photo_view:
   video_player:
-  chewie: 
+  chewie:
   adaptive_ui_layout: ^1.0.1
 flutter_icons:
   android: true
@@ -87,9 +85,9 @@ flutter_icons:
   image_path: "assets/flaticons/android-chrome-512x512.png"
 
 dev_dependencies:
-  flutter_lints: 
-  build_runner: 
-  hive_generator: 
+  flutter_lints:
+  build_runner:
+  hive_generator:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons:
@@ -100,13 +98,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

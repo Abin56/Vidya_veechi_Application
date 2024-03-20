@@ -36,7 +36,7 @@ class SplashScreen extends StatelessWidget {
     applicationController
         .getLatestApplicationVersion()
         .then((value) => applicationController.checkingLatestVersion(context));
-   
+
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -162,7 +162,7 @@ nextpage() async {
     } else if (UserCredentialsController.userRole == 'guardian') {
       await checkGuardian(firebaseFirestore, auth);
     } else {
-      Get.to(() => const DujoLoginScren());
+      Get.offAll(() => const DujoLoginScren());
     }
   }
 }
@@ -234,7 +234,7 @@ Future<void> checkParent(
           .doc(UserCredentialsController.batchId)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(auth.currentUser?.uid)
           .get();
 

@@ -10,8 +10,7 @@ var multipileStundentDOCIDValue;
 class GetSelectStundentforParentsDropDownButton extends StatefulWidget {
   String parentDocID;
   GetSelectStundentforParentsDropDownButton(
-      {Key? key, required this.parentDocID})
-      : super(key: key);
+      {super.key, required this.parentDocID});
 
   @override
   State<GetSelectStundentforParentsDropDownButton> createState() =>
@@ -34,7 +33,7 @@ class _GetSelectStundentforParentsDropDownButtonState
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
             .doc(UserCredentialsController.classId)
-            .collection('ParentCollection')
+            .collection('Parents')
             .doc(widget.parentDocID)
             .collection('MultipleStudents')
             .snapshots(),

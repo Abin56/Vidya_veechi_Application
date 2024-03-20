@@ -35,9 +35,9 @@ class ParentChatController extends GetxController {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Alert'),
-                content: SingleChildScrollView(
+                content: const SingleChildScrollView(
                   child: ListBody(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text('Do you want Delete this message ?')
                     ],
                   ),
@@ -65,7 +65,7 @@ class ParentChatController extends GetxController {
                             .doc(UserCredentialsController.batchId)
                             .collection('classes')
                             .doc(UserCredentialsController.classId)
-                            .collection('ParentCollection')
+                            .collection('Parents')
                             .doc(FirebaseAuth.instance.currentUser!.uid)
                             .collection('TeacherChats')
                             .doc(teacherID)
@@ -224,7 +224,7 @@ class ParentChatController extends GetxController {
         .doc(UserCredentialsController.batchId)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('TeacherChats')
         .doc(teacherId)
@@ -272,9 +272,9 @@ class ParentChatController extends GetxController {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Alert'),
-          content: SingleChildScrollView(
+          content: const SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[Text('Do you want Unblock this user ?')],
+              children: <Widget>[Text('Do you want Unblock this user ?')],
             ),
           ),
           actions: <Widget>[

@@ -61,7 +61,7 @@ class ParentMessagesScreen extends StatelessWidget {
                                     .doc(UserCredentialsController.batchId)
                                     .collection('classes')
                                     .doc(snapshots.data?.docs[index]['classID'])
-                                    .collection('ParentCollection')
+                                    .collection('Parents')
                                     .doc(snapshots.data?.docs[index]['docid'])
                                     .get(),
                                 builder: (context, parentsnaps) {
@@ -201,6 +201,6 @@ class ParentMessagesScreen extends StatelessWidget {
 //                   .doc(UserCredentialsController.batchId)
 //                   .collection('classes')
 //                   .doc(UserCredentialsController.classId)
-//                   .collection('ParentCollection')
+//                   .collection('Parents')
 //                   .doc(napshots.data!.docs[index]['docid'])
 //                   .get()

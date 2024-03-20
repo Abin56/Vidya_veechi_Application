@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 import '../../../group_chats/group_chat.dart';
 
 class ParentGroupChatsScreen extends StatefulWidget {
- final String groupID;
- final String groupName;
+  final String groupID;
+  final String groupName;
 
   const ParentGroupChatsScreen(
       {required this.groupID, required this.groupName, super.key});
@@ -169,7 +169,7 @@ class ParenttGroupChatsScreenState extends State<ParentGroupChatsScreen> {
                                       .doc(UserCredentialsController.batchId)
                                       .collection('classes')
                                       .doc(UserCredentialsController.classId)
-                                      .collection('ParentCollection')
+                                      .collection('Parents')
                                       .doc(FirebaseAuth
                                           .instance.currentUser!.uid)
                                       .get(),

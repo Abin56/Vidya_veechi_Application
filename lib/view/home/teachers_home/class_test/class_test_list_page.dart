@@ -44,7 +44,7 @@ class ClassTestListPage extends StatelessWidget {
                           children: [
                             IconButton(
                                 tooltip:
-                                    "Send test Notifiaction to students&parents",
+                                    "Send test Notifiaction to students&ParentCollection ",
                                 onPressed: () async {
                                   ClassTestModel cModel =
                                       classListShowController

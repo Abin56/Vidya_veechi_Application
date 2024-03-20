@@ -12,8 +12,8 @@ import '../../../../../../controllers/chat_controller/parent_controller/parent_c
 import '../../../../../constant/sizes/constant.dart';
 
 class ParentTeachersChatsScreen extends StatefulWidget {
- final String teacherDocID;
- final String teacherName;
+  final String teacherDocID;
+  final String teacherName;
 
   const ParentTeachersChatsScreen(
       {required this.teacherDocID, required this.teacherName, super.key});
@@ -72,7 +72,7 @@ class Parent_TeachersChatsScreenState extends State<ParentTeachersChatsScreen> {
                       .doc(UserCredentialsController.batchId!)
                       .collection('classes')
                       .doc(UserCredentialsController.classId)
-                      .collection('ParentCollection')
+                      .collection('Parents')
                       .doc(FirebaseAuth.instance.currentUser!.uid)
                       .collection('TeacherChats')
                       .doc(widget.teacherDocID)
@@ -205,7 +205,7 @@ class Parent_TeachersChatsScreenState extends State<ParentTeachersChatsScreen> {
         .doc(UserCredentialsController.batchId!)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('TeacherChats')
         .doc(widget.teacherDocID)
@@ -254,7 +254,7 @@ class Parent_TeachersChatsScreenState extends State<ParentTeachersChatsScreen> {
         .doc(UserCredentialsController.batchId!)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('TeachersChatCounter')
         .doc('c3cDX5ymHfITQ3AXcwSp')
@@ -268,7 +268,7 @@ class Parent_TeachersChatsScreenState extends State<ParentTeachersChatsScreen> {
           .doc(UserCredentialsController.batchId!)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection('TeacherChats')
           .doc(widget.teacherDocID)
@@ -284,7 +284,7 @@ class Parent_TeachersChatsScreenState extends State<ParentTeachersChatsScreen> {
         .doc(UserCredentialsController.batchId!)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection('TeachersChatCounter')
         .doc('c3cDX5ymHfITQ3AXcwSp')
@@ -349,7 +349,7 @@ class Parent_TeachersChatsScreenState extends State<ParentTeachersChatsScreen> {
             .doc(UserCredentialsController.batchId!)
             .collection('classes')
             .doc(UserCredentialsController.classId)
-            .collection('ParentCollection')
+            .collection('Parents')
             .doc(FirebaseAuth.instance.currentUser!.uid)
             .collection('TeacherChats')
             .doc(widget.teacherDocID)

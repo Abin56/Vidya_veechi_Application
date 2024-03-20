@@ -12,8 +12,8 @@ import '../../../../../../controllers/chat_controller/teacher_controller/parent_
 import '../../../../../constant/sizes/constant.dart';
 
 class ParentsChatsScreen extends StatefulWidget {
- final String parentDocID;
- final String parentName;
+  final String parentDocID;
+  final String parentName;
 
   const ParentsChatsScreen(
       {required this.parentDocID, required this.parentName, super.key});
@@ -258,7 +258,7 @@ class _ParentsChatsScreenState extends State<ParentsChatsScreen> {
         .doc(UserCredentialsController.batchId!)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(widget.parentDocID)
         .collection('TeacherChats')
         .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -271,7 +271,7 @@ class _ParentsChatsScreenState extends State<ParentsChatsScreen> {
           .doc(UserCredentialsController.batchId!)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(widget.parentDocID)
           .collection('TeacherChats')
           .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -336,7 +336,7 @@ class _ParentsChatsScreenState extends State<ParentsChatsScreen> {
         .doc(UserCredentialsController.batchId!)
         .collection('classes')
         .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
+        .collection('Parents')
         .doc(widget.parentDocID)
         .collection('TeachersChatCounter')
         .get();
@@ -350,7 +350,7 @@ class _ParentsChatsScreenState extends State<ParentsChatsScreen> {
           .doc(UserCredentialsController.batchId!)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .doc(widget.parentDocID)
           .collection('TeachersChatCounter')
           .doc('c3cDX5ymHfITQ3AXcwSp')

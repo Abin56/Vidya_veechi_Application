@@ -35,7 +35,7 @@ class _ViewStudentsDetailsState extends State<ViewStudentsDetails> {
           .doc(UserCredentialsController.batchId)
           .collection('classes')
           .doc(UserCredentialsController.classId)
-          .collection('ParentCollection')
+          .collection('Parents')
           .where('studentID', isEqualTo: widget.studentDetail['docid'])
           .get();
 

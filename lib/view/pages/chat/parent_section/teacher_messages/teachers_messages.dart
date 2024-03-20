@@ -21,7 +21,7 @@ class ParentTeachersMessagesScreen extends StatelessWidget {
             .doc(UserCredentialsController.batchId)
             .collection('classes')
             .doc(UserCredentialsController.classId)
-            .collection('ParentCollection')
+            .collection('Parents')
             .doc(FirebaseAuth.instance.currentUser!.uid)
             .collection("TeacherChats")
             .snapshots(),

@@ -43,7 +43,7 @@ class SearchParentsForChat extends SearchDelegate {
             .doc(UserCredentialsController.batchId!)
             .collection("classes")
             .doc(UserCredentialsController.classId!)
-            .collection('ParentCollection')
+            .collection('Parents')
             .snapshots(),
         builder: (context, snapshots) {
           var screenSize = MediaQuery.of(context).size;
@@ -123,7 +123,7 @@ class SearchParentsForChat extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.to(()=>ParentsChatsScreen(
+                  Get.to(() => ParentsChatsScreen(
                       parentDocID: data.docid!, parentName: data.parentName!));
                 },
                 child: Container(

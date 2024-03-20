@@ -46,7 +46,7 @@ class ParentSignUpController extends GetxController {
       .doc(UserCredentialsController.batchId)
       .collection('classes')
       .doc(UserCredentialsController.classId)
-      .collection('ParentCollection');
+      .collection('Parents');
 
   RxBool isLoading = RxBool(false);
 //for image uploading unique uid
