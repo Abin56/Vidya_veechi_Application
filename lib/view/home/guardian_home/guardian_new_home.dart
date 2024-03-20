@@ -243,7 +243,7 @@ class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
                                        crossAxisAlignment: CrossAxisAlignment.start,
                                        children: [
                                          ContainerWidget(
-                                           icon: img[index],
+                                           image: img[index],
                                            //icon: Icons.view_list,
                                            text: text[index], onTap: () { Get.to(screenNavigationOfParent[index]); },
                                          ),

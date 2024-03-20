@@ -250,11 +250,6 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
       AllClassTestMonthlyPage(
         pageNameFrom: "parent",
       ), //////////////13
-              
-      
-
-     
-
     ];
 
     Get.bottomSheet(
@@ -296,7 +291,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                                        crossAxisAlignment: CrossAxisAlignment.start,
                                        children: [
                                          ContainerWidget(
-                                           icon: img[index],
+                                           image: img[index],
                                            //icon: Icons.view_list,
                                            text: text[index], onTap: () { Get.to(screenNavigationOfParent[index]); },
                                          ),
