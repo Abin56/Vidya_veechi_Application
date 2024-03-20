@@ -80,9 +80,10 @@ class UsersLoginScreen extends StatelessWidget {
                                       pageIndex: 2,
                                     ));
                               } else if (index == 3) {
-                                const String url = 'https://vidyaveechi.com';
+                                // const String url = 'https://vidyaveechi.com';
                                 // _launchWhatsapp();
-                                _launchUrl(url);
+                                final Uri _url = Uri.parse('https://vidyaveechi.com/');
+                             await   _launchUrl(_url);
                               }
                             },
                             child: Container(
