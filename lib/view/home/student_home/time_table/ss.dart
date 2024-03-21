@@ -110,7 +110,8 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
         title: GoogleMonstserratWidgets(
           text: 'Time Table'.tr,
           fontsize: 17.w,
-          color: const Color.fromARGB(255, 88, 167, 123),
+          color: adminePrimayColor,
+          // const Color.fromARGB(255, 88, 167, 123),
           fontWeight: FontWeight.bold,
         ),
         iconTheme: const IconThemeData(color: Color.fromARGB(255, 88, 167, 123),),
