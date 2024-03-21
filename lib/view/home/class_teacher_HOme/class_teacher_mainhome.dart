@@ -170,7 +170,7 @@ viewallMenus() {
 
     const TeacherChatScreen(), // Chats
 
-    const SS(), //TimeTable
+    const TimeTable(), //TimeTable
 
     LeaveLettersListviewScreen(
         schooilID: UserCredentialsController.schoolId!,

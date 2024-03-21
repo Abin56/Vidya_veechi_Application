@@ -207,7 +207,9 @@ Widget MyDrawerList(context) {
         menuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
               Navigator.push(context, MaterialPageRoute(builder: (context)
-              {return SS();}));
+              {
+                return TimeTable();
+                }));
 
           // Get.to(
           //   () => const SS(),

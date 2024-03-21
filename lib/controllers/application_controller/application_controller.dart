@@ -32,7 +32,7 @@ class ApplicationController extends GetxController {
 
   checkingLatestVersion(BuildContext context) async {
     if (currentversion.value == latestVersion.value) {
-      nextpage();
+      nextpage(context);
       log("...................................");
     } else {
       log('+++++++++++++++++++++++++++++++++');

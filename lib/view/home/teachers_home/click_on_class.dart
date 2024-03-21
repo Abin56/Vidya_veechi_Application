@@ -46,7 +46,7 @@ class ClickOnClasss extends StatelessWidget {
 
       const UserExmNotifications(), //Exam
 
-      const SS(), //Time Table
+      const TimeTable(), //Time Table
 
       Scaffold(
         appBar: AppBar(
@@ -93,7 +93,7 @@ class ClickOnClasss extends StatelessWidget {
 
       SelectExamLevelScreen(classId: classID), //exam result upload
 
-      const SS(), //TimeTable
+      const TimeTable(), //TimeTable
 
       HomeWorkUpload(
         batchId: UserCredentialsController.batchId!,
