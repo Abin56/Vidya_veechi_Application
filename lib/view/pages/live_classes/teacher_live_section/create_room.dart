@@ -52,7 +52,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               top: 0,
               child: ButtonContainerWidget(
                 curving: 0,
-                colorindex: 0,
+                colorindex: 2,
                 height: 100.h,
                 width: double.infinity,
                 child: Column(

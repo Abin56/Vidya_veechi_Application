@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/student_model/student_model.dart';
 import 'package:vidya_veechi/view/pages/login/dujo_login_screen.dart';
@@ -13,7 +14,7 @@ class UserLoginCheckController extends GetxController {
   String? batchIDVal;
   String? classIDVal;
 
-  void nextpage() async {
+  void nextpage(context) async {
     SharedPreferences p = await SharedPreferences.getInstance();
     schoolIDVal = p.getString('schoolID');
     batchIDVal = p.getString('batchID');
@@ -26,7 +27,10 @@ class UserLoginCheckController extends GetxController {
 
     User? currentUser = auth.currentUser;
     if (currentUser == null) {
-      Get.off(() => const DujoLoginScren());
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const DujoLoginScren();
+                  },));
+     // Get.off(() => const DujoLoginScren());
     } else {
       log('UID: ${currentUser.uid}');
 

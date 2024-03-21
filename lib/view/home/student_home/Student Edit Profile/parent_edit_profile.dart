@@ -297,7 +297,7 @@ class CircleAvatharImageSelectionWidgetParent extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             Get.find<ParentProfileEditController>()
-                                .updateParentProfilePicture();
+                                .updateParentProfilePicture(context);
                           },
                           child: const Text('Update'),
                         ),

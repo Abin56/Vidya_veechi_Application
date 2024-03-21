@@ -215,7 +215,7 @@ class ParentEditProfileScreen extends StatelessWidget {
         textEditingController: textEditingController,
         voidCallback: () async {
           if (textEditingController.text.isNotEmpty) {
-            await parentProfileEditController.updateParentProfile(
+            await parentProfileEditController.updateParentProfile(context,
               value: textEditingController.text,
               documentKey: documentKey,
             );

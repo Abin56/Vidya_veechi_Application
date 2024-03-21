@@ -10,7 +10,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../student_home/Student Edit Profile/teacher_edit_profile.dart';
 
@@ -114,7 +113,10 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.off(() => const TeacherEditProfileScreen());
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return const TeacherEditProfileScreen() ;
+                            },));
+                           // Get.off(() => const TeacherEditProfileScreen());
                           },
                           child: Container(
                             child: Stack(
@@ -129,7 +131,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
                                 const Positioned(
                                   right: 6,
                                   bottom: 1,
-                                  child: Center(child: Icon(Icons.info)),
+                                  child: Center(child: Icon(Icons.info,color: cWhite,)),
                                 ),
                               ],
                             ),
