@@ -73,13 +73,22 @@ class ProgressReportListViewScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               log(studentId);
-                              Get.off(() => ViewProgressReportScreen(
+
+                              Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return  ViewProgressReportScreen(
                                   batchId: batchId,
                                   wexam: data.id,
                                   schooilID: schoolId,
                                   classID: classID,
-                                  studentId: studentId));
-                            },
+                                  studentId: studentId);
+    },));
+                              // Get.off(() => ViewProgressReportScreen(
+                              //     batchId: batchId,
+                              //     wexam: data.id,
+                              //     schooilID: schoolId,
+                              //     classID: classID,
+                              //     studentId: studentId));
+                                 },
                             child: Container(
                               height: h / 100,
                               width: double.infinity,
