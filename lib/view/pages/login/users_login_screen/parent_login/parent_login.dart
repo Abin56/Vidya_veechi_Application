@@ -56,128 +56,126 @@ class ParentLoginScreen extends StatelessWidget {
                   height: 340.h,
                   width: double.infinity,
                   imagePath: 'assets/images/Login_screen.png'),
-              Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // Enter Mail id Session >>>>>>>
-                    Padding(
-                      padding: EdgeInsets.only(right: 140.w, left: 10.w),
-                      child: GoogleMonstserratWidgets(
-                        fontsize: 25.w,
-                        text: 'Parent Login'.tr,
-                        color: cblack,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.5,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Enter Mail id Session >>>>>>>
+                  Padding(
+                    padding: EdgeInsets.only(right: 140.w, left: 10.w),
+                    child: GoogleMonstserratWidgets(
+                      fontsize: 25.w,
+                      text: 'Parent Login'.tr,
+                      color: cblack,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  kHeight10,
+                  SigninTextFormfield(
+                      obscureText: false,
+                      hintText: 'Email ID'.tr,
+                      labelText: 'Enter Mail ID',
+                      prefixIcon: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.mail_outline,
+                        ),
+                      ),
+                      textEditingController:
+                          parentLoginController.emailIdController,
+                      function: checkFieldEmailIsValid),
+                  // Enter Password session >>>>>>>>
+                  Obx(
+                    () => SigninTextFormfield(
+                      hintText: 'Password'.tr,
+                      obscureText: hideGetxController.isObscurefirst.value,
+                      labelText: 'Password',
+                      icon: Icons.lock,
+                      textEditingController:
+                          parentLoginController.passwordController,
+                      function: checkFieldPasswordIsValid,
+                      prefixIcon: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.lock),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(hideGetxController.isObscurefirst.value
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          hideGetxController.toggleObscureFirst();
+                        },
                       ),
                     ),
-                    kHeight10,
-                    SigninTextFormfield(
-                        obscureText: false,
-                        hintText: 'Email ID'.tr,
-                        labelText: 'Enter Mail ID',
-                        prefixIcon: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.mail_outline,
+                  ),
+                  kHeight10,
+                  Padding(
+                    padding: EdgeInsets.only(left: 210.w),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ForgotPasswordScreen(),
                           ),
-                        ),
-                        textEditingController:
-                            parentLoginController.emailIdController,
-                        function: checkFieldEmailIsValid),
-                    // Enter Password session >>>>>>>>
-                    Obx(
-                      () => SigninTextFormfield(
-                        hintText: 'Password'.tr,
-                        obscureText: hideGetxController.isObscurefirst.value,
-                        labelText: 'Password',
-                        icon: Icons.lock,
-                        textEditingController:
-                            parentLoginController.passwordController,
-                        function: checkFieldPasswordIsValid,
-                        prefixIcon: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.lock),
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(hideGetxController.isObscurefirst.value
-                              ? Icons.visibility
-                              : Icons.visibility_off),
-                          onPressed: () {
-                            hideGetxController.toggleObscureFirst();
-                          },
-                        ),
+                        );
+                      },
+                      child: GooglePoppinsWidgets(
+                        fontsize: 16,
+                        text: 'Forgot Password?'.tr,
+                        fontWeight: FontWeight.w400,
+                        color: adminePrimayColor,
                       ),
                     ),
-                    kHeight10,
-                    Padding(
-                      padding: EdgeInsets.only(left: 210.w),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const ForgotPasswordScreen(),
-                            ),
-                          );
-                        },
-                        child: GooglePoppinsWidgets(
-                          fontsize: 16,
-                          text: 'Forgot Password?'.tr,
-                          fontWeight: FontWeight.w400,
-                          color: adminePrimayColor,
-                        ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 60.h),
+                    child: GestureDetector(
+                      onTap: () {
+                        parentLoginController.signIn(context);
+                      },
+                      child: Obx(
+                        () => parentLoginController.isLoading.value
+                            ? circularProgressIndicatotWidget
+                            : loginButtonWidget(
+                                height: 60,
+                                width: 180,
+                                text: 'Login'.tr,
+                              ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 60.h),
-                      child: GestureDetector(
-                        onTap: () {
-                          parentLoginController.signIn(context);
-                        },
-                        child: Obx(
-                          () => parentLoginController.isLoading.value
-                              ? circularProgressIndicatotWidget
-                              : loginButtonWidget(
-                                  height: 60,
-                                  width: 180,
-                                  text: 'Login'.tr,
-                                ),
-                        ),
-                      ),
-                    ),
-                    kHeight20,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GooglePoppinsWidgets(
-                            text: "Don't Have an account?".tr, fontsize: 15),
-                        GestureDetector(
-                          onTap: () async {
-                            ParentSignUpController parentSignUpController =
-                                Get.put(ParentSignUpController());
-                            await parentSignUpController.getAllParent();
-                            Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return ParentSignUpFirstScreen(
+                  ),
+                  kHeight20,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GooglePoppinsWidgets(
+                          text: "Don't Have an account?".tr, fontsize: 15),
+                      GestureDetector(
+                        onTap: () async {
+                          ParentSignUpController parentSignUpController =
+                              Get.put(ParentSignUpController());
+                          await parentSignUpController.getAllParent();
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return ParentSignUpFirstScreen(
                                 pageIndex: 1,
                               );
-                          },));
-                            // Get.off(() => ParentSignUpFirstScreen(
-                            //       pageIndex: 1,
-                            //     ));
-                          },
-                          child: GooglePoppinsWidgets(
-                            text: ' Sign Up'.tr,
-                            fontsize: 19,
-                            color: cblue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                            },
+                          ));
+                          // Get.off(() => ParentSignUpFirstScreen(
+                          //       pageIndex: 1,
+                          //     ));
+                        },
+                        child: GooglePoppinsWidgets(
+                          text: ' Sign Up'.tr,
+                          fontsize: 19,
+                          color: cblue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

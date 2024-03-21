@@ -5,6 +5,7 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" tools:node="remove" />
 	<application tools:replace="android:label" android:label="vidya_veechi"
+		android:enableOnBackInvokedCallback="true"
 		android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
 		<activity android:name=".MainActivity" android:screenOrientation="sensor"
 			android:exported="true" android:launchMode="singleTop"

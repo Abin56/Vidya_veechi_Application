@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/local_database/parent_login_database.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -37,10 +38,13 @@ import 'package:vidya_veechi/view/pages/teacher_list/teacher_list.dart';
 import '../../../controllers/multipile_students/multipile_students_controller.dart';
 
 class ParentHomeScreen extends StatefulWidget {
-  const ParentHomeScreen({super.key, required this.studentName});
+  ParentHomeScreen({super.key, required this.studentName});
   @override
   // ignore: override_on_non_overriding_member
   final String studentName;
+
+  final PushNotificationController pushNotCntrl =
+      Get.put(PushNotificationController());
 
   State<ParentHomeScreen> createState() => _ParentHomeScreenState();
 }
@@ -48,57 +52,6 @@ class ParentHomeScreen extends StatefulWidget {
 class _ParentHomeScreenState extends State<ParentHomeScreen> {
   MultipileStudentsController multipileStudentsController =
       Get.put(MultipileStudentsController());
-
-  String deviceToken = '';
-
-  void getDeviceToken() async {
-    await FirebaseMessaging.instance.getToken().then((token) {
-      setState(() {
-        deviceToken = token ?? 'Not get the token ';
-        log("User Device Token :: $token");
-      });
-      saveDeviceTokenToFireBase(deviceToken);
-    });
-  }
-
-  void saveDeviceTokenToFireBase(String deviceToken) async {
-    await FirebaseFirestore.instance
-        .collection("SchoolListCollection")
-        .doc(UserCredentialsController.schoolId)
-        .collection(UserCredentialsController.batchId!)
-        .doc(UserCredentialsController.batchId)
-        .collection('classes')
-        .doc(UserCredentialsController.classId)
-        .collection('ParentCollection')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .set({'deviceToken': deviceToken}, SetOptions(merge: true))
-        .then((value) => log('Device Token Saved To FIREBASE'))
-        .then((value) => FirebaseFirestore.instance
-                .collection('PushNotificationToAll')
-                .doc(FirebaseAuth.instance.currentUser!.uid)
-                .set({
-              'deviceToken': deviceToken,
-              'schoolID': UserCredentialsController.schoolId,
-              'batchID': UserCredentialsController.batchId,
-              'classID': UserCredentialsController.classId,
-              'personID': FirebaseAuth.instance.currentUser!.uid,
-              'role': 'Parent'
-            }))
-        .then((value) => FirebaseFirestore.instance
-                .collection('SchoolListCollection')
-                .doc(UserCredentialsController.schoolId)
-                .collection('PushNotificationList')
-                .doc(FirebaseAuth.instance.currentUser!.uid)
-                .set({
-              'deviceToken': deviceToken,
-              'batchID': UserCredentialsController.batchId,
-              'classID': UserCredentialsController.classId,
-              'personID': FirebaseAuth.instance.currentUser!.uid,
-              'role': 'Parent'
-            }));
-  }
-
-// }
 
   Future<void> sendPushMessage(String token, String body, String title) async {
     try {
@@ -137,9 +90,10 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    widget.pushNotCntrl.getUserDeviceID().then((value) => widget.pushNotCntrl
+        .allParentDeviceID()
+        .then((value) => widget.pushNotCntrl));
     super.initState();
-    getDeviceToken();
 
     //   sendPushMessage( deviceToken, 'Hello Everyone', 'DUJO APP');
   }
@@ -191,10 +145,12 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                         text: quicktext[0],
                         image: image[0],
                         onTap: () {
-Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return screenNav[0];
-               },));
-                          
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return screenNav[0];
+                            },
+                          ));
+
                           // Get.off
                           // (screenNav[0]);
                         }),
@@ -202,9 +158,11 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
                       text: quicktext[1],
                       image: image[1],
                       onTap: () {
-Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return screenNav[1];
-               },));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return screenNav[1];
+                          },
+                        ));
                         //Get.off(screenNav[1]);
                       },
                     ),
@@ -212,9 +170,11 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
                       text: quicktext[2],
                       image: image[2],
                       onTap: () {
-        Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return screenNav[2];
-               },));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return screenNav[2];
+                          },
+                        ));
                         // Get.off(screenNav[2]);
                       },
                     ),
@@ -222,10 +182,12 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
                       text: quicktext[3],
                       image: image[3],
                       onTap: () {
-                       Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return screenNav[3];
-               },));
-                       // Get.off(screenNav[3]);
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return screenNav[3];
+                          },
+                        ));
+                        // Get.off(screenNav[3]);
                       },
                     ),
                   ],
@@ -318,12 +280,13 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
                                         //icon: Icons.view_list,
                                         text: text[index],
                                         onTap: () {
-Navigator.pushReplacement(context, MaterialPageRoute(
-            builder: (context) {
-              return screenNavigationOfParent[index];
-             },
-));
-
+                                          Navigator.pushReplacement(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return screenNavigationOfParent[
+                                                  index];
+                                            },
+                                          ));
 
                                           // Get.off(
                                           //     screenNavigationOfParent[index]);

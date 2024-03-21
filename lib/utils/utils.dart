@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -125,10 +126,12 @@ Future<void> userLogOut(BuildContext context) async {
               await FirebaseAuth.instance.signOut().then((value) async {
                 await SharedPreferencesHelper.clearSharedPreferenceData();
                 UserCredentialsController.clearUserCredentials();
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                  builder: (context) {
                     return const DujoLoginScren();
-                  },));
-               // Get.offAll(() => const DujoLoginScren());
+                  },
+                ));
+                // Get.offAll(() => const DujoLoginScren());
               });
             },
           ),
@@ -203,3 +206,7 @@ Future<void> sendPushMessage(String token, String body, String title) async {
     }
   }
 }
+
+final server = FirebaseFirestore.instance
+    .collection("SchoolListCollection")
+    .doc(UserCredentialsController.schoolId);

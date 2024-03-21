@@ -30,6 +30,7 @@ class SigninTextFormfield extends StatelessWidget {
       height: 75.h,
       width: 360.w,
       child: TextFormField(
+        autofocus: false,
         validator: function,
         obscureText: obscureText,
         controller: textEditingController,
