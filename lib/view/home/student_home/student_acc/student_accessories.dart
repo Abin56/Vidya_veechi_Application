@@ -45,7 +45,7 @@ class _StudentAccessoriesState extends State<StudentAccessories> {
           batchId: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!), //Attendence
 
-      const SS(), //Time table
+      const TimeTable(), //Time table
 
       const StudentChatScreen(), // Chats
 
@@ -104,7 +104,10 @@ class _StudentAccessoriesState extends State<StudentAccessories> {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        Get.to(() => screenNavigation[index]);
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return  screenNavigation[index];
+                  },));
+                       // Get.off(() => screenNavigation[index]);
                       },
                       child: Container(
                         decoration: BoxDecoration(

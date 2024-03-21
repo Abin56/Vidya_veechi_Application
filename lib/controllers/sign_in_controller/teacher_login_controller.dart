@@ -53,7 +53,10 @@ class TeacherLoginController extends GetxController {
                 SharedPreferencesHelper.userRoleKey, 'teacher');
 
             if (context.mounted) {
-              Get.offAll(const TeacherMainHomeScreen());
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const TeacherMainHomeScreen();
+                  },));
+              //Get.offAll(const TeacherMainHomeScreen());
             }
           } else {
             await firebaseAuth.signOut();

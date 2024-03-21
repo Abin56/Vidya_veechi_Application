@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../controllers/all_class_test_show/all_class_test_show_controller.dart';
 import '../../../controllers/userCredentials/user_credentials.dart';
@@ -27,7 +28,8 @@ class AllClassTestShowPage extends StatelessWidget {
         (totalMark == -1 ? "Mark not entered" : totalMark).toString();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: adminePrimayColor,
+        foregroundColor: cWhite,
+          flexibleSpace: const AppBarColorWidget(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

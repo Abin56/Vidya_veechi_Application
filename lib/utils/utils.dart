@@ -125,7 +125,10 @@ Future<void> userLogOut(BuildContext context) async {
               await FirebaseAuth.instance.signOut().then((value) async {
                 await SharedPreferencesHelper.clearSharedPreferenceData();
                 UserCredentialsController.clearUserCredentials();
-                Get.offAll(() => const DujoLoginScren());
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const DujoLoginScren();
+                  },));
+               // Get.offAll(() => const DujoLoginScren());
               });
             },
           ),

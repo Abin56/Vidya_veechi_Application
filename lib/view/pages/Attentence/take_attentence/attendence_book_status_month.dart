@@ -57,6 +57,7 @@ class AttendenceBookScreenSelectMonth extends StatelessWidget {
                 children: List.generate(
                   snapshot.data!.docs.length,
                   (int index) {
+                    // ignore: unused_local_variable
                     final data = GetAttendenceModel.fromJson(
                         snapshot.data!.docs[index].data());
 
@@ -70,12 +71,20 @@ class AttendenceBookScreenSelectMonth extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => AttendenceBookScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                 return AttendenceBookScreen(
                                     batchId: batchId,
                                     schoolId: schoolId,
                                     classID: classID,
                                     month: snapshot.data!.docs[index]['id'],
-                                  ));
+                                  );
+                                   },));
+                              // Get.off(() => AttendenceBookScreen(
+                              //       batchId: batchId,
+                              //       schoolId: schoolId,
+                              //       classID: classID,
+                              //       month: snapshot.data!.docs[index]['id'],
+                              //     ));
                             },
                             child: Container(
                               height: h / 100,
@@ -83,7 +92,7 @@ class AttendenceBookScreenSelectMonth extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
                               decoration: BoxDecoration(
-                                color: Colors.lightGreenAccent.withOpacity(0.1),
+                               color: Colors.lightGreenAccent.withOpacity(0.1),
                                 //  const Color.fromARGB(212, 67, 30, 203)
                                 //     .withOpacity(0.1),
                                 borderRadius:

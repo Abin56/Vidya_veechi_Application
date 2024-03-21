@@ -64,12 +64,20 @@ class UsersSelectExamWiseScreen extends StatelessWidget {
                           child: FadeInAnimation(
                             child: GestureDetector(
                               onTap: () async {
-                                Get.to(() => ViewExamResultsScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return ViewExamResultsScreen(
                                     classID: classID,
                                     examLevel: examLevel,
                                     studentId: studentId,
                                     examdocid: snapshots.data!.docs[index]
-                                        ['docid']));
+                                        ['docid']);
+                                },));
+                                // Get.off(() => ViewExamResultsScreen(
+                                //     classID: classID,
+                                //     examLevel: examLevel,
+                                //     studentId: studentId,
+                                //     examdocid: snapshots.data!.docs[index]
+                                //         ['docid']));
                               },
                               child: Container(
                                 height: h / 100,

@@ -158,9 +158,14 @@ class ParentLoginScreen extends StatelessWidget {
                             ParentSignUpController parentSignUpController =
                                 Get.put(ParentSignUpController());
                             await parentSignUpController.getAllParent();
-                            Get.to(() => ParentSignUpFirstScreen(
-                                  pageIndex: 1,
-                                ));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return ParentSignUpFirstScreen(
+                                pageIndex: 1,
+                              );
+                          },));
+                            // Get.off(() => ParentSignUpFirstScreen(
+                            //       pageIndex: 1,
+                            //     ));
                           },
                           child: GooglePoppinsWidgets(
                             text: ' Sign Up'.tr,

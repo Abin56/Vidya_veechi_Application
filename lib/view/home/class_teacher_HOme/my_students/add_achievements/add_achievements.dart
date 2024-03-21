@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 
+// ignore: must_be_immutable
 class AddAchievements extends StatefulWidget {
   AddAchievements({super.key, required this.studentDetail});
 

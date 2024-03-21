@@ -5,8 +5,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:get/get_core/src/get_main.dart';
 // import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 // import 'package:vidya_veechi/view/colors/colors.dart';
 // import 'package:vidya_veechi/view/home/student_home/Student%20Edit%20Profile/teacher_edit_profile.dart';
@@ -91,9 +89,8 @@
 //                 width: double.infinity,
 //                 decoration: const BoxDecoration(
 //                      gradient: LinearGradient(colors: [
-//                                Color.fromARGB(255, 27, 92, 176),
-//                                Color.fromARGB(255, 104, 159, 231),
-                
+//                              Color.fromARGB(255, 27, 92, 176),
+//                       Colors.blue,
 //                           ]),
 //                     // image: DecorationImage(
 //                     //     fit: BoxFit.cover,
@@ -102,8 +99,7 @@
 //                     borderRadius: BorderRadius.only(
 //                         bottomLeft: Radius.circular(25),
 //                         bottomRight: Radius.circular(25))),
-//                         child: Column(
-//                           mainAxisAlignment: MainAxisAlignment.center,
+//                         child: Column(mainAxisAlignment: MainAxisAlignment.center,
 //                           children: [  GoogleMonstserratWidgets(
 //                               overflow: TextOverflow.ellipsis,
 //                               text: UserCredentialsController
@@ -130,7 +126,10 @@
 //               ),
 //               GestureDetector(
 //                           onTap: () {
-//                             Get.to(() => const TeacherEditProfileScreen());
+//                              Navigator.push(context, MaterialPageRoute(builder: (context)
+//               {return TeacherEditProfileScreen();}));
+                            
+//                             // Get.to(() => const TeacherEditProfileScreen());
 //                           },
 //                           child: Padding(
 //                             padding: const EdgeInsets.only(top: 150,left: 150,bottom: 50),

@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/pages/chat/parent_section/search/search_teachers.dart';
-import 'package:vidya_veechi/view/pages/chat/parent_section/teacher_messages/teachers_messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/pages/chat/parent_section/search/search_teachers.dart';
+import 'package:vidya_veechi/view/pages/chat/parent_section/teacher_messages/teachers_messages.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 import '../../../constant/sizes/constant.dart';
@@ -23,7 +24,8 @@ class ParentChatScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: adminePrimayColor,
+          flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
           title: Text('Dujo Chat'.tr),
           bottom: TabBar(
             tabs: [
@@ -106,7 +108,7 @@ class ParentChatScreen extends StatelessWidget {
           ],
         ),
         floatingActionButton: CircleAvatar(
-          backgroundColor: adminePrimayColor,
+          backgroundColor: Color.fromARGB(255, 88, 167, 123),
           radius: 25,
           child: Center(
             child: IconButton(

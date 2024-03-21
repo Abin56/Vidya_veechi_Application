@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
@@ -108,7 +107,10 @@ class NewStdHomePage extends StatelessWidget {
                         flex: 1,
                         child: IconButton(
                             onPressed: () {
-                              Get.to(() => const StudentProfileEditPage());
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return StudentProfileEditPage();
+                              },));
+                             // Get.off(() => const StudentProfileEditPage());
                             },
                             icon: const Icon(Icons
                                 .now_widgets))) ////////////////////////////////edit profile

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'chats/parents_group-chats.dart';
 
@@ -47,11 +46,18 @@ class ParentsGroupMessagesScreen extends StatelessWidget {
                             .get();
                         if (firebase.data()?['docid'] ==
                             FirebaseAuth.instance.currentUser?.uid) {
-                          Get.to(() => ParentGroupChatsScreen(
+                          // Get.off(() => ParentGroupChatsScreen(
+                          //       groupID: snapshots.data?.docs[index]['docid'],
+                          //       groupName: snapshots.data?.docs[index]
+                          //           ['groupName'],
+                          //     ));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return ParentGroupChatsScreen(
                                 groupID: snapshots.data?.docs[index]['docid'],
                                 groupName: snapshots.data?.docs[index]
                                     ['groupName'],
-                              ));
+                              );
+    },));
                         } else {
                           // ignore: use_build_context_synchronously
                           showDialog(

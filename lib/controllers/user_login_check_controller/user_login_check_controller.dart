@@ -1,22 +1,20 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/main.dart';
 import 'package:vidya_veechi/model/student_model/student_model.dart';
 import 'package:vidya_veechi/view/pages/login/dujo_login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../view/pages/login/users_login_screen/student login/student_login.dart';
-
 class UserLoginCheckController extends GetxController {
   String? schoolIDVal;
   String? batchIDVal;
   String? classIDVal;
 
-  void nextpage() async {
+  void nextpage(context) async {
     SharedPreferences p = await SharedPreferences.getInstance();
     schoolIDVal = p.getString('schoolID');
     batchIDVal = p.getString('batchID');
@@ -29,7 +27,10 @@ class UserLoginCheckController extends GetxController {
 
     User? currentUser = auth.currentUser;
     if (currentUser == null) {
-      Get.to(() => const DujoLoginScren());
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const DujoLoginScren();
+                  },));
+     // Get.off(() => const DujoLoginScren());
     } else {
       log('UID: ${currentUser.uid}');
 
@@ -49,11 +50,11 @@ class UserLoginCheckController extends GetxController {
         UserCredentialsController.studentModel =
             StudentModel.fromJson(querySnapshot.docs[0].data());
         log('student!!');
-        // Get.to(StudentLoginScreen());
+        // Get.off(StudentLoginScreen());
       } else {
         log('not a student!!');
 
-        // Get.to(const DujoLoginScren());
+        // Get.off(const DujoLoginScren());
       }
     }
   }

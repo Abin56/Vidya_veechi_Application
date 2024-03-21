@@ -1,21 +1,23 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
-import 'package:flutter/material.dart';
+// ignore_for_file: unused_local_variable
+
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 
-class SS extends StatefulWidget {
-  const SS({super.key});
+class TimeTable extends StatefulWidget {
+  const TimeTable({super.key});
 
   @override
-  State<SS> createState() => _SSState();
+  State<TimeTable> createState() => _TimeTableState();
 }
 
-class _SSState extends State<SS> with SingleTickerProviderStateMixin {
+class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMixin {
   // @override
   // void initState() {
   //   // TODO: implement initState
@@ -111,18 +113,19 @@ class _SSState extends State<SS> with SingleTickerProviderStateMixin {
           text: 'Time Table'.tr,
           fontsize: 17.w,
           color: adminePrimayColor,
+          // const Color.fromARGB(255, 88, 167, 123),
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: const IconThemeData(color: adminePrimayColor),
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 27, 92, 176),),
         backgroundColor: Colors.transparent,
         elevation: 0,
         bottom: TabBar(
-          unselectedLabelColor: adminePrimayColor,
+          unselectedLabelColor: const Color.fromARGB(255, 27, 92, 176),
           unselectedLabelStyle:
               GoogleFonts.montserrat(fontSize: 10, fontWeight: FontWeight.bold),
-          dividerColor: adminePrimayColor,
+          dividerColor: const Color.fromARGB(255, 27, 92, 176),
           indicator: BoxDecoration(
-              color: adminePrimayColor,
+              color: const Color.fromARGB(255, 27, 92, 176),
               borderRadius: BorderRadius.circular(50)),
           labelStyle: GoogleFonts.montserrat(
             fontSize: 11,
@@ -161,9 +164,9 @@ class _SSState extends State<SS> with SingleTickerProviderStateMixin {
 }
 
 class DayWidget extends StatelessWidget {
-  DayWidget({super.key, required this.dayName});
+  const DayWidget({super.key, required this.dayName});
 
-  String dayName;
+ final String dayName;
   Color colorCheck(col) {
     if (col == 'Color(0x00fcfcfc)') {
       return Colors.amber;
@@ -317,15 +320,15 @@ class ColorParser {
 }
 
 class PeriodShowingWidget extends StatelessWidget {
-  PeriodShowingWidget(
+  const PeriodShowingWidget(
       {super.key,
       required this.periodList,
       required this.dayName,
       required this.teacherList});
 
   final List<String> periodList;
-  List<String> teacherList;
-  String dayName;
+ final List<String> teacherList;
+ final String dayName;
 
   @override
   Widget build(BuildContext context) {

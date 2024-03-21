@@ -14,11 +14,10 @@ import 'package:intl/intl.dart';
 import 'take_attentence_subject_listView.dart';
 
 class SelectPeriodWiseScreen extends StatelessWidget {
-  final AttendanceController attendanceController =
-      Get.put(AttendanceController());
-  final String schoolId;
-  final String batchId;
-  final String classID;
+ final AttendanceController attendanceController = Get.put(AttendanceController());
+ final String schoolId;
+ final String batchId;
+ final String classID;
 
   SelectPeriodWiseScreen(
       {required this.batchId,
@@ -170,15 +169,26 @@ class SelectPeriodWiseScreen extends StatelessWidget {
                                     child: FadeInAnimation(
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.to(() =>
-                                              TakeAttentenceSubjectWise(
+
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return TakeAttentenceSubjectWise(
                                                   periodNumber: snapshot.data
                                                       ?.docs[index]['period'],
                                                   periodTokenID: snapshot.data
                                                       ?.docs[index]['docid'],
                                                   batchId: batchId,
                                                   classID: classID,
-                                                  schoolId: schoolId));
+                                                  schoolId: schoolId);}));
+
+                                          // Get.to(() =>
+                                          //     TakeAttentenceSubjectWise(
+                                          //         periodNumber: snapshot.data
+                                          //             ?.docs[index]['period'],
+                                          //         periodTokenID: snapshot.data
+                                          //             ?.docs[index]['docid'],
+                                          //         batchId: batchId,
+                                          //         classID: classID,
+                                          //         schoolId: schoolId));
                                         },
                                         child: Container(
                                           height: h / 100,

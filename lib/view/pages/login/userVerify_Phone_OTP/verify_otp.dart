@@ -126,13 +126,25 @@ class UserVerifyOTPScreen extends StatelessWidget {
                                   child: const Text('Ok'),
                                   onPressed: () {
                                     if (userpageIndex == 0) {
-                                      Get.to(() => StudentSignInPageScreen());
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return StudentSignInPageScreen();
+                                      },));
+                                      
+                                    //  Get.off(()=>StudentSignInPageScreen());
                                     } else if (userpageIndex == 1) {
-                                      Get.to(() => ParentSignUpPage());
+                                       Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return ParentSignUpPage();
+                                      },));
+
+                                     // Get.off(()=>ParentSignUpPage());
                                     } else if (userpageIndex == 2) {
-                                      Get.to(() => GuardianSignUp());
+                                      Get.off(()=>GuardianSignUp());
+
                                     } else if (userpageIndex == 3) {
-                                      Get.to(() => TeachersSignUpPage());
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return TeachersSignUpPage();
+                                      },));
+                                     // Get.off(()=>TeachersSignUpPage());
                                     }
 
                                     ///
@@ -159,8 +171,7 @@ class UserVerifyOTPScreen extends StatelessWidget {
                       return ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)),
-                            backgroundColor: Colors.green.shade600),
+                                borderRadius: BorderRadius.circular(30)), backgroundColor: Colors.green.shade600),
                         onPressed: () async {
                           BlocProvider.of<AuthCubit>(context)
                               .verifyOTP(otpController.text);

@@ -13,7 +13,10 @@ class ExamNotification extends StatelessWidget {
         actions: [
           GestureDetector(
               onTap: () async {
-                Get.to(() => const ViewExamsScreen());
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const ViewExamsScreen();
+                },));
+              //  Get.off(() => const ViewExamsScreen());
               },
               child: const Text('View'))
         ],

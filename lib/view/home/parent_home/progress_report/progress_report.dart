@@ -11,11 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../model/teacher_model/progress_report_model/progress_report_model.dart';
 
 class ProgressReportListViewScreen extends StatelessWidget {
-  String schoolId;
-  String classID;
-  String studentId;
-  String batchId;
-  ProgressReportListViewScreen(
+ final String schoolId;
+ final String classID;
+ final String studentId;
+ final String batchId;
+  const ProgressReportListViewScreen(
       {required this.schoolId,
       required this.classID,
       required this.studentId,
@@ -73,13 +73,22 @@ class ProgressReportListViewScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               log(studentId);
-                              Get.to(() => ViewProgressReportScreen(
+
+                              Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return  ViewProgressReportScreen(
                                   batchId: batchId,
                                   wexam: data.id,
                                   schooilID: schoolId,
                                   classID: classID,
-                                  studentId: studentId));
-                            },
+                                  studentId: studentId);
+    },));
+                              // Get.off(() => ViewProgressReportScreen(
+                              //     batchId: batchId,
+                              //     wexam: data.id,
+                              //     schooilID: schoolId,
+                              //     classID: classID,
+                              //     studentId: studentId));
+                                 },
                             child: Container(
                               height: h / 100,
                               width: double.infinity,

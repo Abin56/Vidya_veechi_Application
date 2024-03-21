@@ -61,15 +61,25 @@ class SelectStudentsListScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () async {
-                                    Get.to(() =>
-                                        ViewForTeacherProgressReportScreen(
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return  ViewForTeacherProgressReportScreen(
                                             schooilID: schooilID,
                                             classID: classID,
                                             studentId: snapshot.data
                                                     ?.docs[index]['docid'] ??
                                                 '',
                                             wexam: examName,
-                                            batchId: batchId));
+                                            batchId: batchId);
+                                    },));
+                                    // Get.off(() =>
+                                    //     ViewForTeacherProgressReportScreen(
+                                    //         schooilID: schooilID,
+                                    //         classID: classID,
+                                    //         studentId: snapshot.data
+                                    //                 ?.docs[index]['docid'] ??
+                                    //             '',
+                                    //         wexam: examName,
+                                    //         batchId: batchId));
                                   },
                                   child: Container(
                                     height: h / 100,

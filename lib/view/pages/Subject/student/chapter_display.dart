@@ -1,12 +1,13 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/Subject/upload_studymaterial.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get_utils/get_utils.dart';
 
 import '../chapterdisplay.dart';
 import '../show_teacher_studymaterials.dart';
@@ -21,7 +22,8 @@ class ChapterDisplay extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: adminePrimayColor,
+        flexibleSpace: const AppBarColorWidget(),
+        foregroundColor: cWhite,
         title: Text("Chapters".tr),
       ),
       body: Container(

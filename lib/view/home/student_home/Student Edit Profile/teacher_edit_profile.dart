@@ -140,6 +140,7 @@ class TeacherEditProfileScreen extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class TeacherEditListileWidget extends StatelessWidget {
   final Widget title;
   final Widget subtitle;

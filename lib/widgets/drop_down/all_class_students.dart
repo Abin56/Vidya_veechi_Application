@@ -2,16 +2,14 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 var allClassStudentsListValue;
 
 class AllClassStudentsListDropDownButton extends StatefulWidget {
-  String classID;
-  AllClassStudentsListDropDownButton({Key? key, required this.classID})
-      : super(key: key);
+ final String classID;
+  const AllClassStudentsListDropDownButton({super.key, required this.classID});
 
   @override
   State<AllClassStudentsListDropDownButton> createState() =>

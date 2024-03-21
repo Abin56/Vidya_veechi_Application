@@ -31,12 +31,20 @@ class TeachersMessagesScreen extends StatelessWidget {
                     height: 70,
                     child: ListTile(
                       onTap: () {
-                        Get.to(() => TeachersChatsScreen(
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return TeachersChatsScreen(
                               teacherName: snapshots.data!.docs[index]
                                   ['teacherName'],
                               teacherDocID: snapshots.data!.docs[index]
                                   ['docid'],
-                            ));
+                            );
+                        },));
+                        // Get.off(() => TeachersChatsScreen(
+                        //       teacherName: snapshots.data!.docs[index]
+                        //           ['teacherName'],
+                        //       teacherDocID: snapshots.data!.docs[index]
+                        //           ['docid'],
+                        //     ));
                       },
                       leading: const CircleAvatar(
                         radius: 30,

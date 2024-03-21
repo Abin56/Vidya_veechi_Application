@@ -149,30 +149,45 @@ Widget MyDrawerList(context) {
       children: [
         MenuItem(1, 'assets/images/information.png', 'General Instructions'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(
-            () => GeneralInstruction(),
-          );
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return GeneralInstruction();
+              },));
+          // Get.off(
+          //   () => GeneralInstruction(),
+          // );
         }),
         MenuItem(1, 'assets/images/attendance.png', 'Attendance book'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(
-            () => AttendenceBookScreenSelectMonth(
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AttendenceBookScreenSelectMonth(
                 schoolId: UserCredentialsController.schoolId!,
                 batchId: UserCredentialsController.batchId!,
-                classID: UserCredentialsController.classId!),
-          );
+                classID: UserCredentialsController.classId!);
+              },));
+          // Get.off(
+          //   () => AttendenceBookScreenSelectMonth(
+          //       schoolId: UserCredentialsController.schoolId!,
+          //       batchId: UserCredentialsController.batchId!,
+          //       classID: UserCredentialsController.classId!),
+          // );
         }),
         MenuItem(2, 'assets/images/exam.png', 'Exams'.tr,
             currentPage == DrawerSections.favourites ? true : false, () {
-          Get.to(
-            () => const UserExmNotifications(),
-          );
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const UserExmNotifications();
+              },));
+          // Get.off(
+          //   () => const UserExmNotifications(),
+          // );
         }),
         MenuItem(3, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
-          Get.to(
-            () => const SS(),
-          );
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const TimeTable();
+              },));
+          // Get.off(
+          //   () => const SS(),
+          // );
         }),
         // MenuItem(4, "Share", Icons.share,
         //     currentPage == DrawerSections.share ? true : false, () async {
@@ -180,14 +195,17 @@ Widget MyDrawerList(context) {
         // }),
         MenuItem(4, 'assets/images/homework.png', 'HomeWorks'.tr,
             currentPage == DrawerSections.contact ? true : false, () {
-          Get.to(
-            () => const ViewHomeWorks(),
-          );
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const ViewHomeWorks();
+              },));
+          // Get.off(
+          //   () => const ViewHomeWorks(),
+          // );
         }),
 
         // MenuItem(6, 'assets/images/progressreport.png', 'Progress Report'.tr,
         //     currentPage == DrawerSections.dashboard ? true : false, () {
-        //   Get.to(
+        //   Get.off(
         //     () => ProgressReportListViewScreen(
         //         schoolId: UserCredentialsController.schoolId!,
         //         classID: UserCredentialsController.classId!,
@@ -198,11 +216,17 @@ Widget MyDrawerList(context) {
 
         MenuItem(7, 'assets/images/languages.png', 'Change Language'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(() => LanguageChangeDrawerPage());
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return LanguageChangeDrawerPage();
+              },));
+         // Get.off(() => LanguageChangeDrawerPage());
         }),
         MenuItem(8, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(() => const PrivacyViewScreen());
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const PrivacyViewScreen();
+              },));
+         // Get.off(() => const PrivacyViewScreen());
         }),
 
         kHeight10,

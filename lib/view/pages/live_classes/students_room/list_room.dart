@@ -7,7 +7,6 @@ import 'package:vidya_veechi/view/pages/live_classes/students_room/join_meet.dar
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class StudentsRoomListScreen extends StatelessWidget {
   const StudentsRoomListScreen({super.key});
@@ -108,14 +107,25 @@ class StudentsRoomListScreen extends StatelessWidget {
                                       child: data.activateLive == true
                                           ? GestureDetector(
                                               onTap: () async {
-                                                await Get.to(() =>
-                                                    StudentLiveClassRoom(
-                                                        studentName:
-                                                            UserCredentialsController
+                                                await Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                  builder: (context) {
+                                                    return StudentLiveClassRoom(
+                                                        studentName:UserCredentialsController
                                                                 .studentModel!
                                                                 .studentName,
                                                         docId: data.docid,
-                                                        roomID: data.roomID));
+                                                        roomID: data.roomID);
+                                                  },
+                                                ));
+                                                // Get.off(() =>
+                                                //     StudentLiveClassRoom(
+                                                //         studentName:
+                                                //             UserCredentialsController
+                                                //                 .studentModel!
+                                                //                 .studentName,
+                                                //         docId: data.docid,
+                                                //         roomID: data.roomID));
                                               },
                                               child: Container(
                                                 color: Colors.green,

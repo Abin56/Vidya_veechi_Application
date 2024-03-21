@@ -137,23 +137,25 @@ class _ClassTeacherMainHomeScreenState
         ),
       ),
       drawer: Drawer(
-        backgroundColor: cWhite,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ClassTeacherHeaderDrawer(),
-              MyDrawerList(context),
-            ],
+          backgroundColor: cWhite,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ClassTeacherHeaderDrawer(),
+                MyDrawerList(context),
+              ],
+            ),
           ),
         ),
-      ),
     );
   }
 }
 
 //ClassTeacherMainHomeScreen.........................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
 viewallMenus() {
+  // ignore: unused_local_variable
   UserLogOutController userLogOutController = Get.put(UserLogOutController());
   final screenNavigationOfClsTr = [
     SelectPeriodWiseScreen(
@@ -169,7 +171,7 @@ viewallMenus() {
 
     const TeacherChatScreen(), // Chats
 
-    const SS(), //TimeTable
+    const TimeTable(), //TimeTable
 
     LeaveLettersListviewScreen(
         schooilID: UserCredentialsController.schoolId!,
@@ -215,57 +217,55 @@ viewallMenus() {
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
-                    child:
-                        Text("All Catagories", style: TextStyle(fontSize: 15)),
+                    child: Text("All Catagories", style: TextStyle(fontSize: 15)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ContainerWidget(
-                        // icon: Icons.waving_hand,
-                        text: ' Take Attendance',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[0]);
-                        },
-                        image: 'assets/flaticons/roll-call.png',
-                      ),
+                       ContainerWidget(
+                              // icon: Icons.waving_hand,
+                              text: ' Take Attendance',
+                              onTap: () {
+                                Get.to(() =>screenNavigationOfClsTr[0]);
+                              }, 
+                              image: 'assets/flaticons/roll-call.png',
+                            ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Attendance Book',
                         onTap: () => Get.to(() => screenNavigationOfClsTr[1]),
-
-                        image: 'assets/flaticons/book.png',
+        
+                       image: 'assets/flaticons/book.png',
                       ),
-                      ContainerWidget(
-                        //icon:images.chat_rounded,
-                        text: 'Chats',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[2]);
-                        },
-                        image: 'assets/flaticons/icons8-chat-100.png',
-                      ),
+                       ContainerWidget(
+                              //icon:images.chat_rounded,
+                              text: 'Chats',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[2]);
+                              },image: 'assets/flaticons/icons8-chat-100.png',
+                            ),
+                           
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ContainerWidget(
-                        //image:images.waving_hand,
-                        text: ' Time Table',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[3]);
-                        },
-                        image: 'assets/flaticons/worksheet.png',
-                      ),
+                        ContainerWidget(
+                              //image:images.waving_hand,
+                              text: ' Time Table',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[3]);
+                              },image: 'assets/flaticons/worksheet.png',
+                            ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Leave Letters',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[4]);
                         },
-                        image: 'assets/flaticons/email.png',
+                       image: 'assets/flaticons/email.png',
                       ),
                       ContainerWidget(
                         //icon:images.chat_rounded,
@@ -273,29 +273,31 @@ viewallMenus() {
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[5]);
                         },
-                        image: 'assets/flaticons/homework.png',
+                       image: 'assets/flaticons/homework.png',
                       ),
+                      
+                     
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ContainerWidget(
+                       ContainerWidget(
                         //image:images.waving_hand,
                         text: 'My Students ',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[6]);
                         },
-                        image: 'assets/flaticons/students.png',
+                       image: 'assets/flaticons/students.png',
                       ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Study Materials',
-                        onTap: () {
+                       onTap: () {
                           Get.to(() => screenNavigationOfClsTr[7]);
                         },
-                        image: 'assets/flaticons/school-material.png',
+                       image: 'assets/flaticons/school-material.png',
                       ),
                       ContainerWidget(
                         //icon:images.chat_rounded,
@@ -303,29 +305,29 @@ viewallMenus() {
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[8]);
                         },
-                        image: 'assets/flaticons/teamwork.png',
+                       image: 'assets/flaticons/teamwork.png',
                       ),
+                     
                     ],
                   ),
-                  Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ContainerWidget(
-                        //image:images.waving_hand,
-                        text: 'Exams ',
-                        onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[9]);
-                        },
-                        image: 'assets/flaticons/icons8-grades-100.png',
-                      ),
-                      ContainerWidget(
+                       ContainerWidget(
+                              //image:images.waving_hand,
+                              text: 'Exams ',
+                              onTap: () {
+                                   Get.to(() =>screenNavigationOfClsTr[9]);
+                              },image: 'assets/flaticons/icons8-grades-100.png',
+                            ),
+                        ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Notices',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[10]);
                         },
-                        image: 'assets/flaticons/icons8-notice-100.png',
+                       image: 'assets/flaticons/icons8-notice-100.png',
                       ),
                       ContainerWidget(
                         //icon:images.chat_rounded,
@@ -333,23 +335,30 @@ viewallMenus() {
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[11]);
                         },
-                        image: 'assets/flaticons/calendar.png',
+                       image: 'assets/flaticons/calendar.png',
                       ),
+                    
+                     
                     ],
+                    
                   ),
-                  Row(
+                    Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ContainerWidget(
+                       
+                        ContainerWidget(
                         //image:images.waving_hand,
                         text: 'Teacher ',
                         onTap: () {
                           Get.to(() => screenNavigationOfClsTr[12]);
                         },
-                        image: 'assets/flaticons/female.png',
+                       image: 'assets/flaticons/female.png',
                       ),
+                      
+                     
                     ],
+                    
                   ),
                 ],
               )
@@ -361,9 +370,9 @@ viewallMenus() {
 }
 
 class CaroselWidget extends StatelessWidget {
-  Widget sliderImagePath;
-  String slidertext;
-  CaroselWidget({
+ final Widget sliderImagePath;
+ final String slidertext;
+  const CaroselWidget({
     required this.sliderImagePath,
     required this.slidertext,
     super.key,

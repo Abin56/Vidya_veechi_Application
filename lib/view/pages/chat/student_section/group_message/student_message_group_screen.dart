@@ -51,11 +51,18 @@ class StudentsGroupMessagesScreen extends StatelessWidget {
                             .get();
                         if (firebase.data()?['docid'] ==
                             FirebaseAuth.instance.currentUser?.uid) {
-                          Get.to(() => StudenstGroupChatsScreen(
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return StudenstGroupChatsScreen(
                                 groupID: snapshots.data?.docs[index]['docid'],
                                 groupName: snapshots.data?.docs[index]
                                     ['groupName'],
-                              ));
+                              );
+                              },));
+                          // Get.off(() => StudenstGroupChatsScreen(
+                          //       groupID: snapshots.data?.docs[index]['docid'],
+                          //       groupName: snapshots.data?.docs[index]
+                          //           ['groupName'],
+                          //     ));
                         } else {
                           // ignore: use_build_context_synchronously
                           showDialog(

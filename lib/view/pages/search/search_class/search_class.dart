@@ -68,7 +68,11 @@ class SearchClassBar extends SearchDelegate {
                     SharedPreferencesHelper.classIdKey,
                     UserCredentialsController.classId ?? "");
 
-                Get.to(() => UsersLoginScreen());
+                     Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return UsersLoginScreen();
+                                    },));
+
+               // Get.off(()=>UsersLoginScreen());
               },
               child: Card(
                 elevation: 10,

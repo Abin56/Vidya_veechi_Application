@@ -5,15 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../../controllers/schoo_selection_controller/school_class_selection_controller.dart';
 import '../../../widgets/fonts/google_monstre.dart';
 import '../../../widgets/fonts/google_poppins.dart';
 
 class SearchSchoolScreen extends StatelessWidget {
   SearchSchoolScreen({super.key});
-  final SchoolClassSelectionController schoolClassSelectionController =
-      Get.put(SchoolClassSelectionController());
+  final SchoolClassSelectionController schoolClassSelectionController = Get.put(SchoolClassSelectionController());
 
   @override
   Widget build(BuildContext context) {

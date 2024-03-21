@@ -119,9 +119,14 @@ class SearchStudentsForChat extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.to(() => StudentsChatsScreen(
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return StudentsChatsScreen(
                       studentDocID: data.docid!,
-                      studentName: data.studentName!));
+                      studentName: data.studentName!);
+                  },));
+                  // Get.off(() => StudentsChatsScreen(
+                  //     studentDocID: data.docid!,
+                  //     studentName: data.studentName!));
                 },
                 child: Container(
                     decoration: BoxDecoration(
@@ -133,6 +138,7 @@ class SearchStudentsForChat extends SearchDelegate {
                       children: [
                         GestureDetector(
                             onTap: () {
+                              // ignore: unused_local_variable
                               final data = buildSuggestionList[index];
 
                               // _showlert(context, data);

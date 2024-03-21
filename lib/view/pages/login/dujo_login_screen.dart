@@ -49,7 +49,10 @@ class DujoLoginScren extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => SearchSchoolScreen());
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SearchSchoolScreen();
+              },));
+                   // Get.off(() => SearchSchoolScreen());
                   },
                   child: loginButtonWidget(
                     height: 60,

@@ -12,8 +12,8 @@ import '../Subject 2/subject_chapterwise_display.dart';
 class StudyMaterials extends StatelessWidget {
   StudyMaterials({super.key, required this.subjectID, required this.chapterID});
 
-  String subjectID;
-  String chapterID;
+ final String subjectID;
+ final String chapterID;
 
   @override
   Widget build(BuildContext context) {

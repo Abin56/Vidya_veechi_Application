@@ -152,9 +152,14 @@ class StudentLoginScreen extends StatelessWidget {
                               text: "Don't Have an account?".tr, fontsize: 15),
                           GestureDetector(
                             onTap: () {
-                              Get.to(() => StudentSignInScreen(
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return StudentSignInScreen(
                                     pageIndex: pageIndex!,
-                                  ));
+                                  );
+                              },));
+                              // Get.off(() => StudentSignInScreen(
+                              //       pageIndex: pageIndex!,
+                              //     ));
                             },
                             child: GooglePoppinsWidgets(
                               text: ' Sign Up'.tr,

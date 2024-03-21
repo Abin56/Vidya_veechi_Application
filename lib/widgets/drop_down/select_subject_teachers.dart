@@ -9,9 +9,8 @@ import 'package:get/get.dart';
 var teacherSubjectValue;
 
 class GetTeachersSubjectsDropDownButton extends StatefulWidget {
-  String classId;
-  GetTeachersSubjectsDropDownButton({Key? key, required this.classId})
-      : super(key: key);
+ final String classId;
+  const GetTeachersSubjectsDropDownButton({super.key, required this.classId});
 
   @override
   State<GetTeachersSubjectsDropDownButton> createState() =>

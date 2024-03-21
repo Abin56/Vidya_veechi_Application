@@ -72,7 +72,8 @@ class TakeAttentenceSubjectWise extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => TakeAttenenceScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return  TakeAttenenceScreen(
                                   periodNumber: periodNumber.toString(),
                                   periodTokenID: periodTokenID,
                                   subjectID: snapshot.data!.docs[index]
@@ -83,7 +84,21 @@ class TakeAttentenceSubjectWise extends StatelessWidget {
                                   schoolID: schoolId,
                                   teacheremailID: UserCredentialsController
                                       .teacherModel!.docid!,
-                                  batchId: batchId));
+                                  batchId: batchId);
+                  },));
+                              // Get.off(() => TakeAttenenceScreen(
+                              //     periodNumber: periodNumber.toString(),
+                              //     periodTokenID: periodTokenID,
+                              //     subjectID: snapshot.data!.docs[index]
+                              //         ['docid'],
+                              //     subjectName: snapshot.data!.docs[index]
+                              //         ['subjectName'],
+                              //     classID: classID,
+                              //     schoolID: schoolId,
+                              //     teacheremailID: UserCredentialsController
+                              //         .teacherModel!.docid!,
+                              //     batchId: batchId)
+                              //     );
                             },
                             child: Container(
                               height: h / 100,

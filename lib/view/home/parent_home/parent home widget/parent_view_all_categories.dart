@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 
 class ParentViewAllCategories extends StatelessWidget {
-  Function onTap;
-   ParentViewAllCategories({
+ final Function onTap;
+   const ParentViewAllCategories({
     super.key,
     required this.onTap
   });

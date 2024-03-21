@@ -8,11 +8,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SelectExamSubjectScreen extends StatelessWidget {
-  String examId;
-  String classID;
-  String examLevel;
+ final String examId;
+ final String classID;
+ final String examLevel;
 
-  SelectExamSubjectScreen(
+  const SelectExamSubjectScreen(
       {super.key,
       required this.classID,
       required this.examLevel,
@@ -61,12 +61,20 @@ class SelectExamSubjectScreen extends StatelessWidget {
                           child: FadeInAnimation(
                             child: GestureDetector(
                               onTap: () async {
-                                Get.to(() => EditExamResultScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return EditExamResultScreen(
                                     examlevel: examLevel,
                                     subjectID: snapshots.data!.docs[index]
                                         ['subjectid'],
                                     classID: classID,
-                                    examId: examId));
+                                    examId: examId);
+                                },));
+                                // Get.off(() => EditExamResultScreen(
+                                //     examlevel: examLevel,
+                                //     subjectID: snapshots.data!.docs[index]
+                                //         ['subjectid'],
+                                //     classID: classID,
+                                //     examId: examId));
                               },
                               child: Container(
                                 height: h / 100,

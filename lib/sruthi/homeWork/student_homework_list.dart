@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import '../../view/constant/sizes/sizes.dart';
 import '../../view/widgets/fonts/google_poppins.dart';
 
+// ignore: must_be_immutable
 class HomeWorkList extends StatelessWidget {
   TeacherSubjectController teacherSubjectController =
       Get.put(TeacherSubjectController());

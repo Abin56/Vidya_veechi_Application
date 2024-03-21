@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 
 import '../../../widgets/button_container_widget.dart';
 
+// ignore: must_be_immutable
 class NewWaitingRoomScreen extends StatefulWidget {
   bool activate = false;
   String id;
@@ -62,6 +63,7 @@ class _NewWaitingRoomScreenState extends State<NewWaitingRoomScreen> {
   }
 
   final Uri toLaunch = Uri(scheme: 'https', host: 'test.scipro.in', path: '');
+  // ignore: unused_field
   Future<void>? _launched;
 
   @override

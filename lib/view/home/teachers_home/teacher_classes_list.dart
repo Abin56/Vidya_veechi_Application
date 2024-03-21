@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
 
 import '../../../controllers/teacher_home/class_test_controller/class_test_controller.dart';
 import '../../../controllers/teacher_home/class_test_controller/monthly_controllers/class_test_monthly_controller.dart';
@@ -65,14 +64,26 @@ class TeacherClassListView extends StatelessWidget {
                                   snapshot.data?.docs[index]['docid'] ?? "";
                               classTestMonthlyController.classId =
                                   snapshot.data?.docs[index]['docid'] ?? "";
-                              Get.to(() => ClickOnClasss(
+                                   Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return ClickOnClasss(
                                     className: snapshot.data?.docs[index]
                                             ['className'] ??
                                         "",
                                     classID: snapshot.data?.docs[index]
                                             ['docid'] ??
                                         '',
-                                  ));
+                                  );}));
+
+
+
+                              // Get.to(() => ClickOnClasss(
+                              //       className: snapshot.data?.docs[index]
+                              //               ['className'] ??
+                              //           "",
+                              //       classID: snapshot.data?.docs[index]
+                              //               ['docid'] ??
+                              //           '',
+                              //     ));
 
                               log('Pressed  Class teacher ID :::::   ${UserCredentialsController.classId}');
                             },
@@ -82,18 +93,17 @@ class TeacherClassListView extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
                               decoration: BoxDecoration(
-                                color: adminePrimayColor,
-                                //        gradient: const LinearGradient(
-                                //         colors: [
-                                //    Color.fromARGB(255, 27, 92, 176),Color.fromARGB(255, 51, 158, 245),
-                                // ]),
-
+                                 gradient: const LinearGradient(colors: [
+                             Color.fromARGB(255, 27, 92, 176),
+                             Color.fromARGB(255, 86, 149, 233)
+                          ]),
+                               
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(10),
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color.fromARGB(255, 4, 76, 7)
+                                    color: Color.fromARGB(255, 27, 92, 176)
                                         .withOpacity(0.1),
                                     blurStyle: BlurStyle.outer,
                                     blurRadius: 80,

@@ -5,8 +5,8 @@ import '../view/constant/sizes/constant.dart';
 import '../view/home/undermaintance/under_maintance.dart';
 
 class CircleAvatharImageSelectionWidget extends StatelessWidget {
-  ImageProvider<Object>? backgroundImage;
-  CircleAvatharImageSelectionWidget({
+ final ImageProvider<Object>? backgroundImage;
+  const CircleAvatharImageSelectionWidget({
     this.backgroundImage,
     super.key,
   });
@@ -34,9 +34,12 @@ class CircleAvatharImageSelectionWidget extends StatelessWidget {
                         icon: const Icon(Icons.edit),
                         color: Colors.white,
                         onPressed: () async {
-                          Get.to(() => const UnderMaintanceScreen(
-                                text: '',
-                              ));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const UnderMaintanceScreen(text: '',);
+                  },));
+                          // Get.off(() => const UnderMaintanceScreen(
+                          //       text: '',
+                          //     ));
                         },
                       ),
                     ),

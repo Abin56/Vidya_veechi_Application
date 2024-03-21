@@ -177,7 +177,8 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                             if (UserCredentialsController
                                     .parentModel?.parentPhoneNumber !=
                                 null) {
-                              Get.to(() => UserSentOTPScreen(
+                                   Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return  UserSentOTPScreen(
                                     userpageIndex: pageIndex,
                                     phoneNumber:
                                         "+91${UserCredentialsController.parentModel?.parentPhoneNumber}",
@@ -187,7 +188,19 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                                     userPassword: parentSignUpController
                                         .passwordController.text
                                         .trim(),
-                                  ));
+                                  );
+                    },));
+                              // Get.off(() => UserSentOTPScreen(
+                              //       userpageIndex: pageIndex,
+                              //       phoneNumber:
+                              //           "+91${UserCredentialsController.parentModel?.parentPhoneNumber}",
+                              //       userEmail: parentSignUpController
+                              //           .emailController.text
+                              //           .trim(),
+                              //       userPassword: parentSignUpController
+                              //           .passwordController.text
+                              //           .trim(),
+                              //     ));
                             } else {
                               showToast(msg: "Please select parent detail.");
                             }
@@ -221,9 +234,14 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => ParentLoginScreen(
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return ParentLoginScreen(
                                 pageIndex: 3,
-                              ));
+                              );
+                          },));
+                          // Get.off(() => ParentLoginScreen(
+                          //       pageIndex: 3,
+                          //     ));
                         },
                         child: Text(
                           "Login".tr,

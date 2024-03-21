@@ -186,7 +186,8 @@ class StudentSignInScreen extends StatelessWidget {
                           if (UserCredentialsController
                                   .studentModel?.parentPhoneNumber !=
                               null) {
-                            Get.to(() => UserSentOTPScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return UserSentOTPScreen(
                                   userpageIndex: pageIndex,
                                   phoneNumber:
                                       "+91${UserCredentialsController.studentModel?.parentPhoneNumber}",
@@ -194,7 +195,17 @@ class StudentSignInScreen extends StatelessWidget {
                                       .emailController.text,
                                   userPassword: studentSignUpController
                                       .passwordController.text,
-                                ));
+                                );
+                          },));
+                            // Get.off(() => UserSentOTPScreen(
+                            //       userpageIndex: pageIndex,
+                            //       phoneNumber:
+                            //           "+91${UserCredentialsController.studentModel?.parentPhoneNumber}",
+                            //       userEmail: studentSignUpController
+                            //           .emailController.text,
+                            //       userPassword: studentSignUpController
+                            //           .passwordController.text,
+                            //     ));
                           } else {
                             showToast(msg: "Please select student detail.".tr);
                           }
@@ -225,9 +236,14 @@ class StudentSignInScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => StudentLoginScreen(
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return StudentLoginScreen(
                                 pageIndex: 3,
-                              ));
+                              );
+                          },));
+                          // Get.off(() => StudentLoginScreen(
+                          //       pageIndex: 3,
+                          //     ));
                         },
                         child: Text(
                           "Login".tr,

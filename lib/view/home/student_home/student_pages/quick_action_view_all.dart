@@ -73,7 +73,7 @@ viewallMenus(BuildContext context) {
 
     const ViewHomeWorks(), // Home Works
 
-    const SS(), //Time table
+    const TimeTable(), //Time table
 
     TeacherSubjectWiseList(navValue: 'student'), //Teachers
 
@@ -146,7 +146,10 @@ viewallMenus(BuildContext context) {
                             child: FadeInAnimation(
                               child: GestureDetector(
                                 onTap: () =>
-                                    Get.to(() => screenNavigationOfStd[index]),
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return  screenNavigationOfStd[index];
+                                     },)),
+                                  //  Get.off(() => screenNavigationOfStd[index]),
                                 child: Container(
                                   margin: EdgeInsets.only(
                                       bottom: w / 25,

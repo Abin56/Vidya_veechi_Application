@@ -239,7 +239,10 @@ class MultipileStudentsController extends GetxController {
           await SharedPreferencesHelper.setString(
                   SharedPreferencesHelper.userRoleKey, 'parent')
               .then((value) => log('Added userRoll'));
-          Get.offAll(const ParentMainHomeScreen());
+               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const ParentMainHomeScreen();
+                  },));
+        //  Get.offAll(const ParentMainHomeScreen());
           isLoading.value = false;
         }).catchError((error) {
           if (error is FirebaseAuthException) {

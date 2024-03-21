@@ -182,7 +182,11 @@ class Student_LiveClassRoomState extends State<StudentLiveClassRoom> {
                               widget.roomID == roomText.text &&
                               widget.studentName == nameText.text) {
                             _joinMeeting().then((value) =>
-                                Get.offAll(const StudentsMainHomeScreen()));
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                              return const StudentsMainHomeScreen();
+                            },))
+                             //   Get.offAll(const StudentsMainHomeScreen())
+                             );
                           } else {
                             return showToast(
                                 msg:
@@ -235,6 +239,7 @@ class Student_LiveClassRoomState extends State<StudentLiveClassRoom> {
 
   Future<void> _joinMeeting() async {
     //String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
+    // ignore: unused_local_variable
     String serverUrl = "https://live.leptondujo.com/";
 
     Map<FeatureFlagEnum, dynamic> featureFlags = {

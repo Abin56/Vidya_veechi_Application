@@ -7,10 +7,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LeaveLettersListviewScreen extends StatelessWidget {
-  String schooilID;
-  String classID;
-  String batchID;
-  LeaveLettersListviewScreen(
+ final String schooilID;
+ final String classID;
+ final String batchID;
+  const LeaveLettersListviewScreen(
       {required this.schooilID,
       required this.batchID,
       required this.classID,

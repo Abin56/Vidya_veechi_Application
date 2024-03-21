@@ -57,12 +57,22 @@ class RecSelectSubjectScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => RecSelectChapterScreen(
+                               Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return  RecSelectChapterScreen(
                                   schoolId: schoolId,
                                   batchId: batchId,
                                   classID: classID,
                                   subjectId: snapshot.data!.docs[index]
-                                      ['docid']));
+                                      ['docid']);
+                                    },));
+
+
+                              // Get.off(() => RecSelectChapterScreen(
+                              //     schoolId: schoolId,
+                              //     batchId: batchId,
+                              //     classID: classID,
+                              //     subjectId: snapshot.data!.docs[index]
+                              //         ['docid']));
                             },
                             child: Container(
                               height: h / 100,

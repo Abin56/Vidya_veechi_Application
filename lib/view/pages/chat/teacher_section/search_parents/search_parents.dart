@@ -123,8 +123,12 @@ class SearchParentsForChat extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.to(() => ParentsChatsScreen(
-                      parentDocID: data.docid!, parentName: data.parentName!));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ParentsChatsScreen(
+                      parentDocID: data.docid!, parentName: data.parentName!);
+                  },));
+                  // Get.off(() => ParentsChatsScreen(
+                  //     parentDocID: data.docid!, parentName: data.parentName!));
                 },
                 child: Container(
                     decoration: BoxDecoration(
@@ -136,6 +140,7 @@ class SearchParentsForChat extends SearchDelegate {
                       children: [
                         GestureDetector(
                             onTap: () {
+                              // ignore: unused_local_variable
                               final data = buildSuggestionList[index];
 
                               // _showlert(context, data);

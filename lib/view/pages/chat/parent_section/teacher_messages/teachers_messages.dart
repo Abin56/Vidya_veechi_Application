@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'chats/teachers_vs_parents.dart';
 
@@ -33,12 +32,22 @@ class ParentTeachersMessagesScreen extends StatelessWidget {
                     height: 70,
                     child: ListTile(
                       onTap: () {
-                        Get.to(() => ParentTeachersChatsScreen(
+ 
+Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return ParentTeachersChatsScreen(
                               teacherName: snapshots.data!.docs[index]
                                   ['teacherName'],
                               teacherDocID: snapshots.data!.docs[index]
                                   ['docid'],
-                            ));
+                            );
+    },));
+
+                        // Get.off(() => ParentTeachersChatsScreen(
+                        //       teacherName: snapshots.data!.docs[index]
+                        //           ['teacherName'],
+                        //       teacherDocID: snapshots.data!.docs[index]
+                        //           ['docid'],
+                        //     ));
                       },
                       leading: const CircleAvatar(
                         radius: 30,

@@ -49,7 +49,10 @@ class ParentProfileEditController {
           await FirebaseAuth.instance.signOut().then((value) async {
             await SharedPreferencesHelper.clearSharedPreferenceData();
             UserCredentialsController.clearUserCredentials();
-            Get.offAll(() => const DujoLoginScren());
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const DujoLoginScren();
+                  },));
+           // Get.offAll(() => const DujoLoginScren());
           });
         });
       });
@@ -61,7 +64,7 @@ class ParentProfileEditController {
     }
   }
 
-  Future<void> updateParentProfilePicture() async {
+  Future<void> updateParentProfilePicture(context) async {
     try {
       if (Get.find<GetImage>().pickedImage.value.isNotEmpty) {
         isLoading.value = true;
@@ -98,7 +101,10 @@ class ParentProfileEditController {
         if (parentData.data() != null) {
           UserCredentialsController.parentModel =
               ParentModel.fromMap(parentData.data()!);
-          Get.offAll(const ParentMainHomeScreen());
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const ParentMainHomeScreen();
+                  },));
+         // Get.offAll(const ParentMainHomeScreen());
         }
       }
     } catch (e) {
@@ -107,7 +113,7 @@ class ParentProfileEditController {
     }
   }
 
-  Future<void> updateParentProfile({
+  Future<void> updateParentProfile(context,{
     required String value,
     required String documentKey,
   }) async {
@@ -121,8 +127,10 @@ class ParentProfileEditController {
       if (parentData.data() != null) {
         UserCredentialsController.parentModel =
             ParentModel.fromMap(parentData.data()!);
-
-        Get.offAll(const ParentMainHomeScreen());
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const ParentMainHomeScreen();
+                  },));
+        //Get.offAll(const ParentMainHomeScreen());
       }
       isLoading.value = false;
       textEditingController.clear();

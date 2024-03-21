@@ -25,8 +25,8 @@ import '../../fees and bills/fees_page.dart';
 import '../../student_home/time_table/ss.dart';
 
 class ParentAccessories extends StatelessWidget {
-  String studentName;
-  ParentAccessories({
+ final String studentName;
+  const ParentAccessories({
     required this.studentName,
     super.key,
   });
@@ -48,7 +48,7 @@ class ParentAccessories extends StatelessWidget {
           batchId: UserCredentialsController.batchId!), //Leave Letter
       const ParentChatScreen(),
 
-      const SS(), // Time Table
+      const TimeTable(), // Time Table
 
       SchoolLevelMeetingPage(), //Meetings
 
@@ -110,7 +110,12 @@ class ParentAccessories extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        Get.to(() => screenNavigation[index]);
+                       
+                   Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return screenNavigation[index];
+    },));    
+                       
+                       // Get.off(() => screenNavigation[index]);
                       },
                       child: Container(
                         decoration: BoxDecoration(
