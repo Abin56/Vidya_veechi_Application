@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:flutter/material.dart';
 
-class vpd extends StatefulWidget {
-  vpd({super.key, required this.studentID});
+class Vpd extends StatefulWidget {
+  Vpd({super.key, required this.studentID});
 
-  String studentID;
+ final String studentID;
 
   @override
-  State<vpd> createState() => _vpdState();
+  State<Vpd> createState() => _VpdState();
 }
 
-class _vpdState extends State<vpd> {
+class _VpdState extends State<Vpd> {
   DocumentSnapshot? document;
   bool isLoading = true;
 

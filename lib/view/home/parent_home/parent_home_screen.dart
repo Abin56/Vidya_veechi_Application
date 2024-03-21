@@ -39,6 +39,7 @@ import '../../../controllers/multipile_students/multipile_students_controller.da
 class ParentHomeScreen extends StatefulWidget {
   const ParentHomeScreen({super.key, required this.studentName});
   @override
+  // ignore: override_on_non_overriding_member
   final String studentName;
 
   State<ParentHomeScreen> createState() => _ParentHomeScreenState();

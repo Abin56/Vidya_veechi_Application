@@ -155,6 +155,7 @@ class _ClassTeacherMainHomeScreenState
 
 
 viewallMenus() {
+  // ignore: unused_local_variable
   UserLogOutController userLogOutController = Get.put(UserLogOutController());
   final screenNavigationOfClsTr = [
     SelectPeriodWiseScreen(
@@ -369,9 +370,9 @@ viewallMenus() {
 }
 
 class CaroselWidget extends StatelessWidget {
-  Widget sliderImagePath;
-  String slidertext;
-  CaroselWidget({
+ final Widget sliderImagePath;
+ final String slidertext;
+  const CaroselWidget({
     required this.sliderImagePath,
     required this.slidertext,
     super.key,

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -162,9 +164,9 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
 }
 
 class DayWidget extends StatelessWidget {
-  DayWidget({super.key, required this.dayName});
+  const DayWidget({super.key, required this.dayName});
 
-  String dayName;
+ final String dayName;
   Color colorCheck(col) {
     if (col == 'Color(0x00fcfcfc)') {
       return Colors.amber;
@@ -318,15 +320,15 @@ class ColorParser {
 }
 
 class PeriodShowingWidget extends StatelessWidget {
-  PeriodShowingWidget(
+  const PeriodShowingWidget(
       {super.key,
       required this.periodList,
       required this.dayName,
       required this.teacherList});
 
   final List<String> periodList;
-  List<String> teacherList;
-  String dayName;
+ final List<String> teacherList;
+ final String dayName;
 
   @override
   Widget build(BuildContext context) {

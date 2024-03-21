@@ -18,6 +18,7 @@ import '../../pages/privacy_policy/dialogs/privacy_policy.dart';
 import '../general_instructions/general_instructions.dart';
 import '../student_home/time_table/ss.dart';
 
+// ignore: must_be_immutable
 class ClassTeacherHeaderDrawer extends StatelessWidget {
   UserLogOutController userLogOutController = Get.put(UserLogOutController());
   ClassTeacherHeaderDrawer({super.key});

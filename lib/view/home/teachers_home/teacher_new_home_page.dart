@@ -5,8 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/student_home/Student%20Edit%20Profile/teacher_edit_profile.dart';
@@ -91,8 +89,8 @@ class _TeacherNewHomePageState extends State<TeacherNewHomePage> {
                 width: double.infinity,
                 decoration: const BoxDecoration(
                      gradient: LinearGradient(colors: [
-                             Color.fromARGB(255, 88, 167, 123),
-                Color.fromARGB(255, 98, 193, 141),
+                             Color.fromARGB(255, 27, 92, 176),
+                      Colors.blue,
                           ]),
                     // image: DecorationImage(
                     //     fit: BoxFit.cover,

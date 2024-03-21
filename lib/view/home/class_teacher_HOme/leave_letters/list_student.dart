@@ -9,12 +9,12 @@ import '../../../../model/leave_letter_model/leave_letter.dart';
 import 'leave_letter_pdfviwer.dart';
 
 class LeaveLettersStudentListsScreen extends StatefulWidget {
-  String schooilID;
-  String classID;
-  String date;
-  String batchID;
+ final String schooilID;
+ final String classID;
+ final String date;
+ final String batchID;
 
-  LeaveLettersStudentListsScreen(
+  const LeaveLettersStudentListsScreen(
       {required this.schooilID,
       required this.classID,
       required this.date,

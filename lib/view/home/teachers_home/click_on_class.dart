@@ -138,6 +138,7 @@ class ClickOnClasss extends StatelessWidget {
     double h = ResponsiveApp.mq.size.height;
     log('Teacher class iddddddd$classID');
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 234, 229, 229),
        appBar: AppBar(
            flexibleSpace: const AppBarColorWidget(),
         title: Text(className,style: const TextStyle(color: Colors.white)),
@@ -196,39 +197,44 @@ class ClickOnClasss extends StatelessWidget {
                                       child: FadeInAnimation(
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                                return noDataNavigation[index];
-                                              },));
-
-                                              // Get.to(() =>
-                                              //     noDataNavigation[index]);
-                                            },
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
-                                              children: [
-                                                _acc_images[index] ,
-                                                Center(
-                                                  child: Text(
-                                                    textAlign:
-                                                        TextAlign.center,
-                                                    _acc_text[index],
-                                                    style: GoogleFonts
-                                                        .montserrat(
-                                                            color: Colors
-                                                                .black
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            fontSize: 13,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  ),
-                                                )
-                                              ],
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: cWhite,
+                                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                                  return noDataNavigation[index];
+                                                },));
+                                            
+                                                // Get.to(() =>
+                                                //     noDataNavigation[index]);
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  _acc_images[index] ,
+                                                  Center(
+                                                    child: Text(
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      _acc_text[index],
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              fontSize: 11.5,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -262,66 +268,70 @@ class ClickOnClasss extends StatelessWidget {
                                 child: FadeInAnimation(
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-
-                                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                                return hasDataNavigation[index];
-                                              },));
-
-
-
-                                        
-                                        // Get.to(() => hasDataNavigation[index]);
-                                      },
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                         // color: Colors.white.withOpacity(0.5),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                          // boxShadow: [
-                                          //   BoxShadow(
-                                          //     color:
-                                          //         Colors.black.withOpacity(0.1),
-                                          //     blurRadius: 40,
-                                          //     spreadRadius: 10,
-                                          //   ),
-                                          // ],
-                                        ),
-                                        height: h / 100,
-                                        width: double.infinity,
-                                        margin: EdgeInsets.only(
-                                            top: w / 30,
-                                            left: w / 30,
-                                            right: w / 30),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [ hasDataImages[index],
-                                            // Container(
-                                            //   height: 75,
-                                            //   width: double.infinity,
-                                            //   decoration: BoxDecoration(
-                                            //     image: DecorationImage(
-                                            //       image: AssetImage(
-                                            //           hasDataImages[index]),
-                                            //     ),
+                                    child: Container( decoration: const BoxDecoration(
+                                              color: cWhite,
+                                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                      
+                                           Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                                  return hasDataNavigation[index];
+                                                },));
+                                      
+                                      
+                                      
+                                          
+                                          // Get.to(() => hasDataNavigation[index]);
+                                        },
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                           // color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            // boxShadow: [
+                                            //   BoxShadow(
+                                            //     color:
+                                            //         Colors.black.withOpacity(0.1),
+                                            //     blurRadius: 40,
+                                            //     spreadRadius: 10,
                                             //   ),
-                                            // ),
-                                            Center(
-                                              child: Text(
-                                                translateString(
-                                                    hasDataText[index]),
-                                                style: GoogleFonts.montserrat(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    fontSize: 13,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            )
-                                          ],
+                                            // ],
+                                          ),
+                                          height: h / 100,
+                                          width: double.infinity,
+                                          margin: EdgeInsets.only(
+                                              top: w / 30,
+                                              left: w / 30,
+                                              right: w / 30),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [ hasDataImages[index],
+                                              // Container(
+                                              //   height: 75,
+                                              //   width: double.infinity,
+                                              //   decoration: BoxDecoration(
+                                              //     image: DecorationImage(
+                                              //       image: AssetImage(
+                                              //           hasDataImages[index]),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              Center(
+                                                child: Text(
+                                                  translateString(
+                                                      hasDataText[index]),
+                                                  style: GoogleFonts.montserrat(
+                                                      color: Colors.black
+                                                          .withOpacity(0.5),
+                                                      fontSize: 11.5,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

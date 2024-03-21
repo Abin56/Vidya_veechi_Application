@@ -94,8 +94,8 @@ class TeacherClassListView extends StatelessWidget {
                                   bottom: w / 10, left: w / 50, right: w / 50),
                               decoration: BoxDecoration(
                                  gradient: const LinearGradient(colors: [
-                             Color.fromARGB(255, 84, 244, 156),
-                Color.fromARGB(255, 98, 193, 141),
+                             Color.fromARGB(255, 27, 92, 176),
+                             Color.fromARGB(255, 86, 149, 233)
                           ]),
                                
                                 borderRadius: const BorderRadius.all(
@@ -103,7 +103,7 @@ class TeacherClassListView extends StatelessWidget {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color.fromARGB(255, 4, 76, 7)
+                                    color: Color.fromARGB(255, 27, 92, 176)
                                         .withOpacity(0.1),
                                     blurStyle: BlurStyle.outer,
                                     blurRadius: 80,

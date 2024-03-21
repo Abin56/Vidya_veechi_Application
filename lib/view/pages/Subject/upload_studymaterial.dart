@@ -39,6 +39,7 @@ class UploadStudyMaterial extends StatefulWidget {
 }
 
 class _UploadStudyMaterialState extends State<UploadStudyMaterial> {
+  // ignore: unused_field
   final String _selectedLeaveType = '';
   TextEditingController subjectNameController = TextEditingController();
   TextEditingController topicController = TextEditingController();

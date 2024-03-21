@@ -7,10 +7,10 @@ import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
 
 
 class QuickActionsWidget extends StatelessWidget {
-  String text;
-  String image;
-  Function onTap;
-   QuickActionsWidget({
+ final String text;
+ final String image;
+ final Function onTap;
+   const QuickActionsWidget({
     required this.text,
     required this.image,
     required this.onTap,

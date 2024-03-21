@@ -6,6 +6,7 @@ import 'package:vidya_veechi/view/home/class_teacher_HOme/my_students/student_de
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class ShowStudentAchievements extends StatefulWidget {
   ShowStudentAchievements({super.key, required this.studentID});
 
@@ -19,7 +20,7 @@ class ShowStudentAchievements extends StatefulWidget {
 class _ShowStudentAchievementsState extends State<ShowStudentAchievements> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+   // var screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(

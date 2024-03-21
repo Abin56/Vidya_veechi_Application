@@ -20,9 +20,10 @@ import '../../pages/privacy_policy/dialogs/privacy_policy.dart';
 import '../class_teacher_HOme/class_teacher_mainhome.dart';
 import '../student_home/time_table/ss.dart';
 
+// ignore: must_be_immutable
 class TeacherHeaderDrawer extends StatelessWidget {
   UserLogOutController userLogOutController = Get.put(UserLogOutController());
-  TeacherHeaderDrawer({Key? key}) : super(key: key);
+  TeacherHeaderDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

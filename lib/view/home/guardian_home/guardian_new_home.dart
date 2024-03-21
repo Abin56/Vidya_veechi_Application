@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/main.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent%20home%20widget/qucik_action.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/all_class_test_monthly_show/all_class_list_monthly_show.dart';
 import 'package:vidya_veechi/view/home/all_class_test_show/all_class_list_show.dart';
@@ -37,6 +36,7 @@ class GuardianHomeScreen2 extends StatefulWidget {
 }
 
 class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
+  // ignore: unused_field
   int _page = 0;
   onPageChanged(int page) {
     setState(() {
@@ -110,7 +110,7 @@ class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
    
 
     // String studentName = '';
-    var screenSize = MediaQuery.of(context).size;
+  //  var screenSize = MediaQuery.of(context).size;
     checkingSchoolActivate(context);
 
     return Scaffold(

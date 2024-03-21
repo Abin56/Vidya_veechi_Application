@@ -1,6 +1,5 @@
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/teachers_home/teacher_home.dart';
-import 'package:vidya_veechi/view/home/teachers_home/teacher_new_home_page.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';

@@ -101,11 +101,11 @@ class CarouselSliderWidget extends StatelessWidget {
 }
 
 class CaroselmageWidget extends StatelessWidget {
-  Widget sliderWidget;
-  String slidertext;
-  String slidersecondtext;
-  String count;
-  CaroselmageWidget({
+ final Widget sliderWidget;
+ final String slidertext;
+ final String slidersecondtext;
+ final String count;
+  const CaroselmageWidget({
     required this.sliderWidget,
     required this.slidertext,
     required this.slidersecondtext,

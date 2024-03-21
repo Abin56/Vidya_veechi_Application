@@ -21,6 +21,7 @@ import '../../pages/Attentence/take_attentence/attendence_book_status_month.dart
 import '../../pages/privacy_policy/dialogs/privacy_policy.dart';
 import '../student_home/time_table/ss.dart';
 
+// ignore: must_be_immutable
 class ParentHeaderDrawer extends StatelessWidget {
   MultipileStudentsController multipileStudentsController =
       Get.put(MultipileStudentsController());
@@ -200,7 +201,7 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
         MenuItem(3, 'assets/images/exam.png', 'Exams'.tr,
             currentPage == DrawerSections.favourites ? true : false, () {
 Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return UserExmNotifications();
+               return const UserExmNotifications();
     },));
 
           // Get.off(
@@ -210,7 +211,7 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
         MenuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
              Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return TimeTable();
+               return const TimeTable();
     },));
 
           // Get.off(
@@ -224,7 +225,7 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
         MenuItem(5, 'assets/images/homework.png', 'HomeWorks'.tr,
             currentPage == DrawerSections.contact ? true : false, () {
               Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return ViewHomeWorks();
+               return const ViewHomeWorks();
     },));
           // Get.off(
           //   () => const ViewHomeWorks(),
@@ -252,7 +253,7 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
         MenuItem(7, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
               Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return PrivacyViewScreen();
+               return const PrivacyViewScreen();
     },));
           // Get.off(() => const PrivacyViewScreen());
         }),

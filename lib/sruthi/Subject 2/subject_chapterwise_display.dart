@@ -1,4 +1,3 @@
-import 'package:vidya_veechi/sruthi/Study%20Materials/study_materials_list.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
@@ -7,7 +6,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class SubjectWiseDisplay extends StatelessWidget {
-  const SubjectWiseDisplay({Key? key}) : super(key: key);
+  const SubjectWiseDisplay({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +87,7 @@ class SubjectWiseDisplay extends StatelessWidget {
 }
 
 class ListileCardChapterWidget extends StatelessWidget {
-  ListileCardChapterWidget({
+  const ListileCardChapterWidget({
     required this.leading,
     required this.title,
     required this.subtitle,
@@ -96,10 +95,10 @@ class ListileCardChapterWidget extends StatelessWidget {
     super.key,
   });
 
-  Widget leading;
-  Widget title;
-  Widget subtitle;
-  Widget? trailing;
+ final Widget leading;
+ final Widget title;
+ final Widget subtitle;
+ final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
