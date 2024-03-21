@@ -3,12 +3,12 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 
 class HomeWorkGraphOfStd extends StatefulWidget {
-  const HomeWorkGraphOfStd(
-      {super.key,
-      required this.completed,
-      required this.pending,
-     // required this.total
-      });
+  const HomeWorkGraphOfStd({
+    super.key,
+    required this.completed,
+    required this.pending,
+    // required this.total
+  });
 
   final int completed;
   final int pending;
@@ -22,8 +22,8 @@ class _HomeWorkGraphOfStdState extends State<HomeWorkGraphOfStd> {
   @override
   Widget build(BuildContext context) {
     double totalhomeworks = 10;
-    // if (widget.total != 0) {
-    //   totalhomeworks = widget.completed * (100 / widget.total);
+    // if (widGet.offtal != 0) {
+    //   totalhomeworks = widget.completed * (100 / widGet.offtal);
     // }
 
     final List<ChartData> chartData = [
@@ -40,7 +40,8 @@ class _HomeWorkGraphOfStdState extends State<HomeWorkGraphOfStd> {
     return SfCircularChart(
       annotations: <CircularChartAnnotation>[
         CircularChartAnnotation(
-            height:'100%', // Setting height and width for the circular chart annotation
+            height:
+                '100%', // Setting height and width for the circular chart annotation
             width: '100%',
             widget: PhysicalModel(
                 shape: BoxShape.circle,
@@ -86,7 +87,7 @@ class HomeWorkGraph extends StatelessWidget {
       child: const HomeWorkGraphOfStd(
         pending: 5,
         completed: 15,
-      //  total: 21,
+        //  total: 21,
       ),
     );
   }

@@ -17,16 +17,16 @@ showStudentsGroupAppBar(
   String groupID,
   BuildContext context,
 ) async {
-  Get.to(() => BootomSheet(
+  Get.off(() => BootomSheet(
       groupID: groupID, groupName: groupName, totalStudents: totalStudents));
 }
 
 class BootomSheet extends StatelessWidget {
- final TeacherGroupChatController teacherGroupChatController =
+  final TeacherGroupChatController teacherGroupChatController =
       Get.put(TeacherGroupChatController());
- final String groupName;
- final String totalStudents;
- final String groupID;
+  final String groupName;
+  final String totalStudents;
+  final String groupID;
   BootomSheet(
       {required this.groupID,
       required this.groupName,
@@ -82,7 +82,7 @@ class BootomSheet extends StatelessWidget {
                                     return AlertDialog(
                                       title: const Text(
                                           'Select teacher to Transfer group'),
-                                      content: SingleChildScrollView(
+                                      content: const SingleChildScrollView(
                                         child: ListBody(
                                           children: <Widget>[
                                             GetSchoolTeacherListDropDownButton()

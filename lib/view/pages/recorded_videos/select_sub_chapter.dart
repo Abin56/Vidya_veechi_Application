@@ -11,10 +11,10 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../colors/colors.dart';
 
 class RecSelectChapterScreen extends StatelessWidget {
- final String schoolId;
- final String classID;
- final String batchId;
- final String subjectId;
+  final String schoolId;
+  final String classID;
+  final String batchId;
+  final String subjectId;
   const RecSelectChapterScreen(
       {required this.schoolId,
       required this.batchId,
@@ -71,7 +71,7 @@ class RecSelectChapterScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               log("docid${snapshot.data!.docs[index]['docid']}");
-                              Get.to(() => RecordedVideosListScreen(
+                              Get.off(() => RecordedVideosListScreen(
                                   schoolId: schoolId,
                                   batchId: batchId,
                                   classID: classID,

@@ -1,53 +1,62 @@
-import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-
-class AssignmentProjectGraph extends StatelessWidget {
-   const AssignmentProjectGraph({super.key});
-
-@override
-Widget build(BuildContext context) {
-  return  SfCartesianChart(
-        // Initialize category axis
-        primaryXAxis:  CategoryAxis(),
-       //  title:  ChartTitle(text: 'Half yearly analysis', textStyle: const TextStyle(fontSize: 12)),
-        // axes: const [CategoryAxis(name: "Sales",)],
-        series: <LineSeries<SalesData, String>>[
-          LineSeries<SalesData, String>(
-            // Bind data source
-            dataSource:  <SalesData>[
-              SalesData('Jan', 35),
-              SalesData('Feb', 28),
-              SalesData('Mar', 34),
-              SalesData('Apr', 32),
-              SalesData('May', 40)
-            ],
-            xValueMapper: (SalesData sales, _) => sales.year,
-            yValueMapper: (SalesData sales, _) => sales.sales
-          ),
-           LineSeries<SalesData, String>(
-            // Bind data source for purchase line
-            dataSource: <SalesData>[
-              SalesData('Jan', 20), // Replace with your purchase data
-              SalesData('Feb', 25),
-              SalesData('Mar', 18),
-              SalesData('Apr', 30),
-              SalesData('May', 22),
-            ],
-            xValueMapper: (SalesData sales, _) => sales.year,
-            yValueMapper: (SalesData sales, _) => sales.sales,
-            name: 'Purchase', // Series name for legend
-          ),
-        ],
-      
-    
-  );
-}
+// import 'package:flutter/material.dart';
+// import 'package:syncfusion_flutter_charts/charts.dart';
 
 
-}
+// class AssignmentAndProjectGraphOfStd extends StatefulWidget {
+//   const AssignmentAndProjectGraphOfStd({super.key});
 
-class SalesData {
-  SalesData(this.year, this.sales);
-  final String year;
-  final double sales;
-}
+//   @override
+//   State<AssignmentAndProjectGraphOfStd> createState() => _AssignmentAndProjectGraphOfStdState();
+// }
+
+// class _AssignmentAndProjectGraphOfStdState extends State<AssignmentAndProjectGraphOfStd> {
+//   @override
+//   @override
+//   Widget build(BuildContext context) {
+//     final List<ChartData> chartData = <ChartData>[
+//       ChartData("First Term", 3000, 4500),
+//       ChartData("Onam Exam", 3400, 4500),
+//       ChartData('Second', 3000, 4500),
+//       ChartData('X mas Exam', 4000, 4500),
+//       ChartData('Third Term', 3400, 4500),
+//       ChartData("Final Exam", 4450, 4500),
+//     ];
+//     return SfCartesianChart(
+//       primaryXAxis: const CategoryAxis(),
+//       primaryYAxis: const NumericAxis(
+//         decimalPlaces: 4,
+//         // rangPadding: ChartRangePadding.none
+//       ),
+//     series: <ChartSeries<ChartData, dynamic>>[
+//         LineSeries<ChartData, dynamic>(
+//           dataLabelSettings: const DataLabelSettings(
+
+//               // Renders the data label
+//               isVisible: true),
+//           dataSource: chartData,
+//           markerSettings: const MarkerSettings(isVisible: true),
+//           xValueMapper: (ChartData data, _) => data.x,
+//           yValueMapper: (ChartData data, _) => data.y,
+//           color: const Color.fromARGB(255, 255, 170, 1),
+//         ),
+//         LineSeries<ChartData, dynamic>(
+//             dataLabelSettings: const DataLabelSettings(
+
+//                 // Renders the data label
+//                 isVisible: true),
+//             dataSource: chartData,
+//             markerSettings: const MarkerSettings(isVisible: true),
+//             xValueMapper: (ChartData data, _) => data.x,
+//             yValueMapper: (ChartData data, _) => data.y1,
+//             color: const Color.fromARGB(255, 48, 79, 254)),
+//       ],
+//     );
+//   }
+// }
+
+// class ChartData {
+//   ChartData(this.x, this.y, this.y1);
+//   final x;
+//   final double y;
+//   final double y1;
+// }

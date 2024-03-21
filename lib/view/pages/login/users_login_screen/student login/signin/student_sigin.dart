@@ -186,7 +186,7 @@ class StudentSignInScreen extends StatelessWidget {
                           if (UserCredentialsController
                                   .studentModel?.parentPhoneNumber !=
                               null) {
-                            Get.to(() => UserSentOTPScreen(
+                            Get.off(() => UserSentOTPScreen(
                                   userpageIndex: pageIndex,
                                   phoneNumber:
                                       "+91${UserCredentialsController.studentModel?.parentPhoneNumber}",
@@ -225,7 +225,7 @@ class StudentSignInScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => StudentLoginScreen(
+                          Get.off(() => StudentLoginScreen(
                                 pageIndex: 3,
                               ));
                         },

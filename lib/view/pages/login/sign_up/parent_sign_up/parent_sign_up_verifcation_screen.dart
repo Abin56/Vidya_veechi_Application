@@ -177,7 +177,7 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                             if (UserCredentialsController
                                     .parentModel?.parentPhoneNumber !=
                                 null) {
-                              Get.to(() => UserSentOTPScreen(
+                              Get.off(() => UserSentOTPScreen(
                                     userpageIndex: pageIndex,
                                     phoneNumber:
                                         "+91${UserCredentialsController.parentModel?.parentPhoneNumber}",
@@ -221,7 +221,7 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => ParentLoginScreen(
+                          Get.off(() => ParentLoginScreen(
                                 pageIndex: 3,
                               ));
                         },

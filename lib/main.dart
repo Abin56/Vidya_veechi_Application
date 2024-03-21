@@ -83,6 +83,7 @@ class MyApp extends StatelessWidget {
                   create: (_) => ChatProvider(),
                 ),
               ],
+        
               child: GetMaterialApp(
                 theme: ThemeData(
                     tabBarTheme: TabBarTheme(

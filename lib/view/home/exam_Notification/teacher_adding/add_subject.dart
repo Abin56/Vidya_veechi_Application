@@ -28,12 +28,12 @@ class AddTimeTable extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(()=>const ViewSchoolExamScreen());
+                Get.off(() => const ViewSchoolExamScreen());
               },
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: SizedBox(
                     height: 80.h,
                     width: 250.w,
@@ -49,7 +49,7 @@ class AddTimeTable extends StatelessWidget {
             kHeight30,
             GestureDetector(
               onTap: () {
-                Get.to(() => const ExmNotifications());
+                Get.off(() => const ExmNotifications());
               },
               child: Container(
                 decoration: BoxDecoration(

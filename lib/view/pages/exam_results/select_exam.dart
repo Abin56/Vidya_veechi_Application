@@ -21,8 +21,7 @@ class SelectExamLevelScreen extends StatelessWidget {
             fontsize: 15.w,
             fontWeight: FontWeight.w700,
           ),
-          backgroundColor: adminePrimayColor
-          ),
+          backgroundColor: adminePrimayColor),
       body: SafeArea(
           child: Center(
         child: Column(
@@ -91,7 +90,7 @@ getBottomSheet(String classId, String examlevel) {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(() => ExamResultsView(
+                Get.off(() => ExamResultsView(
                       classID: classId,
                       examlevel: examlevel,
                     ));
@@ -123,7 +122,7 @@ getBottomSheet(String classId, String examlevel) {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(() => SelectExamWiseScreen(
+                Get.off(() => SelectExamWiseScreen(
                       classID: classId,
                       examLevel: examlevel,
                     ));

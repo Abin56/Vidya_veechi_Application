@@ -182,10 +182,10 @@ Future<void> checkStudent(
   if (studentData.data() != null) {
     UserCredentialsController.studentModel =
         StudentModel.fromJson(studentData.data()!);
-    Get.to(() => const StudentsMainHomeScreen());
+    Get.off(() => const StudentsMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.to(() => const DujoLoginScren());
+    Get.off(() => const DujoLoginScren());
   }
 }
 
@@ -200,10 +200,10 @@ Future<void> checkTeacher(
   if (teacherData.data() != null) {
     UserCredentialsController.teacherModel =
         TeacherModel.fromMap(teacherData.data()!);
-    Get.to(() => const TeacherMainHomeScreen());
+    Get.off(() => const TeacherMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.to(() => const DujoLoginScren());
+    Get.off(() => const DujoLoginScren());
   }
 }
 
@@ -218,10 +218,10 @@ Future<void> checkClassTeacher(
   if (classTeacherData.data() != null) {
     UserCredentialsController.teacherModel =
         TeacherModel.fromMap(classTeacherData.data()!);
-    Get.to(() => const ClassTeacherMainHomeScreen());
+    Get.off(() => const ClassTeacherMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.to(() => const DujoLoginScren());
+    Get.off(() => const DujoLoginScren());
   }
 }
 
@@ -241,10 +241,10 @@ Future<void> checkParent(
   if (parentData.data() != null) {
     UserCredentialsController.parentModel =
         ParentModel.fromMap(parentData.data()!);
-    Get.to(() => const ParentMainHomeScreen());
+    Get.off(() => const ParentMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.to(() => const DujoLoginScren());
+    Get.off(() => const DujoLoginScren());
   }
 }
 
@@ -264,10 +264,10 @@ Future<void> checkGuardian(
   if (guardianData.data() != null) {
     UserCredentialsController.guardianModel =
         GuardianModel.fromMap(guardianData.data()!);
-    Get.to(() => const GuardianMainHomeScreen());
+    Get.off(() => const GuardianMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.to(() => const DujoLoginScren());
+    Get.off(() => const DujoLoginScren());
   }
 }
 

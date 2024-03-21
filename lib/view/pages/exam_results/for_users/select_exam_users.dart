@@ -64,7 +64,7 @@ class UsersSelectExamWiseScreen extends StatelessWidget {
                           child: FadeInAnimation(
                             child: GestureDetector(
                               onTap: () async {
-                                Get.to(() => ViewExamResultsScreen(
+                                Get.off(() => ViewExamResultsScreen(
                                     classID: classID,
                                     examLevel: examLevel,
                                     studentId: studentId,

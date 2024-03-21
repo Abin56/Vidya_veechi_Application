@@ -152,7 +152,7 @@ class StudentLoginScreen extends StatelessWidget {
                               text: "Don't Have an account?".tr, fontsize: 15),
                           GestureDetector(
                             onTap: () {
-                              Get.to(() => StudentSignInScreen(
+                              Get.off(() => StudentSignInScreen(
                                     pageIndex: pageIndex!,
                                   ));
                             },

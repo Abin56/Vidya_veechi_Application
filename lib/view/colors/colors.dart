@@ -13,7 +13,7 @@ const Color cgraident1 = Color.fromARGB(255, 34, 167, 255);
 const Color cgraident2 = Color.fromARGB(255, 23, 155, 231);
 const Color cgrey1 = Color.fromARGB(255, 241, 241, 241);
 
-const Color adminePrimayColor = Color.fromARGB(255, 88, 167, 123);
+const Color adminePrimayColor = Color.fromARGB(255, 27, 92, 176);
 class AppColors {
   static const backGroundColor = Color(0xFFF8F9FD);
   static const transparentColor = Colors.transparent;
@@ -23,7 +23,7 @@ class AppColors {
   static const blackColor = Colors.black;
 
  Color themeColorBlue = Color.fromARGB(255, 6, 71, 157);
- Color adminePrimayColor = Color.fromARGB(255, 27, 92, 176);
+// Color adminePrimayColor = Color.fromARGB(255, 27, 92, 176);
  Color adminePrimayColor1 = Color.fromARGB(255, 67, 0, 212);
 
   static const redColor = Colors.red;

@@ -39,7 +39,7 @@ class StudentsMessagesScreen extends StatelessWidget {
                           height: 70.h,
                           child: ListTile(
                             onTap: () {
-                              Get.to(() => StudentsChatsScreen(
+                              Get.off(() => StudentsChatsScreen(
                                     studentName: snapshots.data!.docs[index]
                                         ['studentname'],
                                     studentDocID: snapshots.data!.docs[index]

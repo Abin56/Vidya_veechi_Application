@@ -58,13 +58,14 @@ class LeaveLettersListviewScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(()=>LeaveLettersStudentListsScreen(
-                                      batchID: batchID,
-                                      schooilID: schooilID,
-                                      classID: classID,
-                                      date: snapshot.data!.docs[index]
-                                          .data()['docid'],
-                                    ));
+                                    Get.off(
+                                        () => LeaveLettersStudentListsScreen(
+                                              batchID: batchID,
+                                              schooilID: schooilID,
+                                              classID: classID,
+                                              date: snapshot.data!.docs[index]
+                                                  .data()['docid'],
+                                            ));
                                   },
                                   child: Container(
                                     height: h / 100,

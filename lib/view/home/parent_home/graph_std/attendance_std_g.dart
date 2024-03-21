@@ -3,7 +3,6 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/parent_home/graph_std/pie%20chart/pie_chart.dart';
 
-
 class AttendanceGraphOfStudent extends StatelessWidget {
   const AttendanceGraphOfStudent({super.key});
 

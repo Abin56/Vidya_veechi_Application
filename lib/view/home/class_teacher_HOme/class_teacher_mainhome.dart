@@ -61,14 +61,16 @@ class _ClassTeacherMainHomeScreenState
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> pages = [const ClassTeacherHome(),
-     RecSelectSubjectScreen(
+    List<Widget> pages = [
+      const ClassTeacherHome(),
+      RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
         schoolId: UserCredentialsController.schoolId!,
       ),
       CreateRoomScreen(),
-      const ChatScreen(),];
+      const ChatScreen(),
+    ];
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: const AppBarColorWidget(),
@@ -135,22 +137,21 @@ class _ClassTeacherMainHomeScreenState
         ),
       ),
       drawer: Drawer(
-          backgroundColor: cWhite,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ClassTeacherHeaderDrawer(),
-                MyDrawerList(context),
-              ],
-            ),
+        backgroundColor: cWhite,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ClassTeacherHeaderDrawer(),
+              MyDrawerList(context),
+            ],
           ),
         ),
+      ),
     );
   }
 }
 
 //ClassTeacherMainHomeScreen.........................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 
 viewallMenus() {
   UserLogOutController userLogOutController = Get.put(UserLogOutController());
@@ -214,148 +215,141 @@ viewallMenus() {
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
-                    child: Text("All Catagories", style: TextStyle(fontSize: 15)),
+                    child:
+                        Text("All Catagories", style: TextStyle(fontSize: 15)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                       ContainerWidget(
-                              // icon: Icons.waving_hand,
-                              text: ' Take Attendance',
-                              onTap: () {
-                                Get.to(() =>screenNavigationOfClsTr[0]);
-                              }, 
-                              image: 'assets/flaticons/roll-call.png',
-                            ),
+                      ContainerWidget(
+                        // icon: Icons.waving_hand,
+                        text: ' Take Attendance',
+                        onTap: () {
+                          Get.off(() => screenNavigationOfClsTr[0]);
+                        },
+                        image: 'assets/flaticons/roll-call.png',
+                      ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Attendance Book',
-                        onTap: () => Get.to(() => screenNavigationOfClsTr[1]),
-        
-                       image: 'assets/flaticons/book.png',
+                        onTap: () => Get.off(() => screenNavigationOfClsTr[1]),
+
+                        image: 'assets/flaticons/book.png',
                       ),
-                       ContainerWidget(
-                              //icon:images.chat_rounded,
-                              text: 'Chats',
-                              onTap: () {
-                                   Get.to(() =>screenNavigationOfClsTr[2]);
-                              },image: 'assets/flaticons/icons8-chat-100.png',
-                            ),
-                           
+                      ContainerWidget(
+                        //icon:images.chat_rounded,
+                        text: 'Chats',
+                        onTap: () {
+                          Get.off(() => screenNavigationOfClsTr[2]);
+                        },
+                        image: 'assets/flaticons/icons8-chat-100.png',
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                        ContainerWidget(
-                              //image:images.waving_hand,
-                              text: ' Time Table',
-                              onTap: () {
-                                   Get.to(() =>screenNavigationOfClsTr[3]);
-                              },image: 'assets/flaticons/worksheet.png',
-                            ),
+                      ContainerWidget(
+                        //image:images.waving_hand,
+                        text: ' Time Table',
+                        onTap: () {
+                          Get.off(() => screenNavigationOfClsTr[3]);
+                        },
+                        image: 'assets/flaticons/worksheet.png',
+                      ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Leave Letters',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[4]);
+                          Get.off(() => screenNavigationOfClsTr[4]);
                         },
-                       image: 'assets/flaticons/email.png',
+                        image: 'assets/flaticons/email.png',
                       ),
                       ContainerWidget(
                         //icon:images.chat_rounded,
                         text: 'Home Work',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[5]);
+                          Get.off(() => screenNavigationOfClsTr[5]);
                         },
-                       image: 'assets/flaticons/homework.png',
+                        image: 'assets/flaticons/homework.png',
                       ),
-                      
-                     
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                       ContainerWidget(
+                      ContainerWidget(
                         //image:images.waving_hand,
                         text: 'My Students ',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[6]);
+                          Get.off(() => screenNavigationOfClsTr[6]);
                         },
-                       image: 'assets/flaticons/students.png',
+                        image: 'assets/flaticons/students.png',
                       ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Study Materials',
-                       onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[7]);
+                        onTap: () {
+                          Get.off(() => screenNavigationOfClsTr[7]);
                         },
-                       image: 'assets/flaticons/school-material.png',
+                        image: 'assets/flaticons/school-material.png',
                       ),
                       ContainerWidget(
                         //icon:images.chat_rounded,
                         text: 'Meeting',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[8]);
+                          Get.off(() => screenNavigationOfClsTr[8]);
                         },
-                       image: 'assets/flaticons/teamwork.png',
+                        image: 'assets/flaticons/teamwork.png',
                       ),
-                     
                     ],
                   ),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                       ContainerWidget(
-                              //image:images.waving_hand,
-                              text: 'Exams ',
-                              onTap: () {
-                                   Get.to(() =>screenNavigationOfClsTr[9]);
-                              },image: 'assets/flaticons/icons8-grades-100.png',
-                            ),
-                        ContainerWidget(
+                      ContainerWidget(
+                        //image:images.waving_hand,
+                        text: 'Exams ',
+                        onTap: () {
+                          Get.off(() => screenNavigationOfClsTr[9]);
+                        },
+                        image: 'assets/flaticons/icons8-grades-100.png',
+                      ),
+                      ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Notices',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[10]);
+                          Get.off(() => screenNavigationOfClsTr[10]);
                         },
-                       image: 'assets/flaticons/icons8-notice-100.png',
+                        image: 'assets/flaticons/icons8-notice-100.png',
                       ),
                       ContainerWidget(
                         //icon:images.chat_rounded,
                         text: 'Events',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[11]);
+                          Get.off(() => screenNavigationOfClsTr[11]);
                         },
-                       image: 'assets/flaticons/calendar.png',
+                        image: 'assets/flaticons/calendar.png',
                       ),
-                    
-                     
                     ],
-                    
                   ),
-                    Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                       
-                        ContainerWidget(
+                      ContainerWidget(
                         //image:images.waving_hand,
                         text: 'Teacher ',
                         onTap: () {
-                          Get.to(() => screenNavigationOfClsTr[12]);
+                          Get.off(() => screenNavigationOfClsTr[12]);
                         },
-                       image: 'assets/flaticons/female.png',
+                        image: 'assets/flaticons/female.png',
                       ),
-                      
-                     
                     ],
-                    
                   ),
                 ],
               )

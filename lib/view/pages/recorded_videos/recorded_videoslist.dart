@@ -75,7 +75,7 @@ class RecordedVideosListScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => Videoplayer(
+                              Get.off(() => Videoplayer(
                                     videoUrl: snapshot.data!.docs[index]
                                         ['downloadUrl'],
                                   ));

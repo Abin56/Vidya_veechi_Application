@@ -1,18 +1,17 @@
+import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
 
 class HomeWorkGraphOfStd extends StatefulWidget {
   const HomeWorkGraphOfStd(
       {super.key,
-      required this.completed,
-      required this.pending,
-     // required this.total
-      });
+      required this.present,
+      required this.absent,
+      required this.total});
 
-  final int completed;
-  final int pending;
-  //final int total;
+  final int present;
+  final int absent;
+  final int total;
 
   @override
   State<HomeWorkGraphOfStd> createState() => _HomeWorkGraphOfStdState();
@@ -21,18 +20,18 @@ class HomeWorkGraphOfStd extends StatefulWidget {
 class _HomeWorkGraphOfStdState extends State<HomeWorkGraphOfStd> {
   @override
   Widget build(BuildContext context) {
-    double totalhomeworks = 10;
-    // if (widget.total != 0) {
-    //   totalhomeworks = widget.completed * (100 / widget.total);
-    // }
+    double percentage = 0;
+    if (widget.total != 0) {
+      percentage = widget.present * (100 / widget.total);
+    }
 
     final List<ChartData> chartData = [
-      ChartData('completed', widget.completed.toDouble(),
+      ChartData('Present', widget.present.toDouble(),
           const Color.fromARGB(255, 65, 125, 252)),
-      ChartData('pending', widget.pending.toDouble(),
+      ChartData('Absent', widget.absent.toDouble(),
           const Color.fromARGB(255, 255, 0, 0)),
-      // ChartData('Pending', widget.pending.toDouble(),
-      //     const Color.fromARGB(255, 255, 251, 0))
+      ChartData('Pending', widget.absent.toDouble(),
+          const Color.fromARGB(255, 255, 251, 0))
 
       // ChartData('Jack', 34, const Color.fromRGBO(228, 0, 124, 1)),
       // ChartData('Others', 52, const Color.fromRGBO(255, 189, 57, 1))
@@ -40,7 +39,8 @@ class _HomeWorkGraphOfStdState extends State<HomeWorkGraphOfStd> {
     return SfCircularChart(
       annotations: <CircularChartAnnotation>[
         CircularChartAnnotation(
-            height:'100%', // Setting height and width for the circular chart annotation
+            height:
+                '100%', // Setting height and width for the circular chart annotation
             width: '100%',
             widget: PhysicalModel(
                 shape: BoxShape.circle,
@@ -49,12 +49,12 @@ class _HomeWorkGraphOfStdState extends State<HomeWorkGraphOfStd> {
                 color: const Color.fromRGBO(230, 230, 230, 1),
                 child: Container())),
         CircularChartAnnotation(
-            widget: Text(totalhomeworks.roundToDouble().toString(),
-                style: const TextStyle(color: Colors.black, fontSize: 23)))
+            widget: Text(percentage.roundToDouble().toString(),
+                style: const TextStyle(color: Colors.black, fontSize: 25)))
       ],
       series: <DoughnutSeries<ChartData, String>>[
         DoughnutSeries<ChartData, String>(
-          innerRadius: '50%',
+          innerRadius: '70%',
           dataSource: chartData,
           animationDuration: 1,
           dataLabelSettings: const DataLabelSettings(isVisible: true),
@@ -84,9 +84,9 @@ class HomeWorkGraph extends StatelessWidget {
       width: 200,
       color: cWhite,
       child: const HomeWorkGraphOfStd(
-        pending: 5,
-        completed: 15,
-      //  total: 21,
+        absent: 5,
+        present: 15,
+        total: 21,
       ),
     );
   }

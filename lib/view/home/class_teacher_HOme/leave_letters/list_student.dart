@@ -84,8 +84,8 @@ class _LeaveLettersStudentListsScreenState
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(()=>
-                                      LeaveLettersScreen(
+                                    Get.off(
+                                      () => LeaveLettersScreen(
                                         schoolplaceName: schoolplaceName,
                                         schoolName: schoolName,
                                         id: data.id,

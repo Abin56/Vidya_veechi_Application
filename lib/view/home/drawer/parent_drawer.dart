@@ -26,7 +26,7 @@ class ParentHeaderDrawer extends StatelessWidget {
       Get.put(MultipileStudentsController());
   ParentLoginController parentLoginController =
       Get.put(ParentLoginController());
-  ParentHeaderDrawer({Key? key}) : super(key: key);
+  ParentHeaderDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -171,13 +171,13 @@ Widget MyDrawerList(context) {
       children: [
         MenuItem(1, 'assets/images/information.png', 'General Instructions'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(
+          Get.off(
             () => GeneralInstruction(),
           );
         }),
         MenuItem(2, 'assets/images/attendance.png', 'Attendance book'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(
+          Get.off(
             () => AttendenceBookScreenSelectMonth(
                 schoolId: UserCredentialsController.schoolId!,
                 batchId: UserCredentialsController.batchId!,
@@ -186,13 +186,13 @@ Widget MyDrawerList(context) {
         }),
         MenuItem(3, 'assets/images/exam.png', 'Exams'.tr,
             currentPage == DrawerSections.favourites ? true : false, () {
-          Get.to(
+          Get.off(
             () => const UserExmNotifications(),
           );
         }),
         MenuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
-          Get.to(
+          Get.off(
             () => const SS(),
           );
         }),
@@ -202,14 +202,14 @@ Widget MyDrawerList(context) {
         // }),
         MenuItem(5, 'assets/images/homework.png', 'HomeWorks'.tr,
             currentPage == DrawerSections.contact ? true : false, () {
-          Get.to(
+          Get.off(
             () => const ViewHomeWorks(),
           );
         }),
 
         // MenuItem(8, 'assets/images/splash.png', 'Progress Report'.tr,
         //     currentPage == DrawerSections.dashboard ? true : false, () {
-        //  Get.to(
+        //  Get.off(
         //     () =>       ProgressReportListViewScreen(
         //   schoolId: UserCredentialsController.schoolId!,
         //   classID: UserCredentialsController.classId!,
@@ -220,11 +220,11 @@ Widget MyDrawerList(context) {
 
         MenuItem(8, 'assets/images/languages.png', 'Change Language'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(()=>LanguageChangeDrawerPage());
+          Get.off(() => LanguageChangeDrawerPage());
         }),
         MenuItem(7, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.to(()=>const PrivacyViewScreen());
+          Get.off(() => const PrivacyViewScreen());
         }),
 
         kHeight,

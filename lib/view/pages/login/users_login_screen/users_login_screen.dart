@@ -68,21 +68,23 @@ class UsersLoginScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               if (index == 0) {
-                                Get.to(() => StudentLoginScreen(
+                                Get.off(() => StudentLoginScreen(
                                       pageIndex: 0,
                                     ));
                               } else if (index == 1) {
-                                Get.to(() => ParentLoginScreen(
+                                Get.off(() => ParentLoginScreen(
                                       pageIndex: 1,
                                     ));
                               } else if (index == 2) {
-                                Get.to(() => TeacherLoginScreen(
+                                Get.off(() => TeacherLoginScreen(
                                       pageIndex: 2,
                                     ));
                               } else if (index == 3) {
-                                const String url = 'https://vidyaveechi.com';
+                                // const String url = 'https://vidyaveechi.com';
                                 // _launchWhatsapp();
-                                _launchUrl(url);
+                                final Uri url =
+                                    Uri.parse('https://vidyaveechi.com/');
+                                await _launchUrl(url);
                               }
                             },
                             child: Container(

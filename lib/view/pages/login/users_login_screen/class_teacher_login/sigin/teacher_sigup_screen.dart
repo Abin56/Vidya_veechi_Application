@@ -183,7 +183,7 @@ class TeachersSignUpScreen extends StatelessWidget {
                               UserCredentialsController
                                       .teacherModel?.teacherPhNo !=
                                   null) {
-                            Get.to(() => UserSentOTPScreen(
+                            Get.off(() => UserSentOTPScreen(
                                   userpageIndex: pageIndex,
                                   phoneNumber:
                                       "+91${UserCredentialsController.teacherModel?.teacherPhNo}",
@@ -222,7 +222,7 @@ class TeachersSignUpScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => TeacherLoginScreen(
+                          Get.off(() => TeacherLoginScreen(
                                 pageIndex: 3,
                               ));
                         },

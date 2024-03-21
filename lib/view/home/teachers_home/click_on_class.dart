@@ -138,9 +138,9 @@ class ClickOnClasss extends StatelessWidget {
     double h = ResponsiveApp.mq.size.height;
     log('Teacher class iddddddd$classID');
     return Scaffold(
-       appBar: AppBar(
-           flexibleSpace: const AppBarColorWidget(),
-        title: Text(className,style: const TextStyle(color: Colors.white)),
+      appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        title: Text(className, style: const TextStyle(color: Colors.white)),
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -175,7 +175,7 @@ class ClickOnClasss extends StatelessWidget {
                             ],
                           ),
                         ),
-                       Expanded(
+                        Expanded(
                           child: AnimationLimiter(
                             child: GridView.count(
                               physics: const BouncingScrollPhysics(
@@ -196,35 +196,45 @@ class ClickOnClasss extends StatelessWidget {
                                       child: FadeInAnimation(
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              Get.to(() =>
-                                                  noDataNavigation[index]);
-                                            },
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
-                                              children: [
-                                                _acc_images[index] ,
-                                                Center(
-                                                  child: Text(
-                                                    textAlign:
-                                                        TextAlign.center,
-                                                    _acc_text[index],
-                                                    style: GoogleFonts
-                                                        .montserrat(
-                                                            color: Colors
-                                                                .black
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            fontSize: 13,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  ),
-                                                )
-                                              ],
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(10)),
+                                              color: const Color.fromARGB(
+                                                      255, 132, 196, 247)
+                                                  .withOpacity(0.1),
+                                            ),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Get.off(() =>
+                                                    noDataNavigation[index]);
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  _acc_images[index],
+                                                  Center(
+                                                    child: Text(
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      _acc_text[index],
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              fontSize: 13,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -258,58 +268,69 @@ class ClickOnClasss extends StatelessWidget {
                                 child: FadeInAnimation(
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => hasDataNavigation[index]);
-                                      },
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                         // color: Colors.white.withOpacity(0.5),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                          // boxShadow: [
-                                          //   BoxShadow(
-                                          //     color:
-                                          //         Colors.black.withOpacity(0.1),
-                                          //     blurRadius: 40,
-                                          //     spreadRadius: 10,
-                                          //   ),
-                                          // ],
-                                        ),
-                                        height: h / 100,
-                                        width: double.infinity,
-                                        margin: EdgeInsets.only(
-                                            top: w / 30,
-                                            left: w / 30,
-                                            right: w / 30),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [ hasDataImages[index],
-                                            // Container(
-                                            //   height: 75,
-                                            //   width: double.infinity,
-                                            //   decoration: BoxDecoration(
-                                            //     image: DecorationImage(
-                                            //       image: AssetImage(
-                                            //           hasDataImages[index]),
-                                            //     ),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: const Color.fromARGB(
+                                                255, 132, 196, 247)
+                                            .withOpacity(0.1),
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Get.off(
+                                              () => hasDataNavigation[index]);
+                                        },
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            // color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)),
+                                            // boxShadow: [
+                                            //   BoxShadow(
+                                            //     color:
+                                            //         Colors.black.withOpacity(0.1),
+                                            //     blurRadius: 40,
+                                            //     spreadRadius: 10,
                                             //   ),
-                                            // ),
-                                            Center(
-                                              child: Text(
-                                                translateString(
-                                                    hasDataText[index]),
-                                                style: GoogleFonts.montserrat(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    fontSize: 13,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            )
-                                          ],
+                                            // ],
+                                          ),
+                                          height: h / 100,
+                                          width: double.infinity,
+                                          margin: EdgeInsets.only(
+                                              top: w / 30,
+                                              left: w / 30,
+                                              right: w / 30),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              hasDataImages[index],
+                                              // Container(
+                                              //   height: 75,
+                                              //   width: double.infinity,
+                                              //   decoration: BoxDecoration(
+                                              //     image: DecorationImage(
+                                              //       image: AssetImage(
+                                              //           hasDataImages[index]),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              Center(
+                                                child: Text(
+                                                  translateString(
+                                                      hasDataText[index]),
+                                                  style: GoogleFonts.montserrat(
+                                                      color: Colors.black
+                                                          .withOpacity(0.5),
+                                                      fontSize: 13,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -345,32 +366,32 @@ List<String> _acc_text = [
 ];
 List<Widget> _acc_images = [
   const ImageContainer(image: "assets/flaticons/book.png"),
-   const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
-   const ImageContainer(image: "assets/flaticons/worksheet.png"),
-   const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
-   const ImageContainer(image: "assets/flaticons/icons8-books-48.png"),
-   const ImageContainer(image: "assets/flaticons/calendar.png"),
-   const ImageContainer(image: "assets/flaticons/meeting.png"),
-   const ImageContainer(image: "assets/flaticons/exam.png"),
-    const ImageContainer(image: "assets/flaticons/test.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
+  const ImageContainer(image: "assets/flaticons/worksheet.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-books-48.png"),
+  const ImageContainer(image: "assets/flaticons/calendar.png"),
+  const ImageContainer(image: "assets/flaticons/meeting.png"),
+  const ImageContainer(image: "assets/flaticons/exam.png"),
+  const ImageContainer(image: "assets/flaticons/test.png"),
 ];
 List<Widget> hasDataImages = [
-   const ImageContainer(image: "assets/flaticons/roll-call.png"),
-    const ImageContainer(image: "assets/flaticons/book.png"),
-      const ImageContainer(image: "assets/flaticons/icons8-chat-100.png"),
-       const ImageContainer(image: "assets/flaticons/icons8-teacher-100.png"),
-    const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
-      const ImageContainer(image: "assets/flaticons/exam (1).png"),
-       const ImageContainer(image: "assets/flaticons/worksheet.png"),
-    const ImageContainer(image: "assets/flaticons/icons8-homework-67.png"),
-      const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
-       const ImageContainer(image: "assets/flaticons/calendar.png"),
-    const ImageContainer(image: "assets/flaticons/school-material.png"),
-      const ImageContainer(image: "assets/flaticons/meeting.png"),
-       const ImageContainer(image: "assets/flaticons/recording.png"),
-    const ImageContainer(image: "assets/flaticons/route (1).png"),
-      const ImageContainer(image: "assets/flaticons/exam.png"),
-      const ImageContainer(image: "assets/flaticons/test.png"),
+  const ImageContainer(image: "assets/flaticons/roll-call.png"),
+  const ImageContainer(image: "assets/flaticons/book.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-chat-100.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-teacher-100.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
+  const ImageContainer(image: "assets/flaticons/exam (1).png"),
+  const ImageContainer(image: "assets/flaticons/worksheet.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-homework-67.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
+  const ImageContainer(image: "assets/flaticons/calendar.png"),
+  const ImageContainer(image: "assets/flaticons/school-material.png"),
+  const ImageContainer(image: "assets/flaticons/meeting.png"),
+  const ImageContainer(image: "assets/flaticons/recording.png"),
+  const ImageContainer(image: "assets/flaticons/route (1).png"),
+  const ImageContainer(image: "assets/flaticons/exam.png"),
+  const ImageContainer(image: "assets/flaticons/test.png"),
 ];
 List<String> hasDataText = [
   'Take Attendance'.tr,

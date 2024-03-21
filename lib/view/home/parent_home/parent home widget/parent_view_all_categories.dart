@@ -14,7 +14,7 @@ class ParentViewAllCategories extends StatelessWidget {
       padding: const EdgeInsets.only(top: 230),
       child: Container(
         decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 218, 247, 229),
+          color: Color.fromARGB(255, 213, 225, 252),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15)),
@@ -30,7 +30,7 @@ class ParentViewAllCategories extends StatelessWidget {
                 height: 100,
                 decoration: BoxDecoration(
                     border: Border.all(color: cblack.withOpacity(0.1)),
-                    color: const Color.fromARGB(255, 218, 247, 229),
+                    color: Color.fromARGB(255, 218, 230, 247),
                     borderRadius: BorderRadius.circular(20)),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -41,7 +41,7 @@ class ParentViewAllCategories extends StatelessWidget {
                         'QUICK ACTIONS',
                         style: TextStyle(
                             color:
-                                Color.fromARGB(255, 48, 88, 86),
+                                Color.fromARGB(255, 82, 61, 203),
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),

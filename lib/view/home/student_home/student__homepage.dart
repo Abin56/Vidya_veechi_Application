@@ -12,7 +12,6 @@ import 'package:vidya_veechi/view/home/student_home/student_pages/qucik_action.d
 import 'package:vidya_veechi/view/home/student_home/student_pages/quick_action_view_all.dart';
 import 'package:vidya_veechi/view/home/student_home/student_pages/slider/slider.dart';
 
-
 class NewStdHomePage extends StatelessWidget {
   const NewStdHomePage({super.key});
 
@@ -22,7 +21,7 @@ class NewStdHomePage extends StatelessWidget {
       UserCredentialsController.studentModel!.docid,
     );
 
- return Scaffold(
+    return Scaffold(
       backgroundColor: const Color.fromARGB(255, 244, 244, 244),
       body: SafeArea(
           child: SingleChildScrollView(
@@ -45,13 +44,15 @@ class NewStdHomePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(
                           top: 120.sp, right: 20.sp, left: 20.sp),
-                      child: const QuickActionPart(),////////////////////////////////////////////////////////all tab part
+                      child:
+                          const QuickActionPart(), ////////////////////////////////////////////////////////all tab part
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
-                          top: 80.sp, right: 20.sp, left: 20.sp),
-                      child: const NotificationPartOfStd()///////////////////////////////////////////////////notification
-                    ),
+                        padding: EdgeInsets.only(
+                            top: 80.sp, right: 20.sp, left: 20.sp),
+                        child:
+                            const NotificationPartOfStd() ///////////////////////////////////////////////////notification
+                        ),
                   ],
                 ),
 
@@ -60,10 +61,10 @@ class NewStdHomePage extends StatelessWidget {
                 // ),
               ),
             ),
-             Padding(
-              padding: EdgeInsets.only(top: 60.sp, right: 10.sp, left: 10.sp),
-              child: const CarouselSliderStd()
-            ),//////////////////////////////////////////////////////details showing graph
+            Padding(
+                padding: EdgeInsets.only(top: 60.sp, right: 10.sp, left: 10.sp),
+                child:
+                    const CarouselSliderStd()), //////////////////////////////////////////////////////details showing graph
             SizedBox(
               height: 100.h,
               child: Padding(
@@ -73,22 +74,21 @@ class NewStdHomePage extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Expanded(
+                    Expanded(
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: CircleAvatar(
-                           backgroundImage: NetworkImage(
-                                      UserCredentialsController
-                                          .studentModel!.profileImageUrl),
-                                  onBackgroundImageError:
-                                      (exception, stackTrace) {
-                                    log(exception.toString());
-                                  },
+                          backgroundImage: NetworkImage(
+                              UserCredentialsController
+                                  .studentModel!.profileImageUrl),
+                          onBackgroundImageError: (exception, stackTrace) {
+                            log(exception.toString());
+                          },
                           radius: 25,
                         ),
                       ),
-                    ),/////////////////////////////////////image
+                    ), /////////////////////////////////////image
                     Expanded(
                       flex: 5,
                       child: Padding(
@@ -96,21 +96,22 @@ class NewStdHomePage extends StatelessWidget {
                         child: SizedBox(
                           width: 200,
                           child: GooglePoppinsEventsWidgets(
-                            text:  UserCredentialsController
-                                  .studentModel!.studentName,
+                            text: UserCredentialsController
+                                .studentModel!.studentName,
                             fontsize: 17.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                    ),/////////////////////////////////////////name
+                    ), /////////////////////////////////////////name
                     Expanded(
                         flex: 1,
                         child: IconButton(
                             onPressed: () {
-                               Get.to(() => const StudentProfileEditPage());
+                              Get.off(() => const StudentProfileEditPage());
                             },
-                            icon: const Icon(Icons.now_widgets)))////////////////////////////////edit profile
+                            icon: const Icon(Icons
+                                .now_widgets))) ////////////////////////////////edit profile
                   ],
                 ),
               ),
@@ -125,13 +126,10 @@ class NewStdHomePage extends StatelessWidget {
                   QuickActionsWidgetChat(),
                 ],
               ),
-            ),/////////////////////////////////////quick action
+            ), /////////////////////////////////////quick action
           ],
         ),
       )),
     );
-   
   }
 }
-
-

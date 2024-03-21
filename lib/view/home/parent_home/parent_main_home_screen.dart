@@ -17,8 +17,7 @@ import '../drawer/parent_drawer.dart';
 import '../student_home/Student Edit Profile/parent_edit_profile.dart';
 
 class ParentMainHomeScreen extends StatefulWidget {
-  const ParentMainHomeScreen({
-    super.key});
+  const ParentMainHomeScreen({super.key});
 
   @override
   State<ParentMainHomeScreen> createState() => _ParentMainHomeScreenState();
@@ -43,7 +42,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
    log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
     checkingSchoolActivate(context);
     List<Widget> pages = [
-     ParentHomeScreen(),
+     ParentHomeScreen(studentName:  UserCredentialsController.parentModel!.studentID!,),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
@@ -51,7 +50,6 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
       ),
       const ParentEditProfileScreen()
     ];
-    
     return WillPopScope(
       onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
@@ -78,7 +76,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(0), topRight: Radius.circular(0)),
           border: Border.all(color: Colors.white.withOpacity(0.13)),
-          color: const Color.fromARGB(255, 92, 180, 132),
+          color: const Color.fromARGB(255, 6, 71, 157),
         ),
           child: GNav(
             gap: 8,

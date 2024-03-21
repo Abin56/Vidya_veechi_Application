@@ -14,7 +14,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 class CreateRoomScreen extends StatefulWidget {
- final LiveRoomController liveRoomController = Get.put(LiveRoomController());
+  final LiveRoomController liveRoomController = Get.put(LiveRoomController());
   CreateRoomScreen({super.key});
 
   @override
@@ -88,7 +88,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                 } else {
                                   return GestureDetector(
                                     onTap: () {
-                                      Get.to(() => const ListofRoomsScreen());
+                                      Get.off(() => const ListofRoomsScreen());
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.only(right: 20),

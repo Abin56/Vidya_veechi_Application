@@ -35,11 +35,13 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
                 width: 250.w,
                 height: 100.h,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromARGB(255, 83, 153, 115)),
+                  borderRadius: BorderRadius.circular(10),
+                  color: adminePrimayColor,
+                  // Color.fromARGB(255, 83, 153, 115)
+                ),
                 child: TextButton.icon(
                     onPressed: () async {
-                      Get.to(() => UsersSelectExamWiseScreen(
+                      Get.off(() => UsersSelectExamWiseScreen(
                             classID: classId,
                             examLevel: 'School Level',
                             studentId: studentID,
@@ -61,11 +63,13 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
             width: 250.w,
             height: 100.h,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color.fromARGB(255, 83, 153, 115)),
+              borderRadius: BorderRadius.circular(10),
+              color: adminePrimayColor,
+              // const Color.fromARGB(255, 83, 153, 115)
+            ),
             child: TextButton.icon(
                 onPressed: () async {
-                  Get.to(() => UsersSelectExamWiseScreen(
+                  Get.off(() => UsersSelectExamWiseScreen(
                         classID: classId,
                         examLevel: 'Public Level',
                         studentId: studentID,
