@@ -38,14 +38,14 @@ class StateLevel extends StatelessWidget {
                             snaps.data!.docs[index].data());
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) {
-                              return TeacherExamTimeTableViewScreen(
+                            Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return TeacherExamTimeTableViewScreen(
                                 examID: data.docid,
                                 collectionName: 'Public Level',
                                 date: stringTimeToDateConvert(data.publishDate),
-                                examName: data.examName);
-                            },));
-                            // Get.off(() => TeacherExamTimeTableViewScreen(
+                                examName: data.examName);}));
+
+                            // Get.to(()=>TeacherExamTimeTableViewScreen(
                             //     examID: data.docid,
                             //     collectionName: 'Public Level',
                             //     date: stringTimeToDateConvert(data.publishDate),
