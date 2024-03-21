@@ -108,7 +108,7 @@ class StudentsRoomListScreen extends StatelessWidget {
                                       child: data.activateLive == true
                                           ? GestureDetector(
                                               onTap: () async {
-                                                await Get.off(() =>
+                                                await Get.to(() =>
                                                     StudentLiveClassRoom(
                                                         studentName:
                                                             UserCredentialsController

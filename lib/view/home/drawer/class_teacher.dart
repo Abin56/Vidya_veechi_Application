@@ -171,13 +171,13 @@ Widget MyDrawerList(context) {
       children: [
         MenuItem(1, 'assets/images/information.png', 'General Instructions'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.off(
+          Get.to(
             () => GeneralInstruction(),
           );
         }),
         MenuItem(2, 'assets/images/attendance.png', 'Attendance book'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.off(
+          Get.to(
             () => SelectPeriodWiseScreen(
                 batchId: UserCredentialsController.batchId!,
                 classID: UserCredentialsController.classId!,
@@ -186,13 +186,13 @@ Widget MyDrawerList(context) {
         }),
         MenuItem(3, 'assets/images/exam.png', 'Exams'.tr,
             currentPage == DrawerSections.favourites ? true : false, () {
-          Get.off(
+          Get.to(
             () => const AddTimeTable(),
           );
         }),
         MenuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
-          Get.off(
+          Get.to(
             () => const SS(),
           );
         }),
@@ -202,7 +202,7 @@ Widget MyDrawerList(context) {
         // }),
         MenuItem(5, 'assets/images/homework.png', 'HomeWorks'.tr,
             currentPage == DrawerSections.contact ? true : false, () {
-          Get.off(
+          Get.to(
             () => HomeWorkUpload(
               batchId: UserCredentialsController.batchId!,
               classId: UserCredentialsController.classId!,
@@ -214,7 +214,7 @@ Widget MyDrawerList(context) {
 
         // MenuItem(8, 'assets/images/splash.png', 'Progress Report'.tr,
         //     currentPage == DrawerSections.dashboard ? true : false, () {
-        //   Get.off(
+        //   Get.to(
         //     () => SelectExamsForProgressreport(
         //         schooilID: UserCredentialsController.schoolId!,
         //         classID: UserCredentialsController.classId!,
@@ -225,12 +225,12 @@ Widget MyDrawerList(context) {
 
         MenuItem(8, 'assets/images/languages.png', 'Change Language'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.off(() => LanguageChangeDrawerPage());
+          Get.to(() => LanguageChangeDrawerPage());
         }),
 
         MenuItem(7, 'assets/images/attendance.png', 'Privacy Policy'.tr,
             currentPage == DrawerSections.dashboard ? true : false, () {
-          Get.off(() => const PrivacyViewScreen());
+          Get.to(() => const PrivacyViewScreen());
         }),
 
         kHeight10,

@@ -88,7 +88,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                                 } else {
                                   return GestureDetector(
                                     onTap: () {
-                                      Get.off(() => const ListofRoomsScreen());
+                                      Get.to(() => const ListofRoomsScreen());
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.only(right: 20),

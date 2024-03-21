@@ -292,7 +292,7 @@ class TeachersSignUpPage extends StatelessWidget {
                             }
                           }
                         },
-                        //   Get.offAll(const HomeScreen());
+                        //   Get.toAll(const HomeScreen());
 
                         child: Obx(() => teacherController.isLoading.value
                             ? circularProgressIndicatotWidget

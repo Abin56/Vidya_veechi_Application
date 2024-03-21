@@ -126,13 +126,13 @@ class UserVerifyOTPScreen extends StatelessWidget {
                                   child: const Text('Ok'),
                                   onPressed: () {
                                     if (userpageIndex == 0) {
-                                      Get.off(()=>StudentSignInPageScreen());
+                                      Get.to(() => StudentSignInPageScreen());
                                     } else if (userpageIndex == 1) {
-                                      Get.off(()=>ParentSignUpPage());
+                                      Get.to(() => ParentSignUpPage());
                                     } else if (userpageIndex == 2) {
-                                      Get.off(()=>GuardianSignUp());
+                                      Get.to(() => GuardianSignUp());
                                     } else if (userpageIndex == 3) {
-                                      Get.off(()=>TeachersSignUpPage());
+                                      Get.to(() => TeachersSignUpPage());
                                     }
 
                                     ///
@@ -159,7 +159,8 @@ class UserVerifyOTPScreen extends StatelessWidget {
                       return ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)), backgroundColor: Colors.green.shade600),
+                                borderRadius: BorderRadius.circular(30)),
+                            backgroundColor: Colors.green.shade600),
                         onPressed: () async {
                           BlocProvider.of<AuthCubit>(context)
                               .verifyOTP(otpController.text);

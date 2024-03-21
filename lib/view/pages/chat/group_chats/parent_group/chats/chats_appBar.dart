@@ -17,7 +17,7 @@ showParentsGroupAppBar(
   String groupID,
   BuildContext context,
 ) async {
-  Get.off(() => BootomSheet(
+  Get.to(() => BootomSheet(
       groupID: groupID, groupName: groupName, totalParents: totalParents));
 }
 

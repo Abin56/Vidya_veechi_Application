@@ -22,8 +22,8 @@ class _HomeWorkGraphOfStdState extends State<HomeWorkGraphOfStd> {
   @override
   Widget build(BuildContext context) {
     double totalhomeworks = 10;
-    // if (widGet.offtal != 0) {
-    //   totalhomeworks = widget.completed * (100 / widGet.offtal);
+    // if (widGet.total != 0) {
+    //   totalhomeworks = widget.completed * (100 / widGet.total);
     // }
 
     final List<ChartData> chartData = [

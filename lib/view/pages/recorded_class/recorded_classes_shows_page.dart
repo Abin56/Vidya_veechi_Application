@@ -110,7 +110,7 @@ class RecordedClassesShowsPage extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: adminePrimayColor),
                         onTap: () {
-                          // Get.off(() => Videoplayer(
+                          // Get.to(() => Videoplayer(
                           //       videoUrl: snapshot.data!.docs[index]
                           //           ['downloadUrl'],
                           //     ));

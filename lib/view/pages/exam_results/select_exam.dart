@@ -90,7 +90,7 @@ getBottomSheet(String classId, String examlevel) {
           children: [
             GestureDetector(
               onTap: () {
-                Get.off(() => ExamResultsView(
+                Get.to(() => ExamResultsView(
                       classID: classId,
                       examlevel: examlevel,
                     ));
@@ -122,7 +122,7 @@ getBottomSheet(String classId, String examlevel) {
             ),
             GestureDetector(
               onTap: () {
-                Get.off(() => SelectExamWiseScreen(
+                Get.to(() => SelectExamWiseScreen(
                       classID: classId,
                       examLevel: examlevel,
                     ));

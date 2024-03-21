@@ -33,7 +33,7 @@ class ParentTeachersMessagesScreen extends StatelessWidget {
                     height: 70,
                     child: ListTile(
                       onTap: () {
-                        Get.off(() => ParentTeachersChatsScreen(
+                        Get.to(() => ParentTeachersChatsScreen(
                               teacherName: snapshots.data!.docs[index]
                                   ['teacherName'],
                               teacherDocID: snapshots.data!.docs[index]

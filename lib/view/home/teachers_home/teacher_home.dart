@@ -114,7 +114,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.off(() => const TeacherEditProfileScreen());
+                            Get.to(() => const TeacherEditProfileScreen());
                           },
                           child: Container(
                             child: Stack(

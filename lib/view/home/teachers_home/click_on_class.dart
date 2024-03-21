@@ -207,7 +207,7 @@ class ClickOnClasss extends StatelessWidget {
                                             ),
                                             child: GestureDetector(
                                               onTap: () {
-                                                Get.off(() =>
+                                                Get.to(() =>
                                                     noDataNavigation[index]);
                                               },
                                               child: Column(
@@ -278,7 +278,7 @@ class ClickOnClasss extends StatelessWidget {
                                       ),
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.off(
+                                          Get.to(
                                               () => hasDataNavigation[index]);
                                         },
                                         child: Container(

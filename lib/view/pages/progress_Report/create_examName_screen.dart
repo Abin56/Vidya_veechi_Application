@@ -64,7 +64,7 @@ class CreateExamNameScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.off(() => AllStudentsListScreen(
+                                    Get.to(() => AllStudentsListScreen(
                                         batchId: batchId,
                                         teacherId: teacherId,
                                         examName: snapshot.data!.docs[index]

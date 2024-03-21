@@ -38,7 +38,7 @@ class UserPublicLevel extends StatelessWidget {
                             snaps.data!.docs[index].data());
                         return GestureDetector(
                           onTap: () {
-                            Get.off(() => UsersExamTimeTableViewScreen(
+                            Get.to(() => UsersExamTimeTableViewScreen(
                                 examID: data.docid,
                                 collectionName: 'School Level',
                                 date: stringTimeToDateConvert(data.publishDate),

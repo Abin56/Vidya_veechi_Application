@@ -178,7 +178,7 @@ class GuardianSignUpFirstScreen extends StatelessWidget {
                             if (UserCredentialsController
                                     .guardianModel?.guardianPhoneNumber !=
                                 null) {
-                              Get.off(() => UserSentOTPScreen(
+                              Get.to(() => UserSentOTPScreen(
                                     userpageIndex: pageIndex,
                                     phoneNumber:
                                         "+91${UserCredentialsController.guardianModel?.guardianPhoneNumber}",
@@ -222,7 +222,7 @@ class GuardianSignUpFirstScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.off(() => GuardianLoginScreen(
+                          Get.to(() => GuardianLoginScreen(
                                 pageIndex: 3,
                               ));
                         },

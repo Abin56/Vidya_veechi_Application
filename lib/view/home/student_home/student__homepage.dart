@@ -108,7 +108,7 @@ class NewStdHomePage extends StatelessWidget {
                         flex: 1,
                         child: IconButton(
                             onPressed: () {
-                              Get.off(() => const StudentProfileEditPage());
+                              Get.to(() => const StudentProfileEditPage());
                             },
                             icon: const Icon(Icons
                                 .now_widgets))) ////////////////////////////////edit profile

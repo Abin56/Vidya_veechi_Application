@@ -122,7 +122,7 @@ class StudentsGroupsMessagesScreen extends StatelessWidget {
                                     firebase.data()!['classTeacherdocid'] ==
                                         FirebaseAuth
                                             .instance.currentUser!.uid) {
-                                  Get.off(() => StudentsGroupChats(
+                                  Get.to(() => StudentsGroupChats(
                                         groupId: snapshots.data!.docs[index]
                                             ['docid'],
                                         groupName: snapshots.data!.docs[index]

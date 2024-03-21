@@ -191,27 +191,27 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                         text: quicktext[0],
                         image: image[0],
                         onTap: () {
-                          Get.off(screenNav[0]);
+                          Get.to(screenNav[0]);
                         }),
                     QuickActionsWidget(
                       text: quicktext[1],
                       image: image[1],
                       onTap: () {
-                        Get.off(screenNav[1]);
+                        Get.to(screenNav[1]);
                       },
                     ),
                     QuickActionsWidget(
                       text: quicktext[2],
                       image: image[2],
                       onTap: () {
-                        Get.off(screenNav[2]);
+                        Get.to(screenNav[2]);
                       },
                     ),
                     QuickActionsWidget(
                       text: quicktext[3],
                       image: image[3],
                       onTap: () {
-                        Get.off(screenNav[3]);
+                        Get.to(screenNav[3]);
                       },
                     ),
                   ],
@@ -304,7 +304,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                                         //icon: Icons.view_list,
                                         text: text[index],
                                         onTap: () {
-                                          Get.off(
+                                          Get.to(
                                               screenNavigationOfParent[index]);
                                         },
                                       ),

@@ -87,7 +87,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.off(
+                              Get.to(
                                 () => StudentsAttendenceListViewScreen(
                                   month: month,
                                   batchId: batchId,

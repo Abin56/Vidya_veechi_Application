@@ -17,7 +17,7 @@ showStudentsGroupAppBar(
   String groupID,
   BuildContext context,
 ) async {
-  Get.off(() => BootomSheet(
+  Get.to(() => BootomSheet(
       groupID: groupID, groupName: groupName, totalStudents: totalStudents));
 }
 

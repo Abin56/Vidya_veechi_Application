@@ -41,7 +41,7 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
                 ),
                 child: TextButton.icon(
                     onPressed: () async {
-                      Get.off(() => UsersSelectExamWiseScreen(
+                      Get.to(() => UsersSelectExamWiseScreen(
                             classID: classId,
                             examLevel: 'School Level',
                             studentId: studentID,
@@ -69,7 +69,7 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
             ),
             child: TextButton.icon(
                 onPressed: () async {
-                  Get.off(() => UsersSelectExamWiseScreen(
+                  Get.to(() => UsersSelectExamWiseScreen(
                         classID: classId,
                         examLevel: 'Public Level',
                         studentId: studentID,

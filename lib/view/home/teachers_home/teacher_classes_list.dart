@@ -65,7 +65,7 @@ class TeacherClassListView extends StatelessWidget {
                                   snapshot.data?.docs[index]['docid'] ?? "";
                               classTestMonthlyController.classId =
                                   snapshot.data?.docs[index]['docid'] ?? "";
-                              Get.off(() => ClickOnClasss(
+                              Get.to(() => ClickOnClasss(
                                     className: snapshot.data?.docs[index]
                                             ['className'] ??
                                         "",

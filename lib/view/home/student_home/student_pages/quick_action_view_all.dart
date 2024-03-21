@@ -146,7 +146,7 @@ viewallMenus(BuildContext context) {
                             child: FadeInAnimation(
                               child: GestureDetector(
                                 onTap: () =>
-                                    Get.off(() => screenNavigationOfStd[index]),
+                                    Get.to(() => screenNavigationOfStd[index]),
                                 child: Container(
                                   margin: EdgeInsets.only(
                                       bottom: w / 25,

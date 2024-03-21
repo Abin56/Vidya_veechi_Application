@@ -237,7 +237,7 @@ class _NewWaitingRoomScreenState extends State<NewWaitingRoomScreen> {
             widget.activate == true
                 ? GestureDetector(
                     onTap: () {
-                      // Get.off(LiveClassRoomFaculty(roomID: widget.roomid));
+                      // Get.to(LiveClassRoomFaculty(roomID: widget.roomid));
                     },
                     child: ButtonContainerWidget(
                       curving: 2,

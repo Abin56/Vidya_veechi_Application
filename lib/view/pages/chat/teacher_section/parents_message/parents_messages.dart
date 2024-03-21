@@ -42,7 +42,7 @@ class ParentMessagesScreen extends StatelessWidget {
                           height: 70.h,
                           child: ListTile(
                             onTap: () {
-                              Get.off(() => ParentsChatsScreen(
+                              Get.to(() => ParentsChatsScreen(
                                     parentDocID: snapshots.data!.docs[index]
                                         ['docid'],
                                     parentName: snapshots.data!.docs[index]

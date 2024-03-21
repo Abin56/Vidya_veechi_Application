@@ -120,7 +120,7 @@ class ParentssGroupsMessagesScreen extends StatelessWidget {
                                     firebase.data()!['classTeacherdocid'] ==
                                         FirebaseAuth
                                             .instance.currentUser!.uid) {
-                                  Get.off(() => ParentsGroupChats(
+                                  Get.to(() => ParentsGroupChats(
                                         groupId: snapshots.data!.docs[index]
                                             ['docid'],
                                         groupName: snapshots.data!.docs[index]

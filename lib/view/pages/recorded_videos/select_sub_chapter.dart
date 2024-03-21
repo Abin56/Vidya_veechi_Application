@@ -71,7 +71,7 @@ class RecSelectChapterScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               log("docid${snapshot.data!.docs[index]['docid']}");
-                              Get.off(() => RecordedVideosListScreen(
+                              Get.to(() => RecordedVideosListScreen(
                                   schoolId: schoolId,
                                   batchId: batchId,
                                   classID: classID,

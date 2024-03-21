@@ -226,14 +226,14 @@ viewallMenus() {
                         // icon: Icons.waving_hand,
                         text: ' Take Attendance',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[0]);
+                          Get.to(() => screenNavigationOfClsTr[0]);
                         },
                         image: 'assets/flaticons/roll-call.png',
                       ),
                       ContainerWidget(
                         //icon:images.import_contacts,
                         text: 'Attendance Book',
-                        onTap: () => Get.off(() => screenNavigationOfClsTr[1]),
+                        onTap: () => Get.to(() => screenNavigationOfClsTr[1]),
 
                         image: 'assets/flaticons/book.png',
                       ),
@@ -241,7 +241,7 @@ viewallMenus() {
                         //icon:images.chat_rounded,
                         text: 'Chats',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[2]);
+                          Get.to(() => screenNavigationOfClsTr[2]);
                         },
                         image: 'assets/flaticons/icons8-chat-100.png',
                       ),
@@ -255,7 +255,7 @@ viewallMenus() {
                         //image:images.waving_hand,
                         text: ' Time Table',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[3]);
+                          Get.to(() => screenNavigationOfClsTr[3]);
                         },
                         image: 'assets/flaticons/worksheet.png',
                       ),
@@ -263,7 +263,7 @@ viewallMenus() {
                         //icon:images.import_contacts,
                         text: 'Leave Letters',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[4]);
+                          Get.to(() => screenNavigationOfClsTr[4]);
                         },
                         image: 'assets/flaticons/email.png',
                       ),
@@ -271,7 +271,7 @@ viewallMenus() {
                         //icon:images.chat_rounded,
                         text: 'Home Work',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[5]);
+                          Get.to(() => screenNavigationOfClsTr[5]);
                         },
                         image: 'assets/flaticons/homework.png',
                       ),
@@ -285,7 +285,7 @@ viewallMenus() {
                         //image:images.waving_hand,
                         text: 'My Students ',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[6]);
+                          Get.to(() => screenNavigationOfClsTr[6]);
                         },
                         image: 'assets/flaticons/students.png',
                       ),
@@ -293,7 +293,7 @@ viewallMenus() {
                         //icon:images.import_contacts,
                         text: 'Study Materials',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[7]);
+                          Get.to(() => screenNavigationOfClsTr[7]);
                         },
                         image: 'assets/flaticons/school-material.png',
                       ),
@@ -301,7 +301,7 @@ viewallMenus() {
                         //icon:images.chat_rounded,
                         text: 'Meeting',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[8]);
+                          Get.to(() => screenNavigationOfClsTr[8]);
                         },
                         image: 'assets/flaticons/teamwork.png',
                       ),
@@ -315,7 +315,7 @@ viewallMenus() {
                         //image:images.waving_hand,
                         text: 'Exams ',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[9]);
+                          Get.to(() => screenNavigationOfClsTr[9]);
                         },
                         image: 'assets/flaticons/icons8-grades-100.png',
                       ),
@@ -323,7 +323,7 @@ viewallMenus() {
                         //icon:images.import_contacts,
                         text: 'Notices',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[10]);
+                          Get.to(() => screenNavigationOfClsTr[10]);
                         },
                         image: 'assets/flaticons/icons8-notice-100.png',
                       ),
@@ -331,7 +331,7 @@ viewallMenus() {
                         //icon:images.chat_rounded,
                         text: 'Events',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[11]);
+                          Get.to(() => screenNavigationOfClsTr[11]);
                         },
                         image: 'assets/flaticons/calendar.png',
                       ),
@@ -345,7 +345,7 @@ viewallMenus() {
                         //image:images.waving_hand,
                         text: 'Teacher ',
                         onTap: () {
-                          Get.off(() => screenNavigationOfClsTr[12]);
+                          Get.to(() => screenNavigationOfClsTr[12]);
                         },
                         image: 'assets/flaticons/female.png',
                       ),

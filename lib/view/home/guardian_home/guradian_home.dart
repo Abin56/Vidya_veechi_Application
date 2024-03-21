@@ -116,7 +116,7 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.off(() => const GuardianEditProfileScreen());
+                            Get.to(() => const GuardianEditProfileScreen());
                           },
                           child: Container(
                             child: Stack(

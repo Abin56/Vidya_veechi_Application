@@ -31,7 +31,7 @@ class AllStudentsListScreen extends StatelessWidget {
         //   actions: [
         //     GestureDetector(
         //         onTap: () {
-        //           Get.off(ViewAllStudentsListScreen(
+        //           Get.to(ViewAllStudentsListScreen(
         //               schooilID: schooilID,
         //               classID: classID,
         //               examName: examName,
@@ -79,7 +79,7 @@ class AllStudentsListScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.off(() => StudentProgressReportScreen(
+                                    Get.to(() => StudentProgressReportScreen(
                                           batchId: batchId,
                                           teacherid: teacherId,
                                           studentId: snapshot.data!.docs[index]

@@ -123,7 +123,7 @@ class ParentSignUpController extends GetxController {
             });
           });
           // .then(
-          //   (value) => Get.offAll(
+          //   (value) => Get.toAll(
           //     ParentLoginScreen(),
           //   ),
           // );

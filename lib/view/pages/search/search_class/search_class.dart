@@ -68,7 +68,7 @@ class SearchClassBar extends SearchDelegate {
                     SharedPreferencesHelper.classIdKey,
                     UserCredentialsController.classId ?? "");
 
-                Get.off(()=>UsersLoginScreen());
+                Get.to(() => UsersLoginScreen());
               },
               child: Card(
                 elevation: 10,

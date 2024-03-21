@@ -123,7 +123,7 @@ class SearchParentsForChat extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.off(() => ParentsChatsScreen(
+                  Get.to(() => ParentsChatsScreen(
                       parentDocID: data.docid!, parentName: data.parentName!));
                 },
                 child: Container(

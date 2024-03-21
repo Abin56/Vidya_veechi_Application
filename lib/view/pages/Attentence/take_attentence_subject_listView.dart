@@ -72,7 +72,7 @@ class TakeAttentenceSubjectWise extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.off(() => TakeAttenenceScreen(
+                              Get.to(() => TakeAttenenceScreen(
                                   periodNumber: periodNumber.toString(),
                                   periodTokenID: periodTokenID,
                                   subjectID: snapshot.data!.docs[index]

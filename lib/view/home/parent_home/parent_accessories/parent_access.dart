@@ -110,7 +110,7 @@ class ParentAccessories extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        Get.off(() => screenNavigation[index]);
+                        Get.to(() => screenNavigation[index]);
                       },
                       child: Container(
                         decoration: BoxDecoration(

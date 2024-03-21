@@ -74,7 +74,7 @@ class AttendenceBookScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.off(() => AttendenceSubjectListScreen(
+                              Get.to(() => AttendenceSubjectListScreen(
                                   month: month,
                                   batchId: batchId,
                                   schoolId: schoolId,

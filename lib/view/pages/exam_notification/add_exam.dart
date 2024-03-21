@@ -13,7 +13,7 @@ class ExamNotification extends StatelessWidget {
         actions: [
           GestureDetector(
               onTap: () async {
-                Get.off(() => const ViewExamsScreen());
+                Get.to(() => const ViewExamsScreen());
               },
               child: const Text('View'))
         ],

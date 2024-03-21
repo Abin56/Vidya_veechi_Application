@@ -61,7 +61,7 @@ class SelectStudentsListScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () async {
-                                    Get.off(() =>
+                                    Get.to(() =>
                                         ViewForTeacherProgressReportScreen(
                                             schooilID: schooilID,
                                             classID: classID,
