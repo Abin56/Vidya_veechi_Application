@@ -119,32 +119,26 @@ class StudentSubjectScreen extends StatelessWidget {
                                             ),
                                             child: ContainerImage(
                                               height: 60.h,
-                                              imagePath:
-                                                  'assets/images/teachernew.png',
+                                              imagePath:'assets/images/teachernew.png',
                                               width: 70.w,
                                             ),
                                           ),
                                         //  SizedBox(width: 10.h),
                                           SizedBox(
-                                            height:
-                                                30, // set a fixed height for the container
+                                            height:30, // set a fixed height for the container
                                             child: Center(
                                                 child: FutureBuilder(
                                                     future:
                                                         teacherSubjectController
                                                             .getSubject(snapshot
                                                                     .data
-                                                                    ?.docs[index]
-                                                                ['teacherId']),
+                                                                    ?.docs[index]['teacherId']),
                                                     builder: (context, snap) {
                                                       return SizedBox(
                                                         height: 20,
                                                         width: 70,
-                                                        child:
-                                                            GooglePoppinsWidgets(
-                                                                text:
-                                                                    snap.data ??
-                                                                        "",
+                                                        child:GooglePoppinsWidgets(
+                                                                text: snap.data ??"",
                                                                 fontsize: 12),
                                                       );
                                                     })),
@@ -152,8 +146,7 @@ class StudentSubjectScreen extends StatelessWidget {
                                          // kHeight20,
                                           Flexible(
                                             child: GooglePoppinsWidgets(
-                                              text: snapshot.data!.docs[index]
-                                                  ['subjectName'],
+                                              text: snapshot.data!.docs[index] ['subjectName'],
                                               fontsize: 20.h,
                                               color: cblack,
                                             ),

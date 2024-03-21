@@ -19,6 +19,7 @@ import 'package:uuid/uuid.dart';
 import '../../../view/colors/colors.dart';
 import '../../../view/widgets/button_container_widget.dart';
 
+// ignore: must_be_immutable
 class UploadStudyMaterial extends StatefulWidget {
   UploadStudyMaterial(
       {super.key,
