@@ -138,9 +138,9 @@ class ClickOnClasss extends StatelessWidget {
     double h = ResponsiveApp.mq.size.height;
     log('Teacher class iddddddd$classID');
     return Scaffold(
-       appBar: AppBar(
-           flexibleSpace: const AppBarColorWidget(),
-        title: Text(className,style: const TextStyle(color: Colors.white)),
+      appBar: AppBar(
+        flexibleSpace: const AppBarColorWidget(),
+        title: Text(className, style: const TextStyle(color: Colors.white)),
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -175,7 +175,7 @@ class ClickOnClasss extends StatelessWidget {
                             ],
                           ),
                         ),
-                       Expanded(
+                        Expanded(
                           child: AnimationLimiter(
                             child: GridView.count(
                               physics: const BouncingScrollPhysics(
@@ -198,13 +198,16 @@ class ClickOnClasss extends StatelessWidget {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                               color: Color.fromARGB(255, 132, 196, 247).withOpacity(0.1),
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(10)),
+                                              color: const Color.fromARGB(
+                                                      255, 132, 196, 247)
+                                                  .withOpacity(0.1),
                                             ),
-                                           
                                             child: GestureDetector(
                                               onTap: () {
-                                                Get.to(() =>
+                                                Get.off(() =>
                                                     noDataNavigation[index]);
                                               },
                                               child: Column(
@@ -212,7 +215,7 @@ class ClickOnClasss extends StatelessWidget {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
-                                                  _acc_images[index] ,
+                                                  _acc_images[index],
                                                   Center(
                                                     child: Text(
                                                       textAlign:
@@ -267,17 +270,20 @@ class ClickOnClasss extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                               color: Color.fromARGB(255, 132, 196, 247).withOpacity(0.1),
-                                            ),
-                                           
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: const Color.fromARGB(
+                                                255, 132, 196, 247)
+                                            .withOpacity(0.1),
+                                      ),
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.to(() => hasDataNavigation[index]);
+                                          Get.off(
+                                              () => hasDataNavigation[index]);
                                         },
                                         child: Container(
                                           decoration: const BoxDecoration(
-                                           // color: Colors.white.withOpacity(0.5),
+                                            // color: Colors.white.withOpacity(0.5),
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(10)),
                                             // boxShadow: [
@@ -298,7 +304,8 @@ class ClickOnClasss extends StatelessWidget {
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
-                                            children: [ hasDataImages[index],
+                                            children: [
+                                              hasDataImages[index],
                                               // Container(
                                               //   height: 75,
                                               //   width: double.infinity,
@@ -359,32 +366,32 @@ List<String> _acc_text = [
 ];
 List<Widget> _acc_images = [
   const ImageContainer(image: "assets/flaticons/book.png"),
-   const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
-   const ImageContainer(image: "assets/flaticons/worksheet.png"),
-   const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
-   const ImageContainer(image: "assets/flaticons/icons8-books-48.png"),
-   const ImageContainer(image: "assets/flaticons/calendar.png"),
-   const ImageContainer(image: "assets/flaticons/meeting.png"),
-   const ImageContainer(image: "assets/flaticons/exam.png"),
-    const ImageContainer(image: "assets/flaticons/test.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
+  const ImageContainer(image: "assets/flaticons/worksheet.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-books-48.png"),
+  const ImageContainer(image: "assets/flaticons/calendar.png"),
+  const ImageContainer(image: "assets/flaticons/meeting.png"),
+  const ImageContainer(image: "assets/flaticons/exam.png"),
+  const ImageContainer(image: "assets/flaticons/test.png"),
 ];
 List<Widget> hasDataImages = [
-   const ImageContainer(image: "assets/flaticons/roll-call.png"),
-    const ImageContainer(image: "assets/flaticons/book.png"),
-      const ImageContainer(image: "assets/flaticons/icons8-chat-100.png"),
-       const ImageContainer(image: "assets/flaticons/icons8-teacher-100.png"),
-    const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
-      const ImageContainer(image: "assets/flaticons/exam (1).png"),
-       const ImageContainer(image: "assets/flaticons/worksheet.png"),
-    const ImageContainer(image: "assets/flaticons/icons8-homework-67.png"),
-      const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
-       const ImageContainer(image: "assets/flaticons/calendar.png"),
-    const ImageContainer(image: "assets/flaticons/school-material.png"),
-      const ImageContainer(image: "assets/flaticons/meeting.png"),
-       const ImageContainer(image: "assets/flaticons/recording.png"),
-    const ImageContainer(image: "assets/flaticons/route (1).png"),
-      const ImageContainer(image: "assets/flaticons/exam.png"),
-      const ImageContainer(image: "assets/flaticons/test.png"),
+  const ImageContainer(image: "assets/flaticons/roll-call.png"),
+  const ImageContainer(image: "assets/flaticons/book.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-chat-100.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-teacher-100.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-grades-100.png"),
+  const ImageContainer(image: "assets/flaticons/exam (1).png"),
+  const ImageContainer(image: "assets/flaticons/worksheet.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-homework-67.png"),
+  const ImageContainer(image: "assets/flaticons/icons8-notice-100.png"),
+  const ImageContainer(image: "assets/flaticons/calendar.png"),
+  const ImageContainer(image: "assets/flaticons/school-material.png"),
+  const ImageContainer(image: "assets/flaticons/meeting.png"),
+  const ImageContainer(image: "assets/flaticons/recording.png"),
+  const ImageContainer(image: "assets/flaticons/route (1).png"),
+  const ImageContainer(image: "assets/flaticons/exam.png"),
+  const ImageContainer(image: "assets/flaticons/test.png"),
 ];
 List<String> hasDataText = [
   'Take Attendance'.tr,

@@ -247,21 +247,21 @@
 //                         text: ' Attendance',
 //                         onTap: () {
 //                           print("object");
-//                           Get.to(() => screenNavigationOfStd[0]);
+//                           Get.off(() => screenNavigationOfStd[0]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/icons8-homework-67.png',
 //                       //  icon: Icons.home_work,
 //                         text: 'Homework',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[1]);
+//                           Get.off(() => screenNavigationOfStd[1]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/study-time.png',
 //                       //  icon: Icons.assignment_rounded,
 //                         text: 'Time Table',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[2]);
+//                           Get.off(() => screenNavigationOfStd[2]);
 //                         }),
 //                   ],
 //                 ),
@@ -297,21 +297,21 @@
 //                       //  icon: Icons.person_2,
 //                         text: 'Teachers',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[3]);
+//                           Get.off(() => screenNavigationOfStd[3]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/icons8-chat-100.png',
 //                        // icon: Icons.chat_rounded,
 //                         text: 'Chats',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[4]);
+//                           Get.off(() => screenNavigationOfStd[4]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/icons8-books-48.png',
 //                       //  icon: Icons.import_contacts,
 //                         text: 'Subjects',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[5]);
+//                           Get.off(() => screenNavigationOfStd[5]);
 //                         }),
 //                   ],
 //                 ),
@@ -323,21 +323,21 @@
 //                        // icon: Icons.list_alt,
 //                         text: 'Exams',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[6]);
+//                           Get.off(() => screenNavigationOfStd[6]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/icons8-grades-100.png',
 //                      //   icon: Icons.add_chart,
 //                         text: 'Exam Results',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[7]);
+//                           Get.off(() => screenNavigationOfStd[7]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/icons8-notice-100.png',
 //                       //  icon: Icons.notification_add,
 //                         text: 'Notices',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[8]);
+//                           Get.off(() => screenNavigationOfStd[8]);
 //                         }),
 //                   ],
 //                 ),
@@ -349,27 +349,27 @@
 //                      //   icon: Icons.event,
 //                         text: 'Events',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[9]);
+//                           Get.off(() => screenNavigationOfStd[9]);
 //                         }),
 //                     ContainerWidget(
 //                       image: 'assets/flaticons/meeting.png',
 //                       //  icon: Icons.meeting_room,
 //                         text: 'Meetings',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[10]);
+//                           Get.off(() => screenNavigationOfStd[10]);
 //                         }),
 //                          ContainerWidget(image: 'assets/flaticons/exam (1).png',
 //                      //   icon: Icons.class_,
 //                         text: 'Class Test',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[12]);
+//                           Get.off(() => screenNavigationOfStd[12]);
 //                         }),
 //                     // ContainerWidget(
 //                     //   image: '',
 //                     //   //  icon: Icons.bus_alert,
 //                     //     text: 'Bus Route',
 //                     //     onTap: () {
-//                     //       Get.to(() => screenNavigationOfStd[11]);
+//                     //       Get.off(() => screenNavigationOfStd[11]);
 //                     //     }),
 //                   ],
 //                 ),
@@ -382,7 +382,7 @@
 //                        // icon: Icons.view_list,
 //                         text: 'Monthly Class Test',
 //                         onTap: () {
-//                           Get.to(() => screenNavigationOfStd[13]);
+//                           Get.off(() => screenNavigationOfStd[13]);
 //                         }),
 //                     // ContainerWidget(
 //                     //   image: '',

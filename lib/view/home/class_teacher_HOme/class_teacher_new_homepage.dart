@@ -271,7 +271,7 @@
 //                               //icon: Icons.waving_hand,
 //                               text: 'Take Attendance',
 //                               onTap: () {
-//                                 Get.to(() => screenNavigationOfClsTr[0]);
+//                                 Get.off(() => screenNavigationOfClsTr[0]);
 //                               },
 //                               icon: 'assets/flaticons/roll-call.png',
 //                             ),
@@ -279,7 +279,7 @@
 //                               //icon: Icons.import_contacts,
 //                               text: 'Attendance Book',
 //                               onTap: () {
-//                                 Get.to(() => screenNavigationOfClsTr[1]);
+//                                 Get.off(() => screenNavigationOfClsTr[1]);
 //                               },
 //                               icon: 'assets/flaticons/book.png',
 //                             ),
@@ -287,7 +287,7 @@
 //                               //icon: Icons.chat_rounded,
 //                               text: 'Chats',
 //                               onTap: () {
-//                                 Get.to(() => screenNavigationOfClsTr[2]);
+//                                 Get.off(() => screenNavigationOfClsTr[2]);
 //                               },
 //                               icon: 'assets/flaticons/icons8-chat-100.png',
 //                             ),
@@ -302,7 +302,7 @@
 //                             // icon: Icons.waving_hand,
 //                             text: ' Time Table',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/worksheet.png',
 //                           ),
@@ -310,7 +310,7 @@
 //                             //icon: Icons.import_contacts,
 //                             text: 'Leave Letters',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/email.png',
 //                           ),
@@ -318,7 +318,7 @@
 //                             //icon: Icons.chat_rounded,
 //                             text: 'Home Work',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/homework.png',
 //                           ),
@@ -332,7 +332,7 @@
 //                             // icon: Icons.waving_hand,
 //                             text: 'My Students ',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/students.png',
 //                           ),
@@ -340,7 +340,7 @@
 //                             //icon: Icons.import_contacts,
 //                             text: 'Study Materials',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/school-material.png',
 //                           ),
@@ -348,7 +348,7 @@
 //                             //icon: Icons.chat_rounded,
 //                             text: 'Meeting',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/teamwork.png',
 //                           ),
@@ -362,7 +362,7 @@
 //                             // icon: Icons.waving_hand,
 //                             text: 'Exams ',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/icons8-grades-100.png',
 //                           ),
@@ -370,7 +370,7 @@
 //                             //icon: Icons.import_contacts,
 //                             text: 'Notices',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/icons8-notice-100.png',
 //                           ),
@@ -378,7 +378,7 @@
 //                             //icon: Icons.chat_rounded,
 //                             text: 'Events',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/calendar.png',
 //                           ),
@@ -392,7 +392,7 @@
 //                             // icon: Icons.waving_hand,
 //                             text: 'Teacher ',
 //                             onTap: () {
-//                               Get.to(() => screenNavigationOfClsTr[0]);
+//                               Get.off(() => screenNavigationOfClsTr[0]);
 //                             },
 //                             icon: 'assets/flaticons/female.png',
 //                           ),
@@ -400,7 +400,7 @@
 //                           //   //icon: Icons.import_contacts,
 //                           //   text: 'Bus Route',
 //                           //   onTap: () {
-//                           //        Get.to(() =>screenNavigationOfClsTr[0]);
+//                           //        Get.off(() =>screenNavigationOfClsTr[0]);
 //                           //   }, image: 'images/route.png',
 //                           // ),
 //                           // ContainerWidget(

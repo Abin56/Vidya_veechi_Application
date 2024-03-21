@@ -10,11 +10,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TakeAttentenceSubjectWise extends StatelessWidget {
- final String schoolId;
- final String batchId;
- final String periodTokenID;
- final int periodNumber;
- final String classID;
+  final String schoolId;
+  final String batchId;
+  final String periodTokenID;
+  final int periodNumber;
+  final String classID;
   const TakeAttentenceSubjectWise(
       {required this.batchId,
       required this.classID,
@@ -72,7 +72,7 @@ class TakeAttentenceSubjectWise extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => TakeAttenenceScreen(
+                              Get.off(() => TakeAttenenceScreen(
                                   periodNumber: periodNumber.toString(),
                                   periodTokenID: periodTokenID,
                                   subjectID: snapshot.data!.docs[index]

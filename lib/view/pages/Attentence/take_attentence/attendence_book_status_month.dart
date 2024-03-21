@@ -12,9 +12,9 @@ import '../../../../model/teacher_model/attentence/attendance_model.dart';
 import 'attendence_book_status.dart';
 
 class AttendenceBookScreenSelectMonth extends StatelessWidget {
- final String schoolId;
- final String classID;
- final String batchId;
+  final String schoolId;
+  final String classID;
+  final String batchId;
   const AttendenceBookScreenSelectMonth(
       {required this.schoolId,
       required this.batchId,
@@ -70,7 +70,7 @@ class AttendenceBookScreenSelectMonth extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => AttendenceBookScreen(
+                              Get.off(() => AttendenceBookScreen(
                                     batchId: batchId,
                                     schoolId: schoolId,
                                     classID: classID,
@@ -83,7 +83,7 @@ class AttendenceBookScreenSelectMonth extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
                               decoration: BoxDecoration(
-                               color: Colors.lightGreenAccent.withOpacity(0.1),
+                                color: Colors.lightGreenAccent.withOpacity(0.1),
                                 //  const Color.fromARGB(212, 67, 30, 203)
                                 //     .withOpacity(0.1),
                                 borderRadius:

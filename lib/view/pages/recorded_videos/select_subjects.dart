@@ -7,11 +7,10 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class RecSelectSubjectScreen extends StatelessWidget {
- final String schoolId;
- final String classID;
- final String batchId;
+  final String schoolId;
+  final String classID;
+  final String batchId;
   const RecSelectSubjectScreen(
       {required this.schoolId,
       required this.batchId,
@@ -58,7 +57,7 @@ class RecSelectSubjectScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => RecSelectChapterScreen(
+                              Get.off(() => RecSelectChapterScreen(
                                   schoolId: schoolId,
                                   batchId: batchId,
                                   classID: classID,

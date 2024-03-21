@@ -29,7 +29,7 @@ class UserLoginCheckController extends GetxController {
 
     User? currentUser = auth.currentUser;
     if (currentUser == null) {
-      Get.to(()=>const DujoLoginScren());
+      Get.off(() => const DujoLoginScren());
     } else {
       log('UID: ${currentUser.uid}');
 
@@ -49,11 +49,11 @@ class UserLoginCheckController extends GetxController {
         UserCredentialsController.studentModel =
             StudentModel.fromJson(querySnapshot.docs[0].data());
         log('student!!');
-        // Get.to(StudentLoginScreen());
+        // Get.off(StudentLoginScreen());
       } else {
         log('not a student!!');
 
-        // Get.to(const DujoLoginScren());
+        // Get.off(const DujoLoginScren());
       }
     }
   }

@@ -55,7 +55,7 @@ class UserSentOTPScreen extends StatelessWidget {
                 BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
                     if (state is AuthCodeSentState) {
-                      Get.to(() => UserVerifyOTPScreen(
+                      Get.off(() => UserVerifyOTPScreen(
                           userpageIndex: userpageIndex,
                           phoneNumber: phoneNumber,
                           userEmail: userEmail,
@@ -71,7 +71,8 @@ class UserSentOTPScreen extends StatelessWidget {
                     return ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30)), backgroundColor: Colors.green.shade600),
+                                borderRadius: BorderRadius.circular(30)),
+                            backgroundColor: Colors.green.shade600),
                         onPressed: () async {
                           BlocProvider.of<AuthCubit>(context)
                               .sentOTP(phoneNumber);

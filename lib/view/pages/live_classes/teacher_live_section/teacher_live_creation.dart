@@ -9,7 +9,6 @@ import 'package:intl/intl.dart';
 
 import '../../../widgets/button_container_widget.dart';
 
-
 class NewWaitingRoomScreen extends StatefulWidget {
   bool activate = false;
   String id;
@@ -238,7 +237,7 @@ class _NewWaitingRoomScreenState extends State<NewWaitingRoomScreen> {
             widget.activate == true
                 ? GestureDetector(
                     onTap: () {
-                      // Get.to(LiveClassRoomFaculty(roomID: widget.roomid));
+                      // Get.off(LiveClassRoomFaculty(roomID: widget.roomid));
                     },
                     child: ButtonContainerWidget(
                       curving: 2,

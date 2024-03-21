@@ -65,7 +65,7 @@ class TeacherClassListView extends StatelessWidget {
                                   snapshot.data?.docs[index]['docid'] ?? "";
                               classTestMonthlyController.classId =
                                   snapshot.data?.docs[index]['docid'] ?? "";
-                              Get.to(() => ClickOnClasss(
+                              Get.off(() => ClickOnClasss(
                                     className: snapshot.data?.docs[index]
                                             ['className'] ??
                                         "",
@@ -81,13 +81,13 @@ class TeacherClassListView extends StatelessWidget {
                               width: double.infinity,
                               margin: EdgeInsets.only(
                                   bottom: w / 10, left: w / 50, right: w / 50),
-                              decoration:
-                               BoxDecoration(color: adminePrimayColor,
-                          //        gradient: const LinearGradient(
-                          //         colors: [
-                          //    Color.fromARGB(255, 27, 92, 176),Color.fromARGB(255, 51, 158, 245),
-                          // ]),
-                               
+                              decoration: BoxDecoration(
+                                color: adminePrimayColor,
+                                //        gradient: const LinearGradient(
+                                //         colors: [
+                                //    Color.fromARGB(255, 27, 92, 176),Color.fromARGB(255, 51, 158, 245),
+                                // ]),
+
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(10),
                                 ),

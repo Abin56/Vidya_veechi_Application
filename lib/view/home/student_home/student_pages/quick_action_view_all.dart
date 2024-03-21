@@ -99,7 +99,7 @@ viewallMenus(BuildContext context) {
     AllClassTestMonthlyPage(
       pageNameFrom: "student",
     ),
-      BusRouteListPage(),
+    BusRouteListPage(),
     // HostelHomePage(),
   ];
   Get.bottomSheet(
@@ -112,10 +112,18 @@ viewallMenus(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  children: [ 
-                  Image.asset("assets/flaticons/menu.png",height: 30,),
-                  GooglePoppinsWidgets(text: "All Categories", fontsize: 15,fontWeight: FontWeight.w500,)
-                ],),
+                  children: [
+                    Image.asset(
+                      "assets/flaticons/menu.png",
+                      height: 30,
+                    ),
+                    GooglePoppinsWidgets(
+                      text: "All Categories",
+                      fontsize: 15,
+                      fontWeight: FontWeight.w500,
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: 610,
@@ -124,7 +132,6 @@ viewallMenus(BuildContext context) {
                     physics: const BouncingScrollPhysics(),
                     padding: EdgeInsets.all(w / 40),
                     crossAxisCount: columnCount,
-                    
                     children: List.generate(
                       13,
                       (int index) {
@@ -139,7 +146,7 @@ viewallMenus(BuildContext context) {
                             child: FadeInAnimation(
                               child: GestureDetector(
                                 onTap: () =>
-                                    Get.to(() => screenNavigationOfStd[index]),
+                                    Get.off(() => screenNavigationOfStd[index]),
                                 child: Container(
                                   margin: EdgeInsets.only(
                                       bottom: w / 25,

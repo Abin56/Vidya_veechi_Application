@@ -111,7 +111,7 @@
 //                           ),
 //                           GestureDetector(
 //                             onTap: () {
-//                               Get.to(() => const StudentProfileEditPage());
+//                               Get.off(() => const StudentProfileEditPage());
 //                             },
 //                             child: Stack(
 //                               children: [

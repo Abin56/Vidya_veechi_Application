@@ -12,10 +12,10 @@ import '../../../../model/teacher_model/attentence/attendance_model.dart';
 import 'teacher_subject_list_view.dart';
 
 class AttendenceBookScreen extends StatelessWidget {
- final String schoolId;
- final String classID;
- final String batchId;
- final String month;
+  final String schoolId;
+  final String classID;
+  final String batchId;
+  final String month;
   const AttendenceBookScreen(
       {required this.schoolId,
       required this.batchId,
@@ -34,7 +34,7 @@ class AttendenceBookScreen extends StatelessWidget {
         title: Text('Attendance Book'.tr),
         flexibleSpace: const AppBarColorWidget(),
         foregroundColor: cWhite,
-       // backgroundColor: adminePrimayColor,
+        // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -74,7 +74,7 @@ class AttendenceBookScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(() => AttendenceSubjectListScreen(
+                              Get.off(() => AttendenceSubjectListScreen(
                                   month: month,
                                   batchId: batchId,
                                   schoolId: schoolId,

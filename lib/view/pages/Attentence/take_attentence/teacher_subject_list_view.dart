@@ -18,11 +18,11 @@ import '../../../../controllers/userCredentials/user_credentials.dart';
 import '../../../../utils/utils.dart';
 
 class AttendenceSubjectListScreen extends StatelessWidget {
- final String schoolId;
- final String classID;
- final  String date;
- final String batchId;
- final String month;
+  final String schoolId;
+  final String classID;
+  final String date;
+  final String batchId;
+  final String month;
   const AttendenceSubjectListScreen(
       {required this.schoolId,
       required this.classID,
@@ -43,7 +43,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
         title: Text('Select Subject'.tr),
         flexibleSpace: const AppBarColorWidget(),
         foregroundColor: cWhite,
-       // backgroundColor: adminePrimayColor,
+        // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -87,7 +87,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(
+                              Get.off(
                                 () => StudentsAttendenceListViewScreen(
                                   month: month,
                                   batchId: batchId,

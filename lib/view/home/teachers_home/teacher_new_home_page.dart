@@ -130,7 +130,7 @@
 //               ),
 //               GestureDetector(
 //                           onTap: () {
-//                             Get.to(() => const TeacherEditProfileScreen());
+//                             Get.off(() => const TeacherEditProfileScreen());
 //                           },
 //                           child: Padding(
 //                             padding: const EdgeInsets.only(top: 150,left: 150,bottom: 50),

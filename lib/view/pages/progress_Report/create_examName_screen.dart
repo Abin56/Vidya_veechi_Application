@@ -9,10 +9,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'all_student_list.dart';
 
 class CreateExamNameScreen extends StatelessWidget {
- final String schooilID;
- final String classID;
- final String teacherId;
- final String batchId;
+  final String schooilID;
+  final String classID;
+  final String teacherId;
+  final String batchId;
   final TextEditingController _examNameController = TextEditingController();
   CreateExamNameScreen(
       {required this.schooilID,
@@ -64,7 +64,7 @@ class CreateExamNameScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(() => AllStudentsListScreen(
+                                    Get.off(() => AllStudentsListScreen(
                                         batchId: batchId,
                                         teacherId: teacherId,
                                         examName: snapshot.data!.docs[index]

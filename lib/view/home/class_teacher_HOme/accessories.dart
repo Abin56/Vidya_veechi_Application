@@ -24,7 +24,7 @@ import '../events/event_list.dart';
 import '../exam_Notification/teacher_adding/add_subject.dart';
 
 class ClassTeacherAccessories extends StatelessWidget {
- final String classID;
+  final String classID;
   const ClassTeacherAccessories({
     required this.classID,
     super.key,
@@ -109,7 +109,7 @@ class ClassTeacherAccessories extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(() => screenNavigation[index]);
+                          Get.off(() => screenNavigation[index]);
                         },
                         child: Container(
                           decoration: BoxDecoration(

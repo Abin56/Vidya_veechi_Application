@@ -38,10 +38,10 @@ import 'package:vidya_veechi/view/widgets/icon/icon_widget.dart';
 import '../../../controllers/multipile_students/multipile_students_controller.dart';
 
 class ParentHomeScreen extends StatefulWidget {
-    const ParentHomeScreen({super.key, required this.studentName});
+  const ParentHomeScreen({super.key, required this.studentName});
   @override
   final String studentName;
-  
+
   State<ParentHomeScreen> createState() => _ParentHomeScreenState();
 }
 
@@ -160,62 +160,68 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
     multipileStudentsController.checkalreadyexist(
         FirebaseAuth.instance.currentUser!.uid, parentAuth);
 
-  
-  
-     List<Widget> screenNav=[AttendenceBookScreenSelectMonth(
+    List<Widget> screenNav = [
+      AttendenceBookScreenSelectMonth(
           schoolId: UserCredentialsController.schoolId!,
           batchId: UserCredentialsController.batchId!,
-          classID: UserCredentialsController.classId!),///////////////////Attendance 0
+          classID: UserCredentialsController
+              .classId!), ///////////////////Attendance 0
 
-           const ViewHomeWorks(), // Home Works...............1
-               const UserExmNotifications(), // Exams...........2
-               const ParentChatScreen(),/////......3
-               
-          
-          ];
+      const ViewHomeWorks(), // Home Works...............1
+      const UserExmNotifications(), // Exams...........2
+      const ParentChatScreen(), /////......3
+    ];
     return Scaffold(
       body: SafeArea(
-        child:
-        SingleChildScrollView(
-      child: Stack(
-        children: [
-          ParentViewAllCategories(
-            onTap: () {
-              viewallMenus();
-            },
-          ),
-          const ParentCaroselWidget(),
-          const ParentNameWidget(),
-          Padding(
-            padding: const EdgeInsets.only(top: 400, left: 40),
-            child: Row(
-              children: [
-                QuickActionsWidget(
-                  text: quicktext[0],
-                  image: image[0], onTap:(){Get.to(screenNav[0]) ;}
-                ),
-                QuickActionsWidget(
-                  text: quicktext[1],
-                  image: image[1], onTap:(){Get.to(screenNav[1]);} ,
-                ),
-                QuickActionsWidget(
-                  text: quicktext[2],
-                  image: image[2], onTap:(){Get.to(screenNav[2]);} ,
-                ),
-                QuickActionsWidget(
-                  text: quicktext[3],
-                  image: image[3], onTap: (){Get.to(screenNav[3]);},
-                ),
-              ],
-            )
-          ),
-        ],
-      ),
-    )
-       
-      ),
+          child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            ParentViewAllCategories(
+              onTap: () {
+                viewallMenus();
+              },
+            ),
+            const ParentCaroselWidget(),
+            const ParentNameWidget(),
+            Padding(
+                padding: const EdgeInsets.only(top: 400, left: 40),
+                child: Row(
+                  children: [
+                    QuickActionsWidget(
+                        text: quicktext[0],
+                        image: image[0],
+                        onTap: () {
+                          Get.off(screenNav[0]);
+                        }),
+                    QuickActionsWidget(
+                      text: quicktext[1],
+                      image: image[1],
+                      onTap: () {
+                        Get.off(screenNav[1]);
+                      },
+                    ),
+                    QuickActionsWidget(
+                      text: quicktext[2],
+                      image: image[2],
+                      onTap: () {
+                        Get.off(screenNav[2]);
+                      },
+                    ),
+                    QuickActionsWidget(
+                      text: quicktext[3],
+                      image: image[3],
+                      onTap: () {
+                        Get.off(screenNav[3]);
+                      },
+                    ),
+                  ],
+                )),
+          ],
+        ),
+      )),
     );
   }
+
   viewallMenus() {
     final screenNavigationOfParent = [
       AttendenceBookScreenSelectMonth(
@@ -223,41 +229,35 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           batchId: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!), //Attendence...0
 
-          const ViewHomeWorks(), // Home Works...............1
-           const SS(), // Time Table...........2
-           TeacherSubjectWiseList(
-          navValue: 'parent'), //Teachers.................3
-          StudentSubjectScreen(), //Subjects...............4
+      const ViewHomeWorks(), // Home Works...............1
+      const SS(), // Time Table...........2
+      TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................3
+      StudentSubjectScreen(), //Subjects...............4
 
-          LeaveApplicationScreen(
+      LeaveApplicationScreen(
           studentName: widget.studentName,
           guardianName: UserCredentialsController.parentModel!.parentName!,
           classID: UserCredentialsController.classId!,
           schoolId: UserCredentialsController.schoolId!,
           studentID: UserCredentialsController.parentModel!.studentID!,
           batchId: UserCredentialsController.batchId!), //Leave Letter////...5
-          
-          const UserExmNotifications(), // Exams...........6
-          UsersSelectExamLevelScreen(
+
+      const UserExmNotifications(), // Exams...........6
+      UsersSelectExamLevelScreen(
           classId: UserCredentialsController.classId!,
           studentID: UserCredentialsController
               .parentModel!.studentID!), ////// exam result............7
-              NoticePage(), //Notice.........8
-              const EventList(), //Events.................9
-              SchoolLevelMeetingPage(),////////////////////////////10
+      NoticePage(), //Notice.........8
+      const EventList(), //Events.................9
+      SchoolLevelMeetingPage(), ////////////////////////////10
 
-                const ParentChatScreen(),/////......11
-                 AllClassTestPage(
+      const ParentChatScreen(), /////......11
+      AllClassTestPage(
         pageNameFrom: "parent",
       ), //class test page////////////////////////////12
       AllClassTestMonthlyPage(
         pageNameFrom: "parent",
       ), //////////////13
-              
-      
-
-     
-
     ];
 
     Get.bottomSheet(
@@ -273,47 +273,52 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                       padding: EdgeInsets.all(15.0),
                       child: Text("All Categories"),
                     ),
-                     SingleChildScrollView(
-                       child: SizedBox(
+                    SingleChildScrollView(
+                      child: SizedBox(
                         height: 400,
-                         child: GridView.count(
-                           padding: const EdgeInsets.all(10),
-                           crossAxisCount: 3,
-                           crossAxisSpacing: 20,
-                           mainAxisSpacing: 20,
-                           children: List.generate(
-                             14,
-                             (index) => Container(
-                               decoration: BoxDecoration(
-                                 color: cWhite,
-                                 borderRadius: BorderRadius.circular(20),
-                               ),
-                               height: 60,
-                         
-                               // ignore: sort_child_properties_last
-                               child: Padding(
-                                 padding:
-                                     const EdgeInsets.only(left: 20, top: 10, right: 20),
+                        child: GridView.count(
+                          padding: const EdgeInsets.all(10),
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          children: List.generate(
+                            14,
+                            (index) => Container(
+                              decoration: BoxDecoration(
+                                color: cWhite,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              height: 60,
+
+                              // ignore: sort_child_properties_last
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, top: 10, right: 20),
                                 // child: SingleChildScrollView(
-                                   child: Column(
-                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                       children: [
-                                         ParentContainerWidget(
-                                           icon: img[index],
-                                           //icon: Icons.view_list,
-                                           text: text[index], onTap: () { Get.to(screenNavigationOfParent[index]); },
-                                         ),
-                                       ]),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ParentContainerWidget(
+                                        icon: img[index],
+                                        //icon: Icons.view_list,
+                                        text: text[index],
+                                        onTap: () {
+                                          Get.off(
+                                              screenNavigationOfParent[index]);
+                                        },
+                                      ),
+                                    ]),
                                 // ),//
-                               ),
-                         
-                               // GooglePoppinsWidgets(text: "Subject", fontsize: 16),
-                               // kHeight10,
-                             ),
-                           ),
-                         ),
-                       ),
-                     ),
+                              ),
+
+                              // GooglePoppinsWidgets(text: "Subject", fontsize: 16),
+                              // kHeight10,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     // const SizedBox(height: 20,)
                   ],
                 )
@@ -322,7 +327,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           ),
         ),
         backgroundColor: Colors.white);
-  } 
+  }
 }
 
 List<String> quicktext = ['Attendence', 'Home work', 'Exam', 'Chat'];
@@ -332,7 +337,6 @@ List<String> image = [
   'assets/flaticons/icons8-books-48.png',
   'assets/flaticons/icons8-chat-100.png'
 ];
-
 
 List<String> img = [
   'assets/flaticons/icons8-attendance-100.png',
@@ -350,20 +354,19 @@ List<String> img = [
   'assets/flaticons/exam (1).png',
   'assets/flaticons/test.png',
 ];
-List <String> text=[
+List<String> text = [
   'Attendance',
   'Homework',
-   'Time Table',
-   'Teachers',
-   'Subjects',
-    'Leave Letters',
-     'Exams',
-     'Exam Results',
-     'Notices',
-     'Events',
-     'Meetings',
-     'Chats',
-     'Class Test',
-     'Monthly Class Test',
+  'Time Table',
+  'Teachers',
+  'Subjects',
+  'Leave Letters',
+  'Exams',
+  'Exam Results',
+  'Notices',
+  'Events',
+  'Meetings',
+  'Chats',
+  'Class Test',
+  'Monthly Class Test',
 ];
-

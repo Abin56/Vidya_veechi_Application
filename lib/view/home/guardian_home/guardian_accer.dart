@@ -23,8 +23,8 @@ import '../exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import '../student_home/time_table/ss.dart';
 
 class GuardianAccessories extends StatelessWidget {
- final String studentName;
-  GuardianAccessories({
+  final String studentName;
+  const GuardianAccessories({
     required this.studentName,
     super.key,
   });
@@ -105,7 +105,7 @@ class GuardianAccessories extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        Get.to(() => screenNavigation[index]);
+                        Get.off(() => screenNavigation[index]);
                       },
                       child: Container(
                         decoration: BoxDecoration(
