@@ -114,16 +114,16 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
           // const Color.fromARGB(255, 88, 167, 123),
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: const IconThemeData(color: Color.fromARGB(255, 88, 167, 123),),
+        iconTheme: const IconThemeData(color: Color.fromARGB(255, 27, 92, 176),),
         backgroundColor: Colors.transparent,
         elevation: 0,
         bottom: TabBar(
-          unselectedLabelColor: const Color.fromARGB(255, 88, 167, 123),
+          unselectedLabelColor: const Color.fromARGB(255, 27, 92, 176),
           unselectedLabelStyle:
               GoogleFonts.montserrat(fontSize: 10, fontWeight: FontWeight.bold),
-          dividerColor: const Color.fromARGB(255, 88, 167, 123),
+          dividerColor: const Color.fromARGB(255, 27, 92, 176),
           indicator: BoxDecoration(
-              color: const Color.fromARGB(255, 88, 167, 123),
+              color: const Color.fromARGB(255, 27, 92, 176),
               borderRadius: BorderRadius.circular(50)),
           labelStyle: GoogleFonts.montserrat(
             fontSize: 11,
