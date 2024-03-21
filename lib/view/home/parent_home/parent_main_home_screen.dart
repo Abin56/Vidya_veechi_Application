@@ -17,9 +17,7 @@ import '../drawer/parent_drawer.dart';
 import '../student_home/Student Edit Profile/parent_edit_profile.dart';
 
 class ParentMainHomeScreen extends StatefulWidget {
-  final String studentName;
   const ParentMainHomeScreen({
-    required this.studentName,
     super.key});
 
   @override
@@ -45,7 +43,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
    log("Stundent IDD :::: ${UserCredentialsController.parentModel!.studentID}");
     checkingSchoolActivate(context);
     List<Widget> pages = [
-     ParentHomeScreen(studentName:  UserCredentialsController.parentModel!.studentID!,),
+     ParentHomeScreen(),
       RecSelectSubjectScreen(
         batchId: UserCredentialsController.batchId!,
         classID: UserCredentialsController.classId!,
