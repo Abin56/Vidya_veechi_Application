@@ -1,14 +1,10 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
-import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
-import 'package:vidya_veechi/view/pages/Attentence/take_attentence/attendence_book_status_month.dart';
-import 'package:vidya_veechi/view/pages/Homework/view_home_work.dart';
-import 'package:vidya_veechi/view/pages/chat/parent_section/parent_chat_screeen.dart';
+
 
 class QuickActionsWidget extends StatelessWidget {
   String text;

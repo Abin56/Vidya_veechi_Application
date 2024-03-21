@@ -33,7 +33,6 @@ import 'package:vidya_veechi/view/pages/Subject/subject_display.dart';
 import 'package:vidya_veechi/view/pages/chat/parent_section/parent_chat_screeen.dart';
 import 'package:vidya_veechi/view/pages/exam_results/for_users/select_examlevel_uses.dart';
 import 'package:vidya_veechi/view/pages/teacher_list/teacher_list.dart';
-import 'package:vidya_veechi/view/widgets/icon/icon_widget.dart';
 
 import '../../../controllers/multipile_students/multipile_students_controller.dart';
 
@@ -191,27 +190,41 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                         text: quicktext[0],
                         image: image[0],
                         onTap: () {
-                          Get.off(screenNav[0]);
+Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return screenNav[0];
+               },));
+                          
+                          // Get.off
+                          // (screenNav[0]);
                         }),
                     QuickActionsWidget(
                       text: quicktext[1],
                       image: image[1],
                       onTap: () {
-                        Get.off(screenNav[1]);
+Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return screenNav[1];
+               },));
+                        //Get.off(screenNav[1]);
                       },
                     ),
                     QuickActionsWidget(
                       text: quicktext[2],
                       image: image[2],
                       onTap: () {
-                        Get.off(screenNav[2]);
+        Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return screenNav[2];
+               },));
+                        // Get.off(screenNav[2]);
                       },
                     ),
                     QuickActionsWidget(
                       text: quicktext[3],
                       image: image[3],
                       onTap: () {
-                        Get.off(screenNav[3]);
+                       Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return screenNav[3];
+               },));
+                       // Get.off(screenNav[3]);
                       },
                     ),
                   ],
@@ -304,8 +317,15 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
                                         //icon: Icons.view_list,
                                         text: text[index],
                                         onTap: () {
-                                          Get.off(
-                                              screenNavigationOfParent[index]);
+Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) {
+              return screenNavigationOfParent[index];
+             },
+));
+
+
+                                          // Get.off(
+                                          //     screenNavigationOfParent[index]);
                                         },
                                       ),
                                     ]),

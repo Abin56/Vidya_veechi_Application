@@ -33,12 +33,22 @@ class ParentTeachersMessagesScreen extends StatelessWidget {
                     height: 70,
                     child: ListTile(
                       onTap: () {
-                        Get.off(() => ParentTeachersChatsScreen(
+ 
+Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return ParentTeachersChatsScreen(
                               teacherName: snapshots.data!.docs[index]
                                   ['teacherName'],
                               teacherDocID: snapshots.data!.docs[index]
                                   ['docid'],
-                            ));
+                            );
+    },));
+
+                        // Get.off(() => ParentTeachersChatsScreen(
+                        //       teacherName: snapshots.data!.docs[index]
+                        //           ['teacherName'],
+                        //       teacherDocID: snapshots.data!.docs[index]
+                        //           ['docid'],
+                        //     ));
                       },
                       leading: const CircleAvatar(
                         radius: 30,
