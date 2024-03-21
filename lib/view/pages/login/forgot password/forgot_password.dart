@@ -82,7 +82,10 @@ class ForgotPassword extends StatelessWidget {
             GestureDetector(
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    Get.off(() => ResetPassword());
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return  ResetPassword();
+                    },));
+                   // Get.off(() => ResetPassword());
                   }
                 },
                 child: Padding(

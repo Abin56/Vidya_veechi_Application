@@ -76,11 +76,18 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
             ),
             child: TextButton.icon(
                 onPressed: () async {
-                  Get.off(() => UsersSelectExamWiseScreen(
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return UsersSelectExamWiseScreen(
                         classID: classId,
                         examLevel: 'Public Level',
                         studentId: studentID,
-                      ));
+                      );
+                  },));
+                  // Get.off(() => UsersSelectExamWiseScreen(
+                  //       classID: classId,
+                  //       examLevel: 'Public Level',
+                  //       studentId: studentID,
+                  //     ));
                 },
                 icon: const Icon(
                   Icons.receipt,

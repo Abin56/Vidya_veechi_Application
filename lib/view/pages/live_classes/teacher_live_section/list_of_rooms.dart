@@ -102,10 +102,16 @@ class ListofRoomsScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () async {
-                                  Get.off(() => LiveClassRoom(
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                    return LiveClassRoom(
                                       teacherName: data.ownerName,
                                       docId: data.docid,
-                                      roomID: data.roomID));
+                                      roomID: data.roomID);
+                                  },));
+                                  // Get.off(() => LiveClassRoom(
+                                  //     teacherName: data.ownerName,
+                                  //     docId: data.docid,
+                                  //     roomID: data.roomID));
                                 },
                                 child: Container(
                                   color: Colors.green,

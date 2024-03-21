@@ -59,11 +59,18 @@ class SelectExamWiseScreen extends StatelessWidget {
                           child: FadeInAnimation(
                             child: GestureDetector(
                               onTap: () async {
-                                Get.off(() => SelectExamSubjectScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return SelectExamSubjectScreen(
                                     examLevel: examLevel,
                                     classID: classID,
                                     examId: snapshots.data!.docs[index]
-                                        ['docid']));
+                                        ['docid']);
+                                },));
+                                // Get.off(() => SelectExamSubjectScreen(
+                                //     examLevel: examLevel,
+                                //     classID: classID,
+                                //     examId: snapshots.data!.docs[index]
+                                //         ['docid']));
                               },
                               child: Container(
                                 height: h / 100,

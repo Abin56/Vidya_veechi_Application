@@ -104,7 +104,10 @@ class _StudentAccessoriesState extends State<StudentAccessories> {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        Get.off(() => screenNavigation[index]);
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return  screenNavigation[index];
+                  },));
+                       // Get.off(() => screenNavigation[index]);
                       },
                       child: Container(
                         decoration: BoxDecoration(

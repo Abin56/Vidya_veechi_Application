@@ -17,8 +17,12 @@ showStudentsGroupAppBar(
   String groupID,
   BuildContext context,
 ) async {
-  Get.off(() => BootomSheet(
-      groupID: groupID, groupName: groupName, totalStudents: totalStudents));
+  Navigator.push(context,MaterialPageRoute(builder: (context) {
+    return BootomSheet(
+      groupID: groupID, groupName: groupName, totalStudents: totalStudents);
+  },));
+  // Get.off(() => BootomSheet(
+  //     groupID: groupID, groupName: groupName, totalStudents: totalStudents));
 }
 
 class BootomSheet extends StatelessWidget {

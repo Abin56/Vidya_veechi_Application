@@ -39,12 +39,20 @@ class StudentsMessagesScreen extends StatelessWidget {
                           height: 70.h,
                           child: ListTile(
                             onTap: () {
-                              Get.off(() => StudentsChatsScreen(
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return StudentsChatsScreen(
                                     studentName: snapshots.data!.docs[index]
                                         ['studentname'],
                                     studentDocID: snapshots.data!.docs[index]
                                         ['docid'],
-                                  ));
+                                  );
+                              },));
+                              // Get.off(() => StudentsChatsScreen(
+                              //       studentName: snapshots.data!.docs[index]
+                              //           ['studentname'],
+                              //       studentDocID: snapshots.data!.docs[index]
+                              //           ['docid'],
+                              //     ));
                             },
                             leading: const CircleAvatar(
                               radius: 30,

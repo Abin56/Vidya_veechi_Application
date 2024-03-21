@@ -17,8 +17,12 @@ showParentsGroupAppBar(
   String groupID,
   BuildContext context,
 ) async {
-  Get.off(() => BootomSheet(
-      groupID: groupID, groupName: groupName, totalParents: totalParents));
+  Navigator.push(context, MaterialPageRoute(builder: (context) {
+    return BootomSheet(
+      groupID: groupID, groupName: groupName, totalParents: totalParents);
+  },));
+  // Get.off(() => BootomSheet(
+  //     groupID: groupID, groupName: groupName, totalParents: totalParents));
 }
 
 class BootomSheet extends StatelessWidget {

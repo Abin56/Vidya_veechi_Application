@@ -79,7 +79,8 @@ class AllStudentsListScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.off(() => StudentProgressReportScreen(
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return StudentProgressReportScreen(
                                           batchId: batchId,
                                           teacherid: teacherId,
                                           studentId: snapshot.data!.docs[index]
@@ -96,7 +97,26 @@ class AllStudentsListScreen extends StatelessWidget {
                                               .data()['studentName'],
                                           classID: classID,
                                           schooilID: schooilID,
-                                        ));
+                                        );
+                                      },));
+                                    // Get.off(() => StudentProgressReportScreen(
+                                    //       batchId: batchId,
+                                    //       teacherid: teacherId,
+                                    //       studentId: snapshot.data!.docs[index]
+                                    //           .data()['docid'],
+                                    //       dob: snapshot.data!.docs[index]
+                                    //           ['dateofBirth'],
+                                    //       examName: examName,
+                                    //       rollNo: ' ${index + 1}',
+                                    //       studentImage: snapshot
+                                    //           .data!.docs[index]
+                                    //           .data()['profileImageUrl'],
+                                    //       studentName: snapshot
+                                    //           .data!.docs[index]
+                                    //           .data()['studentName'],
+                                    //       classID: classID,
+                                    //       schooilID: schooilID,
+                                    //     ));
                                   },
                                   child: Container(
                                     height: h / 100,

@@ -71,13 +71,24 @@ class RecSelectChapterScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               log("docid${snapshot.data!.docs[index]['docid']}");
-                              Get.off(() => RecordedVideosListScreen(
+                               Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return RecordedVideosListScreen(
                                   schoolId: schoolId,
                                   batchId: batchId,
                                   classID: classID,
                                   subjectId: subjectId,
                                   subrecID: snapshot.data!.docs[index]
-                                      ['docid']));
+                                      ['docid']);
+                                    },));
+
+
+                              // Get.off(() => RecordedVideosListScreen(
+                              //     schoolId: schoolId,
+                              //     batchId: batchId,
+                              //     classID: classID,
+                              //     subjectId: subjectId,
+                              //     subrecID: snapshot.data!.docs[index]
+                              //         ['docid']));
                             },
                             child: Container(
                               height: h / 100,

@@ -68,17 +68,32 @@ class UsersLoginScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () async {
                               if (index == 0) {
-                                Get.off(() => StudentLoginScreen(
-                                      pageIndex: 0,
-                                    ));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return StudentLoginScreen(
+                                pageIndex: 0,
+                              );
+                          },));
+                                // Get.off(() => StudentLoginScreen(
+                                //       pageIndex: 0,
+                                //     ));
                               } else if (index == 1) {
-                                Get.off(() => ParentLoginScreen(
-                                      pageIndex: 1,
-                                    ));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return ParentLoginScreen(
+                                pageIndex: 1,
+                              );
+                          },));
+                                // Get.off(() => ParentLoginScreen(
+                                //       pageIndex: 1,
+                                //     ));
                               } else if (index == 2) {
-                                Get.off(() => TeacherLoginScreen(
-                                      pageIndex: 2,
-                                    ));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return TeacherLoginScreen(
+                                pageIndex: 2,
+                              );
+                          },));
+                                // Get.off(() => TeacherLoginScreen(
+                                //       pageIndex: 2,
+                                //     ));
                               } else if (index == 3) {
                                 // const String url = 'https://vidyaveechi.com';
                                 // _launchWhatsapp();

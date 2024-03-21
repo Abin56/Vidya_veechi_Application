@@ -55,11 +55,18 @@ class UserSentOTPScreen extends StatelessWidget {
                 BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
                     if (state is AuthCodeSentState) {
-                      Get.off(() => UserVerifyOTPScreen(
+                       Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return UserVerifyOTPScreen(
                           userpageIndex: userpageIndex,
                           phoneNumber: phoneNumber,
                           userEmail: userEmail,
-                          userPassword: userPassword));
+                          userPassword: userPassword);
+                          },));
+                      // Get.off(() => UserVerifyOTPScreen(
+                      //     userpageIndex: userpageIndex,
+                      //     phoneNumber: phoneNumber,
+                      //     userEmail: userEmail,
+                      //     userPassword: userPassword));
                     }
                   },
                   builder: (context, state) {

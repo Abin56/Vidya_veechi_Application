@@ -120,12 +120,20 @@ class ParentssGroupsMessagesScreen extends StatelessWidget {
                                     firebase.data()!['classTeacherdocid'] ==
                                         FirebaseAuth
                                             .instance.currentUser!.uid) {
-                                  Get.off(() => ParentsGroupChats(
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                            return  ParentsGroupChats(
                                         groupId: snapshots.data!.docs[index]
                                             ['docid'],
                                         groupName: snapshots.data!.docs[index]
                                             ['groupName'],
-                                      ));
+                                      );
+                  },));
+                                  // Get.off(() => ParentsGroupChats(
+                                  //       groupId: snapshots.data!.docs[index]
+                                  //           ['docid'],
+                                  //       groupName: snapshots.data!.docs[index]
+                                  //           ['groupName'],
+                                  //     ));
                                 } else {
                                   // ignore: use_build_context_synchronously
                                   showDialog(

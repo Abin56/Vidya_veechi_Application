@@ -182,7 +182,11 @@ class Student_LiveClassRoomState extends State<StudentLiveClassRoom> {
                               widget.roomID == roomText.text &&
                               widget.studentName == nameText.text) {
                             _joinMeeting().then((value) =>
-                                Get.offAll(const StudentsMainHomeScreen()));
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                              return const StudentsMainHomeScreen();
+                            },))
+                             //   Get.offAll(const StudentsMainHomeScreen())
+                             );
                           } else {
                             return showToast(
                                 msg:

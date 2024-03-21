@@ -64,13 +64,22 @@ class CreateExamNameScreen extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.off(() => AllStudentsListScreen(
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return AllStudentsListScreen(
                                         batchId: batchId,
                                         teacherId: teacherId,
                                         examName: snapshot.data!.docs[index]
                                             .data()['docid'],
                                         schooilID: schooilID,
-                                        classID: classID));
+                                        classID: classID);
+                                    },));
+                                    // Get.off(() => AllStudentsListScreen(
+                                    //     batchId: batchId,
+                                    //     teacherId: teacherId,
+                                    //     examName: snapshot.data!.docs[index]
+                                    //         .data()['docid'],
+                                    //     schooilID: schooilID,
+                                    //     classID: classID));
                                   },
                                   child: Container(
                                     height: h / 100,

@@ -42,12 +42,20 @@ class ParentMessagesScreen extends StatelessWidget {
                           height: 70.h,
                           child: ListTile(
                             onTap: () {
-                              Get.off(() => ParentsChatsScreen(
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return ParentsChatsScreen(
                                     parentDocID: snapshots.data!.docs[index]
                                         ['docid'],
                                     parentName: snapshots.data!.docs[index]
                                         ['parentname'],
-                                  ));
+                                  );
+                              },));
+                              // Get.off(() => ParentsChatsScreen(
+                              //       parentDocID: snapshots.data!.docs[index]
+                              //           ['docid'],
+                              //       parentName: snapshots.data!.docs[index]
+                              //           ['parentname'],
+                              //     ));
                             },
                             leading: const CircleAvatar(
                               radius: 30,

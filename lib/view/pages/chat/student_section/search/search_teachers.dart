@@ -137,9 +137,14 @@ class SearchTeachers extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.off(() => TeachersChatsScreen(
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return  TeachersChatsScreen(
                       teacherDocID: data.docid!,
-                      teacherName: data.teacherName!));
+                      teacherName: data.teacherName!);
+                  },));
+                  // Get.off(() => TeachersChatsScreen(
+                  //     teacherDocID: data.docid!,
+                  //     teacherName: data.teacherName!));
                 },
                 child: Container(
                     decoration: BoxDecoration(

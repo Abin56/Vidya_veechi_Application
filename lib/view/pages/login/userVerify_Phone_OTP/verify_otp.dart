@@ -126,13 +126,25 @@ class UserVerifyOTPScreen extends StatelessWidget {
                                   child: const Text('Ok'),
                                   onPressed: () {
                                     if (userpageIndex == 0) {
-                                      Get.off(()=>StudentSignInPageScreen());
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return StudentSignInPageScreen();
+                                      },));
+                                      
+                                    //  Get.off(()=>StudentSignInPageScreen());
                                     } else if (userpageIndex == 1) {
-                                      Get.off(()=>ParentSignUpPage());
+                                       Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return ParentSignUpPage();
+                                      },));
+
+                                     // Get.off(()=>ParentSignUpPage());
                                     } else if (userpageIndex == 2) {
                                       Get.off(()=>GuardianSignUp());
+
                                     } else if (userpageIndex == 3) {
-                                      Get.off(()=>TeachersSignUpPage());
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                        return TeachersSignUpPage();
+                                      },));
+                                     // Get.off(()=>TeachersSignUpPage());
                                     }
 
                                     ///

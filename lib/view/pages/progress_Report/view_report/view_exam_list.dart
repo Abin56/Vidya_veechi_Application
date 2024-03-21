@@ -58,13 +58,22 @@ class ViewExamsForProgressreport extends StatelessWidget {
                               child: FadeInAnimation(
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.off(() => ViewAllStudentsListScreen(
+                                     Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return ViewAllStudentsListScreen(
                                         schooilID: schooilID,
                                         classID: classID,
                                         examName: snapshot.data?.docs[index]
                                                 ['docid'] ??
                                             '',
-                                        batchId: batchId));
+                                        batchId: batchId);
+                                    },));
+                                    // Get.off(() => ViewAllStudentsListScreen(
+                                    //     schooilID: schooilID,
+                                    //     classID: classID,
+                                    //     examName: snapshot.data?.docs[index]
+                                    //             ['docid'] ??
+                                    //         '',
+                                    //     batchId: batchId));
                                   },
                                   child: Container(
                                     height: h / 100,

@@ -119,9 +119,14 @@ class SearchStudentsForChat extends SearchDelegate {
               return GestureDetector(
                 onTap: () {
                   final data = buildSuggestionList[index];
-                  Get.off(() => StudentsChatsScreen(
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return StudentsChatsScreen(
                       studentDocID: data.docid!,
-                      studentName: data.studentName!));
+                      studentName: data.studentName!);
+                  },));
+                  // Get.off(() => StudentsChatsScreen(
+                  //     studentDocID: data.docid!,
+                  //     studentName: data.studentName!));
                 },
                 child: Container(
                     decoration: BoxDecoration(
