@@ -209,8 +209,8 @@ Navigator.push(context,MaterialPageRoute(builder: (context) {
         }),
         MenuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
-Navigator.push(context,MaterialPageRoute(builder: (context) {
-               return SS();
+             Navigator.push(context,MaterialPageRoute(builder: (context) {
+               return TimeTable();
     },));
 
           // Get.off(

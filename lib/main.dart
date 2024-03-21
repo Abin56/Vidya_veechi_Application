@@ -140,7 +140,10 @@ checkingSchoolActivate(BuildContext context) async {
       .get();
 
   if (checking.data()!['deactive'] == true) {
-    Get.offAll(() => const DujoLoginScren());
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                return const DujoLoginScren();
+              },));
+   // Get.offAll(() => const DujoLoginScren());
     // ignore: use_build_context_synchronously
     return showDialog(
       context: context,
@@ -160,7 +163,10 @@ checkingSchoolActivate(BuildContext context) async {
                 await FirebaseAuth.instance.signOut().then((value) async {
                   await SharedPreferencesHelper.clearSharedPreferenceData();
                   UserCredentialsController.clearUserCredentials();
-                  Get.offAll(() => const DujoLoginScren());
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                return const DujoLoginScren();
+              },));
+                //  Get.offAll(() => const DujoLoginScren());
                 });
               },
             ),

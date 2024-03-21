@@ -13,6 +13,7 @@ import '../../../widgets/textformfield.dart';
 import '../../constant/sizes/constant.dart';
 import '../../widgets/fonts/google_poppins.dart';
 
+// ignore: must_be_immutable
 class ExamResultsView extends StatefulWidget {
   bool isLoading = false;
 
@@ -73,7 +74,6 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                     SizedBox(
                       // height: 60.h,
                       width: 320.w,
-
                       child: Center(
                           child: AllClassStudentsListDropDownButton(
                         classID: widget.classID,
@@ -254,11 +254,11 @@ class _ExamResultsViewState extends State<ExamResultsView> {
 }
 
 class SubmitButtonWidget extends StatelessWidget {
-  SubmitButtonWidget({
+  const SubmitButtonWidget({
     required this.text,
     super.key,
   });
-  String text;
+ final String text;
   @override
   Widget build(BuildContext context) {
     return Container(

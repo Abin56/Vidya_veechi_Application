@@ -118,7 +118,7 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
-nextpage() async {
+nextpage(  context) async {
   //creating firebase auth instance
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -140,7 +140,10 @@ nextpage() async {
   log('Firebase Auth ${FirebaseAuth.instance.currentUser?.uid}');
 
   if (auth.currentUser == null) {
-    Get.offAll(() => const DujoLoginScren());
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      return const DujoLoginScren();
+    },));
+    // Get.offAll(() => const DujoLoginScren());
   } else {
     final DocumentReference<Map<String, dynamic>> firebaseFirestore =
         FirebaseFirestore.instance
@@ -148,26 +151,29 @@ nextpage() async {
             .doc(UserCredentialsController.schoolId);
     if (UserCredentialsController.userRole == 'student') {
       //getting studentData
-      await checkStudent(firebaseFirestore, auth);
+      await checkStudent(context,firebaseFirestore, auth,);
     } else if (UserCredentialsController.userRole == 'teacher') {
       //checking user is classTeacher
-      await checkTeacher(firebaseFirestore, auth);
+      await checkTeacher(context, firebaseFirestore, auth);
     } else if (UserCredentialsController.userRole == 'classTeacher') {
       //checking user is parent
       await checkClassTeacher(firebaseFirestore, auth);
     } else if (UserCredentialsController.userRole == 'parent') {
-      await checkParent(firebaseFirestore, auth);
+      await checkParent(context, firebaseFirestore, auth);
 
       //checking user is guardian
     } else if (UserCredentialsController.userRole == 'guardian') {
       await checkGuardian(firebaseFirestore, auth);
     } else {
-      Get.offAll(() => const DujoLoginScren());
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      return const DujoLoginScren();
+    },));
+      //Get.offAll(() => const DujoLoginScren());
     }
   }
 }
 
-Future<void> checkStudent(
+Future<void> checkStudent( context,
     DocumentReference<Map<String, dynamic>> firebaseFirestore,
     FirebaseAuth auth) async {
   final studentData = await firebaseFirestore
@@ -182,14 +188,20 @@ Future<void> checkStudent(
   if (studentData.data() != null) {
     UserCredentialsController.studentModel =
         StudentModel.fromJson(studentData.data()!);
-    Get.off(() => const StudentsMainHomeScreen());
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const StudentsMainHomeScreen();
+    },));
+   // Get.off(() => const StudentsMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.off(() => const DujoLoginScren());
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const DujoLoginScren();
+    },));
+   // Get.off(() => const DujoLoginScren());
   }
 }
 
-Future<void> checkTeacher(
+Future<void> checkTeacher( context,
     DocumentReference<Map<String, dynamic>> firebaseFirestore,
     FirebaseAuth auth) async {
   final teacherData = await firebaseFirestore
@@ -200,10 +212,16 @@ Future<void> checkTeacher(
   if (teacherData.data() != null) {
     UserCredentialsController.teacherModel =
         TeacherModel.fromMap(teacherData.data()!);
-    Get.off(() => const TeacherMainHomeScreen());
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const TeacherMainHomeScreen();
+    },));
+   // Get.off(() => const TeacherMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.off(() => const DujoLoginScren());
+     Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const DujoLoginScren();
+    },));
+    //Get.off(() => const DujoLoginScren());
   }
 }
 
@@ -225,7 +243,7 @@ Future<void> checkClassTeacher(
   }
 }
 
-Future<void> checkParent(
+Future<void> checkParent(context,
     DocumentReference<Map<String, dynamic>> firebaseFirestore,
     FirebaseAuth auth) async {
   final DocumentSnapshot<Map<String, dynamic>> parentData =
@@ -241,10 +259,16 @@ Future<void> checkParent(
   if (parentData.data() != null) {
     UserCredentialsController.parentModel =
         ParentModel.fromMap(parentData.data()!);
-    Get.off(() => const ParentMainHomeScreen());
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const ParentMainHomeScreen();
+        },));
+   // Get.off(() => const ParentMainHomeScreen());
   } else {
     showToast(msg: "Please login again");
-    Get.off(() => const DujoLoginScren());
+     Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return const DujoLoginScren();
+    },));
+   // Get.off(() => const DujoLoginScren());
   }
 }
 
