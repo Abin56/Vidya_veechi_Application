@@ -160,7 +160,7 @@ class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
           classID: UserCredentialsController.classId!), //Attendence...0
 
           const ViewHomeWorks(), // Home Works...............1
-           const SS(), // Time Table...........2
+           const TimeTable(), // Time Table...........2
            TeacherSubjectWiseList(
           navValue: 'guardian'), //Teachers.................3
           StudentSubjectScreen(), //Subjects...............4

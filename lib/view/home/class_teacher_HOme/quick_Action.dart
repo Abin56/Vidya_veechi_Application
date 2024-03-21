@@ -126,7 +126,7 @@ class QuickActionWidgetTimetable extends StatelessWidget {
       child: Column(
         children: [
           InkWell(
-             onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context){return  const SS() ;}));},
+             onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context){return  const TimeTable() ;}));},
             child: Container(
               height: 55.h,
               width: 55.w,

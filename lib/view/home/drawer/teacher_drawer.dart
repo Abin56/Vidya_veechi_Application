@@ -194,7 +194,7 @@ Widget MyDrawerList(context) {
         menuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
           Get.off(
-            () => const SS(),
+            () => const TimeTable(),
           );
         }),
         menuItem(5, 'assets/images/homework.png', 'HomeWorks'.tr,

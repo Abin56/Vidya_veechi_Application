@@ -1,6 +1,5 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
@@ -21,12 +20,21 @@ class QuickActionsWidgetAttendance extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.off(
-              () => AttendenceBookScreenSelectMonth(
+            onTap: () => 
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return AttendenceBookScreenSelectMonth(
                   schoolId: UserCredentialsController.schoolId!,
                   batchId: UserCredentialsController.batchId!,
-                  classID: UserCredentialsController.classId!),
-            ),
+                  classID: UserCredentialsController.classId!);
+            
+                              },)),
+            // Get.off(
+            //   () => 
+            //   AttendenceBookScreenSelectMonth(
+            //       schoolId: UserCredentialsController.schoolId!,
+            //       batchId: UserCredentialsController.batchId!,
+            //       classID: UserCredentialsController.classId!),
+            // ),
             child: Container(
               height: 55.h,
               width: 55.w,
@@ -65,9 +73,12 @@ class QuickActionsWidgetHW extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.off(
-              () => const ViewHomeWorks(),
-            ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) {
+             return const ViewHomeWorks();
+            },)),
+            // Get.off(
+            //   () => const ViewHomeWorks(),
+            // ),
             child: Container(
               height: 55.h,
               width: 55.w,
@@ -104,7 +115,10 @@ class QuickActionsWidgetTT extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.off(() => const SS()),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) {
+             return const  TimeTable();
+            },)),
+           // Get.off(() => const SS()),
             child: Container(
               height: 55.h,
               width: 55.w,
@@ -141,9 +155,12 @@ class QuickActionsWidgetChat extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Get.off(
-              () => const StudentChatScreen(),
-            ),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) {
+             return const  StudentChatScreen();
+            },)),
+            // Get.off(
+            //   () => const StudentChatScreen(),
+            // ),
             child: Container(
               height: 55.h,
               width: 55.w,

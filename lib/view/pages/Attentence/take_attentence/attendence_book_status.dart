@@ -74,12 +74,20 @@ class AttendenceBookScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.off(() => AttendenceSubjectListScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                 return AttendenceSubjectListScreen(
                                   month: month,
                                   batchId: batchId,
                                   schoolId: schoolId,
                                   classID: classID,
-                                  date: snapshot.data!.docs[index]['docid']));
+                                  date: snapshot.data!.docs[index]['docid']);
+                                   },));
+                              // Get.off(() => AttendenceSubjectListScreen(
+                              //     month: month,
+                              //     batchId: batchId,
+                              //     schoolId: schoolId,
+                              //     classID: classID,
+                              //     date: snapshot.data!.docs[index]['docid']));
                             },
                             child: Container(
                               height: h / 100,

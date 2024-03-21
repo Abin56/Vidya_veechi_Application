@@ -3,6 +3,7 @@
 import 'package:vidya_veechi/view/home/bus_route_page/all_bus_list.dart';
 import 'package:vidya_veechi/view/home/events/event_list.dart';
 import 'package:vidya_veechi/view/home/parent_home/leave_application/apply_leave_application.dart';
+import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
 import 'package:vidya_veechi/view/pages/Meetings/Tabs/school_level_meetings_tab.dart';
 import 'package:vidya_veechi/view/pages/teacher_list/teacher_list.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ import '../../pages/exam_results/for_users/select_examlevel_uses.dart';
 import '../all_class_test_monthly_show/all_class_list_monthly_show.dart';
 import '../all_class_test_show/all_class_list_show.dart';
 import '../exam_Notification/users_exam_list_view/user_exam_acc.dart';
-import '../student_home/time_table/ss.dart';
 
 class GuardianAccessories extends StatelessWidget {
   final String studentName;
@@ -49,7 +49,7 @@ class GuardianAccessories extends StatelessWidget {
 
       const ViewHomeWorks(), // Home Works
 
-      const SS(), // Time Table
+      const TimeTable(), // Time Table
 
       SchoolLevelMeetingPage(), //Meetings
 

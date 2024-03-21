@@ -70,12 +70,20 @@ class AttendenceBookScreenSelectMonth extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Get.off(() => AttendenceBookScreen(
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                 return AttendenceBookScreen(
                                     batchId: batchId,
                                     schoolId: schoolId,
                                     classID: classID,
                                     month: snapshot.data!.docs[index]['id'],
-                                  ));
+                                  );
+                                   },));
+                              // Get.off(() => AttendenceBookScreen(
+                              //       batchId: batchId,
+                              //       schoolId: schoolId,
+                              //       classID: classID,
+                              //       month: snapshot.data!.docs[index]['id'],
+                              //     ));
                             },
                             child: Container(
                               height: h / 100,

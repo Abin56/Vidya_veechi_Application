@@ -193,7 +193,7 @@ Widget MyDrawerList(context) {
         MenuItem(4, 'assets/images/library.png', 'Time Table'.tr,
             currentPage == DrawerSections.setting ? true : false, () {
           Get.off(
-            () => const SS(),
+            () => const TimeTable(),
           );
         }),
         // MenuItem(4, "Share", Icons.share,

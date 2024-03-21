@@ -4,7 +4,6 @@ import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/home/class_teacher_HOme/leave_letters/leave_lettersList.dart';
 import 'package:vidya_veechi/view/home/class_teacher_HOme/my_students/my_students.dart';
 import 'package:vidya_veechi/view/home/student_home/time_table/ss.dart';
-import 'package:vidya_veechi/view/pages/progress_Report/create_examName_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
@@ -46,7 +45,7 @@ class ClassTeacherAccessories extends StatelessWidget {
 
       const TeacherChatScreen(), // Chats
 
-      const SS(), //TimeTable
+      const TimeTable(), //TimeTable
 
       LeaveLettersListviewScreen(
           schooilID: UserCredentialsController.schoolId!,

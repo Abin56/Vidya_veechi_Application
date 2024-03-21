@@ -38,11 +38,18 @@ class UserStateLevel extends StatelessWidget {
                             snaps.data!.docs[index].data());
                         return GestureDetector(
                           onTap: () {
-                            Get.off(() => UsersExamTimeTableViewScreen(
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return UsersExamTimeTableViewScreen(
                                 examID: data.docid,
                                 collectionName: 'Public Level',
                                 date: stringTimeToDateConvert(data.publishDate),
-                                examName: data.examName));
+                                examName: data.examName);
+                            },));
+                            // Get.off(() => UsersExamTimeTableViewScreen(
+                            //     examID: data.docid,
+                            //     collectionName: 'Public Level',
+                            //     date: stringTimeToDateConvert(data.publishDate),
+                            //     examName: data.examName));
                           },
                           child: Container(
                               margin: EdgeInsets.only(

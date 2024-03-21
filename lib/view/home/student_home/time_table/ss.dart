@@ -8,14 +8,14 @@ import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 
-class SS extends StatefulWidget {
-  const SS({super.key});
+class TimeTable extends StatefulWidget {
+  const TimeTable({super.key});
 
   @override
-  State<SS> createState() => _SSState();
+  State<TimeTable> createState() => _TimeTableState();
 }
 
-class _SSState extends State<SS> with SingleTickerProviderStateMixin {
+class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMixin {
   // @override
   // void initState() {
   //   // TODO: implement initState
