@@ -41,7 +41,7 @@ class SelectExamLevelScreen extends StatelessWidget {
                     ),
                     child: TextButton.icon(
                         onPressed: () async {
-                          return getBottomSheet(classId, 'School Level');
+                          return getBottomSheet(classId, 'School Level',context);
                         },
                         icon: const Icon(Icons.list_alt, color: cWhite),
                         label: GoogleMonstserratWidgets(
@@ -61,7 +61,7 @@ class SelectExamLevelScreen extends StatelessWidget {
                     ),
                     child: TextButton.icon(
                         onPressed: () async {
-                          return getBottomSheet(classId, 'Public Level');
+                          return getBottomSheet(classId, 'Public Level',context);
                         },
                         icon: const Icon(Icons.list_alt, color: cWhite),
                         label: GoogleMonstserratWidgets(
@@ -81,7 +81,7 @@ class SelectExamLevelScreen extends StatelessWidget {
   }
 }
 
-getBottomSheet(String classId, String examlevel) {
+getBottomSheet(String classId, String examlevel,BuildContext context) {
   Get.bottomSheet(
       SizedBox(
         height: 250.h,
@@ -91,10 +91,18 @@ getBottomSheet(String classId, String examlevel) {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(() => ExamResultsView(
+
+                
+                 Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return  ExamResultsView(
                       classID: classId,
                       examlevel: examlevel,
-                    ));
+                    );}));
+
+                // Get.to(() => ExamResultsView(
+                //       classID: classId,
+                //       examlevel: examlevel,
+                //     ));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -123,10 +131,19 @@ getBottomSheet(String classId, String examlevel) {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(() => SelectExamWiseScreen(
+
+                 Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return  SelectExamWiseScreen(
                       classID: classId,
                       examLevel: examlevel,
-                    ));
+                    );}));
+
+
+                
+                // Get.to(() => SelectExamWiseScreen(
+                //       classID: classId,
+                //       examLevel: examlevel,
+                //     ));
               },
               child: Container(
                 decoration: BoxDecoration(

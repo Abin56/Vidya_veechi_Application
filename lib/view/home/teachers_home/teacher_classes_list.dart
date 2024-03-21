@@ -64,14 +64,26 @@ class TeacherClassListView extends StatelessWidget {
                                   snapshot.data?.docs[index]['docid'] ?? "";
                               classTestMonthlyController.classId =
                                   snapshot.data?.docs[index]['docid'] ?? "";
-                              Get.to(() => ClickOnClasss(
+                                   Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return ClickOnClasss(
                                     className: snapshot.data?.docs[index]
                                             ['className'] ??
                                         "",
                                     classID: snapshot.data?.docs[index]
                                             ['docid'] ??
                                         '',
-                                  ));
+                                  );}));
+
+
+
+                              // Get.to(() => ClickOnClasss(
+                              //       className: snapshot.data?.docs[index]
+                              //               ['className'] ??
+                              //           "",
+                              //       classID: snapshot.data?.docs[index]
+                              //               ['docid'] ??
+                              //           '',
+                              //     ));
 
                               log('Pressed  Class teacher ID :::::   ${UserCredentialsController.classId}');
                             },

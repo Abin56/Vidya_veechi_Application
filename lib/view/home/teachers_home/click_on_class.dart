@@ -198,8 +198,12 @@ class ClickOnClasss extends StatelessWidget {
                                           padding: const EdgeInsets.all(8.0),
                                           child: GestureDetector(
                                             onTap: () {
-                                              Get.to(() =>
-                                                  noDataNavigation[index]);
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                                return noDataNavigation[index];
+                                              },));
+
+                                              // Get.to(() =>
+                                              //     noDataNavigation[index]);
                                             },
                                             child: Column(
                                               mainAxisAlignment:
@@ -260,7 +264,15 @@ class ClickOnClasss extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: GestureDetector(
                                       onTap: () {
-                                        Get.to(() => hasDataNavigation[index]);
+
+                                         Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                                return hasDataNavigation[index];
+                                              },));
+
+
+
+                                        
+                                        // Get.to(() => hasDataNavigation[index]);
                                       },
                                       child: Container(
                                         decoration: const BoxDecoration(

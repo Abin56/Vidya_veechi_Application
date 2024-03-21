@@ -128,7 +128,10 @@ class _TeacherNewHomePageState extends State<TeacherNewHomePage> {
               ),
               GestureDetector(
                           onTap: () {
-                            Get.to(() => const TeacherEditProfileScreen());
+                             Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return TeacherEditProfileScreen();}));
+                            
+                            // Get.to(() => const TeacherEditProfileScreen());
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(top: 150,left: 150,bottom: 50),

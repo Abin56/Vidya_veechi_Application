@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
+// ignore: unused_import
+import 'package:vidya_veechi/view/home/exam_Notification/exam_time_table.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/list_of_exam/time_table_view.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
@@ -38,11 +40,18 @@ class PublicLevel extends StatelessWidget {
                             snaps.data!.docs[index].data());
                         return GestureDetector(
                           onTap: () {
-                            Get.to(() => TeacherExamTimeTableViewScreen(
+                            
+                 Navigator.push(context, MaterialPageRoute(builder: (context)
+              {return TeacherExamTimeTableViewScreen(
                                 examID: data.docid,
                                 collectionName: 'School Level',
                                 date: stringTimeToDateConvert(data.publishDate),
-                                examName: data.examName));
+                                examName: data.examName);}));
+                            // Get.to(() => TeacherExamTimeTableViewScreen(
+                            //     examID: data.docid,
+                            //     collectionName: 'School Level',
+                            //     date: stringTimeToDateConvert(data.publishDate),
+                            //     examName: data.examName));
                           },
                           child: Container(
                             margin: EdgeInsets.only(

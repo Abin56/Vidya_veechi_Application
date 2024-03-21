@@ -253,7 +253,8 @@ viewallMenus() {
                               //image:images.waving_hand,
                               text: ' Time Table',
                               onTap: () {
-                                   Get.to(() =>screenNavigationOfClsTr[3]);
+
+                                    Get.to(() =>screenNavigationOfClsTr[3]);
                               },image: 'assets/flaticons/worksheet.png',
                             ),
                       ContainerWidget(
