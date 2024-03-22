@@ -12,6 +12,7 @@ import '../../utils/utils.dart';
 import '../../view/home/class_teacher_HOme/class_teacher_mainhome.dart';
 
 class ClassTeacherLoginController extends GetxController {
+  final formKey = GlobalKey<FormState>();
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   RxBool isLoading = RxBool(false);
   TextEditingController emailIdController = TextEditingController();

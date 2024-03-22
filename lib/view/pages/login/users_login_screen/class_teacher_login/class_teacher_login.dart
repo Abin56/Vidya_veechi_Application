@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/sign_in_controller/class_teacher_login_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -27,7 +28,8 @@ class ClassTeacherLoginScreen extends StatelessWidget {
   ClassTeacherLoginController teacherSigninController =
       Get.put(ClassTeacherLoginController());
 
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
+  // final formKey = Get.find<FormController>().formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class ClassTeacherLoginScreen extends StatelessWidget {
                   width: double.infinity,
                   imagePath: 'assets/images/Login_screen.png'),
               Form(
-                key: formKey,
+                key: teacherSigninController.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -153,11 +155,13 @@ class ClassTeacherLoginScreen extends StatelessWidget {
                             text: "Don't have an account?".tr, fontsize: 15),
                         GestureDetector(
                           onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return TeachersSignUpScreen(
-                                pageIndex: 3,
-                              );
-                          },));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return TeachersSignUpScreen(
+                                  pageIndex: 3,
+                                );
+                              },
+                            ));
                             // Get.off(() => TeachersSignUpScreen(
                             //       pageIndex: 3,
                             //     ));
