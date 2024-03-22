@@ -10,6 +10,7 @@ import '../../utils/utils.dart';
 import '../userCredentials/user_credentials.dart';
 
 class StudentSignInController extends GetxController {
+  final formKey = GlobalKey<FormState>();
   RxBool isLoading = RxBool(false);
   TextEditingController emailIdController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
