@@ -19,12 +19,12 @@ import '../../../../widgets/textformfield_login.dart';
 class StudentLoginScreen extends StatelessWidget {
   final int? pageIndex;
   final PasswordField hideGetxController = Get.put(PasswordField());
+  final formKey = GlobalKey<FormState>();
 
   StudentLoginScreen({this.pageIndex, super.key});
 
   final StudentSignInController signInController =
       Get.put(StudentSignInController());
-  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class StudentLoginScreen extends StatelessWidget {
                   width: double.infinity,
                   imagePath: 'assets/images/Login_screen.png'),
               Form(
-                key: formKey,
+                key: signInController.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -152,11 +152,13 @@ class StudentLoginScreen extends StatelessWidget {
                               text: "Don't Have an account?".tr, fontsize: 15),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return StudentSignInScreen(
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return StudentSignInScreen(
                                     pageIndex: pageIndex!,
                                   );
-                              },));
+                                },
+                              ));
                               // Get.off(() => StudentSignInScreen(
                               //       pageIndex: pageIndex!,
                               //     ));
