@@ -104,28 +104,30 @@ viewallMenus(BuildContext context) {
   ];
   Get.bottomSheet(
       SingleChildScrollView(
-        child: SizedBox(
+        child: Container(
+          color: cWhite,
           height: 620,
           width: double.infinity,
           child: Wrap(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      "assets/flaticons/menu.png",
-                      height: 30,
-                    ),
-                    GooglePoppinsWidgets(
-                      text: "All Categories",
-                      fontsize: 15,
-                      fontWeight: FontWeight.w500,
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     children: [
+              //       Image.asset(
+              //         "assets/flaticons/menu.png",
+              //         height: 30,
+              //       ),
+              //       GooglePoppinsWidgets(
+              //         text: "All Categories",
+              //         fontsize: 15,
+              //         fontWeight: FontWeight.w500,
+              //       )
+              //     ],
+              //   ),
+              // ),
+              Container(
+                color: cWhite,
                 height: 610,
                 child: AnimationLimiter(
                   child: GridView.count(
@@ -157,9 +159,9 @@ viewallMenus(BuildContext context) {
                                       right: w / 30,
                                       top: w / 25),
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Colors.transparent,border: Border.all(color: cblack.withOpacity(0.1)),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
+                                        Radius.circular(7)),
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.black.withOpacity(0.1),
@@ -175,8 +177,14 @@ viewallMenus(BuildContext context) {
                                         height: 80.h,
                                         width: 80.w,
                                         decoration: BoxDecoration(
-                                          boxShadow: [BoxShadow(color: adminePrimayColor,spreadRadius: 1, offset: Offset(2, 2,)),],
-                                            color: cWhite,
+                                          boxShadow: const [BoxShadow(
+                                            color:
+                                             cWhite,
+                                            //adminePrimayColor,
+                                            spreadRadius: 1, offset: Offset(2, 2,)),],
+                                            color: 
+                                            adminePrimayColor,
+                                           // cWhite,
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                                 color: adminePrimayColor
@@ -246,5 +254,5 @@ List<String> stdtext = [
   'Events',
   'Meetings',
   'Class Test',
-  'Monthly Class Test'
+  'Monthly Test'
 ];
