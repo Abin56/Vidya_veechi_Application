@@ -226,7 +226,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                           },
                           child: ButtonContainerWidget(
                             curving: 10,
-                            colorindex: 5,
+                            colorindex:  2,
                             height: 60,
                             width: 150,
                             child: Center(

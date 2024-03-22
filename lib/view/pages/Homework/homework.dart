@@ -280,7 +280,7 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
                             child: Text(
                               "Submit".tr,
                               style: GoogleFonts.poppins(
-                                  color: cblack,
+                                  color: cWhite,
                                   fontSize: 13,
                                   fontWeight: FontWeight.w700),
                             ),

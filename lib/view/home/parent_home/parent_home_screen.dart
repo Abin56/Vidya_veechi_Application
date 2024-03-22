@@ -3,9 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -123,7 +121,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
 
       const ViewHomeWorks(), // Home Works...............1
       const UserExmNotifications(), // Exams...........2
-      const ParentChatScreen(), /////......3
+      const ParentChatScreen(), ///chat/////......3
     ];
     return Scaffold(
       body: SafeArea(
@@ -227,7 +225,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
       const EventList(), //Events.................9
       SchoolLevelMeetingPage(), ////////////////////////////10
 
-      const ParentChatScreen(), /////......11
+      const ParentChatScreen(), //chat/////......11
       AllClassTestPage(
         pageNameFrom: "parent",
       ), //class test page////////////////////////////12
