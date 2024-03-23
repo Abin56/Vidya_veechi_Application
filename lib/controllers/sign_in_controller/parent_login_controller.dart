@@ -14,6 +14,7 @@ class ParentLoginController extends GetxController {
   RxBool isLoading = RxBool(false);
   TextEditingController emailIdController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  
 
   Future<void> signIn(BuildContext context) async {
     try {

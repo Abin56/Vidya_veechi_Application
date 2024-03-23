@@ -24,6 +24,8 @@ class TeacherSignUpController extends GetxController {
   TextEditingController districtController = TextEditingController();
   TextEditingController altPhoneNoController = TextEditingController();
 
+   final formKey = GlobalKey<FormState>();
+
   String name = "TeacherSignupController";
 
   RxBool isLoading = RxBool(false);

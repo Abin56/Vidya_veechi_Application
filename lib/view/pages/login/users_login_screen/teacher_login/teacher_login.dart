@@ -55,7 +55,7 @@ class TeacherLoginScreen extends StatelessWidget {
                   width: double.infinity,
                   imagePath: 'assets/images/Login_screen.png'),
               Form(
-                key: formKey,
+                key:teacherLoginController. formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

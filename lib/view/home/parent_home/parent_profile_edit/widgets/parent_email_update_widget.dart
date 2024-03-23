@@ -57,7 +57,7 @@ class ParentEditListileWidgetEmail extends StatelessWidget {
                           final TextEditingController passwordController =
                               TextEditingController();
                           return Form(
-                            key: _formKey,
+                            key: parentProfileEditController.formKey,
                             child: AlertDialog(
                               title: Text("Update Mail".tr),
                               content: Column(

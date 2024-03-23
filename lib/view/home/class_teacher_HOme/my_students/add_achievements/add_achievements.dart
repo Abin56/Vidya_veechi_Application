@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
@@ -29,7 +30,9 @@ class _AddAchievementsState extends State<AddAchievements> {
   TextEditingController descriptionController = TextEditingController();
 
   bool loadingStatus = false;
-  final _formKey = GlobalKey<FormState>();
+
+  final AcheviementsFormController acheviementsFormController = Get.put(AcheviementsFormController());
+  final formKey = GlobalKey<FormState>();
 
   void addClassTeacherAchievementsToFirebase() {
     setState(() {
@@ -95,7 +98,7 @@ class _AddAchievementsState extends State<AddAchievements> {
         body: SafeArea(
           child: Center(
             child: Form(
-              key: _formKey,
+              key:acheviementsFormController. formKey,
               child: ListView(
                 // crossAxisAlignment: CrossAxisAlignment.start,
                 // mainAxisAlignment: MainAxisAlignment.start,
@@ -206,7 +209,7 @@ class _AddAchievementsState extends State<AddAchievements> {
                                 )
                               : MaterialButton(
                                   onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
+                                    if (formKey.currentState!.validate()) {
                                       addClassTeacherAchievementsToFirebase();
                                       checkfield();
                                     }

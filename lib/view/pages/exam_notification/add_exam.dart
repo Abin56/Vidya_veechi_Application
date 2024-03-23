@@ -1,7 +1,6 @@
 import 'package:vidya_veechi/view/pages/exam_notification/view_exams.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
 
 class ExamNotification extends StatelessWidget {
   const ExamNotification({super.key});

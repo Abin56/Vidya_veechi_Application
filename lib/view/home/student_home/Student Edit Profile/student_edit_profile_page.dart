@@ -343,13 +343,14 @@ class StudentCircleAvatarImgeWidget extends StatelessWidget {
 
 changeStudentData(BuildContext context, String hintText, String updateValue) {
   final formkey = GlobalKey<FormState>();
+  final StudentProfileEditController studentProfileEditController = Get.put(StudentProfileEditController());
   TextEditingController editvalueController = TextEditingController();
   return showDialog(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return Form(
-        key: formkey,
+        key: studentProfileEditController. formKey,
         child: AlertDialog(
           title: Text('Edit $hintText'),
           content: SingleChildScrollView(

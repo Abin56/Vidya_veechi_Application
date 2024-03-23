@@ -4,7 +4,6 @@ import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/pages/live_classes/enter_to_live.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 import '../../../constant/sizes/sizes.dart';

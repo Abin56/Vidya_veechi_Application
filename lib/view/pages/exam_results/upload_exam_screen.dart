@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +29,8 @@ class ExamResultsView extends StatefulWidget {
 }
 
 class _ExamResultsViewState extends State<ExamResultsView> {
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
+  final ExamResultFormController examResultFormController = Get.put(ExamResultFormController());
 
   TextEditingController obtainedMark = TextEditingController();
 
@@ -47,7 +50,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
           ? circularProgressIndicatotWidget
           : Center(
               child: Form(
-                key: _formKey,
+                key:  examResultFormController. formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -106,7 +109,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                     GestureDetector(
                         onTap: () async {
                           final docid = uuid.v1();
-                          if (_formKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate()) {
                             if (schoolLevelExamistValue != null &&
                                 allClassStudentsListValue != null) {
                               setState(() {

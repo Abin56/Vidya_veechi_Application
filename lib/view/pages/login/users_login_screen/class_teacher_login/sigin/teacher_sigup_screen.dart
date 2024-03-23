@@ -93,7 +93,7 @@ class TeachersSignUpScreen extends StatelessWidget {
                   )),
             kHeight30,
             Form(
-              key: formKey,
+              key: teacherSignUpController. formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

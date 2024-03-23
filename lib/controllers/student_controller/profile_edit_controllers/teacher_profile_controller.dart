@@ -16,6 +16,7 @@ import '../../userCredentials/user_credentials.dart';
 
 class TeacherProfileController {
   RxBool isLoading = RxBool(false);
+  final formKey = GlobalKey<FormState>();
   Future<void> changeTeacherEmail(
       String newEmail, BuildContext context, String password) async {
     final auth = FirebaseAuth.instance;

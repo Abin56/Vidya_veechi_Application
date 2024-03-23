@@ -9,6 +9,7 @@ import '../../model/exam_list_model/add_ex_timeTable.dart';
 import '../userCredentials/user_credentials.dart';
 
 class AddExamTimeTableController extends GetxController {
+  final formKey = GlobalKey<FormState>();
   Future<void> uploadSubject(
     String collectionName,
     String examdocID,

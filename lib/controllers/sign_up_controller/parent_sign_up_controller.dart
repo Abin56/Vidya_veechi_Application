@@ -24,6 +24,9 @@ class ParentSignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  
+   final formKey = GlobalKey<FormState>();
+   
   List<ParentModel> parentModelList = [];
 
   FirebaseAuth auth = FirebaseAuth.instance;

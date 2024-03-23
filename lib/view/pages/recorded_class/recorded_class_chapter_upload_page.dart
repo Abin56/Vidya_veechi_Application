@@ -37,7 +37,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: _formKey,
+          key: _recordedClassController.formKey,
           child: Column(
             children: [
               kHeight20,

@@ -17,6 +17,8 @@ import '../../userCredentials/user_credentials.dart';
 
 class ParentProfileEditController {
   RxBool isLoading = RxBool(false);
+  final formKey = GlobalKey<FormState>();
+  
   TextEditingController textEditingController = TextEditingController();
 
   final DocumentReference<Map<String, dynamic>> parentDocumentCollection =

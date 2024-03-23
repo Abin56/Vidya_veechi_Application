@@ -8,7 +8,6 @@ import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/home/student_home/students_main_home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:omni_jitsi_meet/jitsi_meet.dart';
 
 class StudentLiveClassRoom extends StatefulWidget {

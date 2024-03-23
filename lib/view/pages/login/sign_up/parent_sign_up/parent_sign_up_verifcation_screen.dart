@@ -81,7 +81,7 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                   )),
             kHeight30,
             Form(
-              key: formKey,
+              key:parentSignUpController. formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

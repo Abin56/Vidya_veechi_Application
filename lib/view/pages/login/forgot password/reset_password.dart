@@ -19,6 +19,7 @@ class ResetPassword extends StatelessWidget {
   TextEditingController newpasswordController = TextEditingController();
   TextEditingController confirmpasswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final PasswordField passwordField = Get.put(PasswordField());
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class ResetPassword extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                     kHeight20,
                     Form(
-                      key: formKey,
+                      key:passwordField. formKey,
                       child: Column(
                         children: [
                           Obx(

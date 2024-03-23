@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
@@ -237,6 +238,7 @@ editMark(BuildContext context, String classID, String examId, String subjectID,
   log('subjectid :::$subjectID');
   log('studentid ::: $studentID');
   final formkey = GlobalKey<FormState>();
+  final EditResultFormController editResultFormController = Get.put(EditResultFormController());
   TextEditingController markController = TextEditingController();
   return showDialog(
     context: context,
@@ -248,7 +250,7 @@ editMark(BuildContext context, String classID, String examId, String subjectID,
           child: ListBody(
             children: <Widget>[
               Form(
-                key: formkey,
+                key: editResultFormController. formKey,
                 child: TextFormField(
                   validator: checkFieldEmpty,
                   keyboardType: TextInputType.number,
@@ -326,6 +328,7 @@ editGrade(BuildContext context, String classID, String examId, String subjectID,
   log('subjectid :::$subjectID');
   log('studentid ::: $studentID');
   final formKey = GlobalKey<FormState>();
+  final EditResultFormController editResultFormController = Get.put(EditResultFormController());
   TextEditingController markController = TextEditingController();
   return showDialog(
     context: context,
@@ -337,7 +340,7 @@ editGrade(BuildContext context, String classID, String examId, String subjectID,
           child: ListBody(
             children: <Widget>[
               Form(
-                key: formKey,
+                key:editResultFormController. formKey,
                 child: TextFormField(
                   validator: checkFieldEmpty,
                   controller: markController,

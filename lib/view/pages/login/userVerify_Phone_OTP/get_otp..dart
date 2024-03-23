@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:vidya_veechi/view/pages/login/userVerify_Phone_OTP/verify_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import '../../../../controllers/bloc/user_phone_otp/auth_cubit.dart';
 import '../../../../controllers/bloc/user_phone_otp/auth_state.dart';

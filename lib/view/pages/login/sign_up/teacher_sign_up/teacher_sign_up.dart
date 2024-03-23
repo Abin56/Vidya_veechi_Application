@@ -8,7 +8,6 @@ import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/users_login_screen.dart';
-import 'package:vidya_veechi/view/pages/login/users_login_screen/widgets/user_login_design.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../view/constant/sizes/constant.dart';
 import '../view/home/undermaintance/under_maintance.dart';
