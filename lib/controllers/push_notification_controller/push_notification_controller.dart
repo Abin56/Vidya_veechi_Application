@@ -8,35 +8,143 @@ import 'package:vidya_veechi/model/user_deviceID_model/user_devideID_model.dart'
 import 'package:vidya_veechi/utils/utils.dart';
 
 class PushNotificationController extends GetxController {
+  final currentUID = FirebaseAuth.instance.currentUser!.uid;
   RxString deviceID = ''.obs;
   Future<void> getUserDeviceID() async {
     await FirebaseMessaging.instance.getToken().then((token) {
       deviceID.value = token ?? "";
     });
   }
+
   Future<void> allUSerDeviceID() async {
     try {
       final UserDeviceIDModel userModel = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
-          uid: userUID,
+          uid: currentUID,
           userrole: UserCredentialsController.userRole ?? "",
           schoolID: UserCredentialsController.schoolId!);
       await server
           .collection('AllUsersDeviceID')
-          .doc(userUID)
+          .doc(currentUID)
           .set(userModel.toMap());
     } catch (e) {
       log(e.toString());
     }
   }
-  final String userUID = FirebaseAuth.instance.currentUser!.uid;
+
+  /////////////////////////////////// Teacher Part
+
+
+  Future<void> allTeacherDeviceID() async {
+      final String teacherUID = UserCredentialsController.teacherModel!.docid??currentUID;
+    try {
+      final UserDeviceIDModel teacherModel = UserDeviceIDModel(
+          batchID: UserCredentialsController.batchId!,
+          classID: UserCredentialsController.classId!,
+          devideID: deviceID.value,
+          uid: teacherUID,
+          userrole: 'teacher',
+          schoolID: UserCredentialsController.schoolId!);
+      await server
+          .collection('AllTeacherDeviceID')
+          .doc(teacherUID)
+          .set(teacherModel.toMap())
+          .then((value) async {
+        await teacherDeviceID();
+      });
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> teacherDeviceID() async {
+      final String teacherUID = UserCredentialsController.teacherModel!.docid??currentUID;
+    try {
+      final UserDeviceIDModel student = UserDeviceIDModel(
+          batchID: UserCredentialsController.batchId!,
+          classID: UserCredentialsController.classId!,
+          devideID: deviceID.value,
+          uid: teacherUID,
+          userrole: 'teacher',
+          schoolID: UserCredentialsController.schoolId!);
+      await server
+          .collection(UserCredentialsController.batchId!)
+          .doc(UserCredentialsController.batchId!)
+          .collection('classes')
+          .doc(UserCredentialsController.classId!)
+          .collection('teachers')
+          .doc(teacherUID)
+          .collection('DevideID')
+          .doc('DevideID')
+          .set(student.toMap());
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  /////////////////////////////////// Teacher Part
+  ///
+
+
+  /////////////////////////////////// Student Part
+  final String studentUID = UserCredentialsController.studentModel!.docid;
+
+  Future<void> allStudentDeviceID() async {
+    try {
+      final UserDeviceIDModel studentModel = UserDeviceIDModel(
+          batchID: UserCredentialsController.batchId!,
+          classID: UserCredentialsController.classId!,
+          devideID: deviceID.value,
+          uid: studentUID,
+          userrole: 'studnet',
+          schoolID: UserCredentialsController.schoolId!);
+      await server
+          .collection('AllStudentDeviceID')
+          .doc(studentUID)
+          .set(studentModel.toMap())
+          .then((value) async {
+        await studentDeviceID();
+      });
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> studentDeviceID() async {
+    try {
+      final UserDeviceIDModel student = UserDeviceIDModel(
+          batchID: UserCredentialsController.batchId!,
+          classID: UserCredentialsController.classId!,
+          devideID: deviceID.value,
+          uid: studentUID,
+          userrole: 'student',
+          schoolID: UserCredentialsController.schoolId!);
+      await server
+          .collection(UserCredentialsController.batchId!)
+          .doc(UserCredentialsController.batchId!)
+          .collection('classes')
+          .doc(UserCredentialsController.classId!)
+          .collection('Students')
+          .doc(studentUID)
+          .collection('DevideID')
+          .doc('DevideID')
+          .set(student.toMap());
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  /////////////////////////////////// Student Part
+  ///
+  ///
   /////////////////////////////////// Parent Part
-  final String parentUID = UserCredentialsController.parentModel!.docid ??
-      FirebaseAuth.instance.currentUser!.uid;
 
   Future<void> allParentDeviceID() async {
+    final String parentUID =
+        UserCredentialsController.parentModel!.docid ?? currentUID;
+
     try {
       final UserDeviceIDModel parentmodel = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
@@ -58,6 +166,8 @@ class PushNotificationController extends GetxController {
   }
 
   Future<void> parentDeviceID() async {
+    final String parentUID =
+        UserCredentialsController.parentModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel parentmodel = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
@@ -82,5 +192,4 @@ class PushNotificationController extends GetxController {
   }
 
   /////////////////////////////////// Parent Part
-
 }

@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
@@ -11,8 +13,24 @@ import 'package:vidya_veechi/view/home/student_home/student_pages/qucik_action.d
 import 'package:vidya_veechi/view/home/student_home/student_pages/quick_action_view_all.dart';
 import 'package:vidya_veechi/view/home/student_home/student_pages/slider/slider.dart';
 
-class NewStdHomePage extends StatelessWidget {
-  const NewStdHomePage({super.key});
+class NewStdHomePage extends StatefulWidget {
+  final PushNotificationController pushNotificationController =
+      Get.put(PushNotificationController());
+  NewStdHomePage({super.key});
+
+  @override
+  State<NewStdHomePage> createState() => _NewStdHomePageState();
+}
+
+class _NewStdHomePageState extends State<NewStdHomePage> {
+  @override
+  void initState() {
+    widget.pushNotificationController.getUserDeviceID().then((value) async =>
+        await widget.pushNotificationController.allStudentDeviceID().then(
+            (value) async =>
+                await widget.pushNotificationController.allUSerDeviceID()));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,10 +125,12 @@ class NewStdHomePage extends StatelessWidget {
                         flex: 1,
                         child: IconButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return StudentProfileEditPage();
-                              },));
-                             // Get.off(() => const StudentProfileEditPage());
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return const StudentProfileEditPage();
+                                },
+                              ));
+                              // Get.off(() => const StudentProfileEditPage());
                             },
                             icon: const Icon(Icons
                                 .now_widgets))) ////////////////////////////////edit profile

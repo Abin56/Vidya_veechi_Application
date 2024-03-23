@@ -48,7 +48,7 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
   Widget build(BuildContext context) {
     checkingSchoolActivate(context);
     List<Widget> pages = [
-      const NewStdHomePage(),
+       NewStdHomePage(),
      // const StudentHomeScreen(),
       // const NewStdHomePage(), ///////////////////////////////////////////
       RecSelectSubjectScreen(
