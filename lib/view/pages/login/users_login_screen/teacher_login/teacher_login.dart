@@ -31,7 +31,6 @@ class TeacherLoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => FormController());
     return Scaffold(
       appBar: AppBar(
         foregroundColor: cWhite,
@@ -57,7 +56,7 @@ class TeacherLoginScreen extends StatelessWidget {
                   width: double.infinity,
                   imagePath: 'assets/images/Login_screen.png'),
               Form(
-                key: Get.find<FormController>().formKey,
+                key: teacherLoginController.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
