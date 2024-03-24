@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import '../../utils/utils.dart';
 
 class TeacherLoginController extends GetxController {
-  final formKey = GlobalKey<FormState>();
+  final 
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   RxBool isLoading = RxBool(false);
@@ -54,11 +54,9 @@ class TeacherLoginController extends GetxController {
                 SharedPreferencesHelper.userRoleKey, 'teacher');
 
             if (context.mounted) {
-              Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (context) {
-                  return const TeacherMainHomeScreen();
-                },
-              ));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                    return const TeacherMainHomeScreen();
+                  },));
               //Get.offAll(const TeacherMainHomeScreen());
             }
           } else {

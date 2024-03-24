@@ -18,11 +18,11 @@ import '../../../../controllers/userCredentials/user_credentials.dart';
 import '../../../../utils/utils.dart';
 
 class AttendenceSubjectListScreen extends StatelessWidget {
- final String schoolId;
- final String classID;
- final  String date;
- final String batchId;
- final String month;
+  final String schoolId;
+  final String classID;
+  final String date;
+  final String batchId;
+  final String month;
   const AttendenceSubjectListScreen(
       {required this.schoolId,
       required this.classID,
@@ -43,7 +43,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
         title: Text('Select Subject'.tr),
         flexibleSpace: const AppBarColorWidget(),
         foregroundColor: cWhite,
-       // backgroundColor: adminePrimayColor,
+        // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
           child: StreamBuilder(
@@ -87,16 +87,17 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)
-              {return StudentsAttendenceListViewScreen(
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return StudentsAttendenceListViewScreen(
                                   month: month,
                                   batchId: batchId,
                                   subject: snapshot.data!.docs[index]['docid'],
                                   schoolId: schoolId,
                                   classID: classID,
                                   date: date,
-                                );}));
-
+                                );
+                              }));
 
                               // Get.to(
                               //   () => StudentsAttendenceListViewScreen(
@@ -264,7 +265,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                                                                                       height: 400,
                                                                                       width: 400,
                                                                                       child: StreamBuilder(
-                                                                                          stream: FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection("PresentList").orderBy("studentName", descending: false).snapshots(),
+                                                                                          stream: FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection('AttendenceList').orderBy("studentName", descending: false).snapshots(),
                                                                                           builder: (context, snapsh) {
                                                                                             if (snapsh.hasData) {
                                                                                               return ListView.separated(
@@ -298,7 +299,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                                                                                                                                       log('index${snapshot.data!.docs[index]}');
                                                                                                                                       log('Studentname?????${snapsh.data!.docs[index2]['studentName']}');
 
-                                                                                                                                      await FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection("PresentList").doc(snapsh.data!.docs[index2]['uid']).update({'present': true}).then((value) {
+                                                                                                                                      await FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection('AttendenceList').doc(snapsh.data!.docs[index2]['uid']).update({'present': true}).then((value) {
                                                                                                                                         showToast(msg: 'Changed');
                                                                                                                                         Get.back();
                                                                                                                                       });
@@ -316,7 +317,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                                                                                                                                     onTap: () async {
                                                                                                                                       log('Studentname${snapsh.data!.docs[index2]['studentName']}');
 
-                                                                                                                                      FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection("PresentList").doc(snapsh.data!.docs[index2]['uid']).update({'present': false}).then((value) {
+                                                                                                                                      FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection('AttendenceList').doc(snapsh.data!.docs[index2]['uid']).update({'present': false}).then((value) {
                                                                                                                                         showToast(msg: 'Changed');
                                                                                                                                         Get.back();
                                                                                                                                       });
@@ -380,7 +381,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                                                                                                                                       log('index${snapshot.data!.docs[index]}');
                                                                                                                                       log('Studentname?????${snapsh.data!.docs[index2]['studentName']}');
 
-                                                                                                                                      await FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection("PresentList").doc(snapsh.data!.docs[index2]['uid']).update({'present': true}).then((value) {
+                                                                                                                                      await FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection('AttendenceList').doc(snapsh.data!.docs[index2]['uid']).update({'present': true}).then((value) {
                                                                                                                                         showToast(msg: 'Changed');
                                                                                                                                         Get.back();
                                                                                                                                       });
@@ -398,7 +399,7 @@ class AttendenceSubjectListScreen extends StatelessWidget {
                                                                                                                                     onTap: () async {
                                                                                                                                       log('Studentname${snapsh.data!.docs[index2]['studentName']}');
 
-                                                                                                                                      FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection("PresentList").doc(snapsh.data!.docs[index2]['uid']).update({'present': false}).then((value) {
+                                                                                                                                      FirebaseFirestore.instance.collection("SchoolListCollection").doc(schoolId).collection(batchId).doc(batchId).collection("classes").doc(classID).collection("Attendence").doc(month).collection(month).doc(date).collection("Subjects").doc(snapshot.data!.docs[index]['docid']).collection('AttendenceList').doc(snapsh.data!.docs[index2]['uid']).update({'present': false}).then((value) {
                                                                                                                                         showToast(msg: 'Changed');
                                                                                                                                         Get.back();
                                                                                                                                       });

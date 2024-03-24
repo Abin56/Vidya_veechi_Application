@@ -9,12 +9,12 @@ import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import '../../../../model/teacher_model/attentence/attendance_model.dart';
 
 class StudentsAttendenceListViewScreen extends StatelessWidget {
- final  String schoolId;
- final String classID;
- final String date;
- final String subject;
- final String batchId;
- final String month;
+  final String schoolId;
+  final String classID;
+  final String date;
+  final String subject;
+  final String batchId;
+  final String month;
 
   const StudentsAttendenceListViewScreen(
       {required this.schoolId,
@@ -33,7 +33,7 @@ class StudentsAttendenceListViewScreen extends StatelessWidget {
         title: Text('Attendance List'.tr),
         flexibleSpace: const AppBarColorWidget(),
         foregroundColor: cWhite,
-       // backgroundColor: adminePrimayColor,
+        // backgroundColor: adminePrimayColor,
       ),
       body: SafeArea(
         child: StreamBuilder(
@@ -50,7 +50,7 @@ class StudentsAttendenceListViewScreen extends StatelessWidget {
               .doc(date)
               .collection("Subjects")
               .doc(subject)
-              .collection("PresentList")
+              .collection('AttendenceList')
               .orderBy("studentName", descending: false)
               .snapshots(),
           builder: (context, snapshot) {

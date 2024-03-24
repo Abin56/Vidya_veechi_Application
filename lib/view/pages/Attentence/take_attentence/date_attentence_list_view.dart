@@ -32,7 +32,7 @@ class DatedAttendenceListViewScreen extends StatelessWidget {
               .doc(classID)
               .collection("Attendence")
               .doc(date)
-              .collection("PresentList")
+              .collection('AttendenceList')
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -47,7 +47,7 @@ class DatedAttendenceListViewScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           data.studentName,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
