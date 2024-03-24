@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import '../../utils/utils.dart';
 
 class TeacherLoginController extends GetxController {
+  final 
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   RxBool isLoading = RxBool(false);

@@ -36,9 +36,9 @@ class PushNotificationController extends GetxController {
 
   /////////////////////////////////// Teacher Part
 
-
   Future<void> allTeacherDeviceID() async {
-      final String teacherUID = UserCredentialsController.teacherModel!.docid??currentUID;
+    final String teacherUID =
+        UserCredentialsController.teacherModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel teacherModel = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
@@ -60,7 +60,8 @@ class PushNotificationController extends GetxController {
   }
 
   Future<void> teacherDeviceID() async {
-      final String teacherUID = UserCredentialsController.teacherModel!.docid??currentUID;
+    final String teacherUID =
+        UserCredentialsController.teacherModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel student = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
@@ -87,11 +88,11 @@ class PushNotificationController extends GetxController {
   /////////////////////////////////// Teacher Part
   ///
 
-
   /////////////////////////////////// Student Part
-  final String studentUID = UserCredentialsController.studentModel!.docid;
 
   Future<void> allStudentDeviceID() async {
+    final String studentUID = UserCredentialsController.studentModel!.docid;
+
     try {
       final UserDeviceIDModel studentModel = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
@@ -113,6 +114,7 @@ class PushNotificationController extends GetxController {
   }
 
   Future<void> studentDeviceID() async {
+    final String studentUID = UserCredentialsController.studentModel!.docid;
     try {
       final UserDeviceIDModel student = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
@@ -142,6 +144,7 @@ class PushNotificationController extends GetxController {
   /////////////////////////////////// Parent Part
 
   Future<void> allParentDeviceID() async {
+    log('Parent DE:ID +++++++ $deviceID ++++++');
     final String parentUID =
         UserCredentialsController.parentModel!.docid ?? currentUID;
 
