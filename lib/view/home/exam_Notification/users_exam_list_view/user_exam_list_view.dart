@@ -12,10 +12,10 @@ import '../../../constant/sizes/sizes.dart';
 import '../../../widgets/fonts/google_poppins.dart';
 
 class UsersExamTimeTableViewScreen extends StatelessWidget {
- final String collectionName;
- final String date;
- final String examID;
- final String examName;
+  final String collectionName;
+  final String date;
+  final String examID;
+  final String examName;
   const UsersExamTimeTableViewScreen(
       {required this.collectionName,
       required this.date,
@@ -40,7 +40,7 @@ class UsersExamTimeTableViewScreen extends StatelessWidget {
                 .doc(UserCredentialsController.batchId!)
                 .collection('classes')
                 .doc(UserCredentialsController.classId)
-                .collection(collectionName)
+                .collection('ExamTimeTable')
                 .doc(examID)
                 .collection('subjects')
                 .orderBy('examDate', descending: false)
