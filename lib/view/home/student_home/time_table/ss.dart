@@ -1,12 +1,10 @@
-// ignore_for_file: unused_local_variable
-
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
+import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
 
@@ -113,19 +111,18 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
           text: 'Time Table'.tr,
           fontsize: 17.w,
           color: adminePrimayColor,
-          // const Color.fromARGB(255, 88, 167, 123),
           fontWeight: FontWeight.bold,
         ),
-        iconTheme: const IconThemeData(color: Color.fromARGB(255, 27, 92, 176),),
+        iconTheme: const IconThemeData(color: adminePrimayColor),
         backgroundColor: Colors.transparent,
         elevation: 0,
         bottom: TabBar(
-          unselectedLabelColor: const Color.fromARGB(255, 27, 92, 176),
+          unselectedLabelColor: adminePrimayColor,
           unselectedLabelStyle:
               GoogleFonts.montserrat(fontSize: 10, fontWeight: FontWeight.bold),
-          dividerColor: const Color.fromARGB(255, 27, 92, 176),
+          dividerColor: adminePrimayColor,
           indicator: BoxDecoration(
-              color: const Color.fromARGB(255, 27, 92, 176),
+              color: adminePrimayColor,
               borderRadius: BorderRadius.circular(50)),
           labelStyle: GoogleFonts.montserrat(
             fontSize: 11,
@@ -164,9 +161,9 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
 }
 
 class DayWidget extends StatelessWidget {
-  const DayWidget({super.key, required this.dayName});
+  DayWidget({super.key, required this.dayName});
 
- final String dayName;
+  String dayName;
   Color colorCheck(col) {
     if (col == 'Color(0x00fcfcfc)') {
       return Colors.amber;
@@ -220,12 +217,12 @@ class DayWidget extends StatelessWidget {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
                     Color coll = colorCheck(
-                        snapshot.data!.docs[index]['period']['color']);
-                    String coco = snapshot.data!.docs[index]['period']['color']
+                        snapshot.data!.docs[index]['period']['selectColor']);
+                    String coco = snapshot.data!.docs[index]['period']['selectColor']
                         .toString()
                         .substring(
                             6,
-                            snapshot.data!.docs[index]['period']['color']
+                            snapshot.data!.docs[index]['period']['selectColor']
                                     .toString()
                                     .length -
                                 1);
@@ -238,7 +235,7 @@ class DayWidget extends StatelessWidget {
                             tileColor: coll,
                             leading: GoogleMonstserratWidgets(
                               text: snapshot.data!.docs[index]['period']
-                                  ['timeStamp'],
+                                  ['periodNumber'],
                               fontsize: 12,
                               color: (coll == Colors.amber ||
                                       coll == Colors.yellow ||
@@ -276,7 +273,7 @@ class DayWidget extends StatelessWidget {
                                 )),
                             title: GoogleMonstserratWidgets(
                               text: snapshot.data!.docs[index]['period']
-                                  ['periodName'],
+                                  ['periodNumber'],
                               fontsize: 17,
                               fontWeight: FontWeight.bold,
                               color: (coll == Colors.amber ||
@@ -288,7 +285,7 @@ class DayWidget extends StatelessWidget {
                             subtitle: GoogleMonstserratWidgets(
                                 text: 'Teacher : ' +
                                     snapshot.data!.docs[index]['period']
-                                        ['periodTeacher'],
+                                        ['teacherName'],
                                 fontsize: 12,
                                 color: (coll == Colors.amber ||
                                         coll == Colors.yellow ||
@@ -320,15 +317,15 @@ class ColorParser {
 }
 
 class PeriodShowingWidget extends StatelessWidget {
-  const PeriodShowingWidget(
+  PeriodShowingWidget(
       {super.key,
       required this.periodList,
       required this.dayName,
       required this.teacherList});
 
   final List<String> periodList;
- final List<String> teacherList;
- final String dayName;
+  List<String> teacherList;
+  String dayName;
 
   @override
   Widget build(BuildContext context) {

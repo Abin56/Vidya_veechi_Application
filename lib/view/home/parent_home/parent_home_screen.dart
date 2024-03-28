@@ -203,7 +203,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           classID: UserCredentialsController.classId!), //Attendence...0
 
       const ViewHomeWorks(), // Home Works...............1
-      const TimeTable(), // Time Table...........2
+       TimeTable(), // Time Table...........2
       TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................3
       StudentSubjectScreen(), //Subjects...............4
 
