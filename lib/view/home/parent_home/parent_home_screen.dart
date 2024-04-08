@@ -89,7 +89,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
   void initState() {
     widget.pushNotCntrl.getUserDeviceID().then((value) => widget.pushNotCntrl
         .allParentDeviceID()
-        .then((value)async => await  widget.pushNotCntrl.allUSerDeviceID()));
+        .then((value)async => await  widget.pushNotCntrl.allUSerDeviceID(UserCredentialsController.parentModel!.userRole)));
     super.initState();
 
     //   sendPushMessage( deviceToken, 'Hello Everyone', 'DUJO APP');

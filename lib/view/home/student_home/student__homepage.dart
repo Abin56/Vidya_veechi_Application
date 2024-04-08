@@ -28,7 +28,7 @@ class _NewStdHomePageState extends State<NewStdHomePage> {
     widget.pushNotificationController.getUserDeviceID().then((value) async =>
         await widget.pushNotificationController.allStudentDeviceID().then(
             (value) async =>
-                await widget.pushNotificationController.allUSerDeviceID()));
+                await widget.pushNotificationController.allUSerDeviceID(UserCredentialsController.studentModel!.userRole)));
     super.initState();
   }
 

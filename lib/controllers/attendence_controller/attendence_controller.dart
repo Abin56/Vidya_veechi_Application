@@ -3,13 +3,13 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/student_attendence_model/student_attendece_model.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
 
 class AttendanceController extends GetxController {
   RxInt notificationTimer = 0.obs;
@@ -217,6 +217,47 @@ class AttendanceController extends GetxController {
 
       log(e.toString());
     }
+  }
+
+  Future<void> activeClasses(
+      {required String classID,
+      required String teacherDocid,
+      required String subjectName,
+      required String subjectDocid}) async {
+try {
+  log('activeClasses.........................');
+      final date = DateTime.now();
+    DateTime parseDate = DateTime.parse(date.toString());
+ 
+    final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    String formatted = formatter.format(parseDate);
+    await server
+        
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId)
+        .collection('TodayActiveClasses')
+        .doc(formatted)
+        .set({'docid': formatted}).then((value) async {
+      await server
+         
+          .collection(UserCredentialsController.batchId!)
+          .doc(UserCredentialsController.batchId)
+          .collection('TodayActiveClasses')
+          .doc(formatted)
+          .collection('Classes')
+          .doc(classID)
+          .set({
+        'docid': classID,
+        'teacherDocid': teacherDocid,
+        'subjectName': subjectName,
+        'subjectDocid': subjectDocid,
+      });
+    });
+  
+} catch (e) {
+  log(e.toString());
+  
+}
   }
 
   @override

@@ -16,14 +16,14 @@ class PushNotificationController extends GetxController {
     });
   }
 
-  Future<void> allUSerDeviceID() async {
+  Future<void> allUSerDeviceID(String userrole) async {
     try {
       final UserDeviceIDModel userModel = UserDeviceIDModel(
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
           uid: currentUID,
-          userrole: UserCredentialsController.userRole ?? "",
+          userrole: userrole,
           schoolID: UserCredentialsController.schoolId!);
       await server
           .collection('AllUsersDeviceID')

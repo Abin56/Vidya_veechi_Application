@@ -28,7 +28,7 @@ class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
     widget.pushNotificationController.getUserDeviceID().then((value) async =>
         await widget.pushNotificationController.allTeacherDeviceID().then(
             (value) async =>
-                await widget.pushNotificationController.allUSerDeviceID()));
+                await widget.pushNotificationController.allUSerDeviceID(UserCredentialsController.teacherModel!.userRole)));
     super.initState();
   }
 
