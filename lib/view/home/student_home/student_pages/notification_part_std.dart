@@ -172,7 +172,7 @@ class NotificationPartOfStd extends StatelessWidget {
                             subtitle: Text(
                               data['messageText'],
                               // "Tommorow is Holiday",
-                              overflow: TextOverflow.clip,
+                              overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 48, 88, 86),

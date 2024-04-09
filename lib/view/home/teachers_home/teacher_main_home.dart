@@ -4,6 +4,7 @@ import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/home/teachers_home/notification_part_tcr.dart';
 import 'package:vidya_veechi/view/home/teachers_home/teacher_home.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
@@ -53,20 +54,32 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
       onWillPop: () => onbackbuttonpressed(context),
       child: Scaffold(
         appBar: AppBar(
-            flexibleSpace: const AppBarColorWidget(),
-            foregroundColor: cWhite,
-            title: SizedBox(
-              // color: cred,
-              height: 80.h,
-              width: 115.w,
-              child: Center(
-                  child: Image.asset(
-                'assets/images/vidyaveechi.png',
-                color: Colors.white,
-                fit: BoxFit.cover,
-              )),
-            ),
-            backgroundColor: adminePrimayColor),
+          flexibleSpace: const AppBarColorWidget(),
+          foregroundColor: cWhite,
+          title: SizedBox(
+            // color: cred,
+            height: 80.h,
+            width: 115.w,
+            child: Center(
+                child: Image.asset(
+              'assets/images/vidyaveechi.png',
+              color: Colors.white,
+              fit: BoxFit.cover,
+            )),
+          ),
+          backgroundColor: adminePrimayColor,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NotificationPartTcr(),
+                      ));
+                },
+                icon: const Icon(Icons.warning_amber_rounded))
+          ],
+        ),
         body: pages[_page],
         bottomNavigationBar: Container(
           height: 81,
