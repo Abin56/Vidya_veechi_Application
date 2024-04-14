@@ -21,6 +21,9 @@ class StudentSignUpController extends GetxController {
   TextEditingController districtController = TextEditingController();
   TextEditingController altPhoneNoController = TextEditingController();
   TextEditingController dateOfBirthController = TextEditingController();
+
+   final formKey = GlobalKey<FormState>();
+   
   RxBool isLoading = RxBool(false);
   List<StudentModel> classWiseStudentList = [];
 

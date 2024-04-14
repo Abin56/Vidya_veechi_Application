@@ -65,12 +65,12 @@ class CarouselSliderWidget extends StatelessWidget {
       items: [
         CaroselmageWidget(
           sliderWidget: graphList[0],
-          slidertext: 'Homework', slidersecondtext: 'Average', count: '100/200',
+          slidertext: 'Homework', slidersecondtext: 'Average', count: '100/200',clicktext: '',
         ),
         CaroselmageWidget(
           sliderWidget: graphList[1],
           slidertext: 'Exam Result',
-           slidersecondtext: 'Average', count: '100/200',
+           slidersecondtext: 'Average', count: '100/200',clicktext: '',
         ),
         GestureDetector(
           onTap: (){
@@ -81,6 +81,7 @@ class CarouselSliderWidget extends StatelessWidget {
             sliderWidget: graphList[2],
             slidertext: 'Attendance',
              slidersecondtext: 'Average', count: '100/200',
+             clicktext: 'Click here',
           ),
         ),
         // CaroselmageWidget(
@@ -105,11 +106,13 @@ class CaroselmageWidget extends StatelessWidget {
  final String slidertext;
  final String slidersecondtext;
  final String count;
+ final String? clicktext;
   const CaroselmageWidget({
     required this.sliderWidget,
     required this.slidertext,
     required this.slidersecondtext,
     required this.count,
+    this.clicktext,
     super.key,
   });
 
@@ -133,7 +136,7 @@ class CaroselmageWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: GooglePoppinsWidgets(
                           text: slidertext,
-                          fontsize: 16,
+                          fontsize: 15,
                           color: cblack,
                           fontWeight: FontWeight.w600,
                         ),
@@ -160,6 +163,15 @@ class CaroselmageWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+               Padding(
+                 padding: const EdgeInsets.only(top: 10),
+                 child: GooglePoppinsWidgets(
+                    text: clicktext!,
+                    fontsize: 12,
+                    color: cblack,
+                    fontWeight: FontWeight.bold,
+                  ),
+               ),
             ],
           ),
         ),

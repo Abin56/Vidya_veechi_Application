@@ -170,7 +170,7 @@ class _TPublicLevelState extends State<TPublicLevel> {
               text: 'Add Subject to Time Table'.tr, fontsize: 14.w),
           content: SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key:  addExamTimeTableController. formKey,
               child: ListBody(
                 children: <Widget>[
                   GetAllSubjectListDropDownButton(
@@ -500,7 +500,7 @@ class _TStateLevelState extends State<TStateLevel> {
           title: Text('Add Subject to Time Table'.tr),
           content: SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key:  addExamTimeTableController.formKey,
               child: ListBody(
                 children: <Widget>[
                   GetAllSubjectListDropDownButton(

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class CreateExamNameScreen extends StatelessWidget {
       required this.batchId,
       super.key});
 
+final CreateExamFormController createExamFormController = Get.put(CreateExamFormController());
   @override
   Widget build(BuildContext context) {
     int columnCount = 3;
@@ -140,7 +142,7 @@ class CreateExamNameScreen extends StatelessWidget {
                   child: ListBody(
                     children: <Widget>[
                       Form(
-                        key: formkey,
+                        key: createExamFormController. formKey,
                         child: TextFormField(
                             validator: checkFieldEmpty,
                             controller: _examNameController,

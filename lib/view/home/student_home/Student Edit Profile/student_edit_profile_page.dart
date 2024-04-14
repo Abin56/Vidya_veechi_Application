@@ -83,9 +83,13 @@ class StudentProfileEditPage extends StatelessWidget {
                   children: [
                     StudentEditListileWidget(
                       icon: Icons.person,
-                      subtitle: GooglePoppinsWidgets(
-                          text: profilesnaps.data!.data()!['studentName'],
-                          fontsize: 19.h),
+                      subtitle: Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: profilesnaps.data!.data()!['studentName'],
+                              fontsize: 19.h),
+                        ],
+                      ),
                       title: Row(
                         children: [
                           GooglePoppinsWidgets(text: "Name".tr, fontsize: 12.h),
@@ -103,9 +107,13 @@ class StudentProfileEditPage extends StatelessWidget {
                     ),
                     StudentEditListileWidget(
                       icon: Icons.call,
-                      subtitle: GooglePoppinsWidgets(
-                          text: profilesnaps.data!.data()!['parentPhoneNumber'],
-                          fontsize: 19.h),
+                      subtitle: Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: profilesnaps.data!.data()!['parentPhoneNumber'],
+                              fontsize: 19.h),
+                        ],
+                      ),
                       title: Row(
                         children: [
                           GooglePoppinsWidgets(
@@ -124,37 +132,53 @@ class StudentProfileEditPage extends StatelessWidget {
                     ),
                     StudentEditListileWidget(
                       icon: Icons.email,
-                      subtitle: GooglePoppinsWidgets(
-                          text: UserCredentialsController
-                                  .studentModel?.studentemail ??
-                              "",
-                          fontsize: 19.h),
-                      title: GooglePoppinsWidgets(
-                          text: "Email".tr, fontsize: 12.h),
+                      subtitle: Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: UserCredentialsController
+                                      .studentModel?.studentemail ??
+                                  "",
+                              fontsize: 19.h),
+                        ],
+                      ),
+                      title: Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: "Email".tr, fontsize: 12.h),
+                        ],
+                      ),
                       editicon: Icons.edit,
                     ),
                     StudentEditListileWidget(
                       icon: Icons.class_rounded,
-                      subtitle: FutureBuilder(
-                          future: FirebaseFirestore.instance
-                              .collection('SchoolListCollection')
-                              .doc(UserCredentialsController.schoolId)
-                              .collection(UserCredentialsController.batchId!)
-                              .doc(UserCredentialsController.batchId)
-                              .collection('classes')
-                              .doc(UserCredentialsController.classId)
-                              .get(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return GooglePoppinsWidgets(
-                                  text: snapshot.data!.data()!['className'],
-                                  fontsize: 19.h);
-                            } else {
-                              return const Text('');
-                            }
-                          }),
-                      title: GooglePoppinsWidgets(
-                          text: "Class".tr, fontsize: 12.h),
+                      subtitle: Row(
+                        children: [
+                          FutureBuilder(
+                              future: FirebaseFirestore.instance
+                                  .collection('SchoolListCollection')
+                                  .doc(UserCredentialsController.schoolId)
+                                  .collection(UserCredentialsController.batchId!)
+                                  .doc(UserCredentialsController.batchId)
+                                  .collection('classes')
+                                  .doc(UserCredentialsController.classId)
+                                  .get(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  return GooglePoppinsWidgets(
+                                      text: snapshot.data!.data()!['className'],
+                                      fontsize: 19.h);
+                                } else {
+                                  return const Text('');
+                                }
+                              }),
+                        ],
+                      ),
+                      title: Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: "Class".tr, fontsize: 12.h),
+                        ],
+                      ),
                     ),
                     StudentEditListileWidget(
                       icon: Icons.bloodtype_outlined,
@@ -164,7 +188,13 @@ class StudentProfileEditPage extends StatelessWidget {
                             text: profilesnaps.data!.data()!['bloodgroup'],
                             fontsize: 19.h,
                           ),
-                          IconButton(
+                        ],
+                      ),
+                      title:  Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: "Blood Group".tr, fontsize: 12.h),
+                               IconButton(
                               onPressed: () async {
                                 await changeStudentData(
                                     context, 'Blood Group', 'bloodgroup');
@@ -175,14 +205,16 @@ class StudentProfileEditPage extends StatelessWidget {
                               ))
                         ],
                       ),
-                      title: GooglePoppinsWidgets(
-                          text: "Blood Group".tr, fontsize: 12.h),
                     ),
                     StudentEditListileWidget(
                       icon: Icons.home,
-                      subtitle: GooglePoppinsWidgets(
-                          text: profilesnaps.data!.data()!['houseName'],
-                          fontsize: 19.h),
+                      subtitle: Row(
+                        children: [
+                          GooglePoppinsWidgets(
+                              text: profilesnaps.data!.data()!['houseName'],
+                              fontsize: 19.h),
+                        ],
+                      ),
                       title: Row(
                         children: [
                           GooglePoppinsWidgets(
@@ -311,13 +343,14 @@ class StudentCircleAvatarImgeWidget extends StatelessWidget {
 
 changeStudentData(BuildContext context, String hintText, String updateValue) {
   final formkey = GlobalKey<FormState>();
+  final StudentProfileEditController studentProfileEditController = Get.put(StudentProfileEditController());
   TextEditingController editvalueController = TextEditingController();
   return showDialog(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return Form(
-        key: formkey,
+        key: studentProfileEditController. formKey,
         child: AlertDialog(
           title: Text('Edit $hintText'),
           content: SingleChildScrollView(

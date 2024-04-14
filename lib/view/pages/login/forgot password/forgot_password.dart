@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/view/pages/login/forgot%20password/reset_password.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
@@ -11,12 +13,12 @@ import 'package:vidya_veechi/widgets/login_button.dart';
 import 'package:vidya_veechi/view/widgets/textformfield_login.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 class ForgotPassword extends StatelessWidget {
   ForgotPassword({super.key});
   TextEditingController emailForgotController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final PasswordFormController passwordFormController = Get.put(PasswordFormController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class ForgotPassword extends StatelessWidget {
                         text: "Please Enter Your Email ID", fontsize: 20),
                     kHeight30,
                     Form(
-                      key: formKey,
+                      key: passwordFormController. formKey,
                       child: SigninTextFormfield(
                           obscureText: false,
                           hintText: 'Email ID',

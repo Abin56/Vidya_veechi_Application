@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 
 import '../../../../../controllers/student_controller/profile_edit_controllers/parent_profile_edit_controller.dart';
 import '../../../../../controllers/userCredentials/user_credentials.dart';
@@ -34,7 +35,7 @@ class CircleAvatharImageSelectionWidgetParent extends StatelessWidget {
               child: CircleAvatar(
                 radius: 20,
                 backgroundColor: Color.fromARGB(255, 52, 50, 50),
-                child: Icon(Icons.edit),
+                child: Icon(Icons.edit,color: cWhite,),
               ),
             ),
           ),

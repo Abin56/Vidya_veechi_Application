@@ -16,7 +16,7 @@ class TestMonthlyElevatedButton extends StatelessWidget {
           shape: const StadiumBorder(),
           minimumSize: const Size(double.infinity, 50)),
       onPressed: voidCallback,
-      child: Text(title),
+      child: Text(title,style: TextStyle(color: cWhite),),
     );
   }
 }

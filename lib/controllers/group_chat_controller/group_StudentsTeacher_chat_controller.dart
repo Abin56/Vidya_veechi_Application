@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
 import 'package:vidya_veechi/view/pages/chat/group_chats/group_chat.dart';
@@ -610,13 +611,14 @@ class TeacherGroupChatController extends GetxController {
 
 createChatGroups(BuildContext context, String chatValue) async {
   final formKey = GlobalKey<FormState>();
+  final GroupFormController groupFormController = Get.put(GroupFormController());
   TextEditingController groupNameController = TextEditingController();
   showDialog(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return Form(
-        key: formKey,
+        key: groupFormController. formKey,
         child: FutureBuilder(
             future: FirebaseFirestore.instance
                 .collection('SchoolListCollection')

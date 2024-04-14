@@ -88,7 +88,7 @@ class ParentSignUpPage extends StatelessWidget {
             Stack(children: [
               SingleChildScrollView(
                 child: Form(
-                  key: formKey,
+                  key: parentSignUpController. formKey,
                   child: Column(
                     children: [
                       Obx(

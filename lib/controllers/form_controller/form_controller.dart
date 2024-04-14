@@ -16,3 +16,100 @@ class FormController extends GetxController {
     }
   }
 }
+
+
+class EditResultFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class PasswordFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class GroupFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class ChapterUploadController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class AcheviementsFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class ExamResultFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class CreateExamFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+class UploadStudyMaterialsFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}

@@ -128,7 +128,8 @@ attendanceOnClickDetailsShowing() {
                   ),
                 ),
                 Container(
-                  color: const Color.fromARGB(255, 88, 167, 123).withOpacity(0.3),
+                  color: adminePrimayColor.withOpacity(0.2),
+                  //const Color.fromARGB(255, 88, 167, 123).withOpacity(0.3),
                   width: double.infinity,
                   height: 600.h,
                   child: ListView.separated(

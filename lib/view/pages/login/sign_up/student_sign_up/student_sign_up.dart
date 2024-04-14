@@ -28,6 +28,8 @@ class StudentSignInPageScreen extends StatelessWidget {
   final StudentSignUpController studentController =
       Get.find<StudentSignUpController>();
 
+      final StudentSignUpController studentSignUpController =Get.put(StudentSignUpController());
+
   StudentSignInPageScreen({super.key});
 
   @override
@@ -89,7 +91,7 @@ class StudentSignInPageScreen extends StatelessWidget {
             Stack(children: [
               SingleChildScrollView(
                 child: Form(
-                  key: formKey1,
+                  key: studentSignUpController. formKey,
                   child: Column(
                     children: [
                       Obx(

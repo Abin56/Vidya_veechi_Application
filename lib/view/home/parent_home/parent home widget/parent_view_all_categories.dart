@@ -69,8 +69,8 @@ class ParentViewAllCategories extends StatelessWidget {
                       const Text(
                         'NOTIFICATIONS',
                         style: TextStyle(
-                            color:
-                                Color.fromARGB(255, 48, 88, 86),
+                            color:adminePrimayColor,
+                               // Color.fromARGB(255, 48, 88, 86),
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
@@ -79,7 +79,8 @@ class ParentViewAllCategories extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             height: 1,
-                            color: const Color.fromARGB(255, 48, 88, 86)
+                            color:adminePrimayColor
+                            // const Color.fromARGB(255, 48, 88, 86)
                                 .withOpacity(0.1),
                           ),
                         ),
@@ -106,15 +107,14 @@ class ParentViewAllCategories extends StatelessWidget {
                             title: Text(
                               "Holiday",
                               style: TextStyle(
-                                  color: Color.fromARGB(
-                                      255, 48, 88, 86),
+                                  color:adminePrimayColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(
                               "Tommorow is Holiday",
                               style: TextStyle(
-                                color: Color.fromARGB(255, 48, 88, 86),
+                                color: adminePrimayColor,
                               ),
                             ),
                           );

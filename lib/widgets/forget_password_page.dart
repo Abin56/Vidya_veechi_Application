@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
@@ -12,6 +14,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final PasswordFormController passwordFormController = Get.put(PasswordFormController());
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   // ignore: unused_field
@@ -28,7 +31,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: _formKey,
+          key: passwordFormController. formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

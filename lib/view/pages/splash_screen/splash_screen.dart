@@ -26,7 +26,7 @@ import '../../home/guardian_home/guardian_main_home.dart';
 import '../../widgets/fonts/google_monstre.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({super.key});
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();

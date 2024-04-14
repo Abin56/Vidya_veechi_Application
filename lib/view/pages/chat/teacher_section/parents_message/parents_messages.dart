@@ -6,7 +6,6 @@ import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../search_parents/search_parents.dart';
 import 'chats/parent_chats.dart';

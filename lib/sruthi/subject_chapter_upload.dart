@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/sruthi/widget/exm_upload_textformfeild.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
@@ -17,6 +19,8 @@ import '../controllers/userCredentials/user_credentials.dart';
 class ChapterUpoload extends StatelessWidget {
   ChapterUpoload({super.key, required this.subjectID});
 
+  final ChapterUploadController chapterUploadController = Get.put(ChapterUploadController());
+
   TextEditingController chapterNumberController = TextEditingController();
   TextEditingController chapterNameController = TextEditingController();
   TextEditingController subjectNameController = TextEditingController();
@@ -24,7 +28,7 @@ class ChapterUpoload extends StatelessWidget {
   String subjectID;
 
   Uuid idgen = const Uuid();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future<void> uploadChapters(id) async {
     FirebaseFirestore.instance
@@ -68,7 +72,7 @@ class ChapterUpoload extends StatelessWidget {
         backgroundColor: adminePrimayColor,
       ),
       body: Form(
-        key: _formKey,
+        key: chapterUploadController. formKey,
         child: Column(
           children: [
             kHeight20,
@@ -109,7 +113,7 @@ class ChapterUpoload extends StatelessWidget {
               onTap: () {
                 //print('subjejctname: ${subjectNameController.text}');
 
-                if (_formKey.currentState!.validate()) {
+                if (formKey.currentState!.validate()) {
                   String generatedDocID =
                       subjectNameController.text.trim() + idgen.v1();
                   uploadChapters(generatedDocID).then((value) {

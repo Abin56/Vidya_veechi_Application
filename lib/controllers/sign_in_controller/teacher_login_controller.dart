@@ -19,6 +19,8 @@ class TeacherLoginController extends GetxController {
   TextEditingController emailIdController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   String name = "TeacherLoginController";
+    final formKey = GlobalKey<FormState>();
+
   //sign in with email and password firebase authentification
   void signIn(BuildContext context) async {
     if (emailIdController.text.isEmpty || passwordController.text.isEmpty) {

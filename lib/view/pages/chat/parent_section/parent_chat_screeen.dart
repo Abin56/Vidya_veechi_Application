@@ -108,7 +108,8 @@ class ParentChatScreen extends StatelessWidget {
           ],
         ),
         floatingActionButton: CircleAvatar(
-          backgroundColor: Color.fromARGB(255, 88, 167, 123),
+          backgroundColor: adminePrimayColor,
+          //Color.fromARGB(255, 88, 167, 123),
           radius: 25,
           child: Center(
             child: IconButton(

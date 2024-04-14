@@ -101,12 +101,12 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
                 textSize: 20,
                 text: 'Profile'.tr,
               ),
-               GButton(
-              iconSize: 30,
-              textSize: 20,
-              icon: Icons.chat,
-              text: 'Ask\nDoubt'.tr,
-            )
+            //    GButton(
+            //   iconSize: 30,
+            //   textSize: 20,
+            //   icon: Icons.chat,
+            //   text: 'Ask\nDoubt'.tr,
+            // )
             ],
             selectedIndex: _page,
             onTabChange: (value) {

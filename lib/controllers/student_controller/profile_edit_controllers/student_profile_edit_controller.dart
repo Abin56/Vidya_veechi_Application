@@ -15,6 +15,9 @@ import '../../../view/pages/login/dujo_login_screen.dart';
 import '../../userCredentials/user_credentials.dart';
 
 class StudentProfileEditController {
+
+   final formKey = GlobalKey<FormState>();
+   
   RxBool isLoading = RxBool(false);
   Future<void> changeStudentEmail(
       String newEmail, BuildContext context, String password) async {

@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
@@ -33,6 +35,7 @@ class UploadStudyMaterial extends StatefulWidget {
  final String chapterName;
  final String chapterID;
   bool stat = false;
+
 
   @override
   State<UploadStudyMaterial> createState() => _UploadStudyMaterialState();
@@ -133,6 +136,7 @@ class _UploadStudyMaterialState extends State<UploadStudyMaterial> {
     }
   }
 
+  final UploadStudyMaterialsFormController uploadStudyMaterialsFormController = Get.put(UploadStudyMaterialsFormController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -169,7 +173,7 @@ class _UploadStudyMaterialState extends State<UploadStudyMaterial> {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Form(
-                  key: _formKey,
+                  key: uploadStudyMaterialsFormController.formKey,
                   child: Column(
                     children: [
                       GoogleMonstserratWidgets(
