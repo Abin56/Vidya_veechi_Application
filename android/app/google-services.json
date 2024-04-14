@@ -23,6 +23,44 @@
           "other_platform_oauth_client": []
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341868646352:android:545b0bce3975d4ac9a33d5",
+        "android_client_info": {
+          "package_name": "in.vidyaveechi.leptonpluscommunic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNm7KuQcHr2J9gUHpzBa7aJk2xt7zT8DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341868646352:android:a07b1572ca82e87c9a33d5",
+        "android_client_info": {
+          "package_name": "in.vidyaveechi.leptonpluscommunications"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNm7KuQcHr2J9gUHpzBa7aJk2xt7zT8DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
     }
   ],
   "configuration_version": "1"
