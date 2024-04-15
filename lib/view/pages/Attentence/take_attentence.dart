@@ -5,20 +5,23 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:vidya_veechi/controllers/attendence_controller/attendence_controller.dart';
+import 'package:vidya_veechi/controllers/teacher_attendence/teacher_attendence.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/attendence_model/attendence-model.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../../widgets/button_container_widget.dart';
 
 class TakeAttenenceScreen extends StatefulWidget {
   final AttendanceController attendanceController =
       Get.put(AttendanceController());
+  final TeacherAttendenceController teacherAttendenceController =
+      Get.put(TeacherAttendenceController());
   final String periodNumber;
   final String periodTokenID;
   final String schoolID;
@@ -45,7 +48,7 @@ class TakeAttenenceScreen extends StatefulWidget {
 
 class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
   String schoolTimer = '';
-
+  bool? pageLoading = false;
   bool? present;
   Map<String, bool?> presentlist = {};
   String timer = '';
@@ -112,6 +115,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
     log(finalSubjectName);
 
     getSchoolName();
+    pageLoading = true;
   }
 
   @override
@@ -134,6 +138,8 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
             .orderBy('studentName', descending: false)
             .snapshots(),
         builder: (context, snapshot) {
+    
+
           final date = DateTime.now();
           DateTime parseDate = DateTime.parse(date.toString());
           final month = DateFormat('MMMM-yyyy');
@@ -141,6 +147,10 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
           final DateFormat formatter = DateFormat('dd-MM-yyyy');
           String formatted = formatter.format(parseDate);
           if (snapshot.hasData) {
+                  if (pageLoading == true) {
+            log("Page Loading........................");
+            markAllStudentPresent(snapshot);
+          }
             return ListView.separated(
                 itemBuilder: (context, index) {
                   final datetimeNow = DateTime.now();
@@ -164,7 +174,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                           },
                           child: ButtonContainerWidget(
                             curving: 10,
-                            colorindex:  2,
+                            colorindex: 2,
                             height: 60,
                             width: 150,
                             child: Center(
@@ -641,6 +651,8 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                   .doc(widget.periodTokenID)
                                   .delete()
                                   .then((value) async {
+                                await widget.teacherAttendenceController
+                                    .workingDaysMark(widget.classID);
                                 await widget.attendanceController.activeClasses(
                                     classID: widget.classID,
                                     subjectDocid: widget.subjectID,
@@ -692,5 +704,20 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
         );
       },
     );
+  }
+
+  Future<void> markAllStudentPresent(
+      AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) async {
+    for (var i = 0; i < snapshot.data!.docs.length; i++) {
+      presentlist[snapshot.data!.docs[i]['studentName']!] = true;
+      attendanceList.add(AttendanceStudentModel(
+          Date: DateTime.now().toString(),
+          present: true,
+          studentName: snapshot.data!.docs[i]['studentName'],
+          uid: snapshot.data!.docs[i]['docid']));
+
+      log(attendanceList[i].toJson());
+    }
+    pageLoading = false;
   }
 }
