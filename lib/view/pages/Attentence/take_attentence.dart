@@ -12,6 +12,7 @@ import 'package:vidya_veechi/controllers/attendence_controller/attendence_contro
 import 'package:vidya_veechi/controllers/teacher_attendence/teacher_attendence.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/attendence_model/attendence-model.dart';
+import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 
@@ -107,6 +108,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
 
   @override
   void initState() {
+    getClassName();
     super.initState();
     getSchoolTimer();
 
@@ -116,10 +118,11 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
 
     getSchoolName();
     pageLoading = true;
-  }
+  }   String className = '';
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Take Attendance'.tr),
@@ -138,8 +141,6 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
             .orderBy('studentName', descending: false)
             .snapshots(),
         builder: (context, snapshot) {
-    
-
           final date = DateTime.now();
           DateTime parseDate = DateTime.parse(date.toString());
           final month = DateFormat('MMMM-yyyy');
@@ -147,10 +148,10 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
           final DateFormat formatter = DateFormat('dd-MM-yyyy');
           String formatted = formatter.format(parseDate);
           if (snapshot.hasData) {
-                  if (pageLoading == true) {
-            log("Page Loading........................");
-            markAllStudentPresent(snapshot);
-          }
+            if (pageLoading == true) {
+              log("Page Loading........................");
+              markAllStudentPresent(snapshot);
+            }
             return ListView.separated(
                 itemBuilder: (context, index) {
                   final datetimeNow = DateTime.now();
@@ -653,6 +654,9 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                   .then((value) async {
                                 await widget.teacherAttendenceController
                                     .workingDaysMark(widget.classID);
+                                await widget.teacherAttendenceController
+                                    .addTeacherAttendence(
+                                        widget.classID, className,widget.periodNumber);
                                 await widget.attendanceController.activeClasses(
                                     classID: widget.classID,
                                     subjectDocid: widget.subjectID,
@@ -719,5 +723,19 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
       log(attendanceList[i].toJson());
     }
     pageLoading = false;
+  }
+
+  Future<String> getClassName() async {
+    await server
+        .collection(UserCredentialsController.batchId!)
+        .doc(UserCredentialsController.batchId)
+        .collection('classes')
+        .doc(widget.classID)
+        .get()
+        .then((value) async {
+          className =
+    value.data()?['className']  ;
+    });
+    return className;
   }
 }
