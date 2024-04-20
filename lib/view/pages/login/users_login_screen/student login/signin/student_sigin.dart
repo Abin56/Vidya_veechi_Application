@@ -177,7 +177,7 @@ class StudentSignInScreen extends StatelessWidget {
                           showToast(msg: "Password Missmatch".tr);
                           return;
                         }
-
+                         if(studentSignUpController.formKey.currentState!.validate()){
                        if (UserCredentialsController
                                   .studentModel?.parentPhoneNumber !=
                               null) {
@@ -196,6 +196,7 @@ class StudentSignInScreen extends StatelessWidget {
                           } else {
                             showToast(msg: "Please select student detail.".tr);
                           }
+                         }
                       },
                       child: loginButtonWidget(
                         height: 60,

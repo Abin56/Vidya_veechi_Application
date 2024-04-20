@@ -176,6 +176,7 @@ class TeachersSignUpScreen extends StatelessWidget {
                     padding: EdgeInsets.only(top: 20.h),
                     child: GestureDetector(
                       onTap: () {
+                        if(teacherSignUpController. formKey.currentState!.validate()){
                       if (UserCredentialsController
                                       .teacherModel?.teacherPhNo !=
                                   '' ||
@@ -205,6 +206,7 @@ class TeachersSignUpScreen extends StatelessWidget {
                           } else {
                             showToast(msg: "Please select student detail.");
                           }
+                        }
                       },
                       child: loginButtonWidget(
                         height: 60,

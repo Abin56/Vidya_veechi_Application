@@ -90,7 +90,7 @@ class StudentSignInPageScreen extends StatelessWidget {
             kHeight10,
             Stack(children: [
               SingleChildScrollView(
-                child: Form(
+                child: Form( 
                   key: studentSignUpController. formKey,
                   child: Column(
                     children: [
