@@ -15,7 +15,7 @@ import 'recorded_class_subject_wise.dart';
 class RecordedClassChapterUploadPage extends StatelessWidget {
   RecordedClassChapterUploadPage(
       {super.key, required this.subjectID, required this.subjectName});
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RecordedClassController _recordedClassController =
       Get.put(RecordedClassController());
   final String subjectID;
@@ -57,7 +57,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
               kHeight20,
               GestureDetector(
                 onTap: () {
-                  if (_formKey.currentState?.validate() ?? false) {
+                  if (_recordedClassController.formKey.currentState?.validate() ?? false) {
                     _recordedClassController
                         .createChapter(subjectID, subjectName)
                         .then((value) {

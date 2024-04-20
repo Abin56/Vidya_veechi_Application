@@ -27,7 +27,7 @@ class TeachersSignUpScreen extends StatelessWidget {
   int pageIndex;
   TeachersSignUpScreen({required this.pageIndex, super.key});
   PasswordField hideGetxController = Get.find<PasswordField>();
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   TeacherSignUpController teacherSignUpController =
       Get.put(TeacherSignUpController());
 

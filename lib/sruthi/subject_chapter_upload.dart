@@ -28,7 +28,7 @@ class ChapterUpoload extends StatelessWidget {
   String subjectID;
 
   Uuid idgen = const Uuid();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  //final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future<void> uploadChapters(id) async {
     FirebaseFirestore.instance
@@ -113,7 +113,7 @@ class ChapterUpoload extends StatelessWidget {
               onTap: () {
                 //print('subjejctname: ${subjectNameController.text}');
 
-                if (formKey.currentState!.validate()) {
+                if (chapterUploadController.formKey.currentState!.validate()) {
                   String generatedDocID =
                       subjectNameController.text.trim() + idgen.v1();
                   uploadChapters(generatedDocID).then((value) {

@@ -26,7 +26,7 @@ class TeacherLoginScreen extends StatelessWidget {
   TeacherLoginController teacherLoginController =
       Get.put(TeacherLoginController());
 
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

@@ -124,7 +124,7 @@ class ParentEditListileWidget extends StatelessWidget {
   final Widget subtitle;
   final IconData icon;
   final IconData? editicon;
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   String newEmail = "";
   ParentProfileEditController parentProfileEditController =
       Get.put(ParentProfileEditController());
@@ -200,7 +200,7 @@ class ParentEditListileWidget extends StatelessWidget {
                                     : TextButton(
                                         child: Text("Update".tr),
                                         onPressed: () {
-                                          if (formKey.currentState!
+                                          if (parentProfileEditController.formKey.currentState!
                                               .validate()) {
                                             parentProfileEditController
                                                 .changeParentEmail(

@@ -17,7 +17,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 class ForgotPassword extends StatelessWidget {
   ForgotPassword({super.key});
   TextEditingController emailForgotController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   final PasswordFormController passwordFormController = Get.put(PasswordFormController());
 
   @override
@@ -83,7 +83,7 @@ class ForgotPassword extends StatelessWidget {
 
             GestureDetector(
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
+                  if (passwordFormController.formKey.currentState!.validate()) {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
                       return  ResetPassword();
                     },));

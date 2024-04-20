@@ -25,7 +25,7 @@ class RecordedClassUploadPage extends StatelessWidget {
   final String chapterName;
   final String chapterID;
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+ // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final RecordedClassController _recordedClassController =
       Get.put(RecordedClassController());
@@ -64,7 +64,7 @@ class RecordedClassUploadPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Form(
-                  key: _formKey,
+                  key:_recordedClassController. formKey,
                   child: Column(
                     children: [
                       GoogleMonstserratWidgets(
@@ -91,7 +91,7 @@ class RecordedClassUploadPage extends StatelessWidget {
                       ),
                       kHeight40,
                       SubmitButtonRecordedClassWidget(
-                        formKey: _formKey,
+                        formKey: _recordedClassController. formKey,
                         subjectID: subjectID,
                         chapterID: chapterID,
                         subjectName: subjectName,

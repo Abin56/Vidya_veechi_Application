@@ -15,7 +15,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final PasswordFormController passwordFormController = Get.put(PasswordFormController());
-  final _formKey = GlobalKey<FormState>();
+ // final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   // ignore: unused_field
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -56,7 +56,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: adminePrimayColor),
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
+                    if (passwordFormController. formKey.currentState!.validate()) {
                       await resetPassword(_emailController.text.trim());
                     }
                   },

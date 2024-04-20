@@ -18,7 +18,7 @@ class ResetPassword extends StatelessWidget {
   ResetPassword({super.key});
   TextEditingController newpasswordController = TextEditingController();
   TextEditingController confirmpasswordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  //final formKey = GlobalKey<FormState>();
   final PasswordField passwordField = Get.put(PasswordField());
 
   @override
@@ -114,7 +114,7 @@ class ResetPassword extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
+                  if (passwordField. formKey.currentState!.validate()) {
                      Navigator.push(context, MaterialPageRoute(builder: (context) {
                       return  ForgotPassword();
                     },));

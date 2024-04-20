@@ -237,7 +237,7 @@ editMark(BuildContext context, String classID, String examId, String subjectID,
   log('examid :::: $examId');
   log('subjectid :::$subjectID');
   log('studentid ::: $studentID');
-  final formkey = GlobalKey<FormState>();
+  //final formkey = GlobalKey<FormState>();
   final EditResultFormController editResultFormController = Get.put(EditResultFormController());
   TextEditingController markController = TextEditingController();
   return showDialog(
@@ -271,7 +271,7 @@ editMark(BuildContext context, String classID, String examId, String subjectID,
           TextButton(
             child: const Text('Update'),
             onPressed: () async {
-              if (formkey.currentState?.validate() ?? false) {
+              if ( editResultFormController. formKey.currentState?.validate() ?? false) {
                 FirebaseFirestore.instance
                     .collection('SchoolListCollection')
                     .doc(UserCredentialsController.schoolId)
@@ -327,7 +327,7 @@ editGrade(BuildContext context, String classID, String examId, String subjectID,
   log('examid :::: $examId');
   log('subjectid :::$subjectID');
   log('studentid ::: $studentID');
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   final EditResultFormController editResultFormController = Get.put(EditResultFormController());
   TextEditingController markController = TextEditingController();
   return showDialog(
@@ -360,7 +360,7 @@ editGrade(BuildContext context, String classID, String examId, String subjectID,
           TextButton(
             child: const Text('Update'),
             onPressed: () async {
-              if (formKey.currentState?.validate() ?? false) {
+              if (editResultFormController. formKey.currentState?.validate() ?? false) {
                 FirebaseFirestore.instance
                     .collection('SchoolListCollection')
                     .doc(UserCredentialsController.schoolId)

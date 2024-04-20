@@ -32,7 +32,7 @@ class _AddAchievementsState extends State<AddAchievements> {
   bool loadingStatus = false;
 
   final AcheviementsFormController acheviementsFormController = Get.put(AcheviementsFormController());
-  final formKey = GlobalKey<FormState>();
+  //final formKey = GlobalKey<FormState>();
 
   void addClassTeacherAchievementsToFirebase() {
     setState(() {
@@ -209,7 +209,7 @@ class _AddAchievementsState extends State<AddAchievements> {
                                 )
                               : MaterialButton(
                                   onPressed: () {
-                                    if (formKey.currentState!.validate()) {
+                                    if (acheviementsFormController.formKey.currentState!.validate()) {
                                       addClassTeacherAchievementsToFirebase();
                                       checkfield();
                                     }
