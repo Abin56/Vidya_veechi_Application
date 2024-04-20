@@ -49,7 +49,7 @@ class StudentSignUpController extends GetxController {
       .doc(UserCredentialsController.batchId ?? "")
       .collection("classes")
       .doc(UserCredentialsController.classId)
-      .collection("TempStudents");
+      .collection("Temp_Students");
 
 //fetching all students data from firebase
   Future<void> getStudentData() async {
