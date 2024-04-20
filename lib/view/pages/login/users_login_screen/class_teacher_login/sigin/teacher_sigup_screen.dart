@@ -2,7 +2,11 @@
 
 import 'dart:developer';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/teacher_signup_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/Text_hiden_Controller/password_field.dart';
@@ -16,10 +20,6 @@ import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:vidya_veechi/view/widgets/textformfield_login.dart';
 import 'package:vidya_veechi/widgets/login_button.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../userVerify_Phone_OTP/get_otp..dart';
 
@@ -176,8 +176,7 @@ class TeachersSignUpScreen extends StatelessWidget {
                     padding: EdgeInsets.only(top: 20.h),
                     child: GestureDetector(
                       onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          if (UserCredentialsController
+                      if (UserCredentialsController
                                       .teacherModel?.teacherPhNo !=
                                   '' ||
                               UserCredentialsController
@@ -206,7 +205,6 @@ class TeachersSignUpScreen extends StatelessWidget {
                           } else {
                             showToast(msg: "Please select student detail.");
                           }
-                        }
                       },
                       child: loginButtonWidget(
                         height: 60,

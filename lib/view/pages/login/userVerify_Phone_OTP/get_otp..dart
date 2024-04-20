@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable, file_names, camel_case_types
 
 import 'dart:developer';
+import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/pages/login/userVerify_Phone_OTP/verify_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,13 +55,15 @@ class UserSentOTPScreen extends StatelessWidget {
                 BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
                     if (state is AuthCodeSentState) {
-                       Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return UserVerifyOTPScreen(
-                          userpageIndex: userpageIndex,
-                          phoneNumber: phoneNumber,
-                          userEmail: userEmail,
-                          userPassword: userPassword);
-                          },));
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return UserVerifyOTPScreen(
+                              userpageIndex: userpageIndex,
+                              phoneNumber: phoneNumber,
+                              userEmail: userEmail,
+                              userPassword: userPassword);
+                        },
+                      ));
                       // Get.off(() => UserVerifyOTPScreen(
                       //     userpageIndex: userpageIndex,
                       //     phoneNumber: phoneNumber,
@@ -84,7 +87,7 @@ class UserSentOTPScreen extends StatelessWidget {
                               .sentOTP(phoneNumber);
                           log(phoneNumber);
                         },
-                        child: const Text('Send OTP'));
+                        child: const Text('Send OTP',style: TextStyle(color: cWhite),));
                   },
                 ),
               ],

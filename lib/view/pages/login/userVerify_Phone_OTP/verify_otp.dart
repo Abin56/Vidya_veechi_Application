@@ -2,14 +2,16 @@
 
 import 'dart:developer';
 
-import 'package:vidya_veechi/view/constant/sizes/constant.dart';
-import 'package:vidya_veechi/view/pages/login/sign_up/guardian_sign_up/guardian_signup.dart';
-import 'package:vidya_veechi/view/pages/login/sign_up/teacher_sign_up/teacher_sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/constant/sizes/constant.dart';
+import 'package:vidya_veechi/view/pages/login/sign_up/guardian_sign_up/guardian_signup.dart';
+import 'package:vidya_veechi/view/pages/login/sign_up/teacher_sign_up/teacher_sign_up.dart';
+import 'package:vidya_veechi/widgets/textformfield.dart';
 
 import '../../../../controllers/bloc/user_phone_otp/auth_cubit.dart';
 import '../../../../controllers/bloc/user_phone_otp/auth_state.dart';
@@ -85,14 +87,18 @@ class UserVerifyOTPScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Pinput(
-                    controller: otpController,
-                    length: 6,
-                    showCursor: true,
-                    onChanged: (value) {
-                      code = value;
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,right: 50,left: 50),
+                    child: TextFormFieldWidget(textEditingController: otpController,),
                   ),
+                  // Pinput(
+                  //   controller: otpController,
+                  //   length: 6,
+                  //   // showCursor: true,
+                  //   // onChanged: (value) {
+                  //   //   code = value;
+                  //   // },
+                  // ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -176,7 +182,7 @@ class UserVerifyOTPScreen extends StatelessWidget {
                           BlocProvider.of<AuthCubit>(context)
                               .verifyOTP(otpController.text);
                         },
-                        child: const Text('Verify Phone Number'),
+                        child: const Text('Verify Phone Number',style: TextStyle(color: cWhite),),
                       );
                     },
                   ),
