@@ -219,45 +219,84 @@ class AttendanceController extends GetxController {
     }
   }
 
-  Future<void> activeClasses(
-      {required String classID,
-      required String teacherDocid,
-      required String subjectName,
-      required String subjectDocid}) async {
-try {
-  log('activeClasses.........................');
+  Future<void> activeClasses({
+    required String classID,
+    required String teacherDocid,
+    required String subjectName,
+    required String periodID,
+    required String periodidNO,
+    required String month,
+  }) async {
+    try {
+      log('activeClasses.........................');
       final date = DateTime.now();
-    DateTime parseDate = DateTime.parse(date.toString());
- 
-    final DateFormat formatter = DateFormat('dd-MM-yyyy');
-    String formatted = formatter.format(parseDate);
-    await server
-        
-        .collection(UserCredentialsController.batchId!)
-        .doc(UserCredentialsController.batchId)
-        .collection('TodayActiveClasses')
-        .doc(formatted)
-        .set({'docid': formatted}).then((value) async {
+      DateTime parseDate = DateTime.parse(date.toString());
+
+      final DateFormat formatter = DateFormat('dd-MM-yyyy');
+      String formatted = formatter.format(parseDate);
       await server
-         
           .collection(UserCredentialsController.batchId!)
           .doc(UserCredentialsController.batchId)
           .collection('TodayActiveClasses')
           .doc(formatted)
-          .collection('Classes')
-          .doc(classID)
-          .set({
-        'docid': classID,
-        'teacherDocid': teacherDocid,
-        'subjectName': subjectName,
-        'subjectDocid': subjectDocid,
+          .set({'docid': formatted}).then((value) async {
+        await server
+            .collection(UserCredentialsController.batchId!)
+            .doc(UserCredentialsController.batchId)
+            .collection('TodayActiveClasses')
+            .doc(formatted)
+            .collection('Classes')
+            .doc(classID)
+            .set({
+          'docid': classID,
+          'teacherDocid': teacherDocid,
+          'subjectName': subjectName,
+          'periodID': periodID,
+          'periodidNO': periodidNO,
+        }).then((value) async {
+          int totalStudent = 0;
+          int absentStudents = 0;
+          int presentStudents = 0;
+          await server
+              .collection(UserCredentialsController.batchId!)
+              .doc(UserCredentialsController.batchId)
+              .collection('classes')
+              .doc(classID)
+              .collection('Attendence')
+              .doc(month)
+              .collection(month)
+              .doc(formatted)
+              .collection('Subjects')
+              .doc(periodID)
+              .collection('AttendenceList')
+              .get()
+              .then((value) async {
+            totalStudent = value.docs.length;
+            for (var i = 0; i < value.docs.length; i++) {
+              if (value.docs[i].data()['present'] == true) {
+                presentStudents = presentStudents + 1;
+              } else {
+                absentStudents = absentStudents + 1;
+              }
+            }
+            await server
+                .collection(UserCredentialsController.batchId!)
+                .doc(UserCredentialsController.batchId)
+                .collection('TodayActiveClasses')
+                .doc(formatted)
+                .collection('Classes')
+                .doc(classID)
+                .set({
+              'totalStudent': totalStudent,
+              'absentStudents': absentStudents,
+              'presentStudents': presentStudents
+            }, SetOptions(merge: true));
+          });
+        });
       });
-    });
-  
-} catch (e) {
-  log(e.toString());
-  
-}
+    } catch (e) {
+      log(e.toString());
+    }
   }
 
   @override

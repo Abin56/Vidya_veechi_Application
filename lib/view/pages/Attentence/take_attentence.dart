@@ -676,7 +676,9 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                 });
                                 await widget.attendanceController.activeClasses(
                                     classID: widget.classID,
-                                    subjectDocid: widget.subjectID,
+                                    periodID: widget.periodTokenID,
+                                    month: monthwise,
+                                    periodidNO: widget.periodNumber,
                                     subjectName: widget.subjectName,
                                     teacherDocid:
                                         FirebaseAuth.instance.currentUser!.uid);
