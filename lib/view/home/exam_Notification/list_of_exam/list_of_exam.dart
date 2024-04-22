@@ -159,7 +159,7 @@ class _TPublicLevelState extends State<TPublicLevel> {
             }));
   }
 
-  final _formKey = GlobalKey<FormState>();
+//  final _formKey = GlobalKey<FormState>();
   _addSubjectsToServer(BuildContext context, String examdocID) async {
     return showDialog(
       context: context,
@@ -290,7 +290,7 @@ class _TPublicLevelState extends State<TPublicLevel> {
             TextButton(
               child: Text('Add'.tr),
               onPressed: () async {
-                if (_formKey.currentState!.validate()) {
+                if (addExamTimeTableController.formKey.currentState!.validate()) {
                   addExamTimeTableController
                       .uploadSubject(
                           'School Level',
@@ -489,7 +489,7 @@ class _TStateLevelState extends State<TStateLevel> {
             }));
   }
 
-  final _formKey = GlobalKey<FormState>();
+ // final _formKey = GlobalKey<FormState>();
 
   _addSubjectsToServer(BuildContext context, String examdocID) async {
     return showDialog(
@@ -610,7 +610,7 @@ class _TStateLevelState extends State<TStateLevel> {
             TextButton(
                 child: Text('Add'.tr),
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
+                  if (addExamTimeTableController.formKey.currentState!.validate()) {
                     addExamTimeTableController
                         .uploadSubject(
                             'Public Level',

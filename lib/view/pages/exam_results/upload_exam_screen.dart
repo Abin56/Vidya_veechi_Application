@@ -29,7 +29,7 @@ class ExamResultsView extends StatefulWidget {
 }
 
 class _ExamResultsViewState extends State<ExamResultsView> {
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   final ExamResultFormController examResultFormController = Get.put(ExamResultFormController());
 
   TextEditingController obtainedMark = TextEditingController();
@@ -109,7 +109,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                     GestureDetector(
                         onTap: () async {
                           final docid = uuid.v1();
-                          if (formKey.currentState!.validate()) {
+                          if (examResultFormController. formKey.currentState!.validate()) {
                             if (schoolLevelExamistValue != null &&
                                 allClassStudentsListValue != null) {
                               setState(() {

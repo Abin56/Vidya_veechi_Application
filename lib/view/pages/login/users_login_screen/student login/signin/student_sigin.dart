@@ -24,7 +24,7 @@ class StudentSignInScreen extends StatelessWidget {
   final PasswordField hideGetxController = Get.find<PasswordField>();
   StudentSignInScreen({required this.pageIndex, super.key});
 
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   final StudentSignUpController studentSignUpController =
       Get.put(StudentSignUpController());
 
@@ -177,7 +177,7 @@ class StudentSignInScreen extends StatelessWidget {
                           showToast(msg: "Password Missmatch".tr);
                           return;
                         }
-
+                         if(studentSignUpController.formKey.currentState!.validate()){
                        if (UserCredentialsController
                                   .studentModel?.parentPhoneNumber !=
                               null) {
@@ -196,6 +196,7 @@ class StudentSignInScreen extends StatelessWidget {
                           } else {
                             showToast(msg: "Please select student detail.".tr);
                           }
+                         }
                       },
                       child: loginButtonWidget(
                         height: 60,

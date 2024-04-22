@@ -137,7 +137,7 @@ class _UploadStudyMaterialState extends State<UploadStudyMaterial> {
   }
 
   final UploadStudyMaterialsFormController uploadStudyMaterialsFormController = Get.put(UploadStudyMaterialsFormController());
-  final _formKey = GlobalKey<FormState>();
+  //final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +247,7 @@ class _UploadStudyMaterialState extends State<UploadStudyMaterial> {
                             )
                           : GestureDetector(
                               onTap: () async {
-                                if (_formKey.currentState!.validate()) {
+                                if (uploadStudyMaterialsFormController.formKey.currentState!.validate()) {
                                   await pickAFile(filee);
                                   await uploadToFirebase().then((value) {
                                     topicController.clear();

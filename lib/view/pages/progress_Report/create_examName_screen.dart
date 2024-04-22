@@ -28,7 +28,7 @@ final CreateExamFormController createExamFormController = Get.put(CreateExamForm
     int columnCount = 3;
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    final formkey = GlobalKey<FormState>();
+    //final formkey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         title: Text("Progress Report".tr),
@@ -165,7 +165,7 @@ final CreateExamFormController createExamFormController = Get.put(CreateExamForm
                   TextButton(
                       child: Text('Create'.tr),
                       onPressed: () async {
-                        if (formkey.currentState?.validate() ?? false) {
+                        if (createExamFormController. formKey.currentState?.validate() ?? false) {
                           await FirebaseFirestore.instance
                               .collection("SchoolListCollection")
                               .doc(schooilID)

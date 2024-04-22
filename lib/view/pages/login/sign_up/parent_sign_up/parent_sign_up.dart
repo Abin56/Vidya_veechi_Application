@@ -27,7 +27,7 @@ class ParentSignUpPage extends StatelessWidget {
   final getImageController = Get.put(GetImage());
   ParentSignUpController parentSignUpController =
       Get.put(ParentSignUpController());
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+ // GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -226,7 +226,7 @@ class ParentSignUpPage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 20),
                         child: GestureDetector(
                           onTap: () async {
-                            if (formKey.currentState?.validate() ?? false) {
+                            if (parentSignUpController. formKey.currentState?.validate() ?? false) {
                               if (getImageController
                                   .pickedImage.value.isEmpty) {
                                 return showToast(

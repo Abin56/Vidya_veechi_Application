@@ -342,7 +342,7 @@ class StudentCircleAvatarImgeWidget extends StatelessWidget {
 }
 
 changeStudentData(BuildContext context, String hintText, String updateValue) {
-  final formkey = GlobalKey<FormState>();
+ // final formkey = GlobalKey<FormState>();
   final StudentProfileEditController studentProfileEditController = Get.put(StudentProfileEditController());
   TextEditingController editvalueController = TextEditingController();
   return showDialog(
@@ -374,7 +374,7 @@ changeStudentData(BuildContext context, String hintText, String updateValue) {
             TextButton(
               child: const Text('Update'),
               onPressed: () async {
-                if (formkey.currentState!.validate()) {
+                if ( studentProfileEditController.formKey.currentState!.validate()) {
                   await FirebaseFirestore.instance
                       .collection("SchoolListCollection")
                       .doc(UserCredentialsController.schoolId)

@@ -23,7 +23,7 @@ import '../../../../widgets/fonts/google_poppins.dart';
 
 class StudentSignInPageScreen extends StatelessWidget {
   final getImageController = Get.put(GetImage());
-  GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+ // GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
 
   final StudentSignUpController studentController =
       Get.find<StudentSignUpController>();
@@ -90,7 +90,7 @@ class StudentSignInPageScreen extends StatelessWidget {
             kHeight10,
             Stack(children: [
               SingleChildScrollView(
-                child: Form(
+                child: Form( 
                   key: studentSignUpController. formKey,
                   child: Column(
                     children: [

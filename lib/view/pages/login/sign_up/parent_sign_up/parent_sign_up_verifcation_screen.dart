@@ -24,7 +24,7 @@ class ParentSignUpFirstScreen extends StatelessWidget {
   final PasswordField hideGetxController = Get.find<PasswordField>();
   ParentSignUpFirstScreen({required this.pageIndex, super.key});
 
-  final formKey = GlobalKey<FormState>();
+  //final formKey = GlobalKey<FormState>();
   final ParentSignUpController parentSignUpController =
       Get.put(ParentSignUpController());
 
@@ -173,7 +173,7 @@ class ParentSignUpFirstScreen extends StatelessWidget {
                             return;
                           }
 
-                          if (formKey.currentState!.validate()) {
+                          if (parentSignUpController. formKey.currentState!.validate()) {
                             if (UserCredentialsController
                                     .parentModel?.parentPhoneNumber !=
                                 null) {
