@@ -67,7 +67,7 @@ class RecordedClassMainPage extends StatelessWidget {
                     children:
                         List.generate(snapshot.data!.docs.length, (index) {
                       teacherSubjectController.getSubject(
-                          snapshot.data!.docs[index]['teacherdocid']);
+                          snapshot.data?.docs[index]['teacherId']);
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -123,7 +123,7 @@ class RecordedClassMainPage extends StatelessWidget {
                                                           .getSubject(snapshot
                                                                   .data
                                                                   ?.docs[index]
-                                                              ['teacherdocid']),
+                                                              ['teacherId']),
                                                   builder: (context, snap) {
                                                     return SizedBox(
                                                       height: 40,
