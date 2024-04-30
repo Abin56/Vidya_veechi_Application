@@ -125,3 +125,15 @@ class RecordedClassCntl extends GetxController {
     }
   }
 }
+
+class HomeWorkController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
