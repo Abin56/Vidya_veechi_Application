@@ -118,11 +118,12 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
 
     getSchoolName();
     pageLoading = true;
-  }   String className = '';
+  }
+
+  String className = '';
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Take Attendance'.tr),
@@ -655,11 +656,29 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                 await widget.teacherAttendenceController
                                     .workingDaysMark(widget.classID);
                                 await widget.teacherAttendenceController
-                                    .addTeacherAttendence(
-                                        widget.classID, className,widget.periodNumber);
+                                    .addTeacherAttendence(widget.classID,
+                                        className, widget.periodNumber)
+                                    .then((value) async {
+                                  widget.teacherAttendenceController
+                                      .studentstatusTeacherDayWise(
+                                          classID: widget.classID,
+                                          month: monthwise,
+                                          date: formatted,
+                                          subjectID: widget.periodTokenID)
+                                      .then((value) async {
+                                    widget.teacherAttendenceController
+                                        .studentstatusTeacherMonthWise(
+                                            classID: widget.classID,
+                                            month: monthwise,
+                                            date: formatted,
+                                            subjectID: widget.periodTokenID);
+                                  });
+                                });
                                 await widget.attendanceController.activeClasses(
                                     classID: widget.classID,
-                                    subjectDocid: widget.subjectID,
+                                    periodID: widget.periodTokenID,
+                                    month: monthwise,
+                                    periodidNO: widget.periodNumber,
                                     subjectName: widget.subjectName,
                                     teacherDocid:
                                         FirebaseAuth.instance.currentUser!.uid);
@@ -733,8 +752,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
         .doc(widget.classID)
         .get()
         .then((value) async {
-          className =
-    value.data()?['className']  ;
+      className = value.data()?['className'];
     });
     return className;
   }
