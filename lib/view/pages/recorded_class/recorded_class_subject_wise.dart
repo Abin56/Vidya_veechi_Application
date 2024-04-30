@@ -9,8 +9,7 @@ import '../../widgets/fonts/google_poppins.dart';
 import 'uploaded_recorded_classes_page.dart';
 
 class RecordedClassSubjectWisePage extends StatelessWidget {
-  const RecordedClassSubjectWisePage({Key? key, required this.subjectID})
-      : super(key: key);
+  const RecordedClassSubjectWisePage({super.key, required this.subjectID});
 
   final String subjectID;
 

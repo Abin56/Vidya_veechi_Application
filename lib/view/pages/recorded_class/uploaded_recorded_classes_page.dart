@@ -27,7 +27,7 @@ class RecordedClassUploadPage extends StatelessWidget {
 
  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final RecordedClassController _recordedClassController =
+  final RecordedClassController recordedClsCtr =
       Get.put(RecordedClassController());
 
   @override
@@ -64,7 +64,7 @@ class RecordedClassUploadPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Form(
-                  key:_recordedClassController. formKey,
+                  key:recordedClsCtr. formKey,
                   child: Column(
                     children: [
                       GoogleMonstserratWidgets(
@@ -78,20 +78,20 @@ class RecordedClassUploadPage extends StatelessWidget {
                       kHeight20,
                       TextFormField(
                         validator: checkFieldEmpty,
-                        controller: _recordedClassController.topicController,
+                        controller: recordedClsCtr.topicController,
                         decoration:
                             const InputDecoration(hintText: 'Enter Topic'),
                       ),
                       kHeight20,
                       TextFormField(
                         validator: checkFieldEmpty,
-                        controller: _recordedClassController.titleController,
+                        controller: recordedClsCtr.titleController,
                         decoration:
                             const InputDecoration(hintText: 'Enter Title'),
                       ),
                       kHeight40,
                       SubmitButtonRecordedClassWidget(
-                        formKey: _recordedClassController. formKey,
+                        formKey: recordedClsCtr. formKey,
                         subjectID: subjectID,
                         chapterID: chapterID,
                         subjectName: subjectName,
@@ -141,20 +141,20 @@ class RecordedClassUploadPage extends StatelessWidget {
 
 class SubmitButtonRecordedClassWidget extends StatelessWidget {
   SubmitButtonRecordedClassWidget({
-    Key? key,
+    super.key,
     required this.formKey,
     required this.subjectID,
     required this.chapterID,
     required this.subjectName,
     required this.chapterName,
-  }) : super(key: key);
+  });
 
   final GlobalKey<FormState> formKey;
   final String subjectID;
   final String chapterID;
   final String subjectName;
   final String chapterName;
-  final RecordedClassController _recordedClassController =
+  final RecordedClassController recordedClassController =
       Get.put(RecordedClassController());
 
   @override
@@ -162,8 +162,8 @@ class SubmitButtonRecordedClassWidget extends StatelessWidget {
     return GestureDetector(
         onTap: () async {
           if (formKey.currentState?.validate() ?? false) {
-            if (_recordedClassController.file.value != null) {
-              _recordedClassController.uploadToFirebase(
+            if (recordedClassController.file.value != null) {
+              recordedClassController.uploadToFirebase(
                 context: context,
                 subjectID: subjectID,
                 chapterID: chapterID,
@@ -181,13 +181,13 @@ class SubmitButtonRecordedClassWidget extends StatelessWidget {
           height: 60.w,
           width: 300.w,
           child: Center(child: Obx(() {
-            if (_recordedClassController.isLoading.value) {
+            if (recordedClassController.isLoading.value) {
               final progress =
-                  (_recordedClassController.progressData.value * 100).toInt();
+                  (recordedClassController.progressData.value * 100).toInt();
               return Stack(alignment: Alignment.center, children: [
                 Center(
                   child: CircularProgressIndicator(
-                    value: _recordedClassController.progressData.value,
+                    value: recordedClassController.progressData.value,
                     valueColor: const AlwaysStoppedAnimation<Color>(
                       Colors.white,
                     ),

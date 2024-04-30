@@ -16,7 +16,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
   RecordedClassChapterUploadPage(
       {super.key, required this.subjectID, required this.subjectName});
   //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final RecordedClassController _recordedClassController =
+  final RecordedClassController rcrdClsCtr =
       Get.put(RecordedClassController());
   final String subjectID;
   final String subjectName;
@@ -37,28 +37,28 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: _recordedClassController.formKey,
+          key: rcrdClsCtr.formKey,
           child: Column(
             children: [
               kHeight20,
               ExamUploadTextFormFeild(
                   validator: checkFieldEmpty,
                   textfromController:
-                      _recordedClassController.chapterNumberController,
+                      rcrdClsCtr.chapterNumberController,
                   text: "Chapter No.".tr,
                   hintText: "Chapter Number".tr),
               kHeight20,
               ExamUploadTextFormFeild(
                   validator: checkFieldEmpty,
                   textfromController:
-                      _recordedClassController.chapterNameController,
+                      rcrdClsCtr.chapterNameController,
                   text: "Chapter Name".tr,
                   hintText: "Chapter Name".tr),
               kHeight20,
               GestureDetector(
                 onTap: () {
-                  if (_recordedClassController.formKey.currentState?.validate() ?? false) {
-                    _recordedClassController
+                  if (rcrdClsCtr.formKey.currentState?.validate() ?? false) {
+                    rcrdClsCtr
                         .createChapter(subjectID, subjectName)
                         .then((value) {
                       return showDialog(
@@ -88,7 +88,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
                   width: 300.w,
                   child: Center(
                     child: Obx(
-                        () => _recordedClassController.chapterIsLoading.value
+                        () => rcrdClsCtr.chapterIsLoading.value
                             ? const CircularProgressIndicator()
                             : Text(
                                 "Create Chapter".tr,
