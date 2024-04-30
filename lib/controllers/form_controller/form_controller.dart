@@ -113,3 +113,15 @@ class UploadStudyMaterialsFormController extends GetxController {
     }
   }
 }
+
+class RecordedClassCntl extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
