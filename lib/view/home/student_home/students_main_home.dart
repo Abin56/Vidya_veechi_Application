@@ -4,6 +4,7 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/drawer/student_drawer.dart';
 import 'package:vidya_veechi/view/home/student_home/student__homepage.dart';
@@ -71,7 +72,7 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/images/vidyaveechi.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),

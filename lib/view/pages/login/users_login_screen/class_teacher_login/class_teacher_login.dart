@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:vidya_veechi/controllers/sign_in_controller/class_teacher_login_controller.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
@@ -41,7 +42,7 @@ class ClassTeacherLoginScreen extends StatelessWidget {
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/images/vidyaveechi.png',
+            appLogo,
             color: Colors.white,
             fit: BoxFit.cover,
           )),

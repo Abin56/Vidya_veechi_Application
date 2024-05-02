@@ -8,6 +8,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:vidya_veechi/controllers/log_out/user_logout_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/class_teacher_HOme/class_teacher_home.dart';
 import 'package:vidya_veechi/view/home/class_teacher_HOme/graph_class_teacher/assignmentGraph.dart';
@@ -81,7 +82,7 @@ class _ClassTeacherMainHomeScreenState
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/images/vidyaveechi.png',
+            appLogo,
             color: Colors.black,
             fit: BoxFit.cover,
           )),

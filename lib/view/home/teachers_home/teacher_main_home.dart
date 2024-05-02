@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/teachers_home/notification_part_tcr.dart';
 import 'package:vidya_veechi/view/home/teachers_home/teacher_home.dart';
@@ -62,7 +63,7 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/images/vidyaveechi.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),
