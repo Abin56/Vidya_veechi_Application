@@ -207,6 +207,6 @@ Future<void> sendPushMessage(String token, String body, String title) async {
   }
 }
 
-final server = FirebaseFirestore.instance
+final   server = FirebaseFirestore.instance
     .collection("SchoolListCollection")
     .doc(UserCredentialsController.schoolId);

@@ -6,10 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/student_attendence_model/student_attendece_model.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
+import 'package:vidya_veechi/widgets/notification_color/notification_color_widget.dart';
 
 class AttendanceController extends GetxController {
   RxInt notificationTimer = 0.obs;
@@ -18,6 +20,8 @@ class AttendanceController extends GetxController {
   RxString schoolName = ''.obs;
   RxString dateformated = ''.obs;
   RxString timeformated = ''.obs;
+  final PushNotificationController pushNotificationController = Get.put(PushNotificationController());
+
   dailyAttendanceController(String classID) async {
     final firebase = FirebaseFirestore.instance
         .collection('SchoolListCollection')
@@ -144,6 +148,16 @@ class AttendanceController extends GetxController {
               abStsParentUIDList[i],
               'Sir/Madam, your child was absent on for $subject period at ${timeformated.value} on ${dateformated.value}, സർ/മാഡം, ${dateformated.value} തീയതി ${timeformated.value} ഉണ്ടായിരുന്ന $subject പീരീഡിൽ നിങ്ങളുടെ കുട്ടി ഹാജരായിരുന്നില്ല',
               'Absent Notification from $studentName');
+
+              pushNotificationController.userNotification(
+                icon: WarningNotifierSetup().icon,
+                messageText: '''Sir/Madam, your child was absent on for $subject period at ${timeformated.value} on ${dateformated.value}, സർ/മാഡം, ${dateformated.value} തീയതി ${timeformated.value} ഉണ്ടായിരുന്ന $subject പീരീഡിൽ നിങ്ങളുടെ കുട്ടി ഹാജരായിരുന്നില്ല',
+                'Absent Notification from $studentName''',
+                headerText: 'Absent on ${dateformated.value}',
+                whiteshadeColor: WarningNotifierSetup().whiteshadeColor,
+                containerColor: WarningNotifierSetup().containerColor
+               );
+
         }
       });
       log("sendAbNotificationToParent Success....");

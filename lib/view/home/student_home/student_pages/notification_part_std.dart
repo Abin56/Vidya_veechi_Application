@@ -1,12 +1,14 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 
 class NotificationPartOfStd extends StatelessWidget {
-  const NotificationPartOfStd({super.key});
-
+   NotificationPartOfStd({super.key});
+  final PushNotificationController pushNotificationController = Get.put(PushNotificationController());
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,7 +53,9 @@ class NotificationPartOfStd extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () async{
+                       await  pushNotificationController.removeAllNotification();
+                        },
                         child: const Text(
                           "yes",
                           style: TextStyle(color: cblack),
@@ -198,7 +202,9 @@ class NotificationPartOfStd extends StatelessWidget {
                                         ),
                                       ),
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () async{
+                                        await  pushNotificationController.removeSingleNotification(data['docid']);
+                                        },
                                         child: const Text(
                                           "yes",
                                           style: TextStyle(color: cblack),

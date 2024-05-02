@@ -45,6 +45,7 @@ dependencies:
   flutter_markdown:
   flutter_staggered_animations:
   flutter_svg:
+  simple_ripple_animation:
   fluttertoast:
   fl_chart:
   get:
