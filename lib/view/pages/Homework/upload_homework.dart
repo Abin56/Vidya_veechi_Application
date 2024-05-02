@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/pages/Homework/upload_part.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:vidya_veechi/widgets/login_button.dart';
@@ -42,7 +43,15 @@ class UploadHomework extends StatelessWidget {
               kHeight50,
               Center(
                   child:
-                      loginButtonWidget(height: 40, width: 80, text: "Upload")),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            return UploadHomeworkToTeacher(homeWorkName: '',homeworkID: '',);
+                          },));
+                        },
+                        child: loginButtonWidget(
+                          height: 40, width: 80, text: "Upload"),
+                      )),
             ],
           ),
         ),

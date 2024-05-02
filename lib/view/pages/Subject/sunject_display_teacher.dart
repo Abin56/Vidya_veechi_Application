@@ -10,8 +10,7 @@ import '../../constant/sizes/sizes.dart';
 import '../../widgets/fonts/google_poppins.dart';
 
 class SubjectWiseDisplayTeacher extends StatelessWidget {
-  const SubjectWiseDisplayTeacher({Key? key, required this.subjectID})
-      : super(key: key);
+  const SubjectWiseDisplayTeacher({super.key, required this.subjectID});
 
  final String subjectID;
 

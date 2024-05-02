@@ -1,3 +1,4 @@
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/recorded_class/recorded_classes_shows_page.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
@@ -25,8 +26,9 @@ class RecordedClassUploadPage extends StatelessWidget {
   final String chapterName;
   final String chapterID;
 
- // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  
+final RecordedClassCntl cntrl = Get.put(RecordedClassCntl());
   final RecordedClassController recordedClsCtr =
       Get.put(RecordedClassController());
 
@@ -64,7 +66,7 @@ class RecordedClassUploadPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Form(
-                  key:recordedClsCtr. formKey,
+                  key: cntrl.formKey,
                   child: Column(
                     children: [
                       GoogleMonstserratWidgets(
@@ -90,13 +92,69 @@ class RecordedClassUploadPage extends StatelessWidget {
                             const InputDecoration(hintText: 'Enter Title'),
                       ),
                       kHeight40,
-                      SubmitButtonRecordedClassWidget(
-                        formKey: recordedClsCtr. formKey,
-                        subjectID: subjectID,
-                        chapterID: chapterID,
-                        subjectName: subjectName,
-                        chapterName: chapterName,
-                      ),
+                      GestureDetector(
+                          onTap: () async {
+                            if (cntrl.formKey.currentState
+                                    ?.validate() ??
+                                false) {
+                              if (recordedClsCtr.file.value != null) {
+                                recordedClsCtr.uploadToFirebase(
+                                  context: context,
+                                  subjectID: subjectID,
+                                  chapterID: chapterID,
+                                  subjectName: subjectName,
+                                  chapterName: chapterName,
+                                );
+                              } else {
+                                showToast(msg: "Please Select File");
+                              }
+                            }
+                          },
+                          child: ButtonContainerWidget(
+                            curving: 18,
+                            colorindex: 2,
+                            height: 60.w,
+                            width: 300.w,
+                            child: Center(child: Obx(() {
+                              if (recordedClsCtr.isLoading.value) {
+                                final progress =
+                                    (recordedClsCtr.progressData.value * 100)
+                                        .toInt();
+                                return Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Center(
+                                        child: CircularProgressIndicator(
+                                          value:
+                                              recordedClsCtr.progressData.value,
+                                          valueColor:
+                                              const AlwaysStoppedAnimation<
+                                                  Color>(
+                                            Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        '$progress%',
+                                        style: GoogleFonts.montserrat(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      )
+                                    ]);
+                              } else {
+                                return Text(
+                                  "Submit",
+                                  style: GoogleFonts.montserrat(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                );
+                              }
+                            })),
+                          )),
                       kHeight20,
                       GestureDetector(
                         onTap: () async {
