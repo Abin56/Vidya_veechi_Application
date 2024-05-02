@@ -21,7 +21,7 @@ class LoginScreenDesign extends StatelessWidget {
             //  color: cblue,
             image: DecorationImage(
               // Image.asset(""),
-              image: AssetImage('assets/images/logo5.png'),
+              image: AssetImage('officialLogo'),
             ),
           ),
         ),

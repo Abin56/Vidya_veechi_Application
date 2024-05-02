@@ -33,7 +33,7 @@ class MobileHomePage extends StatelessWidget {
                                 width: 50,
                                 color: Colors.transparent,
                                 child: Image.asset(
-                                  "assets/images/logo5.png",
+                                  "officialLogo",
                                 ),
                               ),
                             ),
