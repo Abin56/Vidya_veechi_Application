@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/get_teacher_subject/get_sub.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../../view/widgets/container_image.dart';
 import '../../../widgets/Iconbackbutton.dart';
@@ -150,7 +150,7 @@ class RecordedClassMainPage extends StatelessWidget {
                                         color: cWhite,
                                       ),
                                     ],
-                                  ),
+                                  )
                                 ]),
                           ),
                         ),
