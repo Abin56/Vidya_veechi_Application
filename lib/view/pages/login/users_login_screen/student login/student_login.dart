@@ -1,4 +1,5 @@
 import 'package:vidya_veechi/controllers/sign_in_controller/student_sign_in_controller.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/student%20login/signin/student_sigin.dart';
@@ -37,7 +38,7 @@ class StudentLoginScreen extends StatelessWidget {
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/images/vidyaveechi.png',
+            appLogo,
             color: Colors.white,
             fit: BoxFit.cover,
           )),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/parent_home/parent_home_screen.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
@@ -61,7 +62,7 @@ class _ParentMainHomeScreenState extends State<ParentMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/images/vidyaveechi.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),

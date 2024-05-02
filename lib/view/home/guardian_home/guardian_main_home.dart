@@ -1,3 +1,4 @@
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/main.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _GuardianMainHomeScreenState extends State<GuardianMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/images/vidyaveechi.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),

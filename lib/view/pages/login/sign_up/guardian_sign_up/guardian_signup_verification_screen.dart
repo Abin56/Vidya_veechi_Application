@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/model/Text_hiden_Controller/password_field.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -43,7 +44,7 @@ class GuardianSignUpFirstScreen extends StatelessWidget {
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/images/vidyaveechi.png',
+            appLogo,
             color: Colors.white,
             fit: BoxFit.cover,
           )),
