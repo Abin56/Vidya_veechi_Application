@@ -13,13 +13,17 @@ import 'package:hive_flutter/adapters.dart';
 // import 'package:play_video/play_video.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:vidya_veechi/controllers/bloc/user_phone_otp/auth_state.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/firebase_options.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/constant/responsive.dart';
 import 'package:vidya_veechi/view/language/language.dart';
+import 'package:vidya_veechi/view/language/select_language/select_language.dart';
 import 'package:vidya_veechi/view/pages/chat_gpt/providers/chats_provider.dart';
 import 'package:vidya_veechi/view/pages/chat_gpt/providers/models_provider.dart';
 import 'package:vidya_veechi/view/pages/login/dujo_login_screen.dart';
+import 'package:vidya_veechi/view/pages/splash_screen/splash_screen.dart';
 
 import 'controllers/bloc/user_phone_otp/auth_cubit.dart';
 import 'helper/shared_pref_helper.dart';
@@ -92,51 +96,51 @@ class MyApp extends StatelessWidget {
                 translations: GetxLanguage(),
                 locale: Locale(languageCode, countryCode),
                 debugShowCheckedModeBanner: false,
-                home: Scaffold(
-                  body: Center(
-                    child: 
-                    Container(
-                      color: Colors.amber,
-  width: 200.0,
-  height: 200.0,
-  child: Shimmer.fromColors(
-    baseColor: Colors.grey.withOpacity(0.3),
-    highlightColor: Colors.grey.withOpacity(0.1),
-    child: Container(
-      color: Colors.white,
-    ),
-  ),)
+           //     home:        Scaffold(
+  //                 body: Center(
+  //                   child: 
+  //                   Container(
+  //                     color: Colors.amber,
+  // width: 200.0,
+  // height: 200.0,
+  // child: Shimmer.fromColors(
+  //   baseColor: Colors.grey.withOpacity(0.3),
+  //   highlightColor: Colors.grey.withOpacity(0.1),
+  //   child: Container(
+  //     color: Colors.white,
+  //   ),
+  // ),)
 
-                  ),
+  //                 ),
+  //               ),
+                home: BlocBuilder<AuthCubit, AuthState>(
+                  buildWhen: (oldState, newState) {
+                    return oldState is AuthInitialState;
+                  },
+                  builder: (context, state) {
+                    ResponsiveApp.serMq(context);
+                    if (state is AuthLoggedInState) {
+                      if (SharedPreferencesHelper.getString("langCode") !=
+                          null) {
+                        return const SplashScreen();
+                      } else {
+                        return const SelectLanguage();
+                      }
+                    } else if (state is AuthLoggedOutState) {
+                      if (SharedPreferencesHelper.getString("langCode") !=
+                          null) {
+                        return const SplashScreen();
+                      } else {
+                        return const SelectLanguage();
+                      }
+                    }
+                    if (SharedPreferencesHelper.getString("langCode") != null) {
+                      return const SplashScreen();
+                    } else {
+                      return const SelectLanguage();
+                    }
+                  },
                 ),
-                // home: BlocBuilder<AuthCubit, AuthState>(
-                //   buildWhen: (oldState, newState) {
-                //     return oldState is AuthInitialState;
-                //   },
-                //   builder: (context, state) {
-                //     ResponsiveApp.serMq(context);
-                //     if (state is AuthLoggedInState) {
-                //       if (SharedPreferencesHelper.getString("langCode") !=
-                //           null) {
-                //         return SplashScreen();
-                //       } else {
-                //         return const SelectLanguage();
-                //       }
-                //     } else if (state is AuthLoggedOutState) {
-                //       if (SharedPreferencesHelper.getString("langCode") !=
-                //           null) {
-                //         return SplashScreen();
-                //       } else {
-                //         return const SelectLanguage();
-                //       }
-                //     }
-                //     if (SharedPreferencesHelper.getString("langCode") != null) {
-                //       return SplashScreen();
-                //     } else {
-                //       return const SelectLanguage();
-                //     }
-                //   },
-                // ),
               ),
             ),
           );
