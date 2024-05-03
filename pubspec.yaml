@@ -80,6 +80,7 @@ dependencies:
   photo_view:
   video_player:
   chewie:
+  shimmer:
   adaptive_ui_layout: ^1.0.1
 flutter_icons:
   android: true
