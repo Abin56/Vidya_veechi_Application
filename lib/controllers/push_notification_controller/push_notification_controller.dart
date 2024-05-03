@@ -242,9 +242,11 @@ class PushNotificationController extends GetxController {
     });
   }
 
-  Future<void> userNotification ({required IconData icon, required String messageText,required String headerText,required Color whiteshadeColor,required Color containerColor,})async{
+  Future<void> userNotification ({required String parentID, required IconData icon, required String messageText,required String headerText,required Color whiteshadeColor,required Color containerColor,})async{
     final String docid = uuid.v1();
-    final details = NotificationModel(
+   try {
+    log('Calling user notification');
+      final details = NotificationModel(
       icon: icon,
       messageText: messageText, 
       headerText: headerText, 
@@ -255,9 +257,12 @@ class PushNotificationController extends GetxController {
       dateTime: DateTime.now().toString());
     await server
     .collection("AllUsersDeviceID")
-    .doc(FirebaseAuth.instance.currentUser?.uid)
+    .doc(parentID)
     .collection("Notification_Message")
     .doc(docid)
     .set(details.toMap());
+   } catch (e) {
+     
+   }
   }
 }
