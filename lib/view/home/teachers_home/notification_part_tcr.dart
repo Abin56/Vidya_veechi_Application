@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -60,7 +61,7 @@ class NotificationPartTcr extends StatelessWidget {
           stream: server
               .collection('AllUsersDeviceID')
               .doc(FirebaseAuth.instance.currentUser!.uid)
-              .collection("Notification_Message")
+              .collection("Notification_Message").orderBy('dateTime',descending: true)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -76,53 +77,63 @@ class NotificationPartTcr extends StatelessWidget {
                           shape: const BeveledRectangleBorder(),
                           context: context,
                           builder: (context) {
-                            return Container(
-                              color: Color(data['whiteshadeColor']),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Container(
-                                    color: Color(data['containerColor']),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 18),
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          IconData(
-                                            data['icon'],
-                                            fontFamily: 'MaterialIcons',
+                            server
+                                .collection('AllUsersDeviceID')
+                                .doc(FirebaseAuth.instance.currentUser!.uid)
+                                .collection("Notification_Message")
+                                .doc(data['docid'])
+                                .update({'open': true});
+                            return SingleChildScrollView(
+                              child: Container(
+                                color: Color(data['whiteshadeColor']),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      color: Color(data['containerColor']),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 18),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            IconData(
+                                              data['icon'],
+                                              fontFamily: 'MaterialIcons',
+                                            ),
+                                            size: 25,
+                                            color: Colors.white,
                                           ),
-                                          size: 25,
-                                          color: Colors.white,
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Text(
-                                          data['headerText'],
-                                          // "Holiday",
-                                          style: const TextStyle(
-                                              color: cWhite,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 20),
-                                    child: Text(
-                                      data['messageText'],
-                                      // " Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday",
-                                      textAlign: TextAlign.justify,
-                                      style: const TextStyle(
-                                        fontSize: 17,
-                                        color: cWhite,
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              data['headerText'],
+                                              // "Holiday",
+                                              style: const TextStyle(
+                                                  color: cWhite,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 20),
+                                      child: Text(
+                                        data['messageText'],
+                                        // " Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday",
+                                        textAlign: TextAlign.justify,
+                                        style: const TextStyle(
+                                          fontSize: 17,
+                                          color: cWhite,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -150,14 +161,27 @@ class NotificationPartTcr extends StatelessWidget {
                               ),
                             ),
                           ),
-                          title: Text(
-                            data['headerText'],
-                            // "Holiday",
-                            style: const TextStyle(
-                                color: cWhite,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
+                          title: data['open'] == true
+                              ? Text(
+                                  data['headerText'],
+                                  // "Holiday",
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 48, 88, 86),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              : Shimmer.fromColors(
+                                  baseColor: Colors.black,
+                                  highlightColor: Colors.grey.withOpacity(0.1),
+                                  child: Text(
+                                    data['headerText'],
+                                    // "Holiday",
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 48, 88, 86),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
                           subtitle: Text(
                             data['messageText'],
                             // "Tommorow is Holiday",
