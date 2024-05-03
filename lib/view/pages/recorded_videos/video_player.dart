@@ -17,8 +17,8 @@ class _PlayVideoFlickerState extends State<PlayVideoFlicker> {
     flickManager = FlickManager(
       videoPlayerController: VideoPlayerController.networkUrl(
         Uri.parse(
-          // widget.videoUrl,
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+          widget.videoUrl,
+          // 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
         ),
       ),
       autoPlay: false,

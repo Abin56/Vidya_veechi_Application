@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/recorded_chapter_controller/recorded_chapter_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/recorded_videos/video_player.dart';
@@ -23,6 +24,9 @@ class RecordedVideosList extends StatefulWidget {
 }
 
 class _RecordedVideosListState extends State<RecordedVideosList> {
+  final RecordedChapterController chapterController =
+      Get.put(RecordedChapterController());
+
   final ScrollController controller = ScrollController();
   double _scrollPosition = 0.0;
   final double _scrollMax = 1000.0; // adjust this to your content's height
@@ -37,8 +41,10 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
     _timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
       if (_scrollPosition < _scrollMax) {
         _scrollPosition += 1.0;
-        controller.animateTo(_scrollPosition,
-            duration: const Duration(milliseconds: 50), curve: Curves.linear);
+        if (controller.hasClients) {
+          controller.animateTo(_scrollPosition,
+              duration: const Duration(milliseconds: 50), curve: Curves.linear);
+        }
       } else {
         _scrollPosition = 0.0;
         controller.jumpTo(0.0);
@@ -48,277 +54,289 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
 
   @override
   void dispose() {
+    controller.dispose();
     _timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController topicController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: adminePrimayColor,
         title: const Text("Recorded classes"),
       ),
       body: SafeArea(
-          child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection('SchoolListCollection')
-                  .doc(UserCredentialsController.schoolId)
-                  .collection(UserCredentialsController.batchId!)
-                  .doc(UserCredentialsController.batchId)
-                  .collection('classes')
-                  .doc(UserCredentialsController.classId)
-                  .collection('subjects')
-                  .doc(widget.subjectID)
-                  .collection('recorded_classes_chapters')
-                  .doc(widget.chapterID)
-                  .collection('RecordedClass')
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.separated(
-                    itemCount: snapshot.data!.docs.length,
-                    separatorBuilder: ((context, index) {
-                      return kHeight10;
-                    }),
-                    itemBuilder: (context, index) {
-                      final data = snapshot.data!.docs[index];
-
-                      return Padding(
-                        padding:
-                            EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
-                        child: Card(
-                          color: const Color.fromARGB(236, 228, 244, 255),
-                          clipBehavior: Clip.antiAlias,
-                          child: ListTile(
-                            contentPadding: const EdgeInsets.all(0),
-                            shape: const BeveledRectangleBorder(
-                                side: BorderSide(
-                                    color: Color.fromARGB(255, 125, 169, 225),
-                                    width: 0.2)),
-                            leading: SizedBox(
-                              width: 50,
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 17, right: 8),
-                                    child: Text(
-                                      "${index + 1}",
-                                      style: TextStyle(
-                                        fontSize: 16.h,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+        child: StreamBuilder(
+          stream: server
+              .collection(UserCredentialsController.batchId!)
+              .doc(UserCredentialsController.batchId)
+              .collection('classes')
+              .doc(UserCredentialsController.classId)
+              .collection('subjects')
+              .doc(widget.subjectID)
+              .collection('recorded_classes_chapters')
+              .doc(widget.chapterID)
+              .collection('RecordedClass')
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.separated(
+                itemCount: snapshot.data!.docs.length,
+                separatorBuilder: ((context, index) {
+                  return kHeight10;
+                }),
+                itemBuilder: (context, index) {
+                  final data = snapshot.data!.docs[index];
+                  return Padding(
+                    padding:
+                        EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
+                    child: Card(
+                      color: const Color.fromARGB(236, 228, 244, 255),
+                      clipBehavior: Clip.antiAlias,
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.all(0),
+                        shape: const BeveledRectangleBorder(
+                            side: BorderSide(
+                                color: Color.fromARGB(255, 125, 169, 225),
+                                width: 0.2)),
+                        leading: SizedBox(
+                          width: 50,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 17, right: 8),
+                                child: Text(
+                                  "${index + 1}",
+                                  style: TextStyle(
+                                    fontSize: 16.h,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  const VerticalDivider(
-                                    color: cgrey,
-                                    indent: 5,
-                                    endIndent: 5,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
-                            title: SingleChildScrollView(
-                              controller: controller,
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: [
-                                  Text(
-                                    ' ${data['topicName']}',
-                                    // " Eagleeee tsyrdktdmgcn bzjdfhkahsg dhgghfhhds gfshtd sjhfkabfd aaa eeeasdbfkjbkfeeeee abfhabh .",
-                                    style: TextStyle(
-                                      fontSize: 18.h,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
+                              const VerticalDivider(
+                                color: cgrey,
+                                indent: 5,
+                                endIndent: 5,
+                              )
+                            ],
+                          ),
+                        ),
+                        title: SingleChildScrollView(
+                          controller: controller,
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Text(
+                                ' ${data['topicName']}',
+                                style: TextStyle(
+                                  fontSize: 18.h,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            trailing: SizedBox(
-                              width: 72,
-                              child: Row(
-                                children: [
-                                  GestureDetector(
+                            ],
+                          ),
+                        ),
+                        trailing: SizedBox(
+                          width: 72,
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              PlayVideoFlicker(
+                                                  videoUrl: data['downloadUrl'])
+                                          // Videoplayer(
+                                          //     videoUrl:
+                                          //         data['downloadUrl']),
+                                          ),
+                                    );
+                                  },
+                                  child: const Icon(
+                                      Icons.ondemand_video_outlined)),
+                              PopupMenuButton(
+                                padding: const EdgeInsets.all(0),
+                                itemBuilder: (context) {
+                                  return [
+                                    PopupMenuItem(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlayVideoFlicker(
-                                                      videoUrl:
-                                                          data['downloadUrl'])
-                                              // Videoplayer(
-                                              //     videoUrl:
-                                              //         data['downloadUrl']),
-                                              ),
-                                        );
-                                      },
-                                      child: const Icon(
-                                          Icons.ondemand_video_outlined)),
-                                  PopupMenuButton(
-                                    padding: const EdgeInsets.all(0),
-                                    itemBuilder: (context) {
-                                      return [
-                                        PopupMenuItem(
-                                          onTap: () {
-                                            topicController.text =
-                                                data['topicName'];
-                                            showModalBottomSheet(
-                                              context: context,
-                                              isDismissible: false,
-                                              builder: (context) {
-                                                return SingleChildScrollView(
-                                                  child: Container(
-                                                    padding: EdgeInsets.only(
-                                                        left: 20,
-                                                        right: 20,
-                                                        top: 25,
-                                                        bottom: MediaQuery.of(
-                                                                context)
+                                        chapterController.topicController.text =
+                                            data['topicName'];
+                                        showModalBottomSheet(
+                                          context: context,
+                                          isDismissible: false,
+                                          shape: const BeveledRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.zero)),
+                                          builder: (context) {
+                                            return SingleChildScrollView(
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                    left: 20,
+                                                    right: 20,
+                                                    top: 25,
+                                                    bottom:
+                                                        MediaQuery.of(context)
                                                             .viewInsets
                                                             .bottom),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
                                                       children: [
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              child: const Icon(
-                                                                  Icons.close),
-                                                            )
-                                                          ],
-                                                        ),
-                                                        const Text(
-                                                          "Topic Name *",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                        kHeight20,
-                                                        TextFormFieldWidget(
-                                                          textEditingController:
-                                                              topicController,
-                                                          hintText:
-                                                              "topic name",
-                                                        ),
-                                                        kHeight40,
-                                                        Center(
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {},
-                                                            child:
-                                                                ButtonContainerWidget(
-                                                              curving: 18,
-                                                              colorindex: 2,
-                                                              height: 60.h,
-                                                              width: 150.w,
-                                                              child: Center(
-                                                                child:
-                                                                    GooglePoppinsWidgets(
-                                                                  text:
-                                                                      "Update",
-                                                                  color: cWhite,
-                                                                  fontsize: 18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        kHeight20,
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: const Icon(
+                                                              Icons.close),
+                                                        )
                                                       ],
                                                     ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                          child: const Text(
-                                            "Edit",
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ),
-                                        PopupMenuItem(
-                                            onTap: () {
-                                              showDialog(
-                                                context: context,
-                                                barrierDismissible: false,
-                                                builder: (context) {
-                                                  return AlertDialog(
-                                                    content: const Text(
-                                                      "Do you want to delete the video?",
+                                                    const Text(
+                                                      "Topic Name *",
                                                       style: TextStyle(
-                                                          fontSize: 18),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
-                                                    actions: [
-                                                      ElevatedButton(
-                                                        onPressed: () {
+                                                    kHeight20,
+                                                    TextFormFieldWidget(
+                                                      textEditingController:
+                                                          chapterController
+                                                              .topicController,
+                                                      hintText: "topic name",
+                                                    ),
+                                                    kHeight40,
+                                                    Center(
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          chapterController
+                                                              .updateChapterTopic(
+                                                                  subjectID: widget
+                                                                      .subjectID,
+                                                                  chapterID: widget
+                                                                      .chapterID,
+                                                                  docId: data[
+                                                                      'docid']);
                                                           Navigator.pop(
                                                               context);
                                                         },
-                                                        child: const Text(
-                                                          "No",
-                                                          style: TextStyle(
-                                                              color: cblack),
+                                                        child:
+                                                            ButtonContainerWidget(
+                                                          curving: 18,
+                                                          colorindex: 2,
+                                                          height: 60.h,
+                                                          width: 150.w,
+                                                          child: Center(
+                                                            child:
+                                                                GooglePoppinsWidgets(
+                                                              text: "Update",
+                                                              color: cWhite,
+                                                              fontsize: 18,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                      ElevatedButton(
-                                                        onPressed: () {},
-                                                        child: const Text(
-                                                          "Yes",
-                                                          style: TextStyle(
-                                                              color: cblack),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  );
-                                                },
+                                                    ),
+                                                    kHeight20,
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: const Text(
+                                        "Edit",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                    PopupMenuItem(
+                                        onTap: () {
+                                          showDialog(
+                                            context: context,
+                                            barrierDismissible: false,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                content: const Text(
+                                                  "Do you want to delete the video?",
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                                actions: [
+                                                  ElevatedButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: const Text(
+                                                      "No",
+                                                      style: TextStyle(
+                                                          color: cblack),
+                                                    ),
+                                                  ),
+                                                  ElevatedButton(
+                                                    onPressed: () {
+                                                      chapterController
+                                                          .deleteRecordedClass(
+                                                              subjectID: widget
+                                                                  .subjectID,
+                                                              chapterID: widget
+                                                                  .chapterID,
+                                                              docId: data[
+                                                                  'docid']);
+                                                    },
+                                                    child: const Text(
+                                                      "Yes",
+                                                      style: TextStyle(
+                                                          color: cblack),
+                                                    ),
+                                                  )
+                                                ],
                                               );
                                             },
-                                            child: const Text(
-                                              " Delete",
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                              ),
-                                            )),
-                                      ];
-                                    },
-                                  ),
-                                ],
+                                          );
+                                        },
+                                        child: const Text(
+                                          " Delete",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        )),
+                                  ];
+                                },
                               ),
-                            ),
+                            ],
                           ),
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   );
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                return Center(
-                    child: Text('No Recorded Classes Uploaded Yet!'.tr));
-              })),
+                },
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Center(child: Text('No Recorded Classes Uploaded Yet!'.tr));
+          },
+        ),
+      ),
     );
   }
 }

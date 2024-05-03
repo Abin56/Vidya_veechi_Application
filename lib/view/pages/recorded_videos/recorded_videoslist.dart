@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/pages/recorded_videos/video_player.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../colors/colors.dart';
@@ -74,12 +75,14 @@ class RecordedVideosListScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: GestureDetector(
                             onTap: () {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                              //       return Videoplayer(
-                              //     videoUrl: snapshot.data!.docs[index]
-                              //         ['downloadUrl'],
-                              //   );
-                              //     },));
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return PlayVideoFlicker(
+                                    videoUrl: snapshot.data!.docs[index]
+                                        ['downloadUrl'],
+                                  );
+                                },
+                              ));
                               // Get.off(() => Videoplayer(
                               //       videoUrl: snapshot.data!.docs[index]
                               //           ['downloadUrl'],
