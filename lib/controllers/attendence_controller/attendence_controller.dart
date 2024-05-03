@@ -169,7 +169,7 @@ class AttendanceController extends GetxController {
             .collection('AllStudents')
             .doc(abStudentUIDList[i])
             .get();
-
+    
         abStsParentUIDList.add(parentresult.data()?['parentId'] ?? '');
         print("absent student ids ;;; ${abStudentUIDList[i]}");
         print("Parent ids ;;; ${abStsParentUIDList[i]}");
