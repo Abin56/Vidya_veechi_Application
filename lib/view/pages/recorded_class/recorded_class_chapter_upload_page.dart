@@ -1,12 +1,13 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/sruthi/widget/exm_upload_textformfeild.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/pages/recorded_class/recorded_chapters/recorded_chapters.dart';
 import 'package:vidya_veechi/view/widgets/button_container_widget.dart';
 import 'package:vidya_veechi/widgets/Iconbackbutton.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../controllers/recorded_class_controller/recorded_class_controller.dart';
 import '../../constant/sizes/constant.dart';
@@ -16,8 +17,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
   RecordedClassChapterUploadPage(
       {super.key, required this.subjectID, required this.subjectName});
   //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final RecordedClassController rcrdClsCtr =
-      Get.put(RecordedClassController());
+  final RecordedClassController rcrdClsCtr = Get.put(RecordedClassController());
   final String subjectID;
   final String subjectName;
   @override
@@ -33,6 +33,24 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
             Text("Chapter Upload".tr),
           ],
         ),
+        actions: [
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          RecordedClassChapters(subjectID: subjectID),
+                    ));
+              },
+              child: const Text(
+                "View",
+                style: TextStyle(fontSize: 18),
+              )),
+          const SizedBox(
+            width: 20,
+          ),
+        ],
         backgroundColor: adminePrimayColor,
       ),
       body: SingleChildScrollView(
@@ -43,15 +61,13 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
               kHeight20,
               ExamUploadTextFormFeild(
                   validator: checkFieldEmpty,
-                  textfromController:
-                      rcrdClsCtr.chapterNumberController,
+                  textfromController: rcrdClsCtr.chapterNumberController,
                   text: "Chapter No.".tr,
                   hintText: "Chapter Number".tr),
               kHeight20,
               ExamUploadTextFormFeild(
                   validator: checkFieldEmpty,
-                  textfromController:
-                      rcrdClsCtr.chapterNameController,
+                  textfromController: rcrdClsCtr.chapterNameController,
                   text: "Chapter Name".tr,
                   hintText: "Chapter Name".tr),
               kHeight20,
@@ -87,16 +103,15 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
                   height: 70.h,
                   width: 300.w,
                   child: Center(
-                    child: Obx(
-                        () => rcrdClsCtr.chapterIsLoading.value
-                            ? const CircularProgressIndicator()
-                            : Text(
-                                "Create Chapter".tr,
-                                style: GoogleFonts.montserrat(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w700),
-                              )),
+                    child: Obx(() => rcrdClsCtr.chapterIsLoading.value
+                        ? const CircularProgressIndicator()
+                        : Text(
+                            "Create Chapter".tr,
+                            style: GoogleFonts.montserrat(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700),
+                          )),
                   ),
                 ),
               ),
