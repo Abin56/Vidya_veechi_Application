@@ -250,13 +250,13 @@ class AttendanceController extends GetxController {
           for (var i = 0; i < abStsParentUIDList.length; i++) {
             pushNotificationController.userNotification(
                 parentID: abStsParentUIDList[i].parentId,
-                icon: WarningNotifierSetup().icon,
+                icon: AlertNotifierSetup().icon,
                 messageText:
                     '''Sir/Madam, your child was absent on for $subject period at ${timeformated.value} on ${dateformated.value}, സർ/മാഡം, ${dateformated.value} തീയതി ${timeformated.value} ഉണ്ടായിരുന്ന $subject പീരീഡിൽ നിങ്ങളുടെ കുട്ടി ഹാജരായിരുന്നില്ല',
                 'Absent Notification from ${abStsParentUIDList[i].studentName}''',
                 headerText: 'Absent on ${dateformated.value}',
-                whiteshadeColor: WarningNotifierSetup().whiteshadeColor,
-                containerColor: WarningNotifierSetup().containerColor);
+                whiteshadeColor: AlertNotifierSetup().whiteshadeColor,
+                containerColor: AlertNotifierSetup().containerColor);
           }
         });
       });

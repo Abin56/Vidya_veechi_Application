@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -203,7 +204,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           classID: UserCredentialsController.classId!), //Attendence...0
 
       const ViewHomeWorks(), // Home Works...............1
-       TimeTable(), // Time Table...........2
+       const TimeTable(), // Time Table...........2
       TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................3
       StudentSubjectScreen(), //Subjects...............4
 
