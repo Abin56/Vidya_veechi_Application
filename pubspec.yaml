@@ -45,6 +45,7 @@ dependencies:
   flutter_markdown:
   flutter_staggered_animations:
   flutter_svg:
+  simple_ripple_animation:
   fluttertoast:
   fl_chart:
   get:
@@ -78,6 +79,7 @@ dependencies:
   photo_view:
   video_player:
   chewie:
+  shimmer:
   adaptive_ui_layout: ^1.0.1
   flick_video_player:
 flutter_icons:
