@@ -1,15 +1,57 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 
 class NotificationPartTcr extends StatelessWidget {
-  const NotificationPartTcr({super.key});
+  NotificationPartTcr({super.key});
+  final PushNotificationController pushNotificationController =
+      Get.put(PushNotificationController());
 
   @override
   Widget build(BuildContext context) {
+    pushNotificationController.updateOpenMessageStatus();
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          GestureDetector(
+              onTap: () async {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text(
+                      "Do you want to remove the notification ?",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "No",
+                          style: TextStyle(color: cblack),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          await pushNotificationController
+                              .removeAllNotification();
+                        },
+                        child: const Text(
+                          "yes",
+                          style: TextStyle(color: cblack),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+                //
+              },
+              child: const Text("Clear All"))
+        ],
         foregroundColor: cWhite,
         title: const Text("Notices"),
         backgroundColor: adminePrimayColor,
@@ -145,7 +187,11 @@ class NotificationPartTcr extends StatelessWidget {
                                       ),
                                     ),
                                     TextButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await pushNotificationController
+                                            .removeSingleNotification(
+                                                data['docid']);
+                                      },
                                       child: const Text(
                                         "yes",
                                         style: TextStyle(color: cblack),

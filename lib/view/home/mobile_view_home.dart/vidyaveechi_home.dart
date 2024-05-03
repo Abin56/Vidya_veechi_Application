@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/pages/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +34,7 @@ class MobileHomePage extends StatelessWidget {
                                 width: 50,
                                 color: Colors.transparent,
                                 child: Image.asset(
-                                  "assets/images/logo5.png",
+                                  officialLogo,
                                 ),
                               ),
                             ),
