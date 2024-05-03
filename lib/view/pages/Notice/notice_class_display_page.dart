@@ -9,8 +9,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import '../../widgets/fonts/google_poppins.dart';
 
 class NoticeClassDisplayPage extends StatelessWidget {
-  const NoticeClassDisplayPage(
-      {super.key, required this.classLevelNoticeModel});
+  const NoticeClassDisplayPage({super.key, required this.classLevelNoticeModel});
   final ClassLevelNoticeModel classLevelNoticeModel;
 
   @override
@@ -47,8 +46,7 @@ class NoticeClassDisplayPage extends StatelessWidget {
                               children: [
                                 Center(
                                   child: GooglePoppinsWidgets(
-                                      text: classLevelNoticeModel.heading,
-                                      fontsize: 22.h),
+                                      text: classLevelNoticeModel.heading, fontsize: 22.h),
                                 ),
                                 kHeight50,
                                 GooglePoppinsWidgets(

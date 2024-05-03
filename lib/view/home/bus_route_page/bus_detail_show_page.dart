@@ -20,38 +20,30 @@ class BusRouteDetailPage extends StatelessWidget {
         child: Scaffold(
             appBar: AppBar(
                 backgroundColor: adminePrimayColor,
-                title: GooglePoppinsWidgets(
-                    text: 'View bus status'.tr, fontsize: 18.w)),
+                title: GooglePoppinsWidgets(text: 'View bus status'.tr, fontsize: 18.w)),
             body: Center(
               child: ListView(children: [
                 Card(
                   child: ListTile(
                     leading: kHeight,
-                    subtitle: GooglePoppinsWidgets(
-                        text: busRouteModel.routeNumber, fontsize: 19.h),
-                    title:
-                        GooglePoppinsWidgets(text: "Route No.", fontsize: 12.h),
+                    subtitle: GooglePoppinsWidgets(text: busRouteModel.routeNumber, fontsize: 19.h),
+                    title: GooglePoppinsWidgets(text: "Route No.", fontsize: 12.h),
                   ),
                 ),
                 kHeight10,
                 Card(
                   child: ListTile(
                     leading: kHeight,
-                    subtitle: GooglePoppinsWidgets(
-                        text: busRouteModel.busNumber, fontsize: 19.h),
-                    title:
-                        GooglePoppinsWidgets(text: "Bus No.", fontsize: 12.h),
+                    subtitle: GooglePoppinsWidgets(text: busRouteModel.busNumber, fontsize: 19.h),
+                    title: GooglePoppinsWidgets(text: "Bus No.", fontsize: 12.h),
                   ),
                 ),
                 kHeight10,
                 BusRouteDetailPageListileWidget(
                   leading: kHeight,
-                  title1: GooglePoppinsWidgets(
-                      text: busRouteModel.driveMobNum, fontsize: 15.h),
-                  title: GooglePoppinsWidgets(
-                      text: busRouteModel.staffInCharge, fontsize: 19.h),
-                  title2: GooglePoppinsWidgets(
-                      text: busRouteModel.staffInCharge, fontsize: 12.h),
+                  title1: GooglePoppinsWidgets(text: busRouteModel.driveMobNum, fontsize: 15.h),
+                  title: GooglePoppinsWidgets(text: busRouteModel.staffInCharge, fontsize: 19.h),
+                  title2: GooglePoppinsWidgets(text: busRouteModel.staffInCharge, fontsize: 12.h),
                 ),
                 kHeight10,
                 // BusRouteDetailPageListileWidget(
@@ -73,8 +65,7 @@ class BusRouteDetailPage extends StatelessWidget {
                     height: 65.h,
                     width: 220.w,
                     decoration: const BoxDecoration(
-                        borderRadius:
-                            BorderRadius.all(Radius.elliptical(20, 20)),
+                        borderRadius: BorderRadius.all(Radius.elliptical(20, 20)),
                         color: adminePrimayColor),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
