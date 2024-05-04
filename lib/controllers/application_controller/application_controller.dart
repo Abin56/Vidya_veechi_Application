@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:vidya_veechi/view/pages/splash_screen/splash_screen.dart';
 
 class ApplicationController extends GetxController {
-  RxString currentversion = '1.0.0+9'.obs;
+  RxString currentversion = '1.0.0+10'.obs;
   RxString latestVersion = ''.obs;
   RxString playstorelink = ''.obs;
   RxString message = ''.obs;

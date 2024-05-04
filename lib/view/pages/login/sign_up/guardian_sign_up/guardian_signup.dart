@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class GuardianSignUp extends StatelessWidget {
                           width: 100.w,
                           imagePath: 'assets/images/leptonlogo.png'),
                       GoogleMonstserratWidgets(
-                        text: 'Lepton VidyaVeechi',
+                        text: nameOfInstitution,
                         fontsize: 20,
                         fontWeight: FontWeight.w500,
                       ),

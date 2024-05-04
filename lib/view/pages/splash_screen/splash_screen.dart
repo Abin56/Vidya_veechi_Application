@@ -4,6 +4,7 @@ import 'package:vidya_veechi/controllers/application_controller/application_cont
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vidya_veechi/controllers/chatgpt_Controller/chatgpt_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/model/parent_model/parent_model.dart';
 import 'package:vidya_veechi/model/student_model/student_model.dart';
 import 'package:vidya_veechi/model/teacher_model/teacher_model.dart';
@@ -92,13 +93,13 @@ class _SplashScreenState extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GoogleMonstserratWidgets(
-                        text: 'LEPTON',
+                        text: companyName,
                         fontsize: 25,
                         color: const Color.fromARGB(255, 230, 18, 3),
                         fontWeight: FontWeight.bold,
                       ),
                       GoogleMonstserratWidgets(
-                        text: ' VidyaVeechi',
+                        text: nameInSmall,
                         fontsize: 25,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,

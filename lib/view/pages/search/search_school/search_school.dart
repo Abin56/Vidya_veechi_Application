@@ -1,3 +1,4 @@
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/search/search_school/search_school_searchdeligate.dart';
 import 'package:vidya_veechi/view/widgets/container_image.dart';
@@ -66,13 +67,13 @@ class SearchSchoolScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GoogleMonstserratWidgets(
-                    text: 'LEPTON',
+                    text: companyName,
                     fontsize: 20,
                     color: const Color.fromARGB(255, 230, 18, 3),
                     fontWeight: FontWeight.bold,
                   ),
                   GoogleMonstserratWidgets(
-                    text: ' VidyaVeechi',
+                    text: nameInSmall,
                     fontsize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

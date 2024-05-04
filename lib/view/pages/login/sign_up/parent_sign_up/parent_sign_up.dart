@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/parent_sign_up_controller.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class ParentSignUpPage extends StatelessWidget {
                           width: 100.w,
                           imagePath: 'assets/images/leptonlogo.png'),
                       GoogleMonstserratWidgets(
-                        text: 'Lepton VidyaVeechi',
+                        text: nameOfInstitution,
                         fontsize: 20,
                         fontWeight: FontWeight.w500,
                       ),

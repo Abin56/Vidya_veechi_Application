@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
@@ -21,7 +22,7 @@ class LoginScreenDesign extends StatelessWidget {
             //  color: cblue,
             image: DecorationImage(
               // Image.asset(""),
-              image: AssetImage('assets/images/logo5.png'),
+              image: AssetImage(officialLogo),
             ),
           ),
         ),
