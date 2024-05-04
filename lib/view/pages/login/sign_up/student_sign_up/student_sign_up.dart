@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/student_sign_up_controller.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/student%20login/student_login.dart';
 import 'package:vidya_veechi/view/widgets/container_image.dart';
@@ -57,7 +58,7 @@ class StudentSignInPageScreen extends StatelessWidget {
                           width: 100.w,
                           imagePath: 'assets/images/leptonlogo.png'),
                       GoogleMonstserratWidgets(
-                        text: 'Lepton VidyaVeechi',
+                        text: nameOfInstitution,
                         fontsize: 20,
                         fontWeight: FontWeight.w500,
                       ),

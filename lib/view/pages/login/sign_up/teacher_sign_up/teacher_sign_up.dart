@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/teacher_signup_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/users_login_screen.dart';
@@ -83,7 +84,7 @@ class TeachersSignUpPage extends StatelessWidget {
                           width: 100.w,
                           imagePath: 'assets/images/leptonlogo.png'),
                       GoogleMonstserratWidgets(
-                        text: 'Lepton VidyaVeechi',
+                        text: nameOfInstitution,
                         fontsize: 20,
                         fontWeight: FontWeight.w500,
                       ),
