@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_acc.dart';
 import 'package:vidya_veechi/view/home/general_instructions/general_instructions.dart';
@@ -45,7 +46,7 @@ class StudentsHeaderDrawer extends StatelessWidget {
             ),
           ),
           Text(
-            "Lepton VidyaVeechi",
+            nameOfInstitution,
             style: GoogleFonts.montserrat(
                 color: Colors.black,
                 fontSize: 25.h,

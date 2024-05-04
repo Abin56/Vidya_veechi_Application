@@ -1,6 +1,7 @@
 // ignore_for_file: empty_catches, unused_element
 
 import 'package:vidya_veechi/controllers/log_out/user_logout_controller.dart';
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/teacher_adding/add_subject.dart';
@@ -47,7 +48,7 @@ class ClassTeacherHeaderDrawer extends StatelessWidget {
             ),
           ),
           Text(
-            "Lepton VidyaVeechi",
+            nameOfInstitution,
             style: GoogleFonts.montserrat(
                 color: Colors.black, fontSize: 25, fontWeight: FontWeight.w600),
           ),

@@ -64,7 +64,7 @@ class MobileHomePage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "VidyaVeechi",
+                                  nameInSmall,
                                   style: GoogleFonts.dmSerifDisplay(
                                       color:
                                           const Color.fromARGB(255, 43, 97, 19),
@@ -163,7 +163,7 @@ class MobileHomePage extends StatelessWidget {
                       // top: screenSize.width / 15,
                     ),
                     child: Text(
-                      "VIDYAVEECHI",
+                      nameInCapital,
                       style: GoogleFonts.spectral(
                           fontSize: 35,
                           //fontSize: screenSize.width / 37,
