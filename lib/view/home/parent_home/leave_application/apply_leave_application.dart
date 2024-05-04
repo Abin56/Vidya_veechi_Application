@@ -332,6 +332,8 @@ class _LeaveApplicationScreenState extends State<LeaveApplicationScreen> {
                               log(_selectedLeaveType);
                               ApplyLeveApplicationModel addLeaveAppplicationDetails =
                                   ApplyLeveApplicationModel(
+                                    dleaveFromDate: _selectedFromDate.toString(),
+                                    dleaveToDate: _selectedToDate.toString(),
                                       id: _applyleaveDateController.text.trim(),
                                       applyLeaveDate:
                                           _applyleaveDateController.text.trim(),
