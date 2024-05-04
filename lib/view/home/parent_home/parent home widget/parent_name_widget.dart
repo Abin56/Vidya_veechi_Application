@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent_profile_edit/parent_edit_profile.dart';
+import 'package:vidya_veechi/view/home/parent_home/parent_profile_edit/parent_edit_profile_full.dart';
 
 class ParentNameWidget extends StatelessWidget {
   const ParentNameWidget({
@@ -53,7 +53,7 @@ class ParentNameWidget extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return 
-                      ParentEditProfileScreen();
+                      ParentEditProfileScreenFull();
                       },));
                     }, icon: const Icon(Icons.now_widgets)))
           ],

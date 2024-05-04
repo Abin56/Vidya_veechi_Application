@@ -14,10 +14,13 @@ class ParentViewAllCategories extends StatelessWidget {
   final PushNotificationController pushNotificationController =
       Get.put(PushNotificationController());
 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 230,),
+      padding: const EdgeInsets.only(
+        top: 230,
+      ),
       child: Container(
         decoration: const BoxDecoration(
           color: Color.fromARGB(255, 213, 225, 252),
@@ -62,7 +65,11 @@ class ParentViewAllCategories extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: const EdgeInsets.only(top: 80, right: 20, left: 20,),
+                padding: const EdgeInsets.only(
+                  top: 80,
+                  right: 20,
+                  left: 20,
+                ),
                 child: Column(
                   children: [
                     Row(
@@ -133,6 +140,7 @@ class ParentViewAllCategories extends StatelessWidget {
                               .collection('AllUsersDeviceID')
                               .doc(FirebaseAuth.instance.currentUser!.uid)
                               .collection("Notification_Message")
+                             . orderBy('dateTime',descending: true)
                               .snapshots(),
                           builder: (context, snapshot) {
                             if (snapshot.hasData) {
@@ -149,67 +157,80 @@ class ParentViewAllCategories extends StatelessWidget {
                                           shape: const BeveledRectangleBorder(),
                                           context: context,
                                           builder: (context) {
-                                           server
-                              .collection('AllUsersDeviceID')
-                              .doc(FirebaseAuth.instance.currentUser!.uid)
-                              .collection("Notification_Message").doc(data['docid']).update({'open':true});
-                                            return Container(
-                                              color: Color(
-                                                  data['whiteshadeColor']),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Container(
-                                                    color: Color(
-                                                        data['containerColor']),
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 20,
-                                                        vertical: 20),
-                                                    child: Row(
-                                                      children: [
-                                                        Icon(
-                                                          IconData(
-                                                            data['icon'],
-                                                            fontFamily:
-                                                                'MaterialIcons',
-                                                          ),
-                                                          size: 25,
-                                                          color: Colors.white,
+                                            server
+                                                .collection('AllUsersDeviceID')
+                                                .doc(FirebaseAuth
+                                                    .instance.currentUser!.uid)
+                                                .collection(
+                                                    "Notification_Message")
+                                                .doc(data['docid'])
+                                                .update({'open': true});
+                                            return SingleChildScrollView(
+                                              child: Container(
+                                                width: double.infinity,
+                                                color: Color(
+                                                    data['whiteshadeColor']),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Container(
+                                                      color: Color(data[
+                                                          'containerColor']),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 20,
+                                                          vertical: 20),
+                                                      // child: SingleChildScrollView(
+                                                      //   scrollDirection: Axis.horizontal,
+                                                        child: Row(
+                                                          children: [
+                                                            Icon(
+                                                              IconData(
+                                                                data['icon'],
+                                                                fontFamily:
+                                                                    'MaterialIcons',
+                                                              ),
+                                                              size: 25,
+                                                              color: Colors.white,
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 20,
+                                                            ),
+                                                            Expanded(
+                                                              child: Text(
+                                                                data['headerText'],
+                                                                // "Holiday", 
+                                                                style: const TextStyle(
+                                                                    color: cWhite,
+                                                                    fontSize: 20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                        const SizedBox(
-                                                          width: 20,
-                                                        ),
-                                                        Text(
-                                                          data['headerText'],
-                                                          // "Holiday",
-                                                          style: const TextStyle(
-                                                              color: cWhite,
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                      ],
+                                                     // ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 20,
-                                                        vertical: 20),
-                                                    child: Text(
-                                                      data['messageText'],
-                                                      // " Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday",
-                                                      textAlign:
-                                                          TextAlign.justify,
-                                                      style: const TextStyle(
-                                                        fontSize: 17,
-                                                        color: cWhite,
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 20,
+                                                          vertical: 20),
+                                                      child: Text(
+                                                        data['messageText'],
+                                                        // " Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday",
+                                                        textAlign:
+                                                            TextAlign.justify,
+                                                        style: const TextStyle(
+                                                          fontSize: 17,
+                                                          color: cWhite,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             );
                                           },
