@@ -8,7 +8,7 @@ import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
-import 'package:vidya_veechi/view/pages/recorded_videos/video_player.dart';
+import 'package:vidya_veechi/view/pages/recorded_videos/play_video.dart';
 import 'package:vidya_veechi/view/widgets/button_container_widget.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:vidya_veechi/widgets/textformfield.dart';

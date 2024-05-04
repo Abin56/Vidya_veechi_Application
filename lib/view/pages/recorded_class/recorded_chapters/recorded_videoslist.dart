@@ -299,6 +299,7 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                                                   .chapterID,
                                                               docId: data[
                                                                   'docid']);
+                                                  Navigator.pop(context);
                                                     },
                                                     child: const Text(
                                                       "Yes",
