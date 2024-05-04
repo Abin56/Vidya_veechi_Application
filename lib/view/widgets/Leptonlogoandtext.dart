@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types, file_names
 
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
@@ -21,7 +22,7 @@ class leptonDujoWidget extends StatelessWidget {
             width: 60.w,
             imagePath: 'assets/images/leptonlogo.png'),
         GooglePoppinsWidgets(
-          text: "Lepton VidyaVeechi",
+          text: nameOfInstitution,
           fontsize: 15,
           color: cred,
           fontWeight: FontWeight.w600,

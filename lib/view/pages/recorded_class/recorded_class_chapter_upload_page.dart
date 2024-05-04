@@ -146,7 +146,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
+),
+);
+}
 }

@@ -1,3 +1,4 @@
+import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/pages/login/widgets/login_screenDegin.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
@@ -34,13 +35,13 @@ class DujoLoginScren extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GoogleMonstserratWidgets(
-                      text: 'LEPTON',
+                      text: companyName,
                       fontsize: 25,
                       color: const Color.fromARGB(255, 230, 18, 3),
                       fontWeight: FontWeight.bold,
                     ),
                     GoogleMonstserratWidgets(
-                      text: ' VidyaVeechi',
+                      text: nameInSmall,
                       fontsize: 25,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

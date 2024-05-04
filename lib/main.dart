@@ -12,7 +12,6 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 // import 'package:play_video/play_video.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:vidya_veechi/controllers/bloc/user_phone_otp/auth_state.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/firebase_options.dart';
