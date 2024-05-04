@@ -14,8 +14,7 @@ import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:vidya_veechi/widgets/textformfield.dart';
 
 class RecordedVideosList extends StatefulWidget {
-  const RecordedVideosList(
- {super.key, required this.subjectID, required this.chapterID});
+  const RecordedVideosList({super.key, required this.subjectID, required this.chapterID});
 
   final String subjectID;
   final String chapterID;
@@ -24,8 +23,7 @@ class RecordedVideosList extends StatefulWidget {
 }
 
 class _RecordedVideosListState extends State<RecordedVideosList> {
-  final RecordedChapterController chapterController =
- Get.put(RecordedChapterController());
+  final RecordedChapterController chapterController = Get.put(RecordedChapterController());
 
   final ScrollController controller = ScrollController();
   double _scrollPosition = 0.0;
@@ -89,24 +87,22 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                 itemBuilder: (context, index) {
                   final data = snapshot.data!.docs[index];
                   return Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
+                    padding: EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
                     child: Card(
                       color: const Color.fromARGB(236, 228, 244, 255),
                       clipBehavior: Clip.antiAlias,
                       child: ListTile(
+                        horizontalTitleGap: 15,
                         contentPadding: const EdgeInsets.all(0),
                         shape: const BeveledRectangleBorder(
-                            side: BorderSide(
-                                color: Color.fromARGB(255, 125, 169, 225),
-                                width: 0.2)),
+                            side:
+                                BorderSide(color: Color.fromARGB(255, 125, 169, 225), width: 0.2)),
                         leading: SizedBox(
-                          width: 50,
+                          width: 29,
                           child: Row(
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 17, right: 8),
+                                padding: const EdgeInsets.only(left: 10, right: 10),
                                 child: Text(
                                   "${index + 1}",
                                   style: TextStyle(
@@ -119,6 +115,7 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                 color: cgrey,
                                 indent: 5,
                                 endIndent: 5,
+                                width: 0,
                               )
                             ],
                           ),
@@ -148,30 +145,26 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              PlayVideoFlicker(
-                                                  videoUrl: data['downloadUrl'])
+                                              PlayVideoFlicker(videoUrl: data['downloadUrl'])
                                           // Videoplayer(
                                           //     videoUrl:
                                           //         data['downloadUrl']),
                                           ),
                                     );
                                   },
-                                  child: const Icon(
-                                      Icons.ondemand_video_outlined)),
+                                  child: const Icon(Icons.ondemand_video_outlined)),
                               PopupMenuButton(
                                 padding: const EdgeInsets.all(0),
                                 itemBuilder: (context) {
                                   return [
                                     PopupMenuItem(
                                       onTap: () {
-                                        chapterController.topicController.text =
-                                            data['topicName'];
+                                        chapterController.topicController.text = data['topicName'];
                                         showModalBottomSheet(
                                           context: context,
                                           isDismissible: false,
                                           shape: const BeveledRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.zero)),
+                                              borderRadius: BorderRadius.all(Radius.zero)),
                                           builder: (context) {
                                             return SingleChildScrollView(
                                               child: Container(
@@ -180,72 +173,53 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                                     right: 20,
                                                     top: 25,
                                                     bottom:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets
-                                                            .bottom),
+                                                        MediaQuery.of(context).viewInsets.bottom),
                                                 child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
+                                                      mainAxisAlignment: MainAxisAlignment.end,
                                                       children: [
                                                         GestureDetector(
                                                           onTap: () {
-                                                            Navigator.pop(
-                                                                context);
+                                                            Navigator.pop(context);
                                                           },
-                                                          child: const Icon(
-                                                              Icons.close),
+                                                          child: const Icon(Icons.close),
                                                         )
                                                       ],
                                                     ),
                                                     const Text(
                                                       "Topic Name *",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      style: TextStyle(fontWeight: FontWeight.bold),
                                                     ),
                                                     kHeight20,
                                                     TextFormFieldWidget(
                                                       textEditingController:
-                                                          chapterController
-                                                              .topicController,
+                                                          chapterController.topicController,
                                                       hintText: "topic name",
                                                     ),
                                                     kHeight40,
                                                     Center(
                                                       child: GestureDetector(
                                                         onTap: () {
-                                                          chapterController
-                                                              .updateChapterTopic(
-                                                                  subjectID: widget
-                                                                      .subjectID,
-                                                                  chapterID: widget
-                                                                      .chapterID,
-                                                                  docId: data[
-                                                                      'docid']);
-                                                          Navigator.pop(
-                                                              context);
+                                                          chapterController.updateChapterTopic(
+                                                              subjectID: widget.subjectID,
+                                                              chapterID: widget.chapterID,
+                                                              docId: data['docid']);
+                                                          Navigator.pop(context);
                                                         },
-                                                        child:
-                                                            ButtonContainerWidget(
+                                                        child: ButtonContainerWidget(
                                                           curving: 18,
                                                           colorindex: 2,
                                                           height: 60.h,
                                                           width: 150.w,
                                                           child: Center(
-                                                            child:
-                                                                GooglePoppinsWidgets(
+                                                            child: GooglePoppinsWidgets(
                                                               text: "Update",
                                                               color: cWhite,
                                                               fontsize: 18,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
+                                                              fontWeight: FontWeight.w500,
                                                             ),
                                                           ),
                                                         ),
@@ -275,8 +249,7 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                               return AlertDialog(
                                                 content: const Text(
                                                   "Do you want to delete the video?",
-                                                  style:
-                                                      TextStyle(fontSize: 18),
+                                                  style: TextStyle(fontSize: 18),
                                                 ),
                                                 actions: [
                                                   ElevatedButton(
@@ -285,25 +258,19 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                                     },
                                                     child: const Text(
                                                       "No",
-                                                      style: TextStyle(
-                                                          color: cblack),
+                                                      style: TextStyle(color: cblack),
                                                     ),
                                                   ),
                                                   ElevatedButton(
                                                     onPressed: () {
-                                                      chapterController
-                                                          .deleteRecordedClass(
-                                                              subjectID: widget
-                                                                  .subjectID,
-                                                              chapterID: widget
-                                                                  .chapterID,
-                                                              docId: data[
-                                                                  'docid']);
+                                                      chapterController.deleteRecordedClass(
+                                                          subjectID: widget.subjectID,
+                                                          chapterID: widget.chapterID,
+                                                          docId: data['docid']);
                                                     },
                                                     child: const Text(
                                                       "Yes",
-                                                      style: TextStyle(
-                                                          color: cblack),
+                                                      style: TextStyle(color: cblack),
                                                     ),
                                                   )
                                                 ],
@@ -336,7 +303,7 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
             return Center(child: Text('No Recorded Classes Uploaded Yet!'.tr));
           },
         ),
-),
-);
-}
+      ),
+    );
+  }
 }
