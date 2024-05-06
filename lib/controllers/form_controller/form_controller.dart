@@ -137,3 +137,29 @@ class HomeWorkController extends GetxController {
     }
   }
 }
+
+
+class CreateLiveRoomController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
+
+
+class LiveRoomFormController extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}

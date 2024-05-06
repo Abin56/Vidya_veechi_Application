@@ -3,6 +3,8 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/home/student_home/students_main_home.dart';
@@ -24,9 +26,8 @@ class StudentLiveClassRoom extends StatefulWidget {
   @override
   State<StudentLiveClassRoom> createState() => Student_LiveClassRoomState();
 }
-
+final LiveRoomFormController liveRoomFormController = Get.put(LiveRoomFormController());
 class Student_LiveClassRoomState extends State<StudentLiveClassRoom> {
-  final GlobalKey<FormState> updateFormkey = GlobalKey<FormState>();
   //final serverText = TextEditingController(text: "https://test.scipro.in/");
   final roomText = TextEditingController(text: "");
   final subjectText = TextEditingController(text: "");
@@ -43,7 +44,7 @@ class Student_LiveClassRoomState extends State<StudentLiveClassRoom> {
     double width = MediaQuery.of(context).size.width;
     return MaterialApp(
       home: Form(
-        key: updateFormkey,
+        key: liveRoomFormController.formKey,
         child: Scaffold(
           appBar: AppBar(
             title: const Text(''),
@@ -177,7 +178,7 @@ class Student_LiveClassRoomState extends State<StudentLiveClassRoom> {
                       width: double.maxFinite,
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (updateFormkey.currentState!.validate() &&
+                          if (liveRoomFormController .formKey.currentState!.validate() &&
                               widget.roomID == roomText.text &&
                               widget.studentName == nameText.text) {
                             _joinMeeting().then((value) =>

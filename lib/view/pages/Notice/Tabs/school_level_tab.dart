@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/pages/Notice/notice_school_display_page.dart';
-
-import '../../../../controllers/student_controller/student_notice_controller/student_notice_controller.dart';
 import '../../../widgets/fonts/google_poppins.dart';
 
 class SchoolLevelNoticePage extends StatelessWidget {

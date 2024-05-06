@@ -7,7 +7,7 @@ import '../../../model/notice_model/class_level_notice_model.dart';
 import '../../../model/notice_model/school_level_notice_model.dart';
 
 class StudentNoticeController extends GetxController {
-  List<SchoolLevelNoticeModel> schoolLevelNoticeLists = [];
+ // List<SchoolLevelNoticeModel> schoolLevelNoticeLists = [];
   List<ClassLevelNoticeModel> classLevelNoticeLists = [];
   RxBool isLoading = RxBool(false);
   Future<void> getSchoolLevelNotices() async {
@@ -36,15 +36,15 @@ class StudentNoticeController extends GetxController {
             //  .where(visiblePerson, isEqualTo: true)
               .get();
 
-      schoolLevelNoticeLists = noticeCollection.docs
-          .map((e) => SchoolLevelNoticeModel.fromMap(e.data()))
-          .toList();
+      // schoolLevelNoticeLists = noticeCollection.docs
+      //     .map((e) => SchoolLevelNoticeModel.fromMap(e.data()))
+      //     .toList();
 
-      schoolLevelNoticeLists.sort(
-        (a, b) {
-          return b.publishedDate.compareTo(a.publishedDate);
-        },
-      );
+      // schoolLevelNoticeLists.sort(
+      //   (a, b) {
+      //     return b.publishedDate.compareTo(a.publishedDate);
+      //   },
+      // );
 
       isLoading.value = false;
     } catch (e) {

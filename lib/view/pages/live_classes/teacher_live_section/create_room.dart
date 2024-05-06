@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/live_room_controller/live_room_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -37,10 +38,9 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
     createRandomID();
     super.initState();
   }
-
+final CreateLiveRoomController createLiveRoomController = Get.put(CreateLiveRoomController());
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> updateFormkey = GlobalKey<FormState>();
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -125,7 +125,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               ),
             ),
             Form(
-              key: updateFormkey,
+              key: createLiveRoomController.formKey,
               child: Positioned(
                 bottom: 0,
                 left: 0,
@@ -273,7 +273,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
 
                         GestureDetector(
                           onTap: () async {
-                            if (updateFormkey.currentState!.validate()) {
+                            if (createLiveRoomController.formKey.currentState!.validate()) {
                               await widget.liveRoomController
                                   .createRoom(
                                       context,
