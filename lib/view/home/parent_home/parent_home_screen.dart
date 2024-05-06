@@ -222,7 +222,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           studentID: UserCredentialsController
               .parentModel!.studentID!), ////// exam result............7
       NoticePage(), //Notice.........8
-      const EventList(), //Events.................9
+       EventList(), //Events.................9
       SchoolLevelMeetingPage(), ////////////////////////////10
 
       const ParentChatScreen(), /////......11

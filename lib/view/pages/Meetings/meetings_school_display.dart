@@ -4,13 +4,11 @@ import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-
-import '../../../model/meeting_model/meeting_model.dart';
 import '../../widgets/fonts/google_poppins.dart';
 
 class MeetingDisplaySchoolLevel extends StatelessWidget {
   const MeetingDisplaySchoolLevel({super.key, required this.meetingModel});
-  final MeetingModel meetingModel;
+   final Map<String, dynamic>?  meetingModel;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                               children: [
                                 Center(
                                   child: GooglePoppinsWidgets(
-                                      text: meetingModel.heading,
+                                      text: meetingModel?['topic'],
                                       fontsize: 22.h),
                                 ),
                                 kHeight50,
@@ -56,7 +54,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                                   fontWeight: FontWeight.w200,
                                 ),
                                 GooglePoppinsWidgets(
-                                  text: meetingModel.categoryOfMeeting,
+                                  text: meetingModel?['category'],
                                   fontsize: 19.h,
                                 ),
                                 kHeight20,
@@ -66,7 +64,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                                   fontWeight: FontWeight.w200,
                                 ),
                                 GooglePoppinsWidgets(
-                                  text: meetingModel.membersToBeExpected,
+                                  text: meetingModel?['members'],
                                   fontsize: 19.h,
                                 ),
                                 kHeight30,
@@ -76,7 +74,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                                   fontWeight: FontWeight.w200,
                                 ),
                                 GooglePoppinsWidgets(
-                                  text: meetingModel.specialGuest,
+                                  text: meetingModel?['specialGuest'],
                                   fontsize: 19.h,
                                 ),
                                 kHeight30,
@@ -85,7 +83,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                                     fontsize: 18.h,
                                     fontWeight: FontWeight.w200),
                                 GooglePoppinsWidgets(
-                                  text: meetingModel.date,
+                                  text: meetingModel?['date'],
                                   fontsize: 19.h,
                                 ),
                                 kHeight30,
@@ -94,7 +92,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                                     fontsize: 18.h,
                                     fontWeight: FontWeight.w200),
                                 GooglePoppinsWidgets(
-                                  text: meetingModel.time,
+                                  text: meetingModel?['time'],
                                   fontsize: 19.h,
                                 ),
                                 kHeight30,
@@ -103,7 +101,7 @@ class MeetingDisplaySchoolLevel extends StatelessWidget {
                                     fontsize: 18.h,
                                     fontWeight: FontWeight.w200),
                                 GooglePoppinsWidgets(
-                                  text: meetingModel.venue,
+                                  text: meetingModel?['venue'],
                                   fontsize: 19.h,
                                 ),
                                 kHeight30,
