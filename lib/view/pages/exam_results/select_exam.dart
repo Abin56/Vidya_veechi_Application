@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import '../../widgets/fonts/google_monstre.dart';
 
 class SelectExamLevelScreen extends StatelessWidget {
- final String classId;
+  final String classId;
   const SelectExamLevelScreen({super.key, required this.classId});
 
   @override
@@ -21,8 +21,7 @@ class SelectExamLevelScreen extends StatelessWidget {
             fontsize: 15.w,
             fontWeight: FontWeight.w700,
           ),
-          backgroundColor: adminePrimayColor
-          ),
+          backgroundColor: adminePrimayColor),
       body: SafeArea(
           child: Center(
         child: Column(
@@ -40,16 +39,24 @@ class SelectExamLevelScreen extends StatelessWidget {
                       color: adminePrimayColor,
                     ),
                     child: TextButton.icon(
-                        onPressed: () async {
-                          return getBottomSheet(classId, 'School Level',context);
-                        },
-                        icon: const Icon(Icons.list_alt, color: cWhite),
-                        label: GoogleMonstserratWidgets(
-                          text: "School Level".tr,
-                          fontsize: 18.w,
-                          color: cWhite,
-                          fontWeight: FontWeight.w500,
-                        )),
+                      onPressed: () async {
+                        // return getBottomSheet(classId, 'School Level', context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ExamResultsView(
+                            classID: classId,
+                            // examlevel: 'School Level',
+                          );
+                        }));
+                      },
+                      icon: const Icon(Icons.list_alt, color: cWhite),
+                      label: GoogleMonstserratWidgets(
+                        text: 'Upload'.tr,
+                        fontsize: 15.w,
+                        color: cWhite,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
                   kHeight30,
                   Container(
@@ -60,16 +67,24 @@ class SelectExamLevelScreen extends StatelessWidget {
                       color: adminePrimayColor,
                     ),
                     child: TextButton.icon(
-                        onPressed: () async {
-                          return getBottomSheet(classId, 'Public Level',context);
-                        },
-                        icon: const Icon(Icons.list_alt, color: cWhite),
-                        label: GoogleMonstserratWidgets(
-                          text: "Public Level".tr,
-                          fontsize: 18.w,
-                          color: cWhite,
-                          fontWeight: FontWeight.w500,
-                        )),
+                      onPressed: () async {
+                        // return getBottomSheet(classId, 'Public Level', context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return SelectExamWiseScreen(
+                            classID: classId,
+                            examLevel: 'Public Level',
+                          );
+                        }));
+                      },
+                      icon: const Icon(Icons.list_alt, color: cWhite),
+                      label: GoogleMonstserratWidgets(
+                        text: 'View'.tr,
+                        fontsize: 16.w,
+                        fontWeight: FontWeight.w700,
+                        color: cWhite,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -81,7 +96,7 @@ class SelectExamLevelScreen extends StatelessWidget {
   }
 }
 
-getBottomSheet(String classId, String examlevel,BuildContext context) {
+getBottomSheet(String classId, String examlevel, BuildContext context) {
   Get.bottomSheet(
       SizedBox(
         height: 250.h,
@@ -91,13 +106,12 @@ getBottomSheet(String classId, String examlevel,BuildContext context) {
           children: [
             GestureDetector(
               onTap: () {
-
-                
-                 Navigator.push(context, MaterialPageRoute(builder: (context)
-              {return  ExamResultsView(
-                      classID: classId,
-                      examlevel: examlevel,
-                    );}));
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ExamResultsView(
+                    classID: classId,
+                    // examlevel: examlevel,
+                  );
+                }));
 
                 // Get.to(() => ExamResultsView(
                 //       classID: classId,
@@ -131,15 +145,13 @@ getBottomSheet(String classId, String examlevel,BuildContext context) {
             ),
             GestureDetector(
               onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return SelectExamWiseScreen(
+                    classID: classId,
+                    examLevel: examlevel,
+                  );
+                }));
 
-                 Navigator.push(context, MaterialPageRoute(builder: (context)
-              {return  SelectExamWiseScreen(
-                      classID: classId,
-                      examLevel: examlevel,
-                    );}));
-
-
-                
                 // Get.to(() => SelectExamWiseScreen(
                 //       classID: classId,
                 //       examLevel: examlevel,

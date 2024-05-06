@@ -2,6 +2,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/model/exam_notification_model/exam_notifcation_model.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/home/exam_Notification/users_exam_list_view/user_exam_list_view.dart';
@@ -22,7 +23,7 @@ class UserPublicLevel extends StatelessWidget {
                 .doc(UserCredentialsController.schoolId)
                 .collection(UserCredentialsController.batchId!)
                 .doc(UserCredentialsController.batchId!)
-                .collection('School Level')
+                .collection('ExamNotification')
                 .snapshots(),
             builder: (context, snaps) {
               if (snaps.hasData) {
@@ -34,18 +35,18 @@ class UserPublicLevel extends StatelessWidget {
                 } else {
                   return ListView.separated(
                       itemBuilder: (context, index) {
-                        final data = AddExamModel.fromMap(
+                        final data = ExamNotificationModel.fromMap(
                             snaps.data!.docs[index].data());
                         return GestureDetector(
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 return UsersExamTimeTableViewScreen(
-                                    examID: data.docid,
+                                    examID: data.docId,
                                     collectionName: 'School Level',
                                     date: stringTimeToDateConvert(
                                         data.publishDate),
-                                    examName: data.examName);
+                                    examName: data.examName,);
                               },
                             ));
 
@@ -90,7 +91,7 @@ class UserPublicLevel extends StatelessWidget {
                                     ),
                                     GooglePoppinsWidgets(
                                         text:
-                                            "Starting date :  ${data.startingDate}",
+                                            "Starting date :  ${stringTimeToDateConvert(data.startDate)}",
                                         fontsize: 14.h,
                                         color: cWhite),
                                   ],
