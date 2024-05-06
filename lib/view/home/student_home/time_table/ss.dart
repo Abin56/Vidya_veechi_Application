@@ -1,15 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 
 import '../../../../controllers/userCredentials/user_credentials.dart';
+import '../../../../timetable model/timetablemodel.dart';
 
 class TimeTable extends StatefulWidget {
-  const TimeTable({super.key});
+   const TimeTable({super.key,});
 
   @override
   State<TimeTable> createState() => _TimeTableState();
@@ -53,6 +54,7 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
     'sixthPeriod',
     'seventhPeriod'
   ];
+
 
   List<String> teachersList = [
     'firstPeriodTeacher',
@@ -204,27 +206,30 @@ class DayWidget extends StatelessWidget {
               .doc(UserCredentialsController.classId)
               .collection('timetables')
               .doc(dayName)
-              .collection(dayName)
+              .collection('Subjects')
               //.orderBy('timestamp', descending: false)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.separated(
                   separatorBuilder: (context, index) {
+                
                     return const SizedBox(
                       height: 10,
                     );
                   },
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
+                            final data=  TimeTableModel.fromMap(
+                                        snapshot.data!.docs[index].data());
                     Color coll = colorCheck(
-                        snapshot.data!.docs[index]['period']['selectColor']);
+                        snapshot.data!.docs[index]['selectColor']);
                     // ignore: unused_local_variable
-                    String coco = snapshot.data!.docs[index]['period']['selectColor']
+                    String coco = snapshot.data!.docs[index]['selectColor']
                         .toString()
                         .substring(
                             6,
-                            snapshot.data!.docs[index]['period']['selectColor']
+                            snapshot.data!.docs[index]['selectColor']
                                     .toString()
                                     .length -
                                 1);
@@ -234,10 +239,9 @@ class DayWidget extends StatelessWidget {
                       child: SizedBox(
                         height: 70,
                         child: ListTile(
-                            tileColor: coll,
+                            tileColor:data.selectColor ,
                             leading: GoogleMonstserratWidgets(
-                              text: snapshot.data!.docs[index]['period']
-                                  ['periodNumber'],
+                              text:"${index + 1}",
                               fontsize: 12,
                               color: (coll == Colors.amber ||
                                       coll == Colors.yellow ||
@@ -260,10 +264,10 @@ class DayWidget extends StatelessWidget {
                                           : Colors.white,
                                     ),
                                     GoogleMonstserratWidgets(
-                                      text:
-                                          "${snapshot.data!.docs[index]['period']['startTime']}-" +
-                                              snapshot.data!.docs[index]
-                                                  ['period']['endTime'],
+                                      text:"${data.startTime}""-""${data.endTime}-",
+                                          // "${snapshot.data!.docs[index]['startTime']}-" +
+                                          //     snapshot.data!.docs[index]
+                                          //         ['endTime'],
                                       fontsize: 10,
                                       color: (coll == Colors.amber ||
                                               coll == Colors.yellow ||
@@ -274,8 +278,9 @@ class DayWidget extends StatelessWidget {
                                   ],
                                 )),
                             title: GoogleMonstserratWidgets(
-                              text: snapshot.data!.docs[index]['period']
-                                  ['periodNumber'],
+                              text:"Period: ${data.periodNumber}",
+                              // snapshot.data!.docs[index]
+                              //     ['periodNumber'],
                               fontsize: 17,
                               fontWeight: FontWeight.bold,
                               color: (coll == Colors.amber ||
@@ -285,15 +290,17 @@ class DayWidget extends StatelessWidget {
                                   : Colors.white,
                             ),
                             subtitle: GoogleMonstserratWidgets(
-                                text: 'Teacher : ' +
-                                    snapshot.data!.docs[index]['period']
-                                        ['teacherName'],
+                                text:'Subject:  ${data.subjectName}',
+                                // 'Subject : ' +
+                                //     snapshot.data!.docs[index]
+                                //         ['subjectName'],
                                 fontsize: 12,
                                 color: (coll == Colors.amber ||
                                         coll == Colors.yellow ||
                                         coll == Colors.lime)
                                     ? Colors.black
-                                    : Colors.white)),
+                                    : Colors.white)
+                                    ),
                       ),
                     );
 
@@ -318,157 +325,157 @@ class ColorParser {
   }
 }
 
-// ignore: must_be_immutable
-class PeriodShowingWidget extends StatelessWidget {
-  PeriodShowingWidget(
-      {super.key,
-      required this.periodList,
-      required this.dayName,
-      required this.teacherList});
+// // ignore: must_be_immutable
+// class PeriodShowingWidget extends StatelessWidget {
+//   PeriodShowingWidget(
+//       {super.key,
+//       required this.periodList,
+//       required this.dayName,
+//       required this.teacherList});
 
-  final List<String> periodList;
-  List<String> teacherList;
-  String dayName;
+//   final List<String> periodList;
+//   List<String> teacherList;
+//   String dayName;
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('SchoolListCollection')
-                .doc(UserCredentialsController.schoolId)
-                .collection(UserCredentialsController.batchId!)
-                .doc(UserCredentialsController.batchId)
-                .collection('classes')
-                .doc(UserCredentialsController.classId)
-                .collection('timetables')
-                .snapshots(),
-            builder: ((context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.separated(
-                    itemBuilder: ((context, index) {
-                      return (snapshot.data!.docs.isEmpty)
-                          ? const Text('')
-                          : Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 10, left: 10),
-                              child: SizedBox(
-                                  height: 80,
-                                  child: Card(
-                                      elevation: 5,
-                                      color: Colors.white.withOpacity(0.9),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10.0),
-                                            child: Container(
-                                              color: adminePrimayColor,
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(20.0),
-                                                child: GoogleMonstserratWidgets(
-                                                  text: 'Hour : ${index + 1}',
-                                                  fontsize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                snapshot.data!.docs
-                                                                .where(
-                                                                    (element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        dayName)
-                                                                .first[
-                                                            periodList[
-                                                                index]][periodList[
-                                                            index]] ==
-                                                        ''
-                                                    ? GoogleMonstserratWidgets(
-                                                        text: 'No Period Added',
-                                                        fontsize: 16,
-                                                        color:
-                                                            adminePrimayColor,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      )
-                                                    : GoogleMonstserratWidgets(
-                                                        text: snapshot
-                                                                .data!.docs
-                                                                .where(
-                                                                    (element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        dayName)
-                                                                .first[
-                                                            periodList[
-                                                                index]][periodList[
-                                                            index]],
-                                                        color:
-                                                            adminePrimayColor,
-                                                        fontsize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                snapshot.data!.docs
-                                                                .where(
-                                                                    (element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        dayName)
-                                                                .first[
-                                                            periodList[
-                                                                index]][teacherList[
-                                                            index]] ==
-                                                        ''
-                                                    ? const SizedBox()
-                                                    : GoogleMonstserratWidgets(
-                                                        text: 'Teacher : ' +
-                                                            snapshot.data!.docs
-                                                                    .where((element) =>
-                                                                        element
-                                                                            .id ==
-                                                                        dayName)
-                                                                    .first[
-                                                                periodList[
-                                                                    index]][teacherList[
-                                                                index]],
-                                                        color: adminePrimayColor
-                                                            .withOpacity(0.7),
-                                                        fontsize: 13,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ))),
-                            );
-                    }),
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(
-                        height: 10,
-                      );
-                    },
-                    itemCount: 7);
-              }
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//         child: StreamBuilder(
+//             stream: FirebaseFirestore.instance
+//                 .collection('SchoolListCollection')
+//                 .doc(UserCredentialsController.schoolId)
+//                 .collection(UserCredentialsController.batchId!)
+//                 .doc(UserCredentialsController.batchId)
+//                 .collection('classes')
+//                 .doc(UserCredentialsController.classId)
+//                 .collection('timetables')
+//                 .snapshots(),
+//             builder: ((context, snapshot) {
+//               if (snapshot.hasData) {
+//                 return ListView.separated(
+//                     itemBuilder: ((context, index) {
+//                       return (snapshot.data!.docs.isEmpty)
+//                           ? const Text('')
+//                           : Padding(
+//                               padding:
+//                                   const EdgeInsets.only(right: 10, left: 10),
+//                               child: SizedBox(
+//                                   height: 80,
+//                                   child: Card(
+//                                       elevation: 5,
+//                                       color: Colors.white.withOpacity(0.9),
+//                                       child: Row(
+//                                         mainAxisAlignment:
+//                                             MainAxisAlignment.center,
+//                                         children: [
+//                                           Padding(
+//                                             padding: const EdgeInsets.only(
+//                                                 left: 10.0),
+//                                             child: Container(
+//                                               color: adminePrimayColor,
+//                                               child: Padding(
+//                                                 padding:
+//                                                     const EdgeInsets.all(20.0),
+//                                                 child: GoogleMonstserratWidgets(
+//                                                   text: 'Hour : ${index + 1}',
+//                                                   fontsize: 12,
+//                                                   fontWeight: FontWeight.bold,
+//                                                   color: Colors.white,
+//                                                 ),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                           Expanded(
+//                                             child: Column(
+//                                               mainAxisAlignment:
+//                                                   MainAxisAlignment.center,
+//                                               children: [
+//                                                 snapshot.data!.docs
+//                                                                 .where(
+//                                                                     (element) =>
+//                                                                         element
+//                                                                             .id ==
+//                                                                         dayName)
+//                                                                 .first[
+//                                                             periodList[
+//                                                                 index]][periodList[
+//                                                             index]] ==
+//                                                         ''
+//                                                     ? GoogleMonstserratWidgets(
+//                                                         text: 'No Period Added',
+//                                                         fontsize: 16,
+//                                                         color:
+//                                                             adminePrimayColor,
+//                                                         fontWeight:
+//                                                             FontWeight.w500,
+//                                                       )
+//                                                     : GoogleMonstserratWidgets(
+//                                                         text: snapshot
+//                                                                 .data!.docs
+//                                                                 .where(
+//                                                                     (element) =>
+//                                                                         element
+//                                                                             .id ==
+//                                                                         dayName)
+//                                                                 .first[
+//                                                             periodList[
+//                                                                 index]][periodList[
+//                                                             index]],
+//                                                         color:
+//                                                             adminePrimayColor,
+//                                                         fontsize: 16,
+//                                                         fontWeight:
+//                                                             FontWeight.w500,
+//                                                       ),
+//                                                 snapshot.data!.docs
+//                                                                 .where(
+//                                                                     (element) =>
+//                                                                         element
+//                                                                             .id ==
+//                                                                         dayName)
+//                                                                 .first[
+//                                                             periodList[
+//                                                                 index]][teacherList[
+//                                                             index]] ==
+//                                                         ''
+//                                                     ? const SizedBox()
+//                                                     : GoogleMonstserratWidgets(
+//                                                         text: 'Teacher : ' +
+//                                                             snapshot.data!.docs
+//                                                                     .where((element) =>
+//                                                                         element
+//                                                                             .id ==
+//                                                                         dayName)
+//                                                                     .first[
+//                                                                 periodList[
+//                                                                     index]][teacherList[
+//                                                                 index]],
+//                                                         color: adminePrimayColor
+//                                                             .withOpacity(0.7),
+//                                                         fontsize: 13,
+//                                                         fontWeight:
+//                                                             FontWeight.w500,
+//                                                       ),
+//                                               ],
+//                                             ),
+//                                           ),
+//                                         ],
+//                                       ))),
+//                             );
+//                     }),
+//                     separatorBuilder: (context, index) {
+//                       return const SizedBox(
+//                         height: 10,
+//                       );
+//                     },
+//                     itemCount: 7);
+//               }
 
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
+//               if (snapshot.connectionState == ConnectionState.waiting) {
+//                 return const Center(child: CircularProgressIndicator());
+//               }
 
-              return const Text('No data');
-            })));
-  }
-}
+//               return const Text('No data');
+//             })));
+//   }
+// }
