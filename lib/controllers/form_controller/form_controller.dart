@@ -163,3 +163,16 @@ class LiveRoomFormController extends GetxController {
     }
   }
 }
+
+
+class RecordedVideoClassCntl extends GetxController {
+  final formKey = GlobalKey<FormState>();
+
+  void submitForm(Function function) {
+    if (formKey.currentState!.validate()) {
+      function;
+    } else {
+     
+    }
+  }
+}
