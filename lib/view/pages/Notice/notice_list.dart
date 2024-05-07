@@ -10,8 +10,7 @@ import 'Tabs/class_level_tab.dart';
 
 class NoticePage extends StatelessWidget {
   NoticePage({super.key});
-  final StudentNoticeController studentNoticeController =
-      Get.put(StudentNoticeController());
+  final StudentNoticeController studentNoticeController = Get.put(StudentNoticeController());
 
   @override
   Widget build(BuildContext context) {

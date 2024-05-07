@@ -17,8 +17,7 @@ class RecordedClassChapters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RecordedChapterController chapterController =
-        Get.put(RecordedChapterController());
+    final RecordedChapterController chapterController = Get.put(RecordedChapterController());
     // TextEditingController chapterNumbercontroller = TextEditingController();
     // TextEditingController chapterNamecontroller = TextEditingController();
     return Scaffold(
@@ -57,8 +56,7 @@ class RecordedClassChapters extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final data = snapshot.data!.docs[index];
                       return Padding(
-                        padding:
-                            EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
+                        padding: EdgeInsets.only(left: 10.h, right: 10.h, top: 10.h),
                         child: Card(
                           color: const Color.fromARGB(236, 228, 244, 255),
                           clipBehavior: Clip.antiAlias,
@@ -69,23 +67,22 @@ class RecordedClassChapters extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => RecordedVideosList(
                                     subjectID: subjectID,
-                                    chapterID: data
-                                        ['docid'],
+                                    chapterID: data['docid'],
                                   ),
                                 ),
                               );
                             },
+                            horizontalTitleGap: 20,
+                            contentPadding: const EdgeInsets.all(0),
                             shape: const BeveledRectangleBorder(
                                 side: BorderSide(
-                                    color: Color.fromARGB(255, 125, 169, 225),
-                                    width: 0.2)),
+                                    color: Color.fromARGB(255, 125, 169, 225), width: 0.2)),
                             leading: SizedBox(
-                              width: 40,
+                              width: 30,
                               child: Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 4, right: 10),
+                                    padding: const EdgeInsets.only(left: 11, right: 10),
                                     child: Text(
                                       "${index + 1}",
                                       style: TextStyle(
@@ -96,6 +93,7 @@ class RecordedClassChapters extends StatelessWidget {
                                   ),
                                   const VerticalDivider(
                                     color: cgrey,
+                                    width: 0,
                                   )
                                 ],
                               ),
@@ -120,21 +118,19 @@ class RecordedClassChapters extends StatelessWidget {
                               ),
                             ),
                             trailing: PopupMenuButton(
-                              padding: const EdgeInsets.only(left: 50),
                               itemBuilder: (context) {
                                 return [
                                   PopupMenuItem(
                                     onTap: () {
-                                      chapterController.chapterNumberController
-                                          .text = data['chapterNumber'] ?? "";
-                                      chapterController.chapterNameController
-                                          .text = data['chapterName'] ?? "";
+                                      chapterController.chapterNumberController.text =
+                                          data['chapterNumber'] ?? "";
+                                      chapterController.chapterNameController.text =
+                                          data['chapterName'] ?? "";
                                       showModalBottomSheet(
                                         context: context,
                                         isDismissible: false,
                                         shape: const BeveledRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.all(Radius.zero)),
+                                            borderRadius: BorderRadius.all(Radius.zero)),
                                         builder: (context) {
                                           return SingleChildScrollView(
                                             child: Container(
@@ -142,32 +138,24 @@ class RecordedClassChapters extends StatelessWidget {
                                                   left: 12,
                                                   right: 12,
                                                   top: 20,
-                                                  bottom: MediaQuery.of(context)
-                                                      .viewInsets
-                                                      .bottom),
+                                                  bottom: MediaQuery.of(context).viewInsets.bottom),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
+                                                    mainAxisAlignment: MainAxisAlignment.end,
                                                     children: [
                                                       GestureDetector(
                                                           onTap: () {
-                                                            Navigator.pop(
-                                                                context);
+                                                            Navigator.pop(context);
                                                           },
-                                                          child: const Icon(
-                                                              Icons.close))
+                                                          child: const Icon(Icons.close))
                                                     ],
                                                   ),
                                                   const Text(
                                                     "Chapter number *",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: TextStyle(fontWeight: FontWeight.bold),
                                                   ),
                                                   kHeight10,
                                                   Row(
@@ -175,13 +163,10 @@ class RecordedClassChapters extends StatelessWidget {
                                                       SizedBox(
                                                         height: 60,
                                                         width: 279,
-                                                        child:
-                                                            TextFormFieldWidget(
-                                                          textEditingController:
-                                                              chapterController
-                                                                  .chapterNumberController,
-                                                          hintText:
-                                                              "chapter number",
+                                                        child: TextFormFieldWidget(
+                                                          textEditingController: chapterController
+                                                              .chapterNumberController,
+                                                          hintText: "chapter number",
                                                         ),
                                                       ),
                                                       const SizedBox(
@@ -189,33 +174,24 @@ class RecordedClassChapters extends StatelessWidget {
                                                       ),
                                                       GestureDetector(
                                                         onTap: () {
-                                                          chapterController
-                                                              .updateChapterNumber(
-                                                            subjectID:
-                                                                subjectID,
-                                                            chapterID: snapshot
-                                                                    .data!
-                                                                    .docs[index]
+                                                          chapterController.updateChapterNumber(
+                                                            subjectID: subjectID,
+                                                            chapterID: snapshot.data!.docs[index]
                                                                 ['docid'],
                                                           );
-                                                          Navigator.pop(
-                                                              context);
+                                                          Navigator.pop(context);
                                                         },
-                                                        child:
-                                                            ButtonContainerWidget(
+                                                        child: ButtonContainerWidget(
                                                           curving: 5,
                                                           colorindex: 2,
                                                           height: 40.h,
                                                           width: 92.w,
                                                           child: Center(
-                                                            child:
-                                                                GooglePoppinsWidgets(
+                                                            child: GooglePoppinsWidgets(
                                                               text: "Update",
                                                               color: cWhite,
                                                               fontsize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
+                                                              fontWeight: FontWeight.w500,
                                                             ),
                                                           ),
                                                         ),
@@ -225,9 +201,7 @@ class RecordedClassChapters extends StatelessWidget {
                                                   kHeight40,
                                                   const Text(
                                                     "Chapter Name *",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: TextStyle(fontWeight: FontWeight.bold),
                                                   ),
                                                   kHeight10,
                                                   Row(
@@ -235,13 +209,10 @@ class RecordedClassChapters extends StatelessWidget {
                                                       SizedBox(
                                                         height: 60,
                                                         width: 279,
-                                                        child:
-                                                            TextFormFieldWidget(
-                                                          textEditingController:
-                                                              chapterController
-                                                                  .chapterNameController,
-                                                          hintText:
-                                                              "chapter name",
+                                                        child: TextFormFieldWidget(
+                                                          textEditingController: chapterController
+                                                              .chapterNameController,
+                                                          hintText: "chapter name",
                                                         ),
                                                       ),
                                                       const SizedBox(
@@ -249,33 +220,24 @@ class RecordedClassChapters extends StatelessWidget {
                                                       ),
                                                       GestureDetector(
                                                         onTap: () {
-                                                          chapterController
-                                                              .updateChapterName(
-                                                            subjectID:
-                                                                subjectID,
-                                                            chapterID: snapshot
-                                                                    .data!
-                                                                    .docs[index]
+                                                          chapterController.updateChapterName(
+                                                            subjectID: subjectID,
+                                                            chapterID: snapshot.data!.docs[index]
                                                                 ['docid'],
                                                           );
-                                                          Navigator.pop(
-                                                              context);
+                                                          Navigator.pop(context);
                                                         },
-                                                        child:
-                                                            ButtonContainerWidget(
+                                                        child: ButtonContainerWidget(
                                                           curving: 5,
                                                           colorindex: 2,
                                                           height: 40.h,
                                                           width: 92.w,
                                                           child: Center(
-                                                            child:
-                                                                GooglePoppinsWidgets(
+                                                            child: GooglePoppinsWidgets(
                                                               text: "Update",
                                                               color: cWhite,
                                                               fontsize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
+                                                              fontWeight: FontWeight.w500,
                                                             ),
                                                           ),
                                                         ),
@@ -315,22 +277,18 @@ class RecordedClassChapters extends StatelessWidget {
                                                 },
                                                 child: const Text(
                                                   "No",
-                                                  style:
-                                                      TextStyle(color: cblack),
+                                                  style: TextStyle(color: cblack),
                                                 ),
                                               ),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  chapterController
-                                                      .deleteRecordedClassChapter(
-                                                          subjectID: subjectID,
-                                                          chapterID:
-                                                              data['docid']);
+                                                  chapterController.deleteRecordedClassChapter(
+                                                      subjectID: subjectID,
+                                                      chapterID: data['docid']);
                                                 },
                                                 child: const Text(
                                                   "Yes",
-                                                  style:
-                                                      TextStyle(color: cblack),
+                                                  style: TextStyle(color: cblack),
                                                 ),
                                               )
                                             ],
@@ -370,7 +328,7 @@ class RecordedClassChapters extends StatelessWidget {
             }
           },
         ),
-     ),
-);
-}
+      ),
+    );
+  }
 }
