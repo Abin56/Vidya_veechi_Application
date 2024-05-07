@@ -218,8 +218,8 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
 
       const UserExmNotifications(), // Exams...........6
       UsersSelectExamLevelScreen(
-          classId: UserCredentialsController.classId!,
-          studentID: UserCredentialsController
+          classID: UserCredentialsController.classId!,
+          studentId: UserCredentialsController
               .parentModel!.studentID!), ////// exam result............7
       NoticePage(), //Notice.........8
        EventList(), //Events.................9
