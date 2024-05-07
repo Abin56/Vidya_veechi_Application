@@ -67,7 +67,6 @@ dependencies:
   zoom_widget:
   path_provider:
   provider:
-  spline_chart:
   syncfusion_flutter_charts: null
   syncfusion_flutter_gauges: null
   animated_text_kit:

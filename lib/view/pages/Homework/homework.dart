@@ -103,7 +103,7 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
         ),
         actions: [
           GestureDetector(
-            onTap: () => Navigator.pushReplacement(
+            onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) {

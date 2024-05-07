@@ -1365,14 +1365,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
-  spline_chart:
-    dependency: "direct main"
-    description:
-      name: spline_chart
-      sha256: "465c2110730a469976a9b86bc0584890d5c6471897728c2276845cd19299264d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   sprintf:
     dependency: transitive
     description:
