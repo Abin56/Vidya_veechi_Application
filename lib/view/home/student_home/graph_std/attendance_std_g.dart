@@ -2,7 +2,6 @@ import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-
 class AttendanceGraphOfStudent extends StatelessWidget {
   const AttendanceGraphOfStudent({super.key});
 
