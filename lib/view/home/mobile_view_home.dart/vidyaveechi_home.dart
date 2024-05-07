@@ -55,7 +55,7 @@ class MobileHomePage extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 20),
                                   child: Text(
-                                    "Lepton",
+                                    companyNameSmall,
                                     style: GoogleFonts.dmSerifDisplay(
                                         color: const Color.fromARGB(
                                             255, 38, 93, 15),
