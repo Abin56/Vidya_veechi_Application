@@ -2,6 +2,7 @@ import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/sruthi/widget/exm_upload_textformfeild.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
@@ -18,6 +19,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
       {super.key, required this.subjectID, required this.subjectName});
   //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RecordedClassController rcrdClsCtr = Get.put(RecordedClassController());
+  final RecordedVideoClassCntl frmcntrl  = Get.put(RecordedVideoClassCntl());
   final String subjectID;
   final String subjectName;
   @override
@@ -55,7 +57,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: rcrdClsCtr.formKey,
+          key: frmcntrl.formKey,
           child: Column(
             children: [
               kHeight20,
@@ -73,7 +75,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
               kHeight20,
               GestureDetector(
                 onTap: () {
-                  if (rcrdClsCtr.formKey.currentState?.validate() ?? false) {
+                  if (frmcntrl.formKey.currentState?.validate() ?? false) {
                     rcrdClsCtr
                         .createChapter(subjectID, subjectName)
                         .then((value) {

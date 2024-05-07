@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/recorded_controller/recorded_controller.dart';
+import 'package:vidya_veechi/controllers/recorded_chapter_controller/recorded_chapter_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -15,7 +15,7 @@ import 'package:vidya_veechi/widgets/textformfield.dart';
 
 class RecordedVideosList extends StatefulWidget {
   const RecordedVideosList(
- {super.key, required this.subjectID, required this.chapterID});
+      {super.key, required this.subjectID, required this.chapterID});
 
   final String subjectID;
   final String chapterID;
@@ -25,7 +25,7 @@ class RecordedVideosList extends StatefulWidget {
 
 class _RecordedVideosListState extends State<RecordedVideosList> {
   final RecordedChapterController chapterController =
- Get.put(RecordedChapterController());
+      Get.put(RecordedChapterController());
 
   final ScrollController controller = ScrollController();
   double _scrollPosition = 0.0;
@@ -299,7 +299,6 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                                                   .chapterID,
                                                               docId: data[
                                                                   'docid']);
-                                                  Navigator.pop(context);
                                                     },
                                                     child: const Text(
                                                       "Yes",
@@ -337,7 +336,7 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
             return Center(child: Text('No Recorded Classes Uploaded Yet!'.tr));
           },
         ),
-),
-);
-}
+      ),
+    );
+  }
 }

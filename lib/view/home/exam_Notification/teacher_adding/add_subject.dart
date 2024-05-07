@@ -55,7 +55,9 @@ class AddTimeTable extends StatelessWidget {
               onTap: () {
                 
                  Navigator.push(context, MaterialPageRoute(builder: (context)
-              {return ExmNotifications();}));
+              {
+                return const ExmNotifications();
+                }));
                 // Get.to(() => const ExmNotifications());
               },
               child: Container(

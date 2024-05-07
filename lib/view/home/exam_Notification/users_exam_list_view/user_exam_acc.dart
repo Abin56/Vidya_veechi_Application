@@ -18,20 +18,21 @@ class UserExmNotifications extends StatelessWidget {
           foregroundColor: cWhite,
           flexibleSpace: const AppBarColorWidget(),
           //  backgroundColor: adminePrimayColor,
-          bottom: TabBar(tabs: [
-            Tab(
-              text: 'School Level'.tr,
+          // bottom:
+          // TabBar(tabs: [
+          //   Tab(
+          //     text: 'School Level'.tr,
+          //   ),
+          //   Tab(
+          //     text: 'Public Level'.tr,
+          //   )
+          // ]),
+        ),
+        body: const SafeArea(child: UserPublicLevel()
+            // TabBarView(
+            //   children: [UserPublicLevel(), UserStateLevel()],
+            // ),
             ),
-            Tab(
-              text: 'Public Level'.tr,
-            )
-          ]),
-        ),
-        body: const SafeArea(
-          child: TabBarView(
-            children: [UserPublicLevel(), UserStateLevel()],
-          ),
-        ),
       ),
     );
   }

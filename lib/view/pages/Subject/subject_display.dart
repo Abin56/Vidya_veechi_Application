@@ -1,4 +1,3 @@
-
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,7 @@ import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:vidya_veechi/widgets/Iconbackbutton.dart';
 
 class StudentSubjectScreen extends StatelessWidget {
- final TeacherSubjectController teacherSubjectController =
-      Get.put(TeacherSubjectController());
+  final TeacherSubjectController teacherSubjectController = Get.put(TeacherSubjectController());
   StudentSubjectScreen({super.key});
 
   @override
@@ -25,7 +23,7 @@ class StudentSubjectScreen extends StatelessWidget {
         flexibleSpace: const AppBarColorWidget(),
         foregroundColor: cWhite,
         automaticallyImplyLeading: false,
-       // backgroundColor: adminePrimayColor,
+        // backgroundColor: adminePrimayColor,
         title: Row(
           children: [
             IconButtonBackWidget(
@@ -65,12 +63,11 @@ class StudentSubjectScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 12,
-                      children:
-                          List.generate(snapshot.data!.docs.length, (index) {
+                      children: List.generate(snapshot.data!.docs.length, (index) {
                         if (snapshot.data!.docs[index]['teacherId'] != null ||
                             snapshot.data!.docs[index]['teacherId'] != '') {
-                          teacherSubjectController.getSubject(
-                              snapshot.data!.docs[index]['teacherId']);
+                          teacherSubjectController
+                              .getSubject(snapshot.data!.docs[index]['teacherId']);
                         } else {
                           return const SizedBox();
                         }
@@ -84,19 +81,27 @@ class StudentSubjectScreen extends StatelessWidget {
                             // ));
 
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ChapterDisplay(
-                                  subjectID: snapshot.data!.docs[index]
-                                      ['docid']),
+                              builder: (context) =>
+                                  ChapterDisplay(subjectID: snapshot.data!.docs[index]['docid']),
                             ));
                           },
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 12,bottom: 12,left: 8,),
+                            padding: const EdgeInsets.only(
+                              top: 12,
+                              bottom: 12,
+                              left: 8,
+                            ),
                             child: Container(
-                               decoration: BoxDecoration(border: Border.all(color: Colors.green,width: 2 ),),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.green, width: 2),
+                              ),
                               child: Container(
-                                  decoration: BoxDecoration(border: Border.all(color: cWhite,width: 2 ),),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: cWhite, width: 2),
+                                ),
                                 child: Container(
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.lightGreen,width: 2 ),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.lightGreen, width: 2),
                                     // gradient: RadialGradient(colors: [
                                     //    Colors.lightBlueAccent,
                                     //    Colors.blue
@@ -106,11 +111,11 @@ class StudentSubjectScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   height: 30,
-                                
+
                                   // ignore: sort_child_properties_last
                                   child: Center(
                                     child: Column(
-                                       // crossAxisAlignment: CrossAxisAlignment.start,
+                                        // crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             decoration: const BoxDecoration(
@@ -119,34 +124,30 @@ class StudentSubjectScreen extends StatelessWidget {
                                             ),
                                             child: ContainerImage(
                                               height: 60.h,
-                                              imagePath:'assets/images/teachernew.png',
+                                              imagePath: 'assets/images/teachernew.png',
                                               width: 70.w,
                                             ),
                                           ),
-                                        //  SizedBox(width: 10.h),
+                                          //  SizedBox(width: 10.h),
                                           SizedBox(
-                                            height:30, // set a fixed height for the container
+                                            height: 30, // set a fixed height for the container
                                             child: Center(
                                                 child: FutureBuilder(
-                                                    future:
-                                                        teacherSubjectController
-                                                            .getSubject(snapshot
-                                                                    .data
-                                                                    ?.docs[index]['teacherId']),
+                                                    future: teacherSubjectController.getSubject(
+                                                        snapshot.data?.docs[index]['teacherId']),
                                                     builder: (context, snap) {
                                                       return SizedBox(
                                                         height: 20,
                                                         width: 70,
-                                                        child:GooglePoppinsWidgets(
-                                                                text: snap.data ??"",
-                                                                fontsize: 12),
+                                                        child: GooglePoppinsWidgets(
+                                                            text: snap.data ?? "", fontsize: 12),
                                                       );
                                                     })),
                                           ),
-                                         // kHeight20,
+                                          // kHeight20,
                                           Flexible(
                                             child: GooglePoppinsWidgets(
-                                              text: snapshot.data!.docs[index] ['subjectName'],
+                                              text: snapshot.data!.docs[index]['subjectName'],
                                               fontsize: 20.h,
                                               color: cblack,
                                             ),

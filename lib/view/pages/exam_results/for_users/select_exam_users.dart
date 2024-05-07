@@ -1,21 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:vidya_veechi/view/pages/exam_results/for_users/view_student_result.dart';
-import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
+import 'package:vidya_veechi/view/pages/exam_results/for_users/view_student_result.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:vidya_veechi/widgets/drop_down/select_school_level_exam.dart';
 
 class UsersSelectExamWiseScreen extends StatelessWidget {
   final String classID;
-  final String examLevel;
+  //final String examLevel;
   final String studentId;
 
   const UsersSelectExamWiseScreen(
       {required this.classID,
-      required this.examLevel,
+     // required this.examLevel,
       required this.studentId,
       super.key});
 
@@ -32,16 +33,30 @@ class UsersSelectExamWiseScreen extends StatelessWidget {
         //backgroundColor: adminePrimayColor,
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('SchoolListCollection')
-              .doc(UserCredentialsController.schoolId)
-              .collection(UserCredentialsController.batchId!)
-              .doc(UserCredentialsController.batchId!)
-              .collection('classes')
-              .doc(classID)
-              .collection('Students')
-              .doc(studentId)
-              .collection(examLevel)
+          stream:
+           FirebaseFirestore.instance
+           .collection('SchoolListCollection')
+                                    .doc(UserCredentialsController.schoolId)
+                                    .collection(
+                                        UserCredentialsController.batchId!)
+                                    .doc(UserCredentialsController.batchId!)
+                                    .collection('classes')
+                                    .doc(classID)
+                                    .collection('Students')
+                                     .doc(studentId)
+                                     .collection('Exam Results')
+                                    .doc(schoolLevelExamistValue!['examName'])
+                                    .collection('Marks')
+                                    
+              // .collection('SchoolListCollection')
+              // .doc(UserCredentialsController.schoolId)
+              // .collection(UserCredentialsController.batchId!)
+              // .doc(UserCredentialsController.batchId!)
+              // .collection('classes')
+              // .doc(classID)
+              // .collection('Students')
+              // .doc(studentId)
+              // .collection(examLevel)
               .snapshots(),
           builder: (context, snapshots) {
             if (snapshots.hasData) {
@@ -67,7 +82,7 @@ class UsersSelectExamWiseScreen extends StatelessWidget {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                                   return ViewExamResultsScreen(
                                     classID: classID,
-                                    examLevel: examLevel,
+                                 //   examLevel: examLevel,
                                     studentId: studentId,
                                     examdocid: snapshots.data!.docs[index]
                                         ['docid']);

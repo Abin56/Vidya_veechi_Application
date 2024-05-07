@@ -326,6 +326,7 @@ class RecordedClassChapters extends StatelessWidget {
                                                           subjectID: subjectID,
                                                           chapterID:
                                                               data['docid']);
+                                                  Navigator.pop(context);
                                                 },
                                                 child: const Text(
                                                   "Yes",

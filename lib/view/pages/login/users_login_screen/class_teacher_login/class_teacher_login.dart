@@ -21,15 +21,14 @@ import 'sigin/teacher_sigup_screen.dart';
 
 class ClassTeacherLoginScreen extends StatelessWidget {
   int? pageIndex;
-  PasswordField hideGetxController = Get.find<PasswordField>();
 
   ClassTeacherLoginScreen({this.pageIndex, super.key});
 
+  PasswordField hideGetxController = Get.find<PasswordField>();
+
   ClassTeacherLoginController teacherSigninController =
       Get.put(ClassTeacherLoginController());
-
-  // final formKey = GlobalKey<FormState>();
-  // final formKey = Get.find<FormController>().formKey;
+  final GlobalKey<FormState> fKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

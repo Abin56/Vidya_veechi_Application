@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
@@ -9,16 +10,16 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 class LeaveLettersScreen extends StatefulWidget {
- final String schoolplaceName;
- final String schoolName;
- final String id;
- final String applyLeaveDate;
- final String leaveResontype;
- final String leaveFromDate;
- final String leaveToDate;
- final String leaveReason;
- final String studentName;
- final String studentParent;
+  final String schoolplaceName;
+  final String schoolName;
+  final String id;
+  final String applyLeaveDate;
+  final String leaveResontype;
+  final String leaveFromDate;
+  final String leaveToDate;
+  final String leaveReason;
+  final String studentName;
+  final String studentParent;
 
   const LeaveLettersScreen(
       {required this.id,
@@ -72,7 +73,7 @@ class _LeaveLettersScreenState extends State<LeaveLettersScreen> {
     // getInvoice();
     // databaseReference = dref.child("course");
     // _counter();
-    nextpage().then((value) async{
+    nextpage().then((value) async {
       await Future.delayed(const Duration(seconds: 1));
       Get.back();
     });
@@ -102,23 +103,20 @@ class _LeaveLettersScreenState extends State<LeaveLettersScreen> {
               );
               // await nextpage();
             },
-            child: const Center(
-              child:CircularProgressIndicator.adaptive()
-            ),
+            child: const Center(child: CircularProgressIndicator.adaptive()),
           )
         ],
       )),
     );
-    
   }
 
-  Future<void>nextpage() async {
+  Future<void> nextpage() async {
     await Future.delayed(const Duration(seconds: 1));
     Printing.layoutPdf(
-                onLayout: (PdfPageFormat format) {
-                  return buildPdf(format);
-                },
-              );
+      onLayout: (PdfPageFormat format) {
+        return buildPdf(format);
+      },
+    );
   }
 
   /// This method takes a page format and generates the Pdf file data
@@ -131,96 +129,87 @@ class _LeaveLettersScreenState extends State<LeaveLettersScreen> {
     doc.addPage(
       pw.Page(
         build: (pw.Context context) {
-          return 
-          pw.Column(
-              mainAxisAlignment: pw.MainAxisAlignment.start,
-              crossAxisAlignment: pw.CrossAxisAlignment.start,
-              children: [
-                pw.Row(
+          return pw.Column(
+            mainAxisAlignment: pw.MainAxisAlignment.start,
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              pw.Row(
                   mainAxisAlignment: pw.MainAxisAlignment.center,
-              crossAxisAlignment: pw.CrossAxisAlignment.center,
+                  crossAxisAlignment: pw.CrossAxisAlignment.center,
                   children: [
-                       pw.Text(
-                  'Leave Letter',
-                  style:  pw.TextStyle(fontSize: 17,fontWeight: pw.FontWeight.bold),
-                ),
-                 pw.SizedBox(height: 50),
-                   ]),
-                pw.Text(
-                  'To',
-                  style: const pw.TextStyle(fontSize: 16),
-                ),
+                    pw.Text(
+                      'Leave Letter',
+                      style: pw.TextStyle(fontSize: 17, fontWeight: pw.FontWeight.bold),
+                    ),
+                    pw.SizedBox(height: 50),
+                  ]),
+              pw.Text(
+                'To',
+                style: const pw.TextStyle(fontSize: 16),
+              ),
               pw.SizedBox(height: 5),
-                pw.Text(
-                  'The Teacher',
-                  style: const pw.TextStyle(fontSize: 16),
-                ),
+              pw.Text(
+                'The Teacher',
+                style: const pw.TextStyle(fontSize: 16),
+              ),
               pw.SizedBox(height: 5),
-                pw.Text(
-                  widget.schoolName,
-                  style: const pw.TextStyle(fontSize: 16),
-                ),
-               
-                 pw.SizedBox(height: 20),
-               
-                pw.Text(
-                  'Subject: Application For Leave',
-                  style: const pw.TextStyle(fontSize: 16),
-                ),
-                 pw.SizedBox(height: 5),
-               
-                pw.Text(
-                  'Leave Type : ${widget.leaveResontype}',
-                  style: const pw.TextStyle(fontSize: 16),
-                ),
-                 pw.SizedBox(height: 20),
-                pw.Row(
-                  children: [
-                    pw.Column(
-                        mainAxisAlignment: pw.MainAxisAlignment.start,
-                        crossAxisAlignment: pw.CrossAxisAlignment.start,
-                        children: [
-                          pw.Text(
-                            'Respected Sir,',
-                            style: const pw.TextStyle(fontSize: 16),
-                          ),
-                         pw.SizedBox(height: 15),
-                         pw.Text(
-                              "I would like to inform you that due to ${widget.leaveReason}",
-                              style: const pw.TextStyle(fontSize: 16)), 
-                          
-                               pw.SizedBox(height: 5),
-                              
-                          pw.Text(
-                              "my child ${widget.studentName} would not be able to attend the classes ",
-                              style: const pw.TextStyle(fontSize: 16)),
-                               pw.SizedBox(height: 5),
-                                       pw.Text(
-                              'from ${widget.leaveFromDate} to ${widget.leaveToDate}. Therefore,I humbly request',
-                              style: const pw.TextStyle(fontSize: 16)),
-                               pw.SizedBox(height: 5),
-                               pw.Text('you to grant leave.',
-                              style: const pw.TextStyle(fontSize: 16)),
-                          pw.SizedBox(height: 20),
-                          pw.Text('Thanking You,',
-                              style: const pw.TextStyle(fontSize: 16)),
-                          pw.SizedBox(height: 5),
-                          pw.Text('Yours sincerely,',
-                              style: const pw.TextStyle(fontSize: 16)),
-                           pw.SizedBox(height: 5),
-                          pw.Text(widget.studentParent,
-                              style: const pw.TextStyle(
-                                   fontSize: 16)),
-                                   pw.SizedBox(height: 5),
-                          pw.Text('Date: ${widget.applyLeaveDate}',
-                              style: const pw.TextStyle(
-                                   fontSize: 16)),
-                          
-                        ])
-                  ],
-                ),
-              ],
-            );
+              pw.Text(
+                widget.schoolName,
+                style: const pw.TextStyle(fontSize: 16),
+              ),
+              pw.SizedBox(height: 20),
+              pw.Text(
+                'Subject: Application For Leave',
+                style: const pw.TextStyle(fontSize: 16),
+              ),
+              pw.SizedBox(height: 5),
+              pw.Text(
+                'Leave Type : ${widget.leaveResontype}',
+                style: const pw.TextStyle(fontSize: 16),
+              ),
+              pw.SizedBox(height: 20),
+              pw.Row(
+                children: [
+                  pw.Column(
+                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        pw.Text(
+                          'Respected Sir,',
+                          style: const pw.TextStyle(fontSize: 16),
+                        ),
+                        pw.SizedBox(height: 15),
+                        pw.Text("I would like to inform you that due to",
+                            style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 5),
+                        pw.Text(
+                          "${widget.leaveReason}",
+                          style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold),
+                        ),
+                        pw.SizedBox(height: 5),
+                        pw.Text(
+                            "my child ${widget.studentName} would not be able to attend the classes ",
+                            style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 5),
+                        pw.Text(
+                            'from ${widget.leaveFromDate} to ${widget.leaveToDate}. Therefore,I humbly request',
+                            style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 5),
+                        pw.Text('you to grant leave.', style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 20),
+                        pw.Text('Thanking You,', style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 5),
+                        pw.Text('Yours sincerely,', style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 5),
+                        pw.Text(widget.studentParent, style: const pw.TextStyle(fontSize: 16)),
+                        pw.SizedBox(height: 5),
+                        pw.Text('Date: ${widget.applyLeaveDate}',
+                            style: const pw.TextStyle(fontSize: 16)),
+                      ])
+                ],
+              ),
+            ],
+          );
           //  pw.Expanded(child: Container(child: ,))
         },
       ),

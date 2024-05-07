@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
+import 'package:vidya_veechi/controllers/get_teacher_subject/get_sub.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:flutter/material.dart';
@@ -20,17 +20,22 @@ class ExamResultsView extends StatefulWidget {
   bool isLoading = false;
 
   String classID;
-  String examlevel;
+  // String examlevel;
 
-  ExamResultsView({super.key, required this.classID, required this.examlevel});
+  ExamResultsView({
+    super.key,
+    required this.classID,
+    // required this.examlevel
+  });
 
   @override
   State<ExamResultsView> createState() => _ExamResultsViewState();
 }
 
 class _ExamResultsViewState extends State<ExamResultsView> {
- // final formKey = GlobalKey<FormState>();
-  final ExamResultFormController examResultFormController = Get.put(ExamResultFormController());
+  final _formKey = GlobalKey<FormState>();
+
+ 
 
   TextEditingController obtainedMark = TextEditingController();
 
@@ -50,7 +55,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
           ? circularProgressIndicatotWidget
           : Center(
               child: Form(
-                key:  examResultFormController. formKey,
+                key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -60,8 +65,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
 
                       child: Center(
                         child: GetSchoolLevelExamDropDownButton(
-                          examType: widget.examlevel,
-                        ),
+                            // examType: widget.examlevel,
+                            ),
                       ),
                     ),
                     SizedBox(
@@ -109,12 +114,14 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                     GestureDetector(
                         onTap: () async {
                           final docid = uuid.v1();
-                          if (examResultFormController. formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             if (schoolLevelExamistValue != null &&
                                 allClassStudentsListValue != null) {
                               setState(() {
                                 widget.isLoading = true;
                               });
+                              print(
+                                  'start - 1  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                               await FirebaseFirestore.instance
                                   .collection('SchoolListCollection')
                                   .doc(UserCredentialsController.schoolId)
@@ -125,11 +132,13 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                   .doc(widget.classID)
                                   .collection('Students')
                                   .doc(allClassStudentsListValue!['docid'])
-                                  .collection(widget.examlevel)
+                                  .collection('Exam Results')
                                   .doc(schoolLevelExamistValue!['examName'])
                                   .set({
                                 'docid': schoolLevelExamistValue!['examName']
                               }).then((value) async {
+                                print(
+                                    'start - 2  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                 await FirebaseFirestore.instance
                                     .collection('SchoolListCollection')
                                     .doc(UserCredentialsController.schoolId)
@@ -140,7 +149,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                     .doc(widget.classID)
                                     .collection('Students')
                                     .doc(allClassStudentsListValue!['docid'])
-                                    .collection(widget.examlevel)
+                                    .collection('Exam Results')
                                     .doc(schoolLevelExamistValue!['examName'])
                                     .collection('Marks')
                                     .doc(teacherSubjectValue!['docid'])
@@ -156,6 +165,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                   'studentid':
                                       allClassStudentsListValue!['docid'],
                                 }, SetOptions(merge: true)).then((value) async {
+                                  print(
+                                      'start - 3  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                   await FirebaseFirestore.instance
                                       .collection('SchoolListCollection')
                                       .doc(UserCredentialsController.schoolId)
@@ -170,6 +181,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                     'docid':
                                         schoolLevelExamistValue!['examName']
                                   }).then((value) async {
+                                    print(
+                                        'start - 4  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                     await FirebaseFirestore.instance
                                         .collection('SchoolListCollection')
                                         .doc(UserCredentialsController.schoolId)
@@ -189,6 +202,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                       'subjectid':
                                           teacherSubjectValue!['docid'],
                                     }).then((value) async {
+                                      print(
+                                          'start - 5  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                       await FirebaseFirestore.instance
                                           .collection('SchoolListCollection')
                                           .doc(UserCredentialsController
@@ -210,8 +225,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                           .set({
                                         'subjectid':
                                             teacherSubjectValue!['docid'],
-                                        'teacherId': teacherSubjectValue![
-                                            'teacherdocid'],
+                                        'teacherId':
+                                            teacherSubjectValue!['teacherId'],
                                         'teachername':
                                             teacherSubjectValue!['teacherName'],
                                         'examid': docid,
@@ -228,6 +243,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                         'studentid':
                                             allClassStudentsListValue!['docid'],
                                       }).then((value) {
+                                        print(
+                                            'start - 6  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                         setState(() {
                                           widget.isLoading = false;
                                         });
@@ -261,7 +278,7 @@ class SubmitButtonWidget extends StatelessWidget {
     required this.text,
     super.key,
   });
- final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(

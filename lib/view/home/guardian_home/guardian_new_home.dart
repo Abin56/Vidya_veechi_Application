@@ -173,8 +173,8 @@ class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
           batchId: UserCredentialsController.batchId!), //Leave Letter////...5
           const UserExmNotifications(), // Exams...........6
           UsersSelectExamLevelScreen(
-          classId: UserCredentialsController.classId!,
-          studentID: UserCredentialsController
+          classID: UserCredentialsController.classId!,
+          studentId: UserCredentialsController
               .guardianModel!.studentID!), ////// exam result............7
               NoticePage(), //Notice.........8
               const EventList(), //Events.................9
@@ -183,8 +183,8 @@ class _GuardianHomeScreen2State extends State<GuardianHomeScreen2> {
       
 
       UsersSelectExamLevelScreen(
-          classId: UserCredentialsController.classId!,
-          studentID: UserCredentialsController
+          classID: UserCredentialsController.classId!,
+          studentId: UserCredentialsController
               .guardianModel!.studentID!), ////// exam result............6
 
       const ViewHomeWorks(), // Home Works...............7

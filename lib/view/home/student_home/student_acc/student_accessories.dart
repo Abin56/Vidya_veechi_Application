@@ -58,8 +58,8 @@ class _StudentAccessoriesState extends State<StudentAccessories> {
       const UserExmNotifications(), //Exam
 
       UsersSelectExamLevelScreen(
-          classId: UserCredentialsController.classId!,
-          studentID:
+          classID: UserCredentialsController.classId!,
+          studentId:
               UserCredentialsController.studentModel!.docid), ////// exam result
       NoticePage(), //Notice
       const EventList(), //Events

@@ -9,8 +9,10 @@ import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
 import 'package:vidya_veechi/widgets/login_button.dart';
 
 class UploadHomework extends StatelessWidget {
-  const UploadHomework({super.key, required this.task});
-  final String task;
+  const UploadHomework(
+      {super.key, required this.homeWorkName, required this.homeworkID});
+  final String homeWorkName;
+  final String homeworkID;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,22 +38,25 @@ class UploadHomework extends StatelessWidget {
                   text: "Task :", fontsize: 25.h, fontWeight: FontWeight.bold),
               kHeight40,
               GooglePoppinsWidgets(
-                  text: task,
+                  text: homeWorkName,
                   // "Taskdjydjtyd vd  ydyrdrd jgfx fgfgf fx ydyrdyd tydydyrdy yy  yrjyrry ",
                   fontsize: 15.h,
                   fontWeight: FontWeight.w500),
               kHeight50,
               Center(
-                  child:
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return UploadHomeworkToTeacher(homeWorkName: '',homeworkID: '',);
-                          },));
-                        },
-                        child: loginButtonWidget(
-                          height: 40, width: 80, text: "Upload"),
-                      )),
+                  child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return UploadHomeworkToTeacher(
+                        homeWorkName: homeWorkName,
+                        homeworkID: homeworkID,
+                      );
+                    },
+                  ));
+                },
+                child: loginButtonWidget(height: 40, width: 80, text: "Upload"),
+              )),
             ],
           ),
         ),

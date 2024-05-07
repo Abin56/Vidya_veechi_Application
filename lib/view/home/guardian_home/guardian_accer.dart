@@ -56,8 +56,8 @@ class GuardianAccessories extends StatelessWidget {
       const UserExmNotifications(),
       // Exams
       UsersSelectExamLevelScreen(
-          classId: UserCredentialsController.classId!,
-          studentID: UserCredentialsController
+          classID: UserCredentialsController.classId!,
+          studentId: UserCredentialsController
               .guardianModel!.studentID!), ////// exam result
 
       const EventList(), //Events

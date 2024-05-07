@@ -84,8 +84,8 @@ viewallMenus(BuildContext context) {
     const UserExmNotifications(), //Exam
 
     UsersSelectExamLevelScreen(
-        classId: UserCredentialsController.classId!,
-        studentID:
+        classID: UserCredentialsController.classId!,
+        studentId:
             UserCredentialsController.studentModel!.docid), ////// exam result
 
     NoticePage(), //Notice

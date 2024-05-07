@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/model/teacher_model/teacher_model.dart';
 import 'package:vidya_veechi/utils/utils.dart';
-import 'package:get/get.dart';
 
 import '../../model/class_wise_subject_teacher_model/class_wise_subject_teacher_model.dart';
 
@@ -29,6 +29,7 @@ class TeacherListController {
           .map((e) => ClassWiseSubjectTeacherList.fromMap(e.data()))
           .toList();
       isLoading.value = false;
+      print(subjectList);
       return subjectList;
     } catch (e) {
       isLoading.value = false;

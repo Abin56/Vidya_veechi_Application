@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vidya_veechi/controllers/get_teacher_subject/get_sub.dart';
+import 'package:vidya_veechi/controllers/teacher_subject_controller/teacher_subject_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,9 +10,11 @@ import 'package:get/get.dart';
 var schoolLevelExamistValue;
 
 class GetSchoolLevelExamDropDownButton extends StatefulWidget {
-  final String examType;
-  const GetSchoolLevelExamDropDownButton({Key? key, required this.examType})
-      : super(key: key);
+  // final String examType;
+  const GetSchoolLevelExamDropDownButton({
+    Key? key,
+    // required this.examType
+  }) : super(key: key);
 
   @override
   State<GetSchoolLevelExamDropDownButton> createState() =>
@@ -31,7 +35,7 @@ class _GetSchoolLevelExamDropDownButtonState
             .doc(UserCredentialsController.schoolId)
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId!)
-            .collection(widget.examType)
+            .collection('ExamNotification')
             .snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
