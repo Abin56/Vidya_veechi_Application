@@ -1,19 +1,19 @@
 import 'dart:developer';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/pages/chat/group_chats/parent_group/parent_groups.dart';
 import 'package:vidya_veechi/view/pages/chat/group_chats/student_group/student_groups.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../../controllers/group_chat_controller/group_StudentsTeacher_chat_controller.dart';
 
 class GroupChatScreenForTeachers extends StatelessWidget {
-final  TeacherGroupChatController teacherGroupChatController =
+  final TeacherGroupChatController teacherGroupChatController =
       Get.put(TeacherGroupChatController());
   GroupChatScreenForTeachers({super.key});
 
@@ -49,6 +49,8 @@ final  TeacherGroupChatController teacherGroupChatController =
                     child: Padding(
                       padding: const EdgeInsets.only(left: 7, right: 7, top: 7),
                       child: TabBar(
+                        // splashBorderRadius: BorderRadius.circular(0),
+
                         labelPadding:
                             EdgeInsetsDirectional.symmetric(horizontal: 80.w),
                         isScrollable: true,
@@ -72,34 +74,33 @@ final  TeacherGroupChatController teacherGroupChatController =
                       ParentssGroupsMessagesScreen(),
                     ],
                   ),
-                  floatingActionButton: FutureBuilder(
-                      future: FirebaseFirestore.instance
+                  floatingActionButton: StreamBuilder(
+                      builder: (context, checkClassTeacher) {
+                        if (checkClassTeacher.hasData) {
+                           return FloatingActionButton(
+                              child: const Icon(
+                                Icons.add,
+                              ),
+                              onPressed: () async {
+                                teacherGroupChatController
+                                    .createGroupChatForWho(context);
+                              },
+                            );
+                        } else {
+                          return const Text('');
+                        }
+                      },
+                      stream: FirebaseFirestore.instance
                           .collection('SchoolListCollection')
                           .doc(UserCredentialsController.schoolId)
                           .collection(UserCredentialsController.batchId!)
                           .doc(UserCredentialsController.batchId)
                           .collection('classes')
                           .doc(UserCredentialsController.classId)
-                          .get(),
-                      builder: (context, checkClassTeacher) {
-                        if (checkClassTeacher.hasData) {
-                          if (checkClassTeacher.data!
-                                  .data()!['classTeacherdocid'] ==
-                              FirebaseAuth.instance.currentUser!.uid) {
-                            return FloatingActionButton(
-                              child: const Icon(Icons.add),
-                              onPressed: () async {
-                                teacherGroupChatController
-                                    .createGroupChatForWho(context);
-                              },
-                            );
-                          } else {
-                            return const Text('');
-                          }
-                        } else {
-                          return const Text('');
-                        }
-                      }),
+                          .snapshots()),
+                  // builder: (context, checkClassTeacher) {
+
+                  // }
                 ),
               );
             }

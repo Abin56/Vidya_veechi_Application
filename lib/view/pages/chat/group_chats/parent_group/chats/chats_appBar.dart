@@ -1,12 +1,12 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
 import 'package:vidya_veechi/view/pages/Notice/notice_school_display_page.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../../../../controllers/group_chat_controller/group_ParentsTeacher_chat_controller.dart';
 import '../../../../../../widgets/drop_down/select_teachers.dart';
@@ -55,7 +55,7 @@ class BootomSheet extends StatelessWidget {
               .collection('Participants')
               .get(),
           builder: (context, snaps) {
-            return ListView(
+            return  snaps.hasData? ListView(
               children: [
                 Container(
                   height: 300,
@@ -144,7 +144,7 @@ class BootomSheet extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30)),
                                 height: 40,
                                 width: 140,
-                                child: Center(
+                                child: const Center(
                                   child: GooglePoppinsEventsWidgets(
                                     text: 'Transfer Group',
                                     fontsize: 12,
@@ -254,7 +254,7 @@ class BootomSheet extends StatelessWidget {
                                                   BorderRadius.circular(30)),
                                           height: 40,
                                           width: 140,
-                                          child: Center(
+                                          child: const Center(
                                             child: GooglePoppinsEventsWidgets(
                                               text: 'Deactivate',
                                               fontsize: 12,
@@ -345,7 +345,7 @@ class BootomSheet extends StatelessWidget {
                                                   BorderRadius.circular(30)),
                                           height: 40,
                                           width: 140,
-                                          child: Center(
+                                          child: const Center(
                                             child: GooglePoppinsEventsWidgets(
                                               text: 'Activate',
                                               fontsize: 12,
@@ -520,7 +520,7 @@ class BootomSheet extends StatelessWidget {
                   ),
                 ),
               ],
-            );
+            ):const SizedBox();
           }),
     );
   }

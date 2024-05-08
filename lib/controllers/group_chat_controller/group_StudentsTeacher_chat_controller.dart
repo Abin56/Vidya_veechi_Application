@@ -1,15 +1,15 @@
 import 'dart:developer';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/home/events/event_display_school_level.dart';
 import 'package:vidya_veechi/view/pages/chat/group_chats/group_chat.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../../model/chat_model/chat_model.dart';
 import '../../model/student_model/data_base_model.dart';
@@ -89,8 +89,8 @@ class TeacherGroupChatController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
                   child: GooglePoppinsEventsWidgets(
                     text: 'You',
                     fontsize: 12,
@@ -346,8 +346,8 @@ class TeacherGroupChatController extends GetxController {
       color: Colors.white,
       child: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 15),
+          const Padding(
+            padding: EdgeInsets.only(top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -521,7 +521,7 @@ class TeacherGroupChatController extends GetxController {
                   BoxDecoration(color: adminePrimayColor.withOpacity(0.3)),
               height: 60.h,
               width: 150.w,
-              child: Center(
+              child: const Center(
                 child: GooglePoppinsEventsWidgets(
                     text: 'Custom', fontsize: 15, fontWeight: FontWeight.bold),
               ),
@@ -542,7 +542,7 @@ class TeacherGroupChatController extends GetxController {
                           color: adminePrimayColor.withOpacity(0.3)),
                       height: 60.h,
                       width: 150.w,
-                      child: Center(
+                      child: const Center(
                         child: GooglePoppinsEventsWidgets(
                             text: 'Add All Students',
                             fontsize: 15,
@@ -610,7 +610,7 @@ class TeacherGroupChatController extends GetxController {
 }
 
 createChatGroups(BuildContext context, String chatValue) async {
-  final formKey = GlobalKey<FormState>();
+ // final formKey = GlobalKey<FormState>();
   final GroupFormController groupFormController = Get.put(GroupFormController());
   TextEditingController groupNameController = TextEditingController();
   showDialog(
@@ -652,10 +652,8 @@ createChatGroups(BuildContext context, String chatValue) async {
                   TextButton(
                     child: const Text('ok'),
                     onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        if (futureData.data?.data()?['classTeacherdocid'] ==
-                            FirebaseAuth.instance.currentUser!.uid) {
-                          final docid = uuid.v1();
+                      if (groupFormController. formKey.currentState!.validate()) {
+                     final docid = uuid.v1();
                           final groupInfoDetails = CreateGroupChatModel(
                               activate: true,
                               docid: docid,
@@ -693,33 +691,6 @@ createChatGroups(BuildContext context, String chatValue) async {
                                   msg: 'Group Created Successfully');
                             });
                           });
-                        } else {
-                          return showDialog(
-                            context: context,
-                            barrierDismissible: false, // user must tap button!
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text('Alert'),
-                                content: const SingleChildScrollView(
-                                  child: ListBody(
-                                    children: <Widget>[
-                                      Text('Sorry you not a class teacher')
-                                    ],
-                                  ),
-                                ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: const Text('ok'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
                       }
                     },
                   ),
