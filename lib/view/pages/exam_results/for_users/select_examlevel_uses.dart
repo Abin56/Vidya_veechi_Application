@@ -46,52 +46,72 @@ class UsersSelectExamLevelScreen extends StatelessWidget {
                     itemCount: snapshots.data!.docs.length,
                     itemBuilder: (context, index) {
                       final data = snapshots.data!.docs[index].data();
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Container(
-                             // width: 320.w,
-                              height: 80.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: adminePrimayColor,
-                              ),
-                              alignment: Alignment.centerLeft,
-                              child: TextButton.icon(
-                                  onPressed: () async {
-                                    Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) {
-                                        return ViewExamResultsScreen(
-                                  classID: classID,
-                                  studentId: studentId,
-                                  examdocid: snapshots.data!.docs[index]
-                                      ['docid']);
-                                        //  UsersSelectExamWiseScreen(
-                                        //   classID: classID,
-                                        //   //   examLevel: 'School Level',
-                                        //   studentId: studentId,
-                                        // );
-                                      },
-                                    ));
-                                    // Get.off(() => UsersSelectExamWiseScreen(
-                                    //       classID: classId,
-                                    //       examLevel: 'School Level',
-                                    //       studentId: studentID,
-                                    //     ));
-                                  },
-                                  icon: const Icon(
-                                    Icons.receipt,
-                                    color: cWhite,
-                                  ),
-                                  label: GooglePoppinsWidgets(
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+                             return ViewExamResultsScreen(
+                            classID: classID,
+                            studentId: studentId,
+                            examdocid: snapshots.data!.docs[index]
+                                ['docid']);
+                          },));
+                        },
+                        child: Container(
+                         // width: 320.w,
+                          height: 80.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: adminePrimayColor,
+                          ),
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            children: [
+                               const Padding(
+                                 padding: EdgeInsets.all(4.0),
+                                 child: Icon(
+                                      Icons.receipt,
+                                      color: cWhite,
+                                    ),
+                               ),
+                                  GooglePoppinsWidgets(
                                       fontsize: 20.h,
                                       text: data['docid'],
                                        //   schoolLevelExamistValue?['examName'],
-                                      color: Colors.white)),
-                            ),
+                                      color: Colors.white),
+                              // TextButton.icon(
+                              //     onPressed: () async {
+                              //       Navigator.push(context, MaterialPageRoute(
+                              //         builder: (context) {
+                              //           return ViewExamResultsScreen(
+                              //     classID: classID,
+                              //     studentId: studentId,
+                              //     examdocid: snapshots.data!.docs[index]
+                              //         ['docid']);
+                              //           //  UsersSelectExamWiseScreen(
+                              //           //   classID: classID,
+                              //           //   //   examLevel: 'School Level',
+                              //           //   studentId: studentId,
+                              //           // );
+                              //         },
+                              //       ));
+                              //       // Get.off(() => UsersSelectExamWiseScreen(
+                              //       //       classID: classId,
+                              //       //       examLevel: 'School Level',
+                              //       //       studentId: studentID,
+                              //       //     ));
+                              //     },
+                              //     icon: const Icon(
+                              //       Icons.receipt,
+                              //       color: cWhite,
+                              //     ),
+                              //     label: GooglePoppinsWidgets(
+                              //         fontsize: 20.h,
+                              //         text: data['docid'],
+                              //          //   schoolLevelExamistValue?['examName'],
+                              //         color: Colors.white)),
+                            ],
                           ),
-                        ],
+                        ),
                       );
                     },
                   );

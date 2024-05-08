@@ -116,9 +116,9 @@ class _RecordedVideosListState extends State<RecordedVideosList> {
                                 ),
                               ),
                               const VerticalDivider(
-                                color: cgrey,
-                                indent: 5,
-                                endIndent: 5,
+                                color: cgrey,width: 1,
+                                // indent: 4,
+                                // endIndent: 4,
                               )
                             ],
                           ),

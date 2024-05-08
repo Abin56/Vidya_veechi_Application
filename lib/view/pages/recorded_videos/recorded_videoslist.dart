@@ -1,13 +1,13 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
-import 'package:vidya_veechi/view/pages/recorded_videos/play_video.dart';
-import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/pages/recorded_videos/play_video.dart';
+import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 
 import '../../colors/colors.dart';
 
@@ -109,25 +109,28 @@ class RecordedVideosListScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            '${index + 1}',
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          kWidth10,
-                                          Text(
-                                            snapshot.data!.docs[index]['title'],
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                        ],
+                                      padding: const EdgeInsets.all(2),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              '${index + 1}',
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.black,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                            kWidth10,
+                                            Text(
+                                              snapshot.data!.docs[index]['title'],
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.black,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     // Text(
