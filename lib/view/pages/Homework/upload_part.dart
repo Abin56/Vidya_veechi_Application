@@ -1,38 +1,37 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
 import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../view/colors/colors.dart';
 import '../../../view/widgets/button_container_widget.dart';
 
 // ignore: must_be_immutable
 class UploadHomeworkToTeacher extends StatefulWidget {
-  UploadHomeworkToTeacher(
-      {super.key,
-      required this.homeworkID,
-      required this.homeWorkName,
-      });
+  UploadHomeworkToTeacher({
+    super.key,
+    required this.homeworkID,
+    required this.homeWorkName,
+  });
 
- final String homeworkID;
- final String homeWorkName;
+  final String homeworkID;
+  final String homeWorkName;
   bool stat = false;
 
-
   @override
-  State<UploadHomeworkToTeacher> createState() => _UploadHomeworkToTeacherState();
+  State<UploadHomeworkToTeacher> createState() =>
+      _UploadHomeworkToTeacherState();
 }
 
 class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
@@ -55,8 +54,7 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
 
       UploadTask uploadTask = FirebaseStorage.instance
           .ref()
-          .child(
-              "files/studymaterials/${widget.homeWorkName}/$uid2")
+          .child("files/studymaterials/${widget.homeWorkName}/$uid2")
           .putFile(file);
 
       final TaskSnapshot snap = await uploadTask;
@@ -78,7 +76,7 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
 
   Future<void> uploadToFirebase() async {
     try {
-      String uid = const Uuid().v1();
+      // String uid = const Uuid().v1();
       FirebaseFirestore.instance
           .collection('SchoolListCollection')
           .doc(UserCredentialsController.schoolId)
@@ -91,12 +89,13 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
           // .collection('Chapters')
           // .doc(widget.chapterID)
           .collection('Submit')
-          .doc(uid)
+          .doc(UserCredentialsController.studentModel!.docid)
           .set({
+        'Status': true,
         'homeWorkName': widget.homeWorkName,
         'homeworkID': widget.homeworkID,
         'downloadUrl': downloadUrl,
-        'docid': uid,
+        'docid': UserCredentialsController.studentModel!.docid,
         'uploadedBy': UserCredentialsController.studentModel!.studentName
       }).then((value) => showDialog(
               context: context,
@@ -226,7 +225,8 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
                             )
                           : GestureDetector(
                               onTap: () async {
-                                if (homeWorkController.formKey.currentState!.validate()) {
+                                if (homeWorkController.formKey.currentState!
+                                    .validate()) {
                                   await pickAFile(filee);
                                   await uploadToFirebase().then((value) {
                                     topicController.clear();

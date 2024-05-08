@@ -82,6 +82,7 @@ class HomeworksListView extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => ViewStudentsList(
                           homeworkID: data['docid'],
+                          homeWorkName: data['tasks'],
                         ),
                       ),
                     ),
@@ -129,16 +130,28 @@ class HomeworksListView extends StatelessWidget {
                                             return const Center(
                                                 child:
                                                     CircularProgressIndicator());
-                                          } else if (!snap.hasData) {
+                                          } else if (!snap.hasData ||
+                                              snap.data == null) {
                                             return const Center(
                                                 child:
                                                     Text('No data available'));
                                           }
-                                          return GooglePoppinsWidgets(
-                                            text: snap.data!['subjectName'],
-                                            fontsize: 17.h,
-                                            fontWeight: FontWeight.w700,
-                                          );
+                                          final Map<String, dynamic>?
+                                              subjectData = snap.data!.data();
+
+                                          // Check if subjectData is not null and contains the field "subjectName"
+                                          if (subjectData != null &&
+                                              subjectData
+                                                  .containsKey('subjectName')) {
+                                            return GooglePoppinsWidgets(
+                                              text: subjectData['subjectName'],
+                                              fontsize: 17.h,
+                                              fontWeight: FontWeight.w700,
+                                            );
+                                          } else {
+                                            return const Text(
+                                                'Subject Name not found');
+                                          }
                                         },
                                       ),
                                       Padding(
@@ -151,7 +164,7 @@ class HomeworksListView extends StatelessWidget {
                                               fontWeight: FontWeight.w600,
                                             ),
                                             InkWell(
-                                              onTap: () async {
+                                              onTap: () {
                                                 showDialog(
                                                   context: context,
                                                   barrierDismissible: false,
