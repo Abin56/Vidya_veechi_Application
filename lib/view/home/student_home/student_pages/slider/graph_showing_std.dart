@@ -16,7 +16,7 @@ class GraphShowingPartStdAttendance extends StatelessWidget {
     return GestureDetector(
       onTap: () => attendanceOnClickDetailsShowing(),
       child: Container(
-        height: 190.h,
+        height: 100.h,
         decoration: const BoxDecoration(
           boxShadow: [ BoxShadow(
             color: cblack,
