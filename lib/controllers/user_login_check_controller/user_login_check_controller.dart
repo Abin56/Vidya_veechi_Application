@@ -48,7 +48,7 @@ class UserLoginCheckController extends GetxController {
       print(querySnapshot.docs.length);
       if (querySnapshot.docs.length == 1) {
         UserCredentialsController.studentModel =
-            StudentModel.fromJson(querySnapshot.docs[0].data());
+            StudentModel.fromMap(querySnapshot.docs[0].data());
         log('student!!');
         // Get.off(StudentLoginScreen());
       } else {

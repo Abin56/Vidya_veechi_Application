@@ -272,9 +272,9 @@ class StudentSignInPageScreen extends StatelessWidget {
                                               .userEmail,
                                           password: UserEmailandPasswordSaver
                                               .userPassword)
-                                      .then((value) {
+                                      .then((value) async{
                                     studentController.isLoading.value = false;
-                                    studentController
+                                 await   studentController
                                         .updateStudentData()
                                         .then((value) {
                                       return showDialog(

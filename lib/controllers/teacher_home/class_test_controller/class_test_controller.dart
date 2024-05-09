@@ -82,7 +82,7 @@ class ClassTestController {
           await documentCollection.doc(classId).collection("Students").get();
 
       return studentData.docs
-          .map((e) => StudentModel.fromJson(e.data()))
+          .map((e) => StudentModel.fromMap(e.data()))
           .toList();
     } catch (e) {
       showToast(msg: "Something went wrong");

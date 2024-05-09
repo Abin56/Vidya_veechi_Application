@@ -46,7 +46,7 @@ class AllClassListMonthlyShowController {
           .doc(studentId)
           .get();
 
-      return StudentModel.fromJson(studentData.data() ?? {});
+      return StudentModel.fromMap(studentData.data() ?? {});
     } catch (e) {
       return null;
     }
