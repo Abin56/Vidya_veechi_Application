@@ -23,7 +23,7 @@ class PushNotificationController extends GetxController {
   Future<void> allUSerDeviceID(String userrole) async {
     try {
       final UserDeviceIDModel userModel = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -33,7 +33,7 @@ class PushNotificationController extends GetxController {
       await server
           .collection('AllUsersDeviceID')
           .doc(currentUID)
-          .set(userModel.toMap(),SetOptions(merge: true));
+          .set(userModel.toMap(), SetOptions(merge: true));
     } catch (e) {
       log(e.toString());
     }
@@ -46,7 +46,7 @@ class PushNotificationController extends GetxController {
         UserCredentialsController.teacherModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel teacherModel = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -70,7 +70,7 @@ class PushNotificationController extends GetxController {
         UserCredentialsController.teacherModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel student = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -102,7 +102,7 @@ class PushNotificationController extends GetxController {
 
     try {
       final UserDeviceIDModel studentModel = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -125,7 +125,7 @@ class PushNotificationController extends GetxController {
     final String studentUID = UserCredentialsController.studentModel!.docid;
     try {
       final UserDeviceIDModel student = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -159,7 +159,7 @@ class PushNotificationController extends GetxController {
 
     try {
       final UserDeviceIDModel parentmodel = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -183,7 +183,7 @@ class PushNotificationController extends GetxController {
         UserCredentialsController.parentModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel parentmodel = UserDeviceIDModel(
-        message: false,
+          message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -209,60 +209,67 @@ class PushNotificationController extends GetxController {
     await server
         .collection('AllUsersDeviceID')
         .doc(FirebaseAuth.instance.currentUser?.uid)
-      //  .collection("Notification_Message")
-       // .doc(uid)
+        //  .collection("Notification_Message")
+        // .doc(uid)
         .update({'message': false});
   }
   /////////////////////////////////// Parent Part
-  
-  Future<void> removeSingleNotification(String docid)async{
-  
+
+  Future<void> removeSingleNotification(String docid) async {
     await server
-    .collection("AllUsersDeviceID")
-    .doc(FirebaseAuth.instance.currentUser?.uid)
-    .collection('Notification_Message')
-    .doc(docid )
-    .delete()
-    .then((value) =>Get.back());
+        .collection("AllUsersDeviceID")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection('Notification_Message')
+        .doc(docid)
+        .delete()
+        .then((value) => Get.back());
   }
-  Future<void> removeAllNotification ()async{
+
+  Future<void> removeAllNotification() async {
     await server
-    .collection("AllUsersDeviceID")
-    .doc(FirebaseAuth.instance.currentUser?.uid)
-    .collection("Notification_Message")
-    .get().then((value) async{
+        .collection("AllUsersDeviceID")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("Notification_Message")
+        .get()
+        .then((value) async {
       for (var i = 0; i < value.docs.length; i++) {
         await server
-    .collection("AllUsersDeviceID")
-    .doc(FirebaseAuth.instance.currentUser?.uid)
-    .collection("Notification_Message")
-    .doc(value.docs[i].data()['docid']).delete();
+            .collection("AllUsersDeviceID")
+            .doc(FirebaseAuth.instance.currentUser?.uid)
+            .collection("Notification_Message")
+            .doc(value.docs[i].data()['docid'])
+            .delete();
       }
-    Get.back();
+      Get.back();
     });
   }
 
-  Future<void> userNotification ({required String parentID, required IconData icon, required String messageText,required String headerText,required Color whiteshadeColor,required Color containerColor,})async{
+  Future<void> userNotification({
+    required String parentID,
+    required IconData icon,
+    required String messageText,
+    required String headerText,
+    required Color whiteshadeColor,
+    required Color containerColor,
+  }) async {
     final String docid = uuid.v1();
-   try {
-    log('Calling user notification');
+    try {
+      log('Calling user notification');
       final details = NotificationModel(
-      icon: icon,
-      messageText: messageText, 
-      headerText: headerText, 
-      whiteshadeColor: whiteshadeColor, 
-      containerColor: containerColor, 
-      open: false, 
-      docid: docid, 
-      dateTime: DateTime.now().toString());
-    await server
-    .collection("AllUsersDeviceID")
-    .doc(parentID)
-    .collection("Notification_Message")
-    .doc(docid)
-    .set(details.toMap());
-   } catch (e) {
-     
-   }
+          icon: icon,
+          messageText: messageText,
+          headerText: headerText,
+          whiteshadeColor: whiteshadeColor,
+          containerColor: containerColor,
+          open: false,
+          docid: docid,
+          dateTime: DateTime.now().toString());
+      await server
+          .collection("AllUsersDeviceID")
+          .doc(parentID)
+          .collection("Notification_Message")
+          .doc(docid)
+          .set(details.toMap());
+    } catch (e) {}
   }
 }

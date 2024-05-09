@@ -49,7 +49,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('object');
 
     return Scaffold(
       body: SafeArea(
@@ -71,8 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     width: 220.w,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/leptonlogo.png',
+                      image: AssetImage(officialLogo,
                       ),
                     )),
                   ),

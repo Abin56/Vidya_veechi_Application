@@ -241,9 +241,12 @@ class ViewHomeWorks extends StatelessWidget {
                                                       MaterialPageRoute(
                                                         builder: (context) {
                                                           return UploadHomework(
-                                                            task: snaps
+                                                            homeWorkName: snaps
                                                                     .data?.docs[
                                                                 index]['tasks'],
+                                                            homeworkID: snaps
+                                                                    .data?.docs[
+                                                                index]['docid'],
                                                           );
                                                         },
                                                       ),

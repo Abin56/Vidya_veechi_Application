@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:vidya_veechi/view/colors/colors.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   const TextFormFieldWidget({
@@ -13,9 +13,9 @@ class TextFormFieldWidget extends StatelessWidget {
     this.function,
   });
   final TextEditingController? textEditingController;
- final String? hintText;
- final String? labelText;
- final String? Function(String? fieldContent)? function;
+  final String? hintText;
+  final String? labelText;
+  final String? Function(String? fieldContent)? function;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class TextFormFieldWidget extends StatelessWidget {
       validator: function,
       controller: textEditingController,
       decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.h)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(0.h)),
           labelStyle: TextStyle(color: cblack, fontWeight: FontWeight.w600),
           focusedBorder: OutlineInputBorder(
             borderSide:

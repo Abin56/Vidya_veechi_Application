@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:zoom_widget/zoom_widget.dart';
 
 class PrivacyViewScreen extends StatelessWidget {
   const PrivacyViewScreen({super.key});

@@ -1,20 +1,20 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 class ViewExamResultsScreen extends StatelessWidget {
   final String classID;
-  final String examLevel;
+ // final String examLevel;
   final String studentId;
   final String examdocid;
 
   const ViewExamResultsScreen(
       {required this.classID,
-      required this.examLevel,
+    //  required this.examLevel,
       required this.studentId,
       required this.examdocid,
       super.key});
@@ -33,17 +33,31 @@ class ViewExamResultsScreen extends StatelessWidget {
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('SchoolListCollection')
-              .doc(UserCredentialsController.schoolId)
-              .collection(UserCredentialsController.batchId!)
-              .doc(UserCredentialsController.batchId!)
-              .collection('classes')
-              .doc(classID)
-              .collection('Students')
-              .doc(studentId)
-              .collection(examLevel)
-              .doc(examdocid)
-              .collection('Marks')
+                                    .collection('SchoolListCollection')
+                                    .doc(UserCredentialsController.schoolId)
+                                    .collection(
+                                        UserCredentialsController.batchId!)
+                                    .doc(UserCredentialsController.batchId!)
+                                    .collection('classes')
+                                    .doc(classID)
+                                    .collection('Students')
+                                    .doc(studentId)
+                                    .collection('Exam Results')
+                                    .doc(examdocid)
+                                    .collection('Marks')
+                                   // .doc(teacherSubjectValue!['docid'])
+          //  FirebaseFirestore.instance
+          //     .collection('SchoolListCollection')
+          //     .doc(UserCredentialsController.schoolId)
+          //     .collection(UserCredentialsController.batchId!)
+          //     .doc(UserCredentialsController.batchId!)
+          //     .collection('classes')
+          //     .doc(classID)
+          //     .collection('Students')
+          //     .doc(studentId)
+          //     .collection(examLevel)
+          //     .doc(examdocid)
+          //     .collection('Marks')
               .snapshots(),
           builder: (context, snaps) {
             if (snaps.hasData) {

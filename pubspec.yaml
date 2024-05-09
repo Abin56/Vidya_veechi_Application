@@ -67,7 +67,6 @@ dependencies:
   zoom_widget:
   path_provider:
   provider:
-  spline_chart:
   syncfusion_flutter_charts: null
   syncfusion_flutter_gauges: null
   animated_text_kit:
@@ -83,6 +82,9 @@ dependencies:
   chewie:
   shimmer:
   adaptive_ui_layout: ^1.0.1
+  card_swiper: ^3.0.1
+  skeletonizer: ^1.1.2+1
+  firebase_app_check: ^0.2.2+5
 flutter_icons:
   android: true
   ios: true

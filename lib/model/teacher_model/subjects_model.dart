@@ -38,10 +38,10 @@ class SubjectModel {
 
   factory SubjectModel.fromMap(Map<String, dynamic> map) {
     return SubjectModel(
-      subjectName: map['subjectName'] as String,
-      docid: map['docid'] as String,
-      teacherId: map['teacherId'] as String,
-      teacherName: map['teacherName'] as String,
+      subjectName: map['subjectName'] ??'',
+      docid: map['docid'] ??'',
+      teacherId: map['teacherId'] ??'',
+      teacherName: map['teacherName'] ??'',
     );
   }
 

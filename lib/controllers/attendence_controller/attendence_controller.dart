@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -144,7 +145,7 @@ class AttendanceController extends GetxController {
 
   Future<void> sendAbNotificationToParent(String subject) async {
     try {
-      await Future.delayed(const Duration(seconds: 10)).then((value) async {
+      await Future.delayed( Duration(seconds: notificationTimer.value)).then((value) async {
         for (var i = 0; i < abStsParentUIDList.length; i++) {
           sendPushMessage(
               abStsParentUIDList[i].parentId,
@@ -212,7 +213,7 @@ class AttendanceController extends GetxController {
       String monthwise = month.format(parseDate);
       final DateFormat formatter = DateFormat('dd-MM-yyyy');
       String formatted = formatter.format(parseDate);
-      await Future.delayed(const Duration(seconds: 10)).then((value) async {
+      await Future.delayed( const Duration(seconds: 10)).then((value) async {
         await server
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId)

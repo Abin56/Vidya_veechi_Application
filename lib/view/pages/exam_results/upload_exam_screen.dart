@@ -1,11 +1,10 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get_utils/get_utils.dart';
 
 import '../../../utils/utils.dart';
 import '../../../widgets/drop_down/all_class_students.dart';
@@ -20,21 +19,27 @@ class ExamResultsView extends StatefulWidget {
   bool isLoading = false;
 
   String classID;
-  String examlevel;
+  // String examlevel;
 
-  ExamResultsView({super.key, required this.classID, required this.examlevel});
+  ExamResultsView({
+    super.key,
+    required this.classID,
+    // required this.examlevel
+  });
 
   @override
   State<ExamResultsView> createState() => _ExamResultsViewState();
 }
 
 class _ExamResultsViewState extends State<ExamResultsView> {
- // final formKey = GlobalKey<FormState>();
-  final ExamResultFormController examResultFormController = Get.put(ExamResultFormController());
+  final _formKey = GlobalKey<FormState>();
+
+ 
 
   TextEditingController obtainedMark = TextEditingController();
 
   TextEditingController obtainedGrade = TextEditingController();
+    TextEditingController passmark = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +55,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
           ? circularProgressIndicatotWidget
           : Center(
               child: Form(
-                key:  examResultFormController. formKey,
+                key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -58,10 +63,10 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                       // height: 60.h,
                       width: 320.w,
 
-                      child: Center(
+                      child: const Center(
                         child: GetSchoolLevelExamDropDownButton(
-                          examType: widget.examlevel,
-                        ),
+                            // examType: widget.examlevel,
+                            ),
                       ),
                     ),
                     SizedBox(
@@ -81,6 +86,18 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                           child: AllClassStudentsListDropDownButton(
                         classID: widget.classID,
                       )),
+                    ),
+                            Padding(
+                      padding: EdgeInsets.only(
+                        left: 30.w,
+                        right: 30.w,
+                      ),
+                      child: TextFormFieldWidget(
+                        textEditingController: passmark,
+                        labelText: "Enter pass Mark".tr,
+                        function: checkFieldEmpty,
+                        //textEditingController: ,
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
@@ -109,12 +126,14 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                     GestureDetector(
                         onTap: () async {
                           final docid = uuid.v1();
-                          if (examResultFormController. formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             if (schoolLevelExamistValue != null &&
                                 allClassStudentsListValue != null) {
                               setState(() {
                                 widget.isLoading = true;
                               });
+                              print(
+                                  'start - 1  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                               await FirebaseFirestore.instance
                                   .collection('SchoolListCollection')
                                   .doc(UserCredentialsController.schoolId)
@@ -125,11 +144,13 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                   .doc(widget.classID)
                                   .collection('Students')
                                   .doc(allClassStudentsListValue!['docid'])
-                                  .collection(widget.examlevel)
+                                  .collection('Exam Results')
                                   .doc(schoolLevelExamistValue!['examName'])
                                   .set({
                                 'docid': schoolLevelExamistValue!['examName']
                               }).then((value) async {
+                                print(
+                                    'start - 2  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                 await FirebaseFirestore.instance
                                     .collection('SchoolListCollection')
                                     .doc(UserCredentialsController.schoolId)
@@ -140,7 +161,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                     .doc(widget.classID)
                                     .collection('Students')
                                     .doc(allClassStudentsListValue!['docid'])
-                                    .collection(widget.examlevel)
+                                    .collection('Exam Results')
                                     .doc(schoolLevelExamistValue!['examName'])
                                     .collection('Marks')
                                     .doc(teacherSubjectValue!['docid'])
@@ -155,7 +176,10 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                       teacherSubjectValue!['subjectName'],
                                   'studentid':
                                       allClassStudentsListValue!['docid'],
+                                      'passMark':passmark.text.trim().toString()
                                 }, SetOptions(merge: true)).then((value) async {
+                                  print(
+                                      'start - 3  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                   await FirebaseFirestore.instance
                                       .collection('SchoolListCollection')
                                       .doc(UserCredentialsController.schoolId)
@@ -170,6 +194,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                     'docid':
                                         schoolLevelExamistValue!['examName']
                                   }).then((value) async {
+                                    print(
+                                        'start - 4  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                     await FirebaseFirestore.instance
                                         .collection('SchoolListCollection')
                                         .doc(UserCredentialsController.schoolId)
@@ -189,6 +215,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                       'subjectid':
                                           teacherSubjectValue!['docid'],
                                     }).then((value) async {
+                                      print(
+                                          'start - 5  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                       await FirebaseFirestore.instance
                                           .collection('SchoolListCollection')
                                           .doc(UserCredentialsController
@@ -210,8 +238,8 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                           .set({
                                         'subjectid':
                                             teacherSubjectValue!['docid'],
-                                        'teacherId': teacherSubjectValue![
-                                            'teacherdocid'],
+                                        'teacherId':
+                                            teacherSubjectValue!['teacherId'],
                                         'teachername':
                                             teacherSubjectValue!['teacherName'],
                                         'examid': docid,
@@ -227,7 +255,10 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                             teacherSubjectValue!['subjectName'],
                                         'studentid':
                                             allClassStudentsListValue!['docid'],
+                                                  'passMark':passmark.text.trim().toString()
                                       }).then((value) {
+                                        print(
+                                            'start - 6  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                         setState(() {
                                           widget.isLoading = false;
                                         });
@@ -261,7 +292,7 @@ class SubmitButtonWidget extends StatelessWidget {
     required this.text,
     super.key,
   });
- final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(
