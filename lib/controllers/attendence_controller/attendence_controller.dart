@@ -68,7 +68,7 @@ class AttendanceController extends GetxController {
     required int periodNo,
   }) async {
     try {
-      log("Loading.............+++++");
+    //  log("Loading.............+++++");
       final date = DateTime.now();
 
       final attendenceDetail = StudentAttendenceModel(
@@ -90,7 +90,7 @@ class AttendanceController extends GetxController {
           .collection('MyAttendenceList')
           .doc(attendenceDetail.docid)
           .set(attendenceDetail.toMap());
-      log("Submmited.............+++++");
+     // log("Submmited.............+++++");
     } catch (e) {
       log(e.toString());
     }
@@ -153,10 +153,10 @@ class AttendanceController extends GetxController {
               'Absent Notification from ${abStsParentUIDList[i].studentName}');
         }
       });
-      log("sendAbNotificationToParent Success....");
+    //  log("sendAbNotificationToParent Success....");
     } catch (e) {
       log(e.toString());
-      log("sendAbNotificationToParent Failed****");
+    //  log("sendAbNotificationToParent Failed****");
     }
   }
 
@@ -192,10 +192,10 @@ class AttendanceController extends GetxController {
           abStsParentUIDList.add(data);
         });
       }
-      print("Parent ID ${abStsParentUIDList.length}");
-      log("getAbStsParentDeviceID Success....");
+      // print("Parent ID ${abStsParentUIDList.length}");
+      // log("getAbStsParentDeviceID Success....");
     } catch (e) {
-      log("getAbStsParentDeviceID Failed ***");
+    //    log("getAbStsParentDeviceID Failed ***");
       log(e.toString());
     }
   }
@@ -242,8 +242,8 @@ class AttendanceController extends GetxController {
           }
         });
       }).then((value) async {
-        print('Student count${abStudentUIDList.length}');
-        log("getStudentAbsentList Success....");
+      //  print('Student count${abStudentUIDList.length}');
+       // log("getStudentAbsentList Success....");
 
         await getAbStsParentDeviceID().then((value) async {
           await sendAbNotificationToParent(subject);
@@ -265,7 +265,7 @@ class AttendanceController extends GetxController {
       //         (value) async =>
       //             await sendAbNotificationToParent(studentName, subject)));
     } catch (e) {
-      log("getStudentAbsentList Failed ***");
+    //  log("getStudentAbsentList Failed ***");
 
       log(e.toString());
     }

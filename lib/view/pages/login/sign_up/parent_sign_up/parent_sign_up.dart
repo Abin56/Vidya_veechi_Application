@@ -2,14 +2,15 @@
 
 import 'dart:io';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/parent_sign_up_controller.dart';
 import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/utils/utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../../../model/Signup_Image_Selction/image_selection.dart';
 import '../../../../../widgets/login_button.dart';
@@ -28,6 +29,8 @@ class ParentSignUpPage extends StatelessWidget {
   final getImageController = Get.put(GetImage());
   ParentSignUpController parentSignUpController =
       Get.put(ParentSignUpController());
+ PrntSignupFormCntl prntSignupFormCntl =  Get.put(PrntSignupFormCntl());
+
  // GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -89,7 +92,7 @@ class ParentSignUpPage extends StatelessWidget {
             Stack(children: [
               SingleChildScrollView(
                 child: Form(
-                  key: parentSignUpController. formKey,
+                  key: prntSignupFormCntl. formKey,
                   child: Column(
                     children: [
                       Obx(
@@ -227,7 +230,7 @@ class ParentSignUpPage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 20),
                         child: GestureDetector(
                           onTap: () async {
-                            if (parentSignUpController. formKey.currentState?.validate() ?? false) {
+                            if (prntSignupFormCntl. formKey.currentState?.validate() ?? false) {
                               if (getImageController
                                   .pickedImage.value.isEmpty) {
                                 return showToast(

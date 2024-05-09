@@ -122,7 +122,7 @@ class StudentSignUpController extends GetxController {
               .doc(userUid)
               .set(studentModel.toMap())
               .then((value) async {
-                print(studentModel);
+             //   print(studentModel);
             await firebaseData
                 .doc(userUid)
                 .set(studentModel.toMap())
