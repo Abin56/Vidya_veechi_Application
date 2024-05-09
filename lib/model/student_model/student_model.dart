@@ -1,13 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // To parse this JSON data, do
 //
 //     final studentModel = studentModelFromJson(jsonString);
 
 import 'dart:convert';
-
-StudentModel studentModelFromJson(String str) =>
-    StudentModel.fromJson(json.decode(str));
-
-String studentModelToJson(StudentModel data) => json.encode(data.toJson());
 
 class StudentModel {
   String admissionNumber;
@@ -29,7 +25,6 @@ class StudentModel {
   String studentName;
   String studentemail;
   String userRole='student';
-
   StudentModel({
     required this.admissionNumber,
     required this.alPhoneNumber,
@@ -52,6 +47,7 @@ class StudentModel {
     required this.userRole,
   });
 
+
   StudentModel copyWith({
     String? admissionNumber,
     String? alPhoneNumber,
@@ -72,70 +68,133 @@ class StudentModel {
     String? studentName,
     String? studentemail,
     String? userRole,
-  }) =>
-      StudentModel(
-        admissionNumber: admissionNumber ?? this.admissionNumber,
-        alPhoneNumber: alPhoneNumber ?? this.alPhoneNumber,
-        bloodgroup: bloodgroup ?? this.bloodgroup,
-        classId: classId ?? this.classId,
-        createDate: createDate ?? this.createDate,
-        dateofBirth: dateofBirth ?? this.dateofBirth,
-        district: district ?? this.district,
-        docid: docid ?? this.docid,
-        gender: gender ?? this.gender,
-        guardianId: guardianId ?? this.guardianId,
-        houseName: houseName ?? this.houseName,
-        parentId: parentId ?? this.parentId,
-        parentPhoneNumber: parentPhoneNumber ?? this.parentPhoneNumber,
-        place: place ?? this.place,
-        profileImageId: profileImageId ?? this.profileImageId,
-        profileImageUrl: profileImageUrl ?? this.profileImageUrl,
-        studentName: studentName ?? this.studentName,
-        studentemail: studentemail ?? this.studentemail,
-        userRole: userRole ?? this.userRole,
-      );
+  }) {
+    return StudentModel(
+      admissionNumber: admissionNumber ?? this.admissionNumber,
+      alPhoneNumber: alPhoneNumber ?? this.alPhoneNumber,
+      bloodgroup: bloodgroup ?? this.bloodgroup,
+      classId: classId ?? this.classId,
+      createDate: createDate ?? this.createDate,
+      dateofBirth: dateofBirth ?? this.dateofBirth,
+      district: district ?? this.district,
+      docid: docid ?? this.docid,
+      gender: gender ?? this.gender,
+      guardianId: guardianId ?? this.guardianId,
+      houseName: houseName ?? this.houseName,
+      parentId: parentId ?? this.parentId,
+      parentPhoneNumber: parentPhoneNumber ?? this.parentPhoneNumber,
+      place: place ?? this.place,
+      profileImageId: profileImageId ?? this.profileImageId,
+      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
+      studentName: studentName ?? this.studentName,
+      studentemail: studentemail ?? this.studentemail,
+      userRole: userRole ?? this.userRole,
+    );
+  }
 
-  factory StudentModel.fromJson(Map<String, dynamic> json) => StudentModel(
-        admissionNumber: json["admissionNumber"] ?? "",
-        alPhoneNumber: json["alPhoneNumber"] ?? "",
-        bloodgroup: json["bloodgroup"] ?? "",
-        classId: json["classID"] ?? "",
-        createDate: json["createDate"] ?? "",
-        dateofBirth: json["dateofBirth"] ?? "",
-        district: json["district"] ?? "",
-        docid: json["docid"] ?? "",
-        gender: json["gender"] ?? "",
-        guardianId: json["guardianID"] ?? "",
-        houseName: json["houseName"] ?? "",
-        parentId: json["parentID"] ?? "",
-        parentPhoneNumber: json["parentPhoneNumber"] ?? "",
-        place: json["place"] ?? "",
-        profileImageId: json["profileImageId"] ?? "",
-        profileImageUrl: json["profileImageUrl"] ?? "",
-        studentName: json["studentName"] ?? "",
-        studentemail: json["studentemail"] ?? "",
-        userRole: json["userRole"] ?? "",
-      );
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'admissionNumber': admissionNumber,
+      'alPhoneNumber': alPhoneNumber,
+      'bloodgroup': bloodgroup,
+      'classId': classId,
+      'createDate': createDate,
+      'dateofBirth': dateofBirth,
+      'district': district,
+      'docid': docid,
+      'gender': gender,
+      'guardianId': guardianId,
+      'houseName': houseName,
+      'parentId': parentId,
+      'parentPhoneNumber': parentPhoneNumber,
+      'place': place,
+      'profileImageId': profileImageId,
+      'profileImageUrl': profileImageUrl,
+      'studentName': studentName,
+      'studentemail': studentemail,
+      'userRole': userRole,
+    };
+  }
 
-  Map<String, dynamic> toJson() => {
-        "admissionNumber": admissionNumber,
-        "alPhoneNumber": alPhoneNumber,
-        "bloodgroup": bloodgroup,
-        "classID": classId,
-        "createDate": createDate,
-        "dateofBirth": dateofBirth,
-        "district": district,
-        "docid": docid,
-        "gender": gender,
-        "guardianID": guardianId,
-        "houseName": houseName,
-        "parentID": parentId,
-        "parentPhoneNumber": parentPhoneNumber,
-        "place": place,
-        "profileImageId": profileImageId,
-        "profileImageUrl": profileImageUrl,
-        "studentName": studentName,
-        "studentemail": studentemail,
-        "userRole": userRole,
-      };
+  factory StudentModel.fromMap(Map<String, dynamic> map) {
+    return StudentModel(
+      admissionNumber: map['admissionNumber'] ??'',
+      alPhoneNumber: map['alPhoneNumber'] ??'',
+      bloodgroup: map['bloodgroup'] ??'',
+      classId: map['classId'] ??'',
+      createDate: map['createDate'] ??'',
+      dateofBirth: map['dateofBirth'] ??'',
+      district: map['district'] ??'',
+      docid: map['docid'] ??'',
+      gender: map['gender'] ??'',
+      guardianId: map['guardianId'] ??'',
+      houseName: map['houseName'] ??'',
+      parentId: map['parentId'] ??'',
+      parentPhoneNumber: map['parentPhoneNumber'] ??'',
+      place: map['place'] ??'',
+      profileImageId: map['profileImageId'] ??'',
+      profileImageUrl: map['profileImageUrl'] ??'',
+      studentName: map['studentName'] ??'',
+      studentemail: map['studentemail'] ??'',
+      userRole: map['userRole'] ??'',
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory StudentModel.fromJson(String source) => StudentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'StudentModel(admissionNumber: $admissionNumber, alPhoneNumber: $alPhoneNumber, bloodgroup: $bloodgroup, classId: $classId, createDate: $createDate, dateofBirth: $dateofBirth, district: $district, docid: $docid, gender: $gender, guardianId: $guardianId, houseName: $houseName, parentId: $parentId, parentPhoneNumber: $parentPhoneNumber, place: $place, profileImageId: $profileImageId, profileImageUrl: $profileImageUrl, studentName: $studentName, studentemail: $studentemail, userRole: $userRole)';
+  }
+
+  @override
+  bool operator ==(covariant StudentModel other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.admissionNumber == admissionNumber &&
+      other.alPhoneNumber == alPhoneNumber &&
+      other.bloodgroup == bloodgroup &&
+      other.classId == classId &&
+      other.createDate == createDate &&
+      other.dateofBirth == dateofBirth &&
+      other.district == district &&
+      other.docid == docid &&
+      other.gender == gender &&
+      other.guardianId == guardianId &&
+      other.houseName == houseName &&
+      other.parentId == parentId &&
+      other.parentPhoneNumber == parentPhoneNumber &&
+      other.place == place &&
+      other.profileImageId == profileImageId &&
+      other.profileImageUrl == profileImageUrl &&
+      other.studentName == studentName &&
+      other.studentemail == studentemail &&
+      other.userRole == userRole;
+  }
+
+  @override
+  int get hashCode {
+    return admissionNumber.hashCode ^
+      alPhoneNumber.hashCode ^
+      bloodgroup.hashCode ^
+      classId.hashCode ^
+      createDate.hashCode ^
+      dateofBirth.hashCode ^
+      district.hashCode ^
+      docid.hashCode ^
+      gender.hashCode ^
+      guardianId.hashCode ^
+      houseName.hashCode ^
+      parentId.hashCode ^
+      parentPhoneNumber.hashCode ^
+      place.hashCode ^
+      profileImageId.hashCode ^
+      profileImageUrl.hashCode ^
+      studentName.hashCode ^
+      studentemail.hashCode ^
+      userRole.hashCode;
+  }
 }

@@ -2,17 +2,18 @@
 
 import 'dart:io';
 
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/student_sign_up_controller.dart';
 import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/student%20login/student_login.dart';
 import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:vidya_veechi/view/widgets/sinup_textform_filed.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../../../model/Signup_Image_Selction/image_selection.dart';
 import '../../../../../utils/utils.dart';
@@ -29,8 +30,8 @@ class StudentSignInPageScreen extends StatelessWidget {
   final StudentSignUpController studentController =
       Get.find<StudentSignUpController>();
 
-      final StudentSignUpController studentSignUpController =Get.put(StudentSignUpController());
-
+     // final StudentSignUpController studentSignUpController =Get.put(StudentSignUpController());
+    final StdSignupFormCntl stdSignupFormCntl = Get.put(StdSignupFormCntl());
   StudentSignInPageScreen({super.key});
 
   @override
@@ -92,7 +93,7 @@ class StudentSignInPageScreen extends StatelessWidget {
             Stack(children: [
               SingleChildScrollView(
                 child: Form( 
-                  key: studentSignUpController. formKey,
+                  key: stdSignupFormCntl. formKey,
                   child: Column(
                     children: [
                       Obx(

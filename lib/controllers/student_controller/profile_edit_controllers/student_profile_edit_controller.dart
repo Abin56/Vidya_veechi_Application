@@ -140,7 +140,7 @@ class StudentProfileEditController {
 
         if (studentData.data() != null) {
           UserCredentialsController.studentModel =
-              StudentModel.fromJson(studentData.data()!);
+              StudentModel.fromMap(studentData.data()!);
           Get.offAll(const StudentsMainHomeScreen());
         }
       }

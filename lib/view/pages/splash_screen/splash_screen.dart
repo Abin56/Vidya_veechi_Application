@@ -208,7 +208,7 @@ Future<void> checkStudent(
 
   if (studentData.data() != null) {
     UserCredentialsController.studentModel =
-        StudentModel.fromJson(studentData.data()!);
+        StudentModel.fromMap(studentData.data()!);
     Navigator.push(context, MaterialPageRoute(
       builder: (context) {
         return const StudentsMainHomeScreen();

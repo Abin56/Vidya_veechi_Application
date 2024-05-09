@@ -37,7 +37,7 @@ class StudentSignInController extends GetxController {
 
         if (user.data() != null) {
           UserCredentialsController.studentModel =
-              StudentModel.fromJson(user.data()!);
+              StudentModel.fromMap(user.data()!);
         }
 
         if (UserCredentialsController.studentModel?.userRole == "student") {

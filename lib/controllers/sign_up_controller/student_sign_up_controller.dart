@@ -22,8 +22,8 @@ class StudentSignUpController extends GetxController {
   TextEditingController altPhoneNoController = TextEditingController();
   TextEditingController dateOfBirthController = TextEditingController();
 
-   final formKey = GlobalKey<FormState>();
-   
+  final formKey = GlobalKey<FormState>();
+
   RxBool isLoading = RxBool(false);
   List<StudentModel> classWiseStudentList = [];
 
@@ -60,7 +60,7 @@ class StudentSignUpController extends GetxController {
 
       if (result.docs.isNotEmpty) {
         classWiseStudentList =
-            result.docs.map((e) => StudentModel.fromJson(e.data())).toList();
+            result.docs.map((e) => StudentModel.fromMap(e.data())).toList();
       }
 
       isLoading.value = false;
@@ -88,12 +88,11 @@ class StudentSignUpController extends GetxController {
       String userUid = FirebaseAuth.instance.currentUser?.uid ?? "";
 
       final studentModel = StudentModel(
-          admissionNumber:
-              UserCredentialsController.studentModel?.admissionNumber ?? "",
+          admissionNumber: "",
           alPhoneNumber: altPhoneNoController.text,
           bloodgroup: bloodGroup ?? "",
           classId: UserCredentialsController.studentModel?.classId ?? "",
-          createDate: UserCredentialsController.studentModel?.createDate ?? "",
+          createDate: DateTime.now().toString(),
           dateofBirth: dateOfBirthController.text,
           district: districtController.text,
           docid: userUid,
@@ -111,22 +110,32 @@ class StudentSignUpController extends GetxController {
           studentemail: emailController.text.trim(),
           userRole: "student");
 
-      await firebaseData.doc(userUid).set(studentModel.toJson()).then((value) {
-        firebaseDataTemp
-            .doc(UserCredentialsController.studentModel?.docid ?? "")
-            .delete()
-            .then((value) {
-          UserCredentialsController.studentModel = studentModel;
-          //updating data to all students field
-
-          FirebaseFirestore.instance
+      await getAdmissionNumber().then((value) async {
+        print('getAdmissionNumber');
+        await increaseAdNo().then((value) async {
+              print('increaseAdNo');
+          studentModel.admissionNumber = '000${stAdNumber.value}';
+          await FirebaseFirestore.instance
               .collection("SchoolListCollection")
               .doc(UserCredentialsController.schoolId)
               .collection('AllStudents')
               .doc(userUid)
-              .set(studentModel.toJson());
+              .set(studentModel.toMap())
+              .then((value) async {
+                print(studentModel);
+            await firebaseData
+                .doc(userUid)
+                .set(studentModel.toMap())
+                .then((value) async {
+                     firebaseDataTemp
+            .doc(UserCredentialsController.studentModel?.docid ?? "")
+            .delete();
+                });
+          });
         });
       });
+
+   
       classWiseStudentList.clear();
       await getStudentData();
 
@@ -173,5 +182,42 @@ class StudentSignUpController extends GetxController {
     } else {
       return false;
     }
+  }
+
+  RxInt stAdNumber = 0000.obs; // Student Admission Number
+  RxString stUID = ''.obs; // Student Email Auth ID
+  Future<int> getAdmissionNumber() async {
+    final result = await server.collection('AdmissionNumber').doc('AdNo').get();
+
+    if (result.data() == null) {
+      await FirebaseFirestore.instance
+          .collection("SchoolListCollection")
+          .doc(UserCredentialsController.schoolId ?? "")
+          .collection('AdmissionNumber')
+          .doc('AdNo')
+          .set({'AdNumber': stAdNumber.value});
+    } else {
+      stAdNumber.value = result.data()?['AdNumber'] ?? 0;
+    }
+
+    return stAdNumber.value;
+  }
+
+  Future<String> increaseAdNo() async {
+    final int newAdNo = stAdNumber.value + 1;
+
+    await FirebaseFirestore.instance
+        .collection("SchoolListCollection")
+        .doc(UserCredentialsController.schoolId ?? "")
+        .collection('AdmissionNumber')
+        .doc('AdNo')
+        .update({'AdNumber': newAdNo});
+
+    return '000$newAdNo';
+  }
+  @override
+  void onReady() async{
+    await getAdmissionNumber();
+    super.onReady();
   }
 }
