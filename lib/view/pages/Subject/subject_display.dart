@@ -20,7 +20,7 @@ class StudentSubjectScreen extends StatelessWidget {
         appBar: AppBar(
           foregroundColor: cWhite,
           title: Text(
-            "Teachers".tr,
+            "Subjects".tr,
           ),
           flexibleSpace: const AppBarColorWidget(),
           //  backgroundColor: adminePrimayColor,
