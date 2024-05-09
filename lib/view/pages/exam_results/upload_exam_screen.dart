@@ -1,11 +1,10 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vidya_veechi/controllers/get_teacher_subject/get_sub.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get_utils/get_utils.dart';
 
 import '../../../utils/utils.dart';
 import '../../../widgets/drop_down/all_class_students.dart';
@@ -40,6 +39,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
   TextEditingController obtainedMark = TextEditingController();
 
   TextEditingController obtainedGrade = TextEditingController();
+    TextEditingController passmark = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                       // height: 60.h,
                       width: 320.w,
 
-                      child: Center(
+                      child: const Center(
                         child: GetSchoolLevelExamDropDownButton(
                             // examType: widget.examlevel,
                             ),
@@ -86,6 +86,18 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                           child: AllClassStudentsListDropDownButton(
                         classID: widget.classID,
                       )),
+                    ),
+                            Padding(
+                      padding: EdgeInsets.only(
+                        left: 30.w,
+                        right: 30.w,
+                      ),
+                      child: TextFormFieldWidget(
+                        textEditingController: passmark,
+                        labelText: "Enter pass Mark".tr,
+                        function: checkFieldEmpty,
+                        //textEditingController: ,
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
@@ -164,6 +176,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                       teacherSubjectValue!['subjectName'],
                                   'studentid':
                                       allClassStudentsListValue!['docid'],
+                                      'passMark':passmark.text.trim().toString()
                                 }, SetOptions(merge: true)).then((value) async {
                                   print(
                                       'start - 3  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
@@ -242,6 +255,7 @@ class _ExamResultsViewState extends State<ExamResultsView> {
                                             teacherSubjectValue!['subjectName'],
                                         'studentid':
                                             allClassStudentsListValue!['docid'],
+                                                  'passMark':passmark.text.trim().toString()
                                       }).then((value) {
                                         print(
                                             'start - 6  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
