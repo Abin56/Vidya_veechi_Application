@@ -25,7 +25,7 @@ class ClassTestPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: adminePrimayColor,
-        title: const Text('Create Test'),
+        title:  Text('Create Test'.tr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -39,8 +39,8 @@ class ClassTestPage extends StatelessWidget {
                 Icons.sticky_note_2_outlined,
                 color: adminePrimayColor,
               ),
-              const Text(
-                'Create Class Test',
+               Text(
+                'Create Class Test'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -123,7 +123,7 @@ class ClassTestPage extends StatelessWidget {
 
               //create button
               TestElevatedButton(
-                title: "Create",
+                title: "Create".tr,
                 voidCallback: () async {
                   if (!classTestController.isFieldEmpty()) {
                     await classTestController.createNewClassTest();
@@ -133,7 +133,7 @@ class ClassTestPage extends StatelessWidget {
               kHeight20,
               //show button
               TestElevatedButton(
-                title: "Show Created Test",
+                title: "Show Created Test".tr,
                 voidCallback: () =>
                     classListShowController.fetchAllClassTest().then((value) {
                   Navigator.of(context).push(

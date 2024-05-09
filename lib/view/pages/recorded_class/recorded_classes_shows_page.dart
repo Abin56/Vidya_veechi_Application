@@ -1,11 +1,11 @@
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:get/get.dart';
 
 import '../../../sruthi/Subject 2/subject_chapterwise_display.dart';
 
@@ -24,7 +24,7 @@ class RecordedClassesShowsPage extends StatelessWidget {
         appBar: AppBar(
           title: Row(
             children: [
-              Text("Study Materials".tr),
+              Text("Recorded Class List".tr),
             ],
           ),
           backgroundColor: adminePrimayColor,
@@ -103,19 +103,20 @@ class RecordedClassesShowsPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      trailing: InkWell(
-                        child: GooglePoppinsWidgets(
-                            text: "View".tr,
-                            fontsize: 16.h,
-                            fontWeight: FontWeight.w500,
-                            color: adminePrimayColor),
-                        onTap: () {
-                          // Get.to(() => Videoplayer(
-                          //       videoUrl: snapshot.data!.docs[index]
-                          //           ['downloadUrl'],
-                          //     ));
-                        },
-                      ),
+                      // trailing:
+                      //  InkWell(
+                      //   child: GooglePoppinsWidgets(
+                      //       text: "View".tr,
+                      //       fontsize: 16.h,
+                      //       fontWeight: FontWeight.w500,
+                      //       color: adminePrimayColor),
+                      //   onTap: () {
+                      //     // Get.to(() => Videoplayer(
+                      //     //       videoUrl: snapshot.data!.docs[index]
+                      //     //           ['downloadUrl'],
+                      //     //     ));
+                      //   },
+                      // ),
                     );
                   });
             } else if (snapshot.connectionState == ConnectionState.waiting) {

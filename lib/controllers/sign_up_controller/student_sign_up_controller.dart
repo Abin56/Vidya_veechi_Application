@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vidya_veechi/utils/utils.dart';
 
 import '../../model/Signup_Image_Selction/image_selection.dart';
 import '../../model/student_model/student_model.dart';
@@ -123,7 +123,7 @@ class StudentSignUpController extends GetxController {
               .collection("SchoolListCollection")
               .doc(UserCredentialsController.schoolId)
               .collection('AllStudents')
-              .doc(UserCredentialsController.studentModel?.docid)
+              .doc(userUid)
               .set(studentModel.toJson());
         });
       });

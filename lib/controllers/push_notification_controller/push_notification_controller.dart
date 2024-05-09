@@ -17,6 +17,7 @@ class PushNotificationController extends GetxController {
   Future<void> getUserDeviceID() async {
     await FirebaseMessaging.instance.getToken().then((token) {
       deviceID.value = token ?? "";
+      log("Device ID $token");
     });
   }
 

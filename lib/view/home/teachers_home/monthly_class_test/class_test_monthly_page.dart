@@ -126,7 +126,7 @@ class ClassMonthlyTestPage extends StatelessWidget {
 
               //create button
               TestMonthlyElevatedButton(
-                title: "Create",
+                title: "Create".tr,
                 voidCallback: () async {
                   if (!classTestController.isFieldEmpty()) {
                     await classTestController.createNewClassTest();
@@ -136,7 +136,7 @@ class ClassMonthlyTestPage extends StatelessWidget {
               kHeight20,
               //show button
               TestMonthlyElevatedButton(
-                  title: "Show Created Test",
+                  title: "Show Created Test".tr,
                   voidCallback: () =>
                       classListShowController.fetchAllClassTest().then((value) {
                         Navigator.of(context).push(MaterialPageRoute(
