@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
@@ -15,6 +16,7 @@ import 'package:hive_flutter/adapters.dart';
 // import 'package:play_video/play_video.dart';
 import 'package:provider/provider.dart';
 import 'package:vidya_veechi/controllers/bloc/user_phone_otp/auth_state.dart';
+import 'package:vidya_veechi/controllers/pushnotification_service/pushnotification_service.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/firebase_options.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
@@ -31,6 +33,16 @@ import 'helper/shared_pref_helper.dart';
 import 'local_database/parent_login_database.dart';
 
 late Box<DBParentLogin> parentdataDB;
+
+final navigatorKey=GlobalKey<NavigatorState>();
+
+
+//function to listen to background changes
+Future _firebasebackgrounMessage(RemoteMessage message)async{
+  if(message.notification !=null){
+    log("some notification recieved in background");
+  }
+}
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   log('Handling  a background message ${message.messageId}');
@@ -67,6 +79,45 @@ try {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  ///////////////////////////////Push notification Command
+  //initialize firebase messaging
+ await pushNotification.init();
+
+ //initialize local notification
+ await pushNotification.localnotiInit();
+
+//litsen background notification
+FirebaseMessaging.onBackgroundMessage(_firebasebackgrounMessage);
+
+//onbackground notification tapped
+FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message){
+  if(message.notification !=null){
+    log("Backgroundnitfication tapped");
+    navigatorKey.currentState!.pushNamed("/message",arguments: message);
+  }
+});
+
+
+//to handle foreground notification
+  FirebaseMessaging.onMessage.listen((RemoteMessage message){
+    String  payLoadData=jsonEncode(message.data);
+    log('Got a message in foreground');
+    if(message.notification !=null){
+      pushNotification.showSimpleNotifivation(title: message.notification!.title!, body: message.notification!.body!, payLoad: payLoadData);
+    }
+  });
+
+
+  ///////////for handling the terminated state
+final RemoteMessage? message =await FirebaseMessaging.instance.getInitialMessage();
+
+if(message !=null){
+  log('Launched from terminated state');
+  Future.delayed(const Duration(seconds: 1),(){
+    navigatorKey.currentState!.pushNamed("/message",arguments: message);
+  });
+}
+
 
   runApp(MyApp());
 }
