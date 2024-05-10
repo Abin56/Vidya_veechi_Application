@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/home/student_home/students_main_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/home/student_home/students_main_home.dart';
 
 import '../../helper/shared_pref_helper.dart';
 import '../../model/student_model/student_model.dart';
@@ -65,5 +65,30 @@ class StudentSignInController extends GetxController {
       // showToast(msg: e.toString());
       showToast(msg: "Sign in failed");
     }
+  }
+
+  List<StudentModel> tempstudentList = [];
+  RxString tempstudentDocID = ''.obs;
+  RxString tempstudentName = ''.obs;
+  Future<List<StudentModel>> fetchAllTempStudent(
+      ) async {
+    tempstudentList.clear();
+
+    await server
+        .collection(UserCredentialsController.batchId ?? "")
+        .doc(UserCredentialsController.batchId ?? "")
+        .collection("classes")
+        .doc(UserCredentialsController.classId)
+        .collection("Temp_Students")
+        .get()
+        .then((value) async {
+      final result =
+          value.docs.map((e) => StudentModel.fromMap(e.data())).toList();
+      tempstudentList.addAll(result);
+     
+    });
+
+ 
+    return tempstudentList;
   }
 }

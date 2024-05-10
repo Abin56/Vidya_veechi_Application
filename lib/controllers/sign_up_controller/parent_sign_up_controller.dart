@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -24,54 +23,18 @@ class ParentSignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  
-   final formKey = GlobalKey<FormState>();
-   
+
+  final formKey = GlobalKey<FormState>();
+
   List<ParentModel> parentModelList = [];
 
   FirebaseAuth auth = FirebaseAuth.instance;
-
-  CollectionReference<Map<String, dynamic>> firebaseDataTemp = FirebaseFirestore
-      .instance
-      .collection("SchoolListCollection")
-      .doc(UserCredentialsController.schoolId)
-      .collection(UserCredentialsController.batchId ?? "")
-      .doc(UserCredentialsController.batchId)
-      .collection('classes')
-      .doc(UserCredentialsController.classId)
-      .collection('Temp_ParentCollection');
-
-  CollectionReference<Map<String, dynamic>> firebaseData = FirebaseFirestore
-      .instance
-      .collection("SchoolListCollection")
-      .doc(UserCredentialsController.schoolId)
-      .collection(UserCredentialsController.batchId ?? "")
-      .doc(UserCredentialsController.batchId)
-      .collection('classes')
-      .doc(UserCredentialsController.classId)
-      .collection('Parents');
 
   RxBool isLoading = RxBool(false);
 //for image uploading unique uid      0
   Uuid uuid = const Uuid();
 
   String? gender;
-
-  Future<void> getAllParent() async {
-    try {
-      isLoading.value = true;
-      parentModelList.clear();
-      final QuerySnapshot<Map<String, dynamic>> parentData =
-          await firebaseDataTemp.get();
-
-      parentModelList =
-          parentData.docs.map((e) => ParentModel.fromMap(e.data())).toList();
-      isLoading.value = false;
-    } catch (e) {
-      showToast(msg: 'Something Error');
-      isLoading.value = false;
-    }
-  }
 
   //updating parent signup data
 
@@ -112,19 +75,30 @@ class ParentSignUpController extends GetxController {
               state: stateController.text,
               studentID: UserCredentialsController.parentModel?.studentID ?? "",
               userRole: 'parent');
-
-          //add data to firebase
-          await firebaseData
+          await server
+              .collection(UserCredentialsController.batchId ?? "")
+              .doc(UserCredentialsController.batchId)
+              .collection('classes')
+              .doc(UserCredentialsController.classId)
+              .collection('Parents')
               .doc(value.user?.uid)
               .set(parentModel.toMap())
               .then((value) async {
-            await firebaseDataTemp
-                .doc(UserCredentialsController.parentModel?.docid)
-                .delete()
-                .then((value) {
-              UserCredentialsController.parentModel = parentModel;
+            await server
+                .collection('AllParents')
+                .doc(parentModel.docid)
+                .set(parentModel.toMap())
+                .then((value) async {
+              await server
+                  .collection(UserCredentialsController.batchId ?? "")
+                  .doc(UserCredentialsController.batchId)
+                  .collection('classes')
+                  .doc(UserCredentialsController.classId)
+                  .collection('Temp_ParentCollection').doc(tempParentDocID.value).delete();
             });
           });
+          //add data to firebase
+
           // .then(
           //   (value) => Get.toAll(
           //     ParentLoginScreen(),
@@ -173,5 +147,27 @@ class ParentSignUpController extends GetxController {
     altPhoneNoController.clear();
     pinCodeController.clear();
     stateController.clear();
+  }
+
+  List<ParentModel> tempParentList = [];
+  RxString tempParentDocID = ''.obs;
+  RxString tempParentName = ''.obs;
+  Future<List<ParentModel>> fetchAllTempParent() async {
+    tempParentList.clear();
+
+    await server
+        .collection(UserCredentialsController.batchId ?? "")
+        .doc(UserCredentialsController.batchId ?? "")
+        .collection("classes")
+        .doc(UserCredentialsController.classId)
+        .collection("Temp_ParentCollection")
+        .get()
+        .then((value) async {
+      final result =
+          value.docs.map((e) => ParentModel.fromMap(e.data())).toList();
+      tempParentList.addAll(result);
+    });
+
+    return tempParentList;
   }
 }

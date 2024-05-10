@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/controllers/sign_in_controller/student_sign_in_controller.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/student_sign_up_controller.dart';
 import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/model/Text_hiden_Controller/password_field.dart';
@@ -10,6 +12,7 @@ import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/constant.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/pages/drop_down/temp_users/sign_up_student.dart';
 import 'package:vidya_veechi/view/pages/login/users_login_screen/student%20login/student_login.dart';
 import 'package:vidya_veechi/view/widgets/container_image.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_poppins.dart';
@@ -17,7 +20,6 @@ import 'package:vidya_veechi/view/widgets/textformfield_login.dart';
 import 'package:vidya_veechi/widgets/login_button.dart';
 
 import '../../../../../../controllers/userCredentials/user_credentials.dart';
-import '../../../../../../model/student_model/student_model.dart';
 import '../../../userVerify_Phone_OTP/get_otp..dart';
 
 class StudentSignInScreen extends StatelessWidget {
@@ -62,34 +64,7 @@ class StudentSignInScreen extends StatelessWidget {
                 : SizedBox(
                     height: 60.h,
                     width: 350.w,
-                    child: DropdownSearch<StudentModel>(
-                        selectedItem: StudentModel(
-                          admissionNumber: "",
-                          alPhoneNumber: "",
-                          bloodgroup: "",
-                          createDate: "",
-                          dateofBirth: "",
-                          district: "",
-                          gender: "",
-                          houseName: "",
-                          parentPhoneNumber: "",
-                          place: "",
-                          profileImageId: "",
-                          profileImageUrl: '',
-                          studentName: 'Select Student'.tr,
-                          studentemail: '',
-                          docid: '',
-                          userRole: '',
-                          classId: '',
-                          guardianId: '',
-                          parentId: '',
-                        ),
-                        validator: (v) => v == null ? "required field" : null,
-                        items: studentSignUpController.classWiseStudentList,
-                        itemAsString: (StudentModel u) => u.studentName,
-                        onChanged: (value) {
-                          UserCredentialsController.studentModel = value;
-                        },onSaved: (newValue) => newValue!.studentName,),
+                    child: SelectTempStudentDropDown()
                   ),
             kHeight30,
             Form(
@@ -192,8 +167,9 @@ class StudentSignInScreen extends StatelessWidget {
                                   userPassword: studentSignUpController
                                       .passwordController.text,
                                 );
+                                
                           },));
-                     
+                         log("Temp Student ID ${Get.find<StudentSignInController>().tempstudentDocID.value}");
                           } else {
                             showToast(msg: "Please select student detail.".tr);
                           }

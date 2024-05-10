@@ -153,9 +153,7 @@ class ParentLoginScreen extends StatelessWidget {
                           text: "Don't Have an account?".tr, fontsize: 15),
                       GestureDetector(
                         onTap: () async {
-                          ParentSignUpController parentSignUpController =
-                              Get.put(ParentSignUpController());
-                          await parentSignUpController.getAllParent();
+           
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
                               return ParentSignUpFirstScreen(

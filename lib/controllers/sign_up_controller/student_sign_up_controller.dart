@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vidya_veechi/controllers/sign_in_controller/student_sign_in_controller.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 
 import '../../model/Signup_Image_Selction/image_selection.dart';
@@ -41,34 +42,8 @@ class StudentSignUpController extends GetxController {
       .collection("classes")
       .doc(UserCredentialsController.classId)
       .collection("Students");
-  CollectionReference<Map<String, dynamic>> firebaseDataTemp = FirebaseFirestore
-      .instance
-      .collection("SchoolListCollection")
-      .doc(UserCredentialsController.schoolId)
-      .collection(UserCredentialsController.batchId ?? "")
-      .doc(UserCredentialsController.batchId ?? "")
-      .collection("classes")
-      .doc(UserCredentialsController.classId)
-      .collection("Temp_Students");
 
 //fetching all students data from firebase
-  Future<void> getStudentData() async {
-    try {
-      isLoading.value = true;
-      final result = await firebaseDataTemp.get();
-      log(result.docs.toString());
-
-      if (result.docs.isNotEmpty) {
-        classWiseStudentList =
-            result.docs.map((e) => StudentModel.fromMap(e.data())).toList();
-      }
-
-      isLoading.value = false;
-    } catch (e) {
-      showToast(msg: "Student fetching failed");
-      isLoading.value = false;
-    }
-  }
 
   //updating students data
 
@@ -111,9 +86,7 @@ class StudentSignUpController extends GetxController {
           userRole: "student");
 
       await getAdmissionNumber().then((value) async {
-        print('getAdmissionNumber');
         await increaseAdNo().then((value) async {
-              print('increaseAdNo');
           studentModel.admissionNumber = '000${stAdNumber.value}';
           await FirebaseFirestore.instance
               .collection("SchoolListCollection")
@@ -122,22 +95,30 @@ class StudentSignUpController extends GetxController {
               .doc(userUid)
               .set(studentModel.toMap())
               .then((value) async {
-                print(studentModel);
             await firebaseData
                 .doc(userUid)
                 .set(studentModel.toMap())
                 .then((value) async {
-                     firebaseDataTemp
-            .doc(UserCredentialsController.studentModel?.docid ?? "")
-            .delete();
-                });
+              log("SchoolID ${UserCredentialsController.schoolId}");
+              log("batchId ${UserCredentialsController.batchId ?? ""}");
+              log("classId ${UserCredentialsController.classId}");
+                log("Temp Student ID ${Get.find<StudentSignInController>().tempstudentDocID.value}");
+             await FirebaseFirestore.instance
+                  .collection("SchoolListCollection")
+                  .doc(UserCredentialsController.schoolId)
+                  .collection(UserCredentialsController.batchId ?? "")
+                  .doc(UserCredentialsController.batchId ?? "")
+                  .collection("classes")
+                  .doc(UserCredentialsController.classId)
+                  .collection("Temp_Students")
+                  .doc(Get.find<StudentSignInController>()
+                      .tempstudentDocID
+                      .value)
+                  .delete();
+            });
           });
         });
       });
-
-   
-      classWiseStudentList.clear();
-      await getStudentData();
 
       clearFields();
       Get.find<GetImage>().pickedImage.value = "";
@@ -149,12 +130,6 @@ class StudentSignUpController extends GetxController {
       showToast(msg: "Updation Failed");
       isLoading.value = false;
     }
-  }
-
-  @override
-  void onInit() async {
-    await getStudentData();
-    super.onInit();
   }
 
   void clearFields() {
@@ -215,8 +190,9 @@ class StudentSignUpController extends GetxController {
 
     return '000$newAdNo';
   }
+
   @override
-  void onReady() async{
+  void onReady() async {
     await getAdmissionNumber();
     super.onReady();
   }
