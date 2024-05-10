@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
+import 'package:vidya_veechi/controllers/sign_in_controller/student_sign_in_controller.dart';
 import 'package:vidya_veechi/controllers/sign_up_controller/student_sign_up_controller.dart';
 import 'package:vidya_veechi/info/info.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
@@ -36,11 +38,13 @@ class StudentSignInPageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        log("Temp Student ID ${Get.find<StudentSignInController>().tempstudentDocID.value}");
     return WillPopScope(
       onWillPop: () {
         getImageController.pickedImage.value = "";
         studentController.clearFields();
         return Future.value(true);
+        
       },
       child: Scaffold(
         body: SafeArea(
@@ -265,6 +269,7 @@ class StudentSignInPageScreen extends StatelessWidget {
                                 return;
                               } else {
                                 try {
+                                      log("Temp Student ID ${Get.find<StudentSignInController>().tempstudentDocID.value}");
                                   studentController.isLoading.value = true;
                                   FirebaseAuth.instance
                                       .createUserWithEmailAndPassword(

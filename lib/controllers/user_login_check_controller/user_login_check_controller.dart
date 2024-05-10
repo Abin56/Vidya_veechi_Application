@@ -27,10 +27,12 @@ class UserLoginCheckController extends GetxController {
 
     User? currentUser = auth.currentUser;
     if (currentUser == null) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const DujoLoginScren();
-                  },));
-     // Get.off(() => const DujoLoginScren());
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return const DujoLoginScren();
+        },
+      ));
+      // Get.off(() => const DujoLoginScren());
     } else {
       log('UID: ${currentUser.uid}');
 
