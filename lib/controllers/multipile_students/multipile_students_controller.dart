@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent_main_home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/view/home/parent_home/parent_main_home_screen.dart';
 
 import '../../helper/shared_pref_helper.dart';
 import '../../local_database/parent_login_database.dart';
@@ -238,10 +238,10 @@ class MultipileStudentsController extends GetxController {
 
           await SharedPreferencesHelper.setString(
                   SharedPreferencesHelper.userRoleKey, 'parent')
-              .then((value) => log('Added userRoll'));
-               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                    return const ParentMainHomeScreen();
-                  },));
+              .then((value) {
+                Get.offAll(()=>const ParentMainHomeScreen());
+              });
+          
         //  Get.offAll(const ParentMainHomeScreen());
           isLoading.value = false;
         }).catchError((error) {

@@ -2,11 +2,11 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vidya_veechi/view/home/parent_home/parent_main_home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vidya_veechi/view/home/parent_home/parent_main_home_screen.dart';
 
 import '../../../helper/shared_pref_helper.dart';
 import '../../../model/Signup_Image_Selction/image_selection.dart';
@@ -18,7 +18,7 @@ import '../../userCredentials/user_credentials.dart';
 class ParentProfileEditController {
   RxBool isLoading = RxBool(false);
   final formKey = GlobalKey<FormState>();
-  
+
   TextEditingController textEditingController = TextEditingController();
 
   final DocumentReference<Map<String, dynamic>> parentDocumentCollection =
@@ -51,10 +51,12 @@ class ParentProfileEditController {
           await FirebaseAuth.instance.signOut().then((value) async {
             await SharedPreferencesHelper.clearSharedPreferenceData();
             UserCredentialsController.clearUserCredentials();
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                    return const DujoLoginScren();
-                  },));
-           // Get.offAll(() => const DujoLoginScren());
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) {
+                return const DujoLoginScren();
+              },
+            ));
+            // Get.offAll(() => const DujoLoginScren());
           });
         });
       });
@@ -103,10 +105,12 @@ class ParentProfileEditController {
         if (parentData.data() != null) {
           UserCredentialsController.parentModel =
               ParentModel.fromMap(parentData.data()!);
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                    return const ParentMainHomeScreen();
-                  },));
-         // Get.offAll(const ParentMainHomeScreen());
+          Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) {
+              return const ParentMainHomeScreen();
+            },
+          ));
+          // Get.offAll(const ParentMainHomeScreen());
         }
       }
     } catch (e) {
@@ -115,7 +119,8 @@ class ParentProfileEditController {
     }
   }
 
-  Future<void> updateParentProfile(context,{
+  Future<void> updateParentProfile(
+    context, {
     required String value,
     required String documentKey,
   }) async {
@@ -123,15 +128,26 @@ class ParentProfileEditController {
       isLoading.value = true;
       await parentDocumentCollection.update({
         documentKey: value,
+      }).then((values) async {
+        await FirebaseFirestore.instance
+            .collection('SchoolListCollection')
+            .doc(UserCredentialsController.schoolId)
+            .collection('AllParents')
+            .doc(UserCredentialsController.parentModel?.docid)
+            .update({
+          documentKey: value,
+        });
       });
       final DocumentSnapshot<Map<String, dynamic>> parentData =
           await parentDocumentCollection.get();
       if (parentData.data() != null) {
         UserCredentialsController.parentModel =
             ParentModel.fromMap(parentData.data()!);
-  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                    return const ParentMainHomeScreen();
-                  },));
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) {
+            return const ParentMainHomeScreen();
+          },
+        ));
         //Get.offAll(const ParentMainHomeScreen());
       }
       isLoading.value = false;
