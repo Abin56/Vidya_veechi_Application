@@ -12,7 +12,7 @@ class GeneralInstructionsController {
       .doc(UserCredentialsController.schoolId)
       .collection(UserCredentialsController.batchId ?? " ")
       .doc(UserCredentialsController.batchId ?? " ")
-      .collection('general_instructions');
+      .collection('Admin_general_instructions');
 
   RxList<GeneralInstructionModel> listOfGeneralIModel =
       RxList<GeneralInstructionModel>([]);

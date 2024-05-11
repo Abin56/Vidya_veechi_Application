@@ -1,7 +1,9 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
 import 'package:vidya_veechi/view/widgets/appbar_color/appbar_clr.dart';
@@ -27,18 +29,29 @@ class GeneralInstruction extends StatelessWidget {
         title: GooglePoppinsWidgets(
             text: "General Instructions".tr, fontsize: 20.h),
       ),
-      body: FutureBuilder(
-          future: generalInstructionsController.getInstruction(),
+      body: StreamBuilder(
+          stream:FirebaseFirestore.instance
+          .collection('SchoolListCollection')
+                            .doc(UserCredentialsController.schoolId)
+                            .collection(UserCredentialsController.batchId!)
+                            .doc(UserCredentialsController.batchId!)
+                            .collection('Admin_general_instructions')
+                            .snapshots(),
+          // generalInstructionsController.getInstruction(),
           builder: (context, snapshot) {
-            return Obx(() => generalInstructionsController.isLoading.value
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : generalInstructionsController.listOfGeneralIModel.isEmpty
-                    ? const Center(
-                        child: Text("No data found"),
-                      )
-                    : ListView(
+            if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const Center(child: CircularProgressIndicator());
+                          }
+                          // ignore: prefer_is_empty
+                          if (snapshot.data!.docs.length == 0) {
+                            return Center(
+                                child: Text(
+                              'No General_instructions',
+                              style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w500),
+                            ));
+                          }
+                          return 
+                    ListView(
                         physics: const AlwaysScrollableScrollPhysics(),
                         children: [
                           Container(
@@ -115,9 +128,8 @@ class GeneralInstruction extends StatelessWidget {
                                               padding:
                                                   EdgeInsets.only(left: 8.h),
                                               child: Text(
-                                                generalInstructionsController
-                                                    .listOfGeneralIModel[index]
-                                                    .instruction,
+                                                snapshot.data!.docs[index]['instruction'],
+                                                   // .instruction,
                                                 style: GoogleFonts.poppins(
                                                     fontSize: 18),
                                                 softWrap: true,
@@ -131,8 +143,7 @@ class GeneralInstruction extends StatelessWidget {
                                   separatorBuilder: (context, index) {
                                     return kHeight20;
                                   },
-                                  itemCount: generalInstructionsController
-                                      .listOfGeneralIModel.length),
+                                  itemCount:  snapshot.data!.docs.length),
                             ),
                           ),
                           kHeight20,
@@ -147,8 +158,10 @@ class GeneralInstruction extends StatelessWidget {
                                 )),
                           )
                         ],
-                      ));
-          }),
+                      );
+          }
+                      ),
+       //   }),
     );
   }
 }
