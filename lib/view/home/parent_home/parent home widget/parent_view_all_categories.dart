@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:vidya_veechi/controllers/push_notification_controller/push_notification_controller.dart';
+import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
 import 'package:vidya_veechi/utils/utils.dart';
 import 'package:vidya_veechi/view/colors/colors.dart';
 
@@ -138,11 +139,12 @@ class ParentViewAllCategories extends StatelessWidget {
                       child: StreamBuilder(
                           stream: server
                               .collection('AllUsersDeviceID')
-                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .doc(UserCredentialsController.parentModel?.docid??'')
                               .collection("Notification_Message")
                              . orderBy('dateTime',descending: true)
                               .snapshots(),
                           builder: (context, snapshot) {
+                            print(UserCredentialsController.parentModel?.docid??'');
                             if (snapshot.hasData) {
                               return ListView.separated(
                                   // physics:

@@ -205,8 +205,8 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
 
       const ViewHomeWorks(), // Home Works...............1
        const TimeTable(), // Time Table...........2
-      TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................3
-      StudentSubjectScreen(), //Subjects...............4
+      const TeacherSubjectWiseList(navValue: 'parent'), //Teachers.................3
+      const StudentSubjectScreen(), //Subjects...............4
 
       LeaveApplicationScreen(
           studentName: widget.studentName,
@@ -222,7 +222,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
           studentId: UserCredentialsController
               .parentModel!.studentID!), ////// exam result............7
       NoticePage(), //Notice.........8
-       EventList(), //Events.................9
+       const EventList(), //Events.................9
       SchoolLevelMeetingPage(), ////////////////////////////10
 
       const ParentChatScreen(), /////......11
