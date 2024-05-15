@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +10,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 import 'package:vidya_veechi/controllers/form_controller/form_controller.dart';
 import 'package:vidya_veechi/controllers/userCredentials/user_credentials.dart';
+import 'package:vidya_veechi/model/Signup_Image_Selction/image_selection.dart';
 import 'package:vidya_veechi/view/constant/sizes/sizes.dart';
+import 'package:vidya_veechi/view/widgets/button_container_homework_photo_upload.dart';
 import 'package:vidya_veechi/view/widgets/fonts/google_monstre.dart';
 
 import '../../../view/colors/colors.dart';
@@ -128,6 +129,7 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
   final HomeWorkController homeWorkController = Get.put(HomeWorkController());
   //final _formKey = GlobalKey<FormState>();
 
+  final GetImage getImageController = Get.put(GetImage());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -173,19 +175,25 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
                       kWidth20,
                       GestureDetector(
                         onTap: () async {
-                          FilePickerResult? result = await FilePicker.platform
-                              .pickFiles(
-                                  allowedExtensions: ['pdf'],
-                                  type: FileType.custom);
+                          _getCameraAndGallery(context);
+                          log(getImageController.pickedImage.value);
+                          setState(() {
+                            filee = File(getImageController.pickedImage.value);
+                          });
+                          // FilePickerResult? result = await FilePicker.platform
+                          //     .pickFiles(
+                          //         allowedExtensions: ['pdf'],
+                          //         type: FileType.custom);
 
-                          if (result != null) {
-                            File file = File(result.files.single.path!);
-                            setState(() {
-                              filee = file;
-                            });
-                          } else {
-                            print('No file selected');
-                          }
+                          // if (result != null) {
+                          //   File file = File(result.files.single.path!);
+                          //   setState(() {
+                          //     filee = file;
+                          //   });
+                          // }
+                          // else {
+                          //   print('No file selected');
+                          // }
                         },
                         child: Container(
                           height: 130.h,
@@ -201,14 +209,21 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
                             children: [
                               Icon(Icons.attach_file_rounded,
                                   color: cblue, size: 30.w, weight: 10),
-                              GoogleMonstserratWidgets(
-                                text: (filee == null)
-                                    ? 'Upload file here'
-                                    : filee!.path.split('/').last,
-                                fontsize: 22,
-                                color: cblue,
-                                fontWeight: FontWeight.bold,
-                                overflow: TextOverflow.ellipsis,
+                              SizedBox(
+                                width: 300,
+                                child: Center(
+                                  child: GoogleMonstserratWidgets(
+                                    text: (filee == null)
+                                        ? 'Upload file here'.tr
+                                        : getImageController.pickedImage.value
+                                            .split('/')
+                                            .last,
+                                    fontsize: 22,
+                                    color: cblue,
+                                    fontWeight: FontWeight.bold,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
                               ),
                               kWidth20,
                             ],
@@ -290,5 +305,14 @@ class _UploadHomeworkToTeacherState extends State<UploadHomeworkToTeacher> {
         ),
       ),
     );
+  }
+
+  void _getCameraAndGallery(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return BottomHomeworkPhotoUploadContainer(
+              getImageController: getImageController);
+        });
   }
 }
